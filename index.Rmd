@@ -1,16 +1,14 @@
 ---
-title: "2series's website"
-output: html_document
+title: "Rihad Variawa's website"
+output:
+  html_document:
+    theme: spacelab
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 ## About
 
 Hey, welcome to my website!
-Rihad Variawa is a Finance post graduate, a results-driven analytics professional and a motivated leader with 2+ years of experience in data science industry. Who has led various high performing data scientists teams in financial domain. His work range from creating high level business strategy for customer engagement and acquisition to developing Next-Gen cognitive Deep/Machine Learning capabilities aligned to these high level strategies for multiple domains including Renewable Energies. 
+Rihad is a Finance post graduate, a results-driven analytics professional and a motivated leader with 2+ years of experience in data science industry. Who has led various high performing data scientists teams in financial domain. His work range from creating high level business strategy for customer engagement and acquisition to developing Next-Gen cognitive Deep/Machine Learning capabilities aligned to these high level strategies for multiple domains including Renewable Energies. 
 
 Using data to constantly exploring data in real world for meaningful insights, to solve business problems, which drive long-term decisions.
 

@@ -3,6 +3,9 @@ title: "2series's website"
 output:
   html_document:
     theme: spacelab
+    toc: true
+    toc_depth: 3
+    toc_float: true
 ---
 
 ## About
@@ -32,3 +35,7 @@ Using data to constantly exploring data in real world for meaningful insights, t
 ## Contact
 
 * [Email](mailto:rihadv021@gmail.com)
+
+## Image
+
+* ![](img/Rihad Variawa.png){width=100px}

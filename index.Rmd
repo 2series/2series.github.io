@@ -1,5 +1,5 @@
 ---
-title: "2series's website"
+title: "Rihad Variawa, Data Scientist"
 output:
   html_document:
     theme: spacelab
@@ -20,6 +20,7 @@ Using data to constantly exploring data in real world for meaningful insights, t
 
 * Blockchain technology
 * Finance
+* Python and R programming
 
 ## Projects
 
@@ -32,7 +33,17 @@ Using data to constantly exploring data in real world for meaningful insights, t
 
 * [Linkedin](https://www.linkedin.com/in/rihad-variawa-7422017b)
 * [GitHub](https://github.com/2series)
+<!-- Prepare a container for your calendar. -->
+
+<!-- Optionally, include the theme (if you don't want to struggle to write the CSS) -->
+<img src="http://ghchart.rshah.org/409ba5/2series" alt="2series's Blue Github Chart" />
+
+<script>
+    new GitHubCalendar(".calendar", "2series");
+</script>
 
 ## Contact
 
-* [Email](mailto:rihadv021@gmail.com)
+* [rihadv021@gmail.com](mailto:rihadv021@gmail.com)
+
+<a href='https://clustrmaps.com/site/1aijr'  title='Visit tracker'><img src='//clustrmaps.com/map_v2.png?cl=080808&w=300&t=n&d=GeOYFOm6guQY__ofSVsYSrcF6cbzDS9b66_07VUr2Qo&co=ffffff&ct=808080'/></a>

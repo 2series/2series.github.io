@@ -38,7 +38,7 @@ Using data to constantly exploring data in real world for meaningful insights, t
 
 ### Presentation
 
-* Presented "Whitepaper on Renewable Energy using blockchain technology with public data and research" to foreign investors seeking investment opportunities within South Africa [PDF](files/Rihad Variawa.pdf) (August 28, 2018).
+* Presented "Whitepaper on Renewable Energy using blockchain technology with public data and research" to foreign investors seeking investment opportunities within South Africa [PDF](whitepaper/Whitepaper.pdf) (August 20, 2018).
 
 ## Profiles 
 

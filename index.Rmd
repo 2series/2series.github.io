@@ -6,8 +6,9 @@ output:
     toc: true
     toc_depth: 3
     toc_float: true
+    logo: R.png
 ---
-![](img/Rihad Variawa.png){width=100px}
+![](img/Rihad Variawa.png){width=100px} ![](img/R.png){width=100px}
 
 ## About
 

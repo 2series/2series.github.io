@@ -22,8 +22,9 @@ Using data to constantly exploring data in real world for meaningful insights, t
 
 * Blockchain technology
 * Finance
-* Python and R programming
-* Solidity language
+* Python programming
+* R programming
+* Solidity programming
 
 ### Publication
 
@@ -46,11 +47,10 @@ Using data to constantly exploring data in real world for meaningful insights, t
 
 * [Linkedin](https://www.linkedin.com/in/rihad-variawa-7422017b)
 * [GitHub](https://github.com/2series)
-<!-- Prepare a container for your calendar. -->
 
 <!-- Optionally, include the theme (if you don't want to struggle to write the CSS) -->
 <img src="http://ghchart.rshah.org/409ba5/2series" alt="2series's Blue Github Chart" />
-
+<p class="spinner-text monospace"><a href="https://github.com/2series">2series</a> contributions to GitHub.</p>
 <script>
     new GitHubCalendar(".calendar", "2series");
 </script>

@@ -2,11 +2,10 @@
 title: "Rihad Variawa, Data Scientist"
 output:
   html_document:
-    theme: spacelab
-    toc: true
-    toc_depth: 3
-    toc_float: true
-    logo: R.png
+    includes:
+      in_header: header.html
+      before_body: doc_prefix.html
+      after_body: doc_suffix.html
 ---
 ![](img/Rihad Variawa.png){width=100px} ![](img/R.png){width=100px}
 

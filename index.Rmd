@@ -1,21 +1,21 @@
 ---
-title: "Rihad Variawa, Data Scientist"
+title: Rihad Variawa, Data Scientist
 output:
   html_document:
-    includes:
-      in_header: header.html
-      before_body: doc_prefix.html
-      after_body: doc_suffix.html
+    theme: cosmo
+    highlight: espresso 
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    logo: R.png
 ---
 ![](img/Rihad Variawa.png){width=100px} ![](img/R.png){width=100px}
 
-## About
+## Biography
 
 Hey, welcome to my website!
 
-Rihad is a Finance post graduate, a results-driven analytics professional and a motivated leader with 2+ years of experience in the data science industry. Who has led various high performing data science projects within the financial domain. Rihad's work range from creating high level business strategy for customer engagement and acquisition to developing Next-Gen cognitive Deep/Machine Learning capabilities aligned to these high level strategies for multiple domains including Renewable Energies. 
-
-Using data to constantly exploring data in real world for meaningful insights, to solve business problems, which drive long-term decisions.
+Rihad is a Finance post graduate, a results-driven analytics professional and a motivated leader with 2+ years of experience in the data science industry. Who has explored various high performing data science projects within the financial domain. Rihad's work range from creating high level business strategy for customer engagement and acquisition to developing Next-Gen cognitive Deep/Machine Learning capabilities aligned to these high level strategies for multiple domains including Renewable Energies. 
 
 ### Interests
 
@@ -31,6 +31,7 @@ Using data to constantly exploring data in real world for meaningful insights, t
 * Financialization of housing essay [PDF](essay/Financialization of Housing.pdf) (July 2018).
 
 ### Projects
+Sometimes I like to do projects and then post them on the internet for the whole world to benefit! here’s some examples.
 
 * Creating my own website using R programming language.
 * Cryptocurrency pricing analysis

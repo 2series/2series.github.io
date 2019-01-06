@@ -14,22 +14,15 @@
     
     <item>
       <title>Build A Simple Blockchain</title>
-      <link>/project/build-a-simple-blockchain/</link>
-      <pubDate>Sun, 06 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/project/build-a-simple-blockchain/</guid>
-      <description> Intro &amp;amp; Background  Data  Exploratory Data Analysis  Analysis Approach  Results Results 1  Results 2  Results 3   Conclusion  </description>
-    </item>
-    
-    <item>
-      <title>Build A Simple Blockchain</title>
       <link>/project/simple_blockchain-project/build-a-simple-blockchain/</link>
       <pubDate>Sun, 06 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/simple_blockchain-project/build-a-simple-blockchain/</guid>
       <description> Intro &amp;amp; Background  Data Explain the source of the data and include the URL to the data.
 A code chunk with code to read the data into Python.
-# code for how to read the data into Python  Exploratory Data Analysis  Analysis Approach  Results Results 1  Results 2  Results 3   Conclusion  </description>
+# code for how to read the data into Python  Exploratory Data Analysis Kindly, click on the link below to see the working code in Python.
+https://github.com/2series/100_Days_of_ML_Code/blob/master/Simple_Blockchain.ipynb
+ Analysis Approach  Results Results 1  Results 2  Results 3   Conclusion  </description>
     </item>
     
   </channel>

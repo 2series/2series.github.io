@@ -4,14 +4,6 @@
     
     <url>
     
-      <loc>/project/build-a-simple-blockchain/</loc>
-      <lastmod>2019-01-06T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
       <loc>/project/simple_blockchain-project/build-a-simple-blockchain/</loc>
       <lastmod>2019-01-06T00:00:00+00:00</lastmod>
     </url>
@@ -109,8 +101,8 @@
     
     <url>
     
-      <loc>/tags/blockchain/</loc>
-      <lastmod>2018-08-20T00:00:00+00:00</lastmod>
+      <loc>/categories/blockchain/</loc>
+      <lastmod>2019-01-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -118,8 +110,8 @@
     
     <url>
     
-      <loc>/categories/blockchain/</loc>
-      <lastmod>2019-01-06T00:00:00+00:00</lastmod>
+      <loc>/tags/blockchain/</loc>
+      <lastmod>2018-08-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -172,7 +164,7 @@
     
     <url>
     
-      <loc>/tags/python/</loc>
+      <loc>/categories/python/</loc>
       <lastmod>2019-01-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -181,7 +173,7 @@
     
     <url>
     
-      <loc>/categories/python/</loc>
+      <loc>/tags/python/</loc>
       <lastmod>2019-01-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>

@@ -12,45 +12,6 @@
     
     <item>
       <title>Build A Simple Blockchain</title>
-      <link>/project/build-a-simple-blockchain/</link>
-      <pubDate>Sun, 06 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/project/build-a-simple-blockchain/</guid>
-      <description>
-
-
-&lt;div id=&#34;intro-background&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Intro &amp;amp; Background&lt;/h1&gt;
-&lt;/div&gt;
-&lt;div id=&#34;data&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Data&lt;/h1&gt;
-&lt;/div&gt;
-&lt;div id=&#34;exploratory-data-analysis&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Exploratory Data Analysis&lt;/h1&gt;
-&lt;/div&gt;
-&lt;div id=&#34;analysis-approach&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Analysis Approach&lt;/h1&gt;
-&lt;/div&gt;
-&lt;div id=&#34;results&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Results&lt;/h1&gt;
-&lt;div id=&#34;results-1&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Results 1&lt;/h2&gt;
-&lt;/div&gt;
-&lt;div id=&#34;results-2&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Results 2&lt;/h2&gt;
-&lt;/div&gt;
-&lt;div id=&#34;results-3&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Results 3&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;conclusion&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Conclusion&lt;/h1&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Build A Simple Blockchain</title>
       <link>/project/simple_blockchain-project/build-a-simple-blockchain/</link>
       <pubDate>Sun, 06 Jan 2019 00:00:00 +0000</pubDate>
       
@@ -69,6 +30,8 @@
 &lt;/div&gt;
 &lt;div id=&#34;exploratory-data-analysis&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Exploratory Data Analysis&lt;/h1&gt;
+&lt;p&gt;Kindly, click on the link below to see the working code in Python.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/2series/100_Days_of_ML_Code/blob/master/Simple_Blockchain.ipynb&#34; class=&#34;uri&#34;&gt;https://github.com/2series/100_Days_of_ML_Code/blob/master/Simple_Blockchain.ipynb&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;analysis-approach&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Analysis Approach&lt;/h1&gt;

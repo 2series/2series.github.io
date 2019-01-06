@@ -11,6 +11,87 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Build A Simple Blockchain</title>
+      <link>/project/build-a-simple-blockchain/</link>
+      <pubDate>Sun, 06 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/build-a-simple-blockchain/</guid>
+      <description>
+
+
+&lt;div id=&#34;intro-background&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Intro &amp;amp; Background&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Data&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div id=&#34;exploratory-data-analysis&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Exploratory Data Analysis&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div id=&#34;analysis-approach&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Analysis Approach&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div id=&#34;results&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Results&lt;/h1&gt;
+&lt;div id=&#34;results-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Results 1&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div id=&#34;results-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Results 2&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div id=&#34;results-3&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Results 3&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusion&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Conclusion&lt;/h1&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Build A Simple Blockchain</title>
+      <link>/project/simple_blockchain-project/build-a-simple-blockchain/</link>
+      <pubDate>Sun, 06 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/simple_blockchain-project/build-a-simple-blockchain/</guid>
+      <description>
+
+
+&lt;div id=&#34;intro-background&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Intro &amp;amp; Background&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Data&lt;/h1&gt;
+&lt;p&gt;Explain the source of the data and include the URL to the data.&lt;/p&gt;
+&lt;p&gt;A code chunk with code to read the data into Python.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# code for how to read the data into Python&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;exploratory-data-analysis&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Exploratory Data Analysis&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div id=&#34;analysis-approach&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Analysis Approach&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div id=&#34;results&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Results&lt;/h1&gt;
+&lt;div id=&#34;results-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Results 1&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div id=&#34;results-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Results 2&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div id=&#34;results-3&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Results 3&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusion&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Conclusion&lt;/h1&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>A Simple Blockchain</title>
       <link>/post/a-simple-blockchain/</link>
       <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
@@ -70,15 +151,6 @@ Figure 1: A fancy pie chart.
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Simple Blockchain Project</title>
-      <link>/project/simple_blockchain-project/</link>
-      <pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/project/simple_blockchain-project/</guid>
-      <description></description>
     </item>
     
     <item>

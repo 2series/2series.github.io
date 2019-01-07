@@ -18,11 +18,18 @@
       <pubDate>Sun, 06 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>/project/simple_blockchain-project/build-a-simple-blockchain/</guid>
-      <description> Intro &amp;amp; Background  Data Explain the source of the data and include the URL to the data.
-A code chunk with code to read the data into Python.
-# code for how to read the data into Python  Exploratory Data Analysis Kindly, click on the link below to see the working code in Python.
-https://github.com/2series/100_Days_of_ML_Code/blob/master/Simple_Blockchain.ipynb
- Analysis Approach  Results Results 1  Results 2  Results 3   Conclusion  </description>
+      <description>Intro &amp;amp; Background Blockchain is a data structure that was first introduced by Satoshi Nakamoto in the Bitcoin protocol white paper a decade ago. Bitcoin’s blockchain stores transaction data, but we can store any type of data in a blockchain.
+Ethereum, for example, enables users to store code snippets called ‘smart contracts’ in their blockchain. In this project, I build a simple blockchain in Python that uses proof-of-work consensus, just like the Bitcoin protocol does.</description>
+    </item>
+    
+    <item>
+      <title>Password Detection Strength</title>
+      <link>/project/password_detection_strength/password-detection-strength/</link>
+      <pubDate>Sun, 06 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/password_detection_strength/password-detection-strength/</guid>
+      <description>Intro &amp;amp; Background A function written that uses regular expressions to make sure the password string it is passed is strong. A strong password is defined as one that is at least eight characters long, contains both uppercase and lowercase characters, and has at least one digit. You may need to test the string against multiple regex patterns to validate its strength.
+ Data Explain the source of the data and include the URL to the data.</description>
     </item>
     
     <item>

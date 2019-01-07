@@ -12,6 +12,14 @@
     
     <url>
     
+      <loc>/project/password_detection_strength/password-detection-strength/</loc>
+      <lastmod>2019-01-06T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/post/a-simple-blockchain/</loc>
       <lastmod>2019-01-05T00:00:00+00:00</lastmod>
     </url>
@@ -101,8 +109,8 @@
     
     <url>
     
-      <loc>/categories/blockchain/</loc>
-      <lastmod>2019-01-06T00:00:00+00:00</lastmod>
+      <loc>/tags/blockchain/</loc>
+      <lastmod>2018-08-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -110,8 +118,8 @@
     
     <url>
     
-      <loc>/tags/blockchain/</loc>
-      <lastmod>2018-08-20T00:00:00+00:00</lastmod>
+      <loc>/categories/blockchain/</loc>
+      <lastmod>2019-01-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -164,7 +172,7 @@
     
     <url>
     
-      <loc>/categories/python/</loc>
+      <loc>/tags/python/</loc>
       <lastmod>2019-01-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -173,7 +181,7 @@
     
     <url>
     
-      <loc>/tags/python/</loc>
+      <loc>/categories/python/</loc>
       <lastmod>2019-01-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>

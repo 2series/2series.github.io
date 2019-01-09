@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>unsw on Rihad Variawa</title>
+    <link>/tags/unsw/</link>
+    <description>Recent content in unsw on Rihad Variawa</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Fri, 27 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/unsw/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Psychology Colloquium Series 2018</title>
+      <link>/project/b1/</link>
+      <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/project/b1/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

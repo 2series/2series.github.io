@@ -4,6 +4,14 @@
     
     <url>
     
+      <loc>/project/machine-learning-using-linear-regression-to-predict-house-prices/</loc>
+      <lastmod>2019-01-10T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/project/simple_blockchain-project/build-a-simple-blockchain/</loc>
       <lastmod>2019-01-06T00:00:00+00:00</lastmod>
     </url>
@@ -14,14 +22,6 @@
     
       <loc>/project/password_detection_strength/password-detection-strength/</loc>
       <lastmod>2019-01-06T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/post/a-simple-blockchain/</loc>
-      <lastmod>2019-01-05T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -109,8 +109,8 @@
     
     <url>
     
-      <loc>/categories/blockchain/</loc>
-      <lastmod>2019-01-06T00:00:00+00:00</lastmod>
+      <loc>/tags/blockchain/</loc>
+      <lastmod>2018-08-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -118,8 +118,8 @@
     
     <url>
     
-      <loc>/tags/blockchain/</loc>
-      <lastmod>2018-08-20T00:00:00+00:00</lastmod>
+      <loc>/categories/blockchain/</loc>
+      <lastmod>2019-01-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -155,7 +155,7 @@
     <url>
     
       <loc>/project/</loc>
-      <lastmod>2019-01-06T00:00:00+00:00</lastmod>
+      <lastmod>2019-01-10T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -172,8 +172,8 @@
     
     <url>
     
-      <loc>/categories/python/</loc>
-      <lastmod>2019-01-06T00:00:00+00:00</lastmod>
+      <loc>/tags/python/</loc>
+      <lastmod>2019-01-10T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -181,8 +181,8 @@
     
     <url>
     
-      <loc>/tags/python/</loc>
-      <lastmod>2019-01-06T00:00:00+00:00</lastmod>
+      <loc>/categories/python/</loc>
+      <lastmod>2019-01-10T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -251,7 +251,7 @@
     <url>
     
       <loc>/tags/regression/</loc>
-      <lastmod>2019-01-03T21:13:14-05:00</lastmod>
+      <lastmod>2019-01-10T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

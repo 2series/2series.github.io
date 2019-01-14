@@ -11,11 +11,127 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Data Tidying Project</title>
+      <link>/project/data_tidying/data-tidying-project/</link>
+      <pubDate>Mon, 14 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/data_tidying/data-tidying-project/</guid>
+      <description>
+
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;The data hosted at [data.world] and contains information about Sales in the US.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;get-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Get Data&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://data.world/retail/department-store-sales&#34;&gt;Data Set 1&lt;/a&gt;: Sales from the Retail Trade and Food Services Report from the US Census. This dataset only covers Department Stores, though the report covers a wide range of retail types. [1992-2016]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://data.world/garyhoov/retail-sales-growth&#34;&gt;Data Set 2&lt;/a&gt; US Retail Sales by Store Type with Growth Rate [2009-2014]&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#1992-2016
+#https://data.world/retail/department-store-sales
+
+GET(&amp;quot;https://query.data.world/s/gdk7iwtlisq6vkktmybqqr7hjjty5s&amp;quot;, write_disk(tf &amp;lt;- tempfile(fileext = &amp;quot;.xls&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Response [https://download.data.world/file_download/retail/department-store-sales/retail-trade-report-department-stores.xls?auth=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm9kLXVzZXItY2xpZW50OnNoYW5lbGxpcyIsImlzcyI6ImFnZW50OnNoYW5lbGxpczo6OTA5ZDZlNTQtMmQwZC00MDczLWE4Y2UtYWExNzI3OGJkN2ViIiwiaWF0IjoxNTIzOTkwNDIzLCJyb2xlIjpbInVzZXIiLCJ1c2VyX2FwaV9hZG1pbiIsInVzZXJfYXBpX3JlYWQiLCJ1c2VyX2FwaV93cml0ZSJdLCJnZW5lcmFsLXB1cnBvc2UiOmZhbHNlLCJ1cmwiOiI0YWU5NmEzZjc4Y2EyOGE5MWM1ZDZlMTgxYzg5YjI0NjIzZDY0ZThlIn0.jBFlyy1aloE-EpeYyosD3iRaDPoY75DBqdh7suLoZxKcrsG8N5GtOiFb6sNMjTqqclsHX7P8RUw7T5sAArPbcw]
+##   Date: 2019-01-14 06:54
+##   Status: 200
+##   Content-Type: application/vnd.ms-excel
+##   Size: 62.5 kB
+## &amp;lt;ON DISK&amp;gt;  /tmp/RtmpNjPHUN/file6c35ffd29fa.xls&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df1 &amp;lt;- read_excel(tf)
+
+#2009-2014
+# https://data.world/garyhoov/retail-sales-growth
+GET(&amp;quot;https://query.data.world/s/py7kinxvyuxjpzwdjs2ti4wdmui6bi&amp;quot;, write_disk(tf &amp;lt;- tempfile(fileext = &amp;quot;.xls&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Response [https://download.data.world/file_download/garyhoov/retail-sales-growth/US%20Retail%20Sales%20by%20Store%20Type%202009-2014.xls?auth=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm9kLXVzZXItY2xpZW50OnNoYW5lbGxpcyIsImlzcyI6ImFnZW50OnNoYW5lbGxpczo6OTA5ZDZlNTQtMmQwZC00MDczLWE4Y2UtYWExNzI3OGJkN2ViIiwiaWF0IjoxNTIzOTkwNTAwLCJyb2xlIjpbInVzZXIiLCJ1c2VyX2FwaV9hZG1pbiIsInVzZXJfYXBpX3JlYWQiLCJ1c2VyX2FwaV93cml0ZSJdLCJnZW5lcmFsLXB1cnBvc2UiOmZhbHNlLCJ1cmwiOiI5OWRhMDIwMzRlY2Q1YmZmZTRmODFjYzJlMTg4ZmUxOGQyZmEyNDdlIn0.NLTr571lKSZMKhmvIFFQGuoVeFVFr9DrQ7nxBO3LOcLTJUrKivBxWpUrcJcY8dxnkL4FlGba3wsL65c3wLzzxA]
+##   Date: 2019-01-14 06:54
+##   Status: 200
+##   Content-Type: application/vnd.ms-excel
+##   Size: 169 kB
+## &amp;lt;ON DISK&amp;gt;  /tmp/RtmpNjPHUN/file6c330594d8c.xls&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df2 &amp;lt;- read_excel(tf)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## New names:
+## * `` -&amp;gt; `..2`
+## * `` -&amp;gt; `..3`
+## * `` -&amp;gt; `..4`
+## * `` -&amp;gt; `..5`
+## * `` -&amp;gt; `..6`
+## * … and 24 more&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## the the first row and make that the column names of the data frame
+colnames(df2) &amp;lt;- df2[1,]&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;save-raw-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Save Raw Data&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## use saveRDS() to save each object as a .rds file 
+saveRDS(df1, file = &amp;#39;df_department.rds&amp;#39;)
+saveRDS(df2, file = &amp;#39;df_retail.rds&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;wrangle-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Wrangle Data&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## work with df2
+df_retail &amp;lt;- df2 %&amp;gt;%
+  ## remove the r from the column names of df2
+  magrittr::set_colnames(gsub(&amp;quot;r&amp;quot;,&amp;quot;&amp;quot;,df2[1,])) %&amp;gt;% 
+  ## add a new column called &amp;quot;business&amp;quot;
+  mutate(business = gsub(&amp;quot;[…]|[.]&amp;quot;,&amp;quot;&amp;quot;,`Kind of business`)) %&amp;gt;%
+  ## filter to include Retail sales or Department stores sales
+  filter(grepl(&amp;#39;Retail sales, total |Department stores&amp;#39;, business)) %&amp;gt;%
+  ## only look at columns with year information in them
+  select(.,c(matches(&amp;#39;19|20&amp;#39;),business)) %&amp;gt;%
+  ## take year column and collapse them into a single column
+  gather(., &amp;quot;year&amp;quot;, &amp;quot;n&amp;quot;, 1:(ncol(.)-1)) %&amp;gt;%
+  ## make sure the count column `n` is numeric
+  mutate(n=as.numeric(n)) %&amp;gt;%
+  ## filter to only include the businesses we&amp;#39;re interested in
+  filter(business == &amp;quot;Retail sales, total &amp;quot;| business==&amp;quot;Department stores &amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## work with df1
+df_department &amp;lt;- df1 %&amp;gt;% 
+  ## split Period column into one column called &amp;quot;month&amp;quot; and one called &amp;quot;year&amp;quot;
+  separate(Period, into = c(&amp;#39;month&amp;#39;, &amp;#39;year&amp;#39;), extra = &amp;#39;drop&amp;#39;, remove = FALSE) %&amp;gt;%
+  ## add a column `value` which contains the 
+  ## information from the `Value (in millions)` 
+  mutate(value = `Value (in millions)`) %&amp;gt;%
+  ## group the data frame by the `year` column
+  group_by(year) %&amp;gt;%
+  ## Summarize the data by creating a new column
+  ## call this column `n` 
+  ## have it contain the sum of the `value` column
+  summarize(n = sum(value)) %&amp;gt;% 
+  ### create a new column called `business`
+  ## set the value of this column to  be &amp;quot;department stores&amp;quot; 
+  ## for the entire data set 
+  mutate(business = &amp;#39;department stores&amp;#39;) %&amp;gt;%
+  ## reorder column names to be : business, year, n
+  select(business, year, n)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;merging-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Merging Data&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Now, combine the two data frames
+df_total &amp;lt;- left_join(df_retail, df_department, by = c(&amp;#39;business&amp;#39;, &amp;#39;year&amp;#39;, &amp;#39;n&amp;#39;))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plotting-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Plotting Data&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Plot Retail Sales data
+ggplot(df_retail, aes(x=year,y=n,colour=business)) +
+  geom_point() &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./project/data_tidying/2019-01-14-data-tidying-project_files/figure-html/plot-1.png&#34; width=&#34;960&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Plot Department Sales data
+ggplot(df_department, aes(x=year,y=n)) +
+  geom_point() &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./project/data_tidying/2019-01-14-data-tidying-project_files/figure-html/plot-2.png&#34; width=&#34;960&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Plot Combined Data
+ggplot(df_total, aes(x=year,y=as.numeric(n), colour=business)) +
+  geom_point()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./project/data_tidying/2019-01-14-data-tidying-project_files/figure-html/plot-3.png&#34; width=&#34;960&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Machine Learning using linear regression to predict house prices</title>
-      <link>/project/machine-learning-using-linear-regression-to-predict-house-prices/</link>
+      <link>/project/machine_learning_using_lr/machine-learning-using-linear-regression-to-predict-house-prices/</link>
       <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/machine-learning-using-linear-regression-to-predict-house-prices/</guid>
+      <guid>/project/machine_learning_using_lr/machine-learning-using-linear-regression-to-predict-house-prices/</guid>
       <description>
 
 

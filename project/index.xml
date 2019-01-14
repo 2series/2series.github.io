@@ -7,17 +7,29 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Thu, 10 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Data Tidying Project</title>
+      <link>/project/data_tidying/data-tidying-project/</link>
+      <pubDate>Mon, 14 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/data_tidying/data-tidying-project/</guid>
+      <description>Introduction The data hosted at [data.world] and contains information about Sales in the US.
+ Get Data Data Set 1: Sales from the Retail Trade and Food Services Report from the US Census. This dataset only covers Department Stores, though the report covers a wide range of retail types. [1992-2016]
+Data Set 2 US Retail Sales by Store Type with Growth Rate [2009-2014]
+#1992-2016 #https://data.world/retail/department-store-sales GET(&amp;quot;https://query.data.world/s/gdk7iwtlisq6vkktmybqqr7hjjty5s&amp;quot;, write_disk(tf &amp;lt;- tempfile(fileext = &amp;quot;.</description>
+    </item>
+    
+    <item>
       <title>Machine Learning using linear regression to predict house prices</title>
-      <link>/project/machine-learning-using-linear-regression-to-predict-house-prices/</link>
+      <link>/project/machine_learning_using_lr/machine-learning-using-linear-regression-to-predict-house-prices/</link>
       <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/machine-learning-using-linear-regression-to-predict-house-prices/</guid>
+      <guid>/project/machine_learning_using_lr/machine-learning-using-linear-regression-to-predict-house-prices/</guid>
       <description> Intro &amp;amp; Background Linear regression being one of the most basic and popular algorithms in machine learning, so when aspiring data scientist starts off in this field, linear regression is inevitably the first algorithm they come across.
  Analysis Approach You can click on the link below to see the working code in Python and reproduce it to test the strength of your own password.
 https://github.com/2series/100_Days_of_ML_Code/blob/master/Linear_Regression_from_Scratch.ipynb

@@ -81,6 +81,20 @@
 
   
   
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-132898309-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
   
 
   
@@ -473,22 +487,22 @@
 
 GET(&quot;https://query.data.world/s/gdk7iwtlisq6vkktmybqqr7hjjty5s&quot;, write_disk(tf &lt;- tempfile(fileext = &quot;.xls&quot;)))</code></pre>
 <pre><code>## Response [https://download.data.world/file_download/retail/department-store-sales/retail-trade-report-department-stores.xls?auth=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm9kLXVzZXItY2xpZW50OnNoYW5lbGxpcyIsImlzcyI6ImFnZW50OnNoYW5lbGxpczo6OTA5ZDZlNTQtMmQwZC00MDczLWE4Y2UtYWExNzI3OGJkN2ViIiwiaWF0IjoxNTIzOTkwNDIzLCJyb2xlIjpbInVzZXIiLCJ1c2VyX2FwaV9hZG1pbiIsInVzZXJfYXBpX3JlYWQiLCJ1c2VyX2FwaV93cml0ZSJdLCJnZW5lcmFsLXB1cnBvc2UiOmZhbHNlLCJ1cmwiOiI0YWU5NmEzZjc4Y2EyOGE5MWM1ZDZlMTgxYzg5YjI0NjIzZDY0ZThlIn0.jBFlyy1aloE-EpeYyosD3iRaDPoY75DBqdh7suLoZxKcrsG8N5GtOiFb6sNMjTqqclsHX7P8RUw7T5sAArPbcw]
-##   Date: 2019-01-14 06:54
+##   Date: 2019-01-16 08:17
 ##   Status: 200
 ##   Content-Type: application/vnd.ms-excel
 ##   Size: 62.5 kB
-## &lt;ON DISK&gt;  /tmp/RtmpNjPHUN/file6c35ffd29fa.xls</code></pre>
+## &lt;ON DISK&gt;  /tmp/Rtmpg4fRHo/file991386eee59.xls</code></pre>
 <pre class="r"><code>df1 &lt;- read_excel(tf)
 
 #2009-2014
 # https://data.world/garyhoov/retail-sales-growth
 GET(&quot;https://query.data.world/s/py7kinxvyuxjpzwdjs2ti4wdmui6bi&quot;, write_disk(tf &lt;- tempfile(fileext = &quot;.xls&quot;)))</code></pre>
 <pre><code>## Response [https://download.data.world/file_download/garyhoov/retail-sales-growth/US%20Retail%20Sales%20by%20Store%20Type%202009-2014.xls?auth=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm9kLXVzZXItY2xpZW50OnNoYW5lbGxpcyIsImlzcyI6ImFnZW50OnNoYW5lbGxpczo6OTA5ZDZlNTQtMmQwZC00MDczLWE4Y2UtYWExNzI3OGJkN2ViIiwiaWF0IjoxNTIzOTkwNTAwLCJyb2xlIjpbInVzZXIiLCJ1c2VyX2FwaV9hZG1pbiIsInVzZXJfYXBpX3JlYWQiLCJ1c2VyX2FwaV93cml0ZSJdLCJnZW5lcmFsLXB1cnBvc2UiOmZhbHNlLCJ1cmwiOiI5OWRhMDIwMzRlY2Q1YmZmZTRmODFjYzJlMTg4ZmUxOGQyZmEyNDdlIn0.NLTr571lKSZMKhmvIFFQGuoVeFVFr9DrQ7nxBO3LOcLTJUrKivBxWpUrcJcY8dxnkL4FlGba3wsL65c3wLzzxA]
-##   Date: 2019-01-14 06:54
+##   Date: 2019-01-16 08:17
 ##   Status: 200
 ##   Content-Type: application/vnd.ms-excel
 ##   Size: 169 kB
-## &lt;ON DISK&gt;  /tmp/RtmpNjPHUN/file6c330594d8c.xls</code></pre>
+## &lt;ON DISK&gt;  /tmp/Rtmpg4fRHo/file9911b695802.xls</code></pre>
 <pre class="r"><code>df2 &lt;- read_excel(tf)</code></pre>
 <pre><code>## New names:
 ## * `` -&gt; `..2`
@@ -696,7 +710,7 @@ ggplot(df_total, aes(x=year,y=as.numeric(n), colour=business)) +
   
 
   <p class="powered-by">
-    &copy; 2018 &middot; 
+    &copy; 2019 &middot; 
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for

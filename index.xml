@@ -6,7 +6,7 @@
     <description>Recent content in Rihad Variawa on Rihad Variawa</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2018</copyright>
+    <copyright>&amp;copy; 2019</copyright>
     <lastBuildDate>Sun, 15 Oct 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
@@ -32,22 +32,22 @@
 
 GET(&amp;quot;https://query.data.world/s/gdk7iwtlisq6vkktmybqqr7hjjty5s&amp;quot;, write_disk(tf &amp;lt;- tempfile(fileext = &amp;quot;.xls&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Response [https://download.data.world/file_download/retail/department-store-sales/retail-trade-report-department-stores.xls?auth=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm9kLXVzZXItY2xpZW50OnNoYW5lbGxpcyIsImlzcyI6ImFnZW50OnNoYW5lbGxpczo6OTA5ZDZlNTQtMmQwZC00MDczLWE4Y2UtYWExNzI3OGJkN2ViIiwiaWF0IjoxNTIzOTkwNDIzLCJyb2xlIjpbInVzZXIiLCJ1c2VyX2FwaV9hZG1pbiIsInVzZXJfYXBpX3JlYWQiLCJ1c2VyX2FwaV93cml0ZSJdLCJnZW5lcmFsLXB1cnBvc2UiOmZhbHNlLCJ1cmwiOiI0YWU5NmEzZjc4Y2EyOGE5MWM1ZDZlMTgxYzg5YjI0NjIzZDY0ZThlIn0.jBFlyy1aloE-EpeYyosD3iRaDPoY75DBqdh7suLoZxKcrsG8N5GtOiFb6sNMjTqqclsHX7P8RUw7T5sAArPbcw]
-##   Date: 2019-01-14 06:54
+##   Date: 2019-01-16 08:17
 ##   Status: 200
 ##   Content-Type: application/vnd.ms-excel
 ##   Size: 62.5 kB
-## &amp;lt;ON DISK&amp;gt;  /tmp/RtmpNjPHUN/file6c35ffd29fa.xls&lt;/code&gt;&lt;/pre&gt;
+## &amp;lt;ON DISK&amp;gt;  /tmp/Rtmpg4fRHo/file991386eee59.xls&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df1 &amp;lt;- read_excel(tf)
 
 #2009-2014
 # https://data.world/garyhoov/retail-sales-growth
 GET(&amp;quot;https://query.data.world/s/py7kinxvyuxjpzwdjs2ti4wdmui6bi&amp;quot;, write_disk(tf &amp;lt;- tempfile(fileext = &amp;quot;.xls&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Response [https://download.data.world/file_download/garyhoov/retail-sales-growth/US%20Retail%20Sales%20by%20Store%20Type%202009-2014.xls?auth=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm9kLXVzZXItY2xpZW50OnNoYW5lbGxpcyIsImlzcyI6ImFnZW50OnNoYW5lbGxpczo6OTA5ZDZlNTQtMmQwZC00MDczLWE4Y2UtYWExNzI3OGJkN2ViIiwiaWF0IjoxNTIzOTkwNTAwLCJyb2xlIjpbInVzZXIiLCJ1c2VyX2FwaV9hZG1pbiIsInVzZXJfYXBpX3JlYWQiLCJ1c2VyX2FwaV93cml0ZSJdLCJnZW5lcmFsLXB1cnBvc2UiOmZhbHNlLCJ1cmwiOiI5OWRhMDIwMzRlY2Q1YmZmZTRmODFjYzJlMTg4ZmUxOGQyZmEyNDdlIn0.NLTr571lKSZMKhmvIFFQGuoVeFVFr9DrQ7nxBO3LOcLTJUrKivBxWpUrcJcY8dxnkL4FlGba3wsL65c3wLzzxA]
-##   Date: 2019-01-14 06:54
+##   Date: 2019-01-16 08:17
 ##   Status: 200
 ##   Content-Type: application/vnd.ms-excel
 ##   Size: 169 kB
-## &amp;lt;ON DISK&amp;gt;  /tmp/RtmpNjPHUN/file6c330594d8c.xls&lt;/code&gt;&lt;/pre&gt;
+## &amp;lt;ON DISK&amp;gt;  /tmp/Rtmpg4fRHo/file9911b695802.xls&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df2 &amp;lt;- read_excel(tf)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## New names:
 ## * `` -&amp;gt; `..2`
@@ -191,51 +191,439 @@ ggplot(df_total, aes(x=year,y=as.numeric(n), colour=business)) +
     </item>
     
     <item>
-      <title>Hey!</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
+      <title>mtcars Data Analysis</title>
+      <link>/post/mtcars/2019-01-03-r-rmarkdown/</link>
       <pubDate>Thu, 03 Jan 2019 21:13:14 -0500</pubDate>
       
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
+      <guid>/post/mtcars/2019-01-03-r-rmarkdown/</guid>
       <description>
 
 
-&lt;div id=&#34;r-markdown&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;R Markdown&lt;/h1&gt;
-&lt;p&gt;This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;a href=&#34;http://rmarkdown.rstudio.com&#34; class=&#34;uri&#34;&gt;http://rmarkdown.rstudio.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;You can embed an R code chunk like this:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(cars)
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
-fit &amp;lt;- lm(dist ~ speed, data = cars)
-fit
-## 
-## Call:
-## lm(formula = dist ~ speed, data = cars)
-## 
-## Coefficients:
-## (Intercept)        speed  
-##     -17.579        3.932&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;preamble&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Preamble:&lt;/h2&gt;
+&lt;p&gt;This document focuses on the analysis of the mtcars data frame.&lt;/p&gt;
+&lt;p&gt;Descriotion of data frame mtcars can be found at &lt;a href=&#34;https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html&#34; class=&#34;uri&#34;&gt;https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;research-questions&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Research questions:&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;is a vehicle with auto or manual transmission better in terms of miles p/gallons(mpg)?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;quantify the (mpg) difference between auto &amp;amp; manual transmission.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;structure-of-analysis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Structure of analysis:&lt;/h2&gt;
+&lt;p&gt;I will asssess both queries from different perspectives employing a set of methodologies that can be broadly grouped as follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Univariate Analysis on target varibale (mpg).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Bivariate Analysis on target varibale &amp;amp; relevant covariates.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;*Multivariate Analysis estimate a set of regresssion models for the conditional mean of mpg. For model selection, I compare the best fit &amp;amp; forward stepwise selection procedures.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;univariate-analysis&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Univariate Analysis&lt;/h1&gt;
+&lt;p&gt;Analysing the target variable alone by splitting the observations into two groups, i.e. vehicles with auto or manual transmission. I shall deploy 3 analysis:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Compute sample means by group ie auto VS manual.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Validate if the difference of the group means are statistically significant by computing a 95% confidence interval for means’ difference.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Verify the robustness of this result by executing a permutation test with Monte Carlo trials that shuffle the allocation group &amp;gt; mpg.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&#34;get-to-know-the-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Get to know the data&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(mtcars)
+## &amp;#39;data.frame&amp;#39;:    32 obs. of  11 variables:
+##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+##  $ disp: num  160 160 108 258 360 ...
+##  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+##  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+##  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+##  $ qsec: num  16.5 17 18.6 19.4 17 ...
+##  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
+##  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
+##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
+##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We notice that the set is relatively small! We’ll look at the desriptive statistics for each field - (min, 1st Q, Median, Mean, 3rd Q, max)&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(mtcars)
+##       mpg             cyl             disp             hp       
+##  Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0  
+##  1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5  
+##  Median :19.20   Median :6.000   Median :196.3   Median :123.0  
+##  Mean   :20.09   Mean   :6.188   Mean   :230.7   Mean   :146.7  
+##  3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0   3rd Qu.:180.0  
+##  Max.   :33.90   Max.   :8.000   Max.   :472.0   Max.   :335.0  
+##       drat             wt             qsec             vs        
+##  Min.   :2.760   Min.   :1.513   Min.   :14.50   Min.   :0.0000  
+##  1st Qu.:3.080   1st Qu.:2.581   1st Qu.:16.89   1st Qu.:0.0000  
+##  Median :3.695   Median :3.325   Median :17.71   Median :0.0000  
+##  Mean   :3.597   Mean   :3.217   Mean   :17.85   Mean   :0.4375  
+##  3rd Qu.:3.920   3rd Qu.:3.610   3rd Qu.:18.90   3rd Qu.:1.0000  
+##  Max.   :4.930   Max.   :5.424   Max.   :22.90   Max.   :1.0000  
+##        am              gear            carb      
+##  Min.   :0.0000   Min.   :3.000   Min.   :1.000  
+##  1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:2.000  
+##  Median :0.0000   Median :4.000   Median :2.000  
+##  Mean   :0.4062   Mean   :3.688   Mean   :2.812  
+##  3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000  
+##  Max.   :1.0000   Max.   :5.000   Max.   :8.000&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sample-means-by-group&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Sample means by group&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#### generate subset: automatic and manual cars ####
+cars_auto = subset(mtcars, am == 0)
+cars_manu = subset(mtcars, am == 1)
+
+# dimensions
+dim(mtcars)
+## [1] 32 11&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dim(cars_auto); dim(cars_manu)
+## [1] 19 11
+## [1] 13 11&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# sample means mpg by group
+mean(cars_auto$mpg); mean(cars_manu$mpg)
+## [1] 17.14737
+## [1] 24.39231&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sd(cars_auto$mpg); sd(cars_manu$mpg)
+## [1] 3.833966
+## [1] 6.166504&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# % increase in mpg based on the sample mean
+(mean(cars_manu$mpg) - mean(cars_auto$mpg))/mean(cars_auto$mpg)
+## [1] 0.4225103&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;including-plots&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Including Plots&lt;/h1&gt;
-&lt;p&gt;You can also embed plots. See Figure &lt;a href=&#34;#fig:pie&#34;&gt;1&lt;/a&gt; for example:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(mar = c(0, 1, 0, 1))
-pie(
-  c(280, 60, 20),
-  c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny side of pyramid&amp;#39;, &amp;#39;Shady side of pyramid&amp;#39;),
-  col = c(&amp;#39;#0292D8&amp;#39;, &amp;#39;#F7EA39&amp;#39;, &amp;#39;#C4B632&amp;#39;),
-  init.angle = -50, border = NA
-)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;./post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 1: A fancy pie chart.
-&lt;/p&gt;
+&lt;h1&gt;Including plots&lt;/h1&gt;
+&lt;p&gt;To get a feel for the distribution of some of the data to be analyzed, we plot some histograms, the first against mpg - auto transmission, the second against mpg - manual transission:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;boxplot(mpg ~ am, data = mtcars, col=rgb(0.3,0.2,0.5,0.6), ylab = &amp;quot;mpg&amp;quot;, xlab = &amp;quot;am&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Conclusions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;mpg empirical mean of vehicles with manual transmission is greater than cars with auto transmission, however this also has a higher variance.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&#34;confidence-interval-for-the-difference-of-the-group-means&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;95% confidence interval for the difference of the group means&lt;/h2&gt;
+&lt;p&gt;The analysis on sample means concludes that sample mean of mpg for vehicles with manual trasmission is greater than automatic:&lt;/p&gt;
+&lt;p&gt;Now I test if this difference (i.e. in the sample means) is statistically significant (from zero).&lt;/p&gt;
+&lt;p&gt;I execute a t.test for unpaired samples: I assume inequality in variances for the two groups for the computation of the pooled variance.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#### 95% confidence interval for mean difference ####
+
+# Question: is the sample mean difference significant?
+t.test(cars_manu$mpg, cars_auto$mpg, paired = F, var.equal = F)
+## 
+##  Welch Two Sample t-test
+## 
+## data:  cars_manu$mpg and cars_auto$mpg
+## t = 3.7671, df = 18.332, p-value = 0.001374
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##   3.209684 11.280194
+## sample estimates:
+## mean of x mean of y 
+##  24.39231  17.14737&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Conclusions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;95% interval does not contain 0&lt;/li&gt;
+&lt;li&gt;sample mean difference is significant at 95% (p-value 0.1%)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;permutation-test-on-groups-association&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Permutation test on groups association&lt;/h2&gt;
+&lt;p&gt;I test the robustness of results obtained in the previous step.&lt;/p&gt;
+&lt;p&gt;I execute a permutation test by shuffling the allocation mean &amp;gt; groups with 100,000 trials of Montecarlo simulation.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#### Permutation test ####
+# what if I shuffle the am groups and calculate the mean?
+
+# get target variable and group vectors
+y = mtcars$mpg
+group = mtcars$am
+y; group
+##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2
+## [15] 10.4 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4
+## [29] 15.8 19.7 15.0 21.4
+##  [1] 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 1 1 1 1 1 1 1
+
+# baseline group means and difference
+baselineMeans = tapply(mtcars$mpg, mtcars$am, mean)
+baselineMeansDiff = baselineMeans[2] - baselineMeans[1]
+
+tStat = function(w, g) mean(w[g == 1]) - mean(w[g == 0])
+observedDiff = tStat(y, group)
+
+# check if function works - should be 0:
+baselineMeansDiff - observedDiff
+## 1 
+## 0
+
+# execute shuffle:
+permutations = sapply(1:100000, function(i) tStat(y, sample(group)))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plot-the-analysis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Plot the analysis:&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# shuffle experiment results plots:
+par(mfrow = c(2, 1), mar = c(4, 4, 2, 2))
+hist(permutations, main = &amp;quot;Distribution of shuffled group mean differences&amp;quot;) # distribution of difference of averages of permuted groups
+plot(permutations, type = &amp;quot;b&amp;quot;, main = &amp;quot;Shuffled group mean trials&amp;quot;, xlab = &amp;quot;trial&amp;quot;, ylab = &amp;quot;shuffled group mean differences&amp;quot;, ylim = c(-14, 14))
+abline(h = observedDiff, col = &amp;quot;red&amp;quot;, lwd = 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# there is not even 1 case where by chance I get a difference greater than the observed!
+mean(permutations &amp;gt; observedDiff)
+## [1] 0.00017&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Conclusions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;out of 100,000 trails only 0.002% has breached the observed value for the diffs in the group empirical means.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;concluding that empirical means diffs of groups is robust with regards to random reshuffling and is not likely to be generated by pure chance. &lt;em&gt;is this correct?&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;bivariate-analysis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Bivariate Analysis&lt;/h2&gt;
+&lt;p&gt;Analyse the behaviour of target variable (mpg) conditional upon a set of explanatory variables.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#### generate subset: automatic and manual cars ####
+cars_auto = subset(mtcars, am == 0)
+cars_manu = subset(mtcars, am == 1)
+
+#### Visual inspection of all covariates ####
+pairs(mtcars)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#### 4 bivariate analysis: hp / wt / drat / disp ####
+par(mfrow = c(2, 2), mar = c(2, 3, 2, 3))
+
+# plot1
+with(mtcars, plot(hp, mpg, type = &amp;quot;n&amp;quot;, main = &amp;quot;mpg vs hp - by transmission type&amp;quot;)) # no data
+with(cars_auto, points(hp, mpg, col = &amp;quot;red&amp;quot;, pch = 20))
+with(cars_manu, points(hp, mpg, col = &amp;quot;blue&amp;quot;, pch = 20))
+legend(&amp;quot;topright&amp;quot;, pch = 20, col = c(&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;), legend = c(&amp;quot;auto&amp;quot;, &amp;quot;manu&amp;quot;)) # add legend
+model1_auto = lm(mpg ~ hp, data = cars_auto)
+model1_manu = lm(mpg ~ hp, data = cars_manu)
+abline(model1_auto, col = &amp;quot;red&amp;quot;, lwd = 2)
+abline(model1_manu, col = &amp;quot;blue&amp;quot;, lwd = 2)
+abline(v = 175, lty = 2)
+
+# plot2
+with(mtcars, plot(wt, mpg, type = &amp;quot;n&amp;quot;, main = &amp;quot;mpg vs weight - by transmission type&amp;quot;)) # no data
+with(cars_auto, points(wt, mpg, col = &amp;quot;red&amp;quot;, pch = 20))
+with(cars_manu, points(wt, mpg, col = &amp;quot;blue&amp;quot;, pch = 20))
+legend(&amp;quot;topright&amp;quot;, pch = 20, col = c(&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;), legend = c(&amp;quot;auto&amp;quot;, &amp;quot;manu&amp;quot;)) # add legend
+abline(v = 3.2, lty = 2)
+
+# plot 3
+with(mtcars, plot(drat, mpg, type = &amp;quot;n&amp;quot;, main = &amp;quot;mpg vs drat - by transmission type&amp;quot;)) # no data
+with(cars_auto, points(drat, mpg, col = &amp;quot;red&amp;quot;, pch = 20))
+with(cars_manu, points(drat, mpg, col = &amp;quot;blue&amp;quot;, pch = 20))
+legend(&amp;quot;topright&amp;quot;, pch = 20, col = c(&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;), legend = c(&amp;quot;auto&amp;quot;, &amp;quot;manu&amp;quot;)) # add legend
+model2_auto = lm(mpg ~ drat, data = cars_auto)
+model2_manu = lm(mpg ~ drat, data = cars_manu)
+abline(model2_auto, col = &amp;quot;red&amp;quot;, lwd = 2)
+abline(model2_manu, col = &amp;quot;blue&amp;quot;, lwd = 2)
+abline(v = 175, lty = 2)
+
+# plot 4
+with(mtcars, plot(disp, mpg, type = &amp;quot;n&amp;quot;, main = &amp;quot;mpg vs disp - by transmission type&amp;quot;)) # no data
+with(cars_auto, points(disp, mpg, col = &amp;quot;red&amp;quot;, pch = 20))
+with(cars_manu, points(disp, mpg, col = &amp;quot;blue&amp;quot;, pch = 20))
+legend(&amp;quot;topright&amp;quot;, pch = 20, col = c(&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;), legend = c(&amp;quot;auto&amp;quot;, &amp;quot;manu&amp;quot;)) # add legend
+labels = with(mtcars, paste(as.character(disp), as.character(mpg), sep = &amp;quot;,&amp;quot;)) # generate point labels
+with(mtcars, text(disp, mpg, labels = labels, cex = 0.7, pos = 2))
+abline(v = 167.6, lty = 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Conclusions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;mpg vs hp: linear negative relation: as horse power of the engine (hp) increases, the mileage (mpg) reduces. Vehicles with manual transmission seems however to be more efficient: the group restricted regression (blue) has a higher intercept. It has to be highlighted however, that the parameters of blue regression might be influenced by two extreme values with high hp - the regression should be re-estimated by removing the two datapoints.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;mpg vs weight: negative relation, the functional form might be non-linear (hyperbolic ?), as weight of the vehicle increases, the mileage decreases. The weight variable seems to provide perfect separation between manual and auto transmission vehilces, i.e. all vehicles that are heavier than 3.2 ton (circa) are auto and vice-versa.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;mpg vs drat: the functional form is not clear: it appears also to be an increase in the variance as the rear axel ratio (drat) increases. To verify this a regression model using all observations has to be estimated and analyse the residuals for verifying if the model is heteroskedastic.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;mpg vs disp: seems to have a negative (hyperbolic ?) relation: as the displacement (disp) of the engine increases, the mileage decreases. Also, in this case it seems that disp accounts for perfect separation in the transmission type: almost all vehilces with disp &amp;gt; 180 are auto.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;multivariate-analysis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Multivariate analysis&lt;/h2&gt;
+&lt;p&gt;Run a set of regression models for estimating the impact of some predictions on mpg.&lt;/p&gt;
+&lt;p&gt;For model selection, I employ the following techniques:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Manual selection of regressors: I hand pick regressors for:&lt;/li&gt;
+&lt;li&gt;Best fit procedure&lt;/li&gt;
+&lt;li&gt;Forward stepwise procedure&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;manual-selection&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Manual selection&lt;/h2&gt;
+&lt;p&gt;Analysis of covariance matrix:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;### analyse covariance matrix for regressor selection:
+z &amp;lt;- cor(mtcars)
+require(lattice)
+## Loading required package: lattice&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;levelplot(z)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;A model with only transmission:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# only am
+data = mtcars
+data$am = as.factor(data$am)
+model2 = lm(mpg ~ am, data = data)
+
+# get results
+summary(model2)
+## 
+## Call:
+## lm(formula = mpg ~ am, data = data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -9.3923 -3.0923 -0.2974  3.2439  9.5077 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept)   17.147      1.125  15.247 1.13e-15 ***
+## am1            7.245      1.764   4.106 0.000285 ***
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 4.902 on 30 degrees of freedom
+## Multiple R-squared:  0.3598, Adjusted R-squared:  0.3385 
+## F-statistic: 16.86 on 1 and 30 DF,  p-value: 0.000285&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Observations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;the intercept is 17.15: exactly the same mean of mpg for vehicles with auto transmission.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;the coefficient of am is 7.24: exactly the difference of mpg means for vehicles with manual / auto transmission.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;the sum of intercept and am coefficient gives the mpg unconditional mean for vehicles with manual transmission.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;best-fit-procedure&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Best Fit Procedure&lt;/h2&gt;
+&lt;p&gt;Run the best fit procedure for identifying the optimal number of regressors that minimises the cp, which is (…)&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#### model selection using leaps ####
+data = mtcars
+data$log_mpg = log(data$mpg) # add log of y
+
+#### method 1. best fit ####
+regfit.full = regsubsets(log_mpg ~. , data = data, nvmax = 10)
+reg.summary = summary(regfit.full)
+reg.summary
+## Subset selection object
+## Call: regsubsets.formula(log_mpg ~ ., data = data, nvmax = 10)
+## 11 Variables  (and intercept)
+##      Forced in Forced out
+## mpg      FALSE      FALSE
+## cyl      FALSE      FALSE
+## disp     FALSE      FALSE
+## hp       FALSE      FALSE
+## drat     FALSE      FALSE
+## wt       FALSE      FALSE
+## qsec     FALSE      FALSE
+## vs       FALSE      FALSE
+## am       FALSE      FALSE
+## gear     FALSE      FALSE
+## carb     FALSE      FALSE
+## 1 subsets of each size up to 10
+## Selection Algorithm: exhaustive
+##           mpg cyl disp hp  drat wt  qsec vs  am  gear carb
+## 1  ( 1 )  &amp;quot;*&amp;quot; &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; 
+## 2  ( 1 )  &amp;quot;*&amp;quot; &amp;quot; &amp;quot; &amp;quot;*&amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; 
+## 3  ( 1 )  &amp;quot;*&amp;quot; &amp;quot; &amp;quot; &amp;quot;*&amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot;*&amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; 
+## 4  ( 1 )  &amp;quot;*&amp;quot; &amp;quot; &amp;quot; &amp;quot;*&amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot;*&amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; &amp;quot;*&amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; 
+## 5  ( 1 )  &amp;quot;*&amp;quot; &amp;quot; &amp;quot; &amp;quot;*&amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot;*&amp;quot; &amp;quot; &amp;quot;  &amp;quot;*&amp;quot; &amp;quot;*&amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; 
+## 6  ( 1 )  &amp;quot;*&amp;quot; &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot;*&amp;quot; 
+## 7  ( 1 )  &amp;quot;*&amp;quot; &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot;*&amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot;*&amp;quot; 
+## 8  ( 1 )  &amp;quot;*&amp;quot; &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot;*&amp;quot; &amp;quot; &amp;quot;  &amp;quot;*&amp;quot; &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot;*&amp;quot; 
+## 9  ( 1 )  &amp;quot;*&amp;quot; &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot; &amp;quot; &amp;quot;*&amp;quot;  &amp;quot;*&amp;quot; &amp;quot; &amp;quot;  &amp;quot;*&amp;quot; &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot;*&amp;quot; 
+## 10  ( 1 ) &amp;quot;*&amp;quot; &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot; &amp;quot; &amp;quot;*&amp;quot;  &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot;*&amp;quot; &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot;*&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plot-the-analysis-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Plot the analysis&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# how I selected the optimal number of variables?
+plot(reg.summary$cp, xlab = &amp;quot;Number of variables&amp;quot;, ylab = &amp;quot;cp&amp;quot;, type = &amp;quot;b&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;forward-stepwise-procedure&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Forward Stepwise Procedure&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;regfit.fwd = regsubsets(log_mpg ~ ., data = data, nvmax = 10, method = &amp;quot;forward&amp;quot;)
+summary(regfit.fwd)
+## Subset selection object
+## Call: regsubsets.formula(log_mpg ~ ., data = data, nvmax = 10, method = &amp;quot;forward&amp;quot;)
+## 11 Variables  (and intercept)
+##      Forced in Forced out
+## mpg      FALSE      FALSE
+## cyl      FALSE      FALSE
+## disp     FALSE      FALSE
+## hp       FALSE      FALSE
+## drat     FALSE      FALSE
+## wt       FALSE      FALSE
+## qsec     FALSE      FALSE
+## vs       FALSE      FALSE
+## am       FALSE      FALSE
+## gear     FALSE      FALSE
+## carb     FALSE      FALSE
+## 1 subsets of each size up to 10
+## Selection Algorithm: forward
+##           mpg cyl disp hp  drat wt  qsec vs  am  gear carb
+## 1  ( 1 )  &amp;quot;*&amp;quot; &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; 
+## 2  ( 1 )  &amp;quot;*&amp;quot; &amp;quot; &amp;quot; &amp;quot;*&amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; 
+## 3  ( 1 )  &amp;quot;*&amp;quot; &amp;quot; &amp;quot; &amp;quot;*&amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot;*&amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; 
+## 4  ( 1 )  &amp;quot;*&amp;quot; &amp;quot; &amp;quot; &amp;quot;*&amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot;*&amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; &amp;quot;*&amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; 
+## 5  ( 1 )  &amp;quot;*&amp;quot; &amp;quot; &amp;quot; &amp;quot;*&amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot;*&amp;quot; &amp;quot; &amp;quot;  &amp;quot;*&amp;quot; &amp;quot;*&amp;quot; &amp;quot; &amp;quot;  &amp;quot; &amp;quot; 
+## 6  ( 1 )  &amp;quot;*&amp;quot; &amp;quot; &amp;quot; &amp;quot;*&amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot;*&amp;quot; &amp;quot; &amp;quot;  &amp;quot;*&amp;quot; &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot; &amp;quot; 
+## 7  ( 1 )  &amp;quot;*&amp;quot; &amp;quot; &amp;quot; &amp;quot;*&amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot;*&amp;quot; &amp;quot; &amp;quot;  &amp;quot;*&amp;quot; &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot;*&amp;quot; 
+## 8  ( 1 )  &amp;quot;*&amp;quot; &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot; &amp;quot; &amp;quot; &amp;quot;  &amp;quot;*&amp;quot; &amp;quot; &amp;quot;  &amp;quot;*&amp;quot; &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot;*&amp;quot; 
+## 9  ( 1 )  &amp;quot;*&amp;quot; &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot; &amp;quot; &amp;quot;*&amp;quot;  &amp;quot;*&amp;quot; &amp;quot; &amp;quot;  &amp;quot;*&amp;quot; &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot;*&amp;quot; 
+## 10  ( 1 ) &amp;quot;*&amp;quot; &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot; &amp;quot; &amp;quot;*&amp;quot;  &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot;*&amp;quot; &amp;quot;*&amp;quot; &amp;quot;*&amp;quot;  &amp;quot;*&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plot-the-analysis-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Plot the analysis&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(regfit.fwd, scale = &amp;quot;Cp&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Appendix&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A model including all regressors.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#### lm with all variables / no split ####
+# prepare data
+data = mtcars
+data$am = as.factor(data$am)
+
+model1 = lm(mpg ~ ., data = data)
+
+# get results
+summary(model1)
+## 
+## Call:
+## lm(formula = mpg ~ ., data = data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.4506 -1.6044 -0.1196  1.2193  4.6271 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)  
+## (Intercept) 12.30337   18.71788   0.657   0.5181  
+## cyl         -0.11144    1.04502  -0.107   0.9161  
+## disp         0.01334    0.01786   0.747   0.4635  
+## hp          -0.02148    0.02177  -0.987   0.3350  
+## drat         0.78711    1.63537   0.481   0.6353  
+## wt          -3.71530    1.89441  -1.961   0.0633 .
+## qsec         0.82104    0.73084   1.123   0.2739  
+## vs           0.31776    2.10451   0.151   0.8814  
+## am1          2.52023    2.05665   1.225   0.2340  
+## gear         0.65541    1.49326   0.439   0.6652  
+## carb        -0.19942    0.82875  -0.241   0.8122  
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 2.65 on 21 degrees of freedom
+## Multiple R-squared:  0.869,  Adjusted R-squared:  0.8066 
+## F-statistic: 13.93 on 10 and 21 DF,  p-value: 3.793e-07&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plot-the-analysis-3&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Plot the analysis&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# plot residual analysis
+par(mfrow = c(2, 2))
+plot(model1)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-22-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# plot hist
+par(mfrow = c(1, 1))
+hist(model1$residuals)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-23-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# normality test on residuals
+shapiro.test(model1$residuals)
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  model1$residuals
+## W = 0.95694, p-value = 0.2261&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>

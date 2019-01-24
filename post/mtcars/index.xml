@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Rihad Variawa</title>
+    <link>/post/mtcars/</link>
+    <description>Recent content in Posts on Rihad Variawa</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2019</copyright>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/post/mtcars/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>mtcars Data Analysis</title>
+      <link>/post/mtcars/2019-01-03-r-rmarkdown/</link>
+      <pubDate>Thu, 03 Jan 2019 21:13:14 -0500</pubDate>
+      
+      <guid>/post/mtcars/2019-01-03-r-rmarkdown/</guid>
+      <description>Preamble: This document focuses on the analysis of the mtcars data frame.
+Descriotion of data frame mtcars can be found at https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html
+ Research questions: is a vehicle with auto or manual transmission better in terms of miles p/gallons(mpg)?
+ quantify the (mpg) difference between auto &amp;amp; manual transmission.
+   Structure of analysis: I will asssess both queries from different perspectives employing a set of methodologies that can be broadly grouped as follows:</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,7 +6,7 @@
     <description>Recent content in regression on Rihad Variawa</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2018</copyright>
+    <copyright>&amp;copy; 2019</copyright>
     <lastBuildDate>Thu, 10 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/regression/index.xml" rel="self" type="application/rss+xml" />
@@ -25,14 +25,16 @@ https://github.com/2series/100_Days_of_ML_Code/blob/master/Linear_Regression_fro
     </item>
     
     <item>
-      <title>Hey!</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
+      <title>mtcars Data Analysis</title>
+      <link>/post/mtcars/2019-01-03-r-rmarkdown/</link>
       <pubDate>Thu, 03 Jan 2019 21:13:14 -0500</pubDate>
       
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
+      <guid>/post/mtcars/2019-01-03-r-rmarkdown/</guid>
+      <description>Preamble: This document focuses on the analysis of the mtcars data frame.
+Descriotion of data frame mtcars can be found at https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html
+ Research questions: is a vehicle with auto or manual transmission better in terms of miles p/gallons(mpg)?
+ quantify the (mpg) difference between auto &amp;amp; manual transmission.
+   Structure of analysis: I will asssess both queries from different perspectives employing a set of methodologies that can be broadly grouped as follows:</description>
     </item>
     
   </channel>

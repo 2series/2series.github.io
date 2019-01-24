@@ -83,6 +83,20 @@
 
   
   
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-132898309-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
   
 
   
@@ -349,12 +363,14 @@
   
   
   <div>
-    <h2><a href="../../post/2015-07-23-r-rmarkdown/">Hey!</a></h2>
+    <h2><a href="../../post/mtcars/2019-01-03-r-rmarkdown/">mtcars Data Analysis</a></h2>
     <div class="article-style">
       
-      R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.
+      Preamble: This document focuses on the analysis of the mtcars data frame.
+Descriotion of data frame mtcars can be found at https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html
+ Research questions: is a vehicle with auto or manual transmission better in terms of miles p/gallons(mpg)?
+ quantify the (mpg) difference between auto &amp; manual transmission.
+   Structure of analysis: I will asssess both queries from different perspectives employing a set of methodologies that can be broadly grouped as follows:
       
     </div>
   </div>
@@ -372,7 +388,7 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
   
 
   <p class="powered-by">
-    &copy; 2018 &middot; 
+    &copy; 2019 &middot; 
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for

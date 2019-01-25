@@ -11,6 +11,362 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Predict the diamond price based on the 4 c&#39;s</title>
+      <link>/project/diamonds/predict-the-diamond-price-based-on-the-4-c-s/</link>
+      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/diamonds/predict-the-diamond-price-based-on-the-4-c-s/</guid>
+      <description>
+
+
+&lt;div id=&#34;preamble&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Preamble:&lt;/h2&gt;
+&lt;p&gt;This document focuses on the analysis of the diamonds data frame.&lt;/p&gt;
+&lt;p&gt;Descriotion of data frame diamonds can be found at &lt;a href=&#34;https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/diamonds.html&#34; class=&#34;uri&#34;&gt;https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/diamonds.html&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;research-questions&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Research questions:&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;am i getting a fair deal when I purchase a diamond?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The goal is to build a predictive model for diamonds, that is going to help figure out whether a given diamond is a &lt;strong&gt;good deal&lt;/strong&gt; or a &lt;strong&gt;rip-off!&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;structure-of-analysis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Structure of analysis:&lt;/h2&gt;
+&lt;p&gt;I will use Linear Regression to predict the diamond price using other varaibles in the diamonds dataframe.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;get-to-know-the-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Get to know the Data&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(diamonds)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Classes &amp;#39;tbl_df&amp;#39;, &amp;#39;tbl&amp;#39; and &amp;#39;data.frame&amp;#39;:    53940 obs. of  10 variables:
+##  $ carat  : num  0.23 0.21 0.23 0.29 0.31 0.24 0.24 0.26 0.22 0.23 ...
+##  $ cut    : Ord.factor w/ 5 levels &amp;quot;Fair&amp;quot;&amp;lt;&amp;quot;Good&amp;quot;&amp;lt;..: 5 4 2 4 2 3 3 3 1 3 ...
+##  $ color  : Ord.factor w/ 7 levels &amp;quot;D&amp;quot;&amp;lt;&amp;quot;E&amp;quot;&amp;lt;&amp;quot;F&amp;quot;&amp;lt;&amp;quot;G&amp;quot;&amp;lt;..: 2 2 2 6 7 7 6 5 2 5 ...
+##  $ clarity: Ord.factor w/ 8 levels &amp;quot;I1&amp;quot;&amp;lt;&amp;quot;SI2&amp;quot;&amp;lt;&amp;quot;SI1&amp;quot;&amp;lt;..: 2 3 5 4 2 6 7 3 4 5 ...
+##  $ depth  : num  61.5 59.8 56.9 62.4 63.3 62.8 62.3 61.9 65.1 59.4 ...
+##  $ table  : num  55 61 65 58 58 57 57 55 61 61 ...
+##  $ price  : int  326 326 327 334 335 336 336 337 337 338 ...
+##  $ x      : num  3.95 3.89 4.05 4.2 4.34 3.94 3.95 4.07 3.87 4 ...
+##  $ y      : num  3.98 3.84 4.07 4.23 4.35 3.96 3.98 4.11 3.78 4.05 ...
+##  $ z      : num  2.43 2.31 2.31 2.63 2.75 2.48 2.47 2.53 2.49 2.39 ...&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(diamonds)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      carat               cut        color        clarity     
+##  Min.   :0.2000   Fair     : 1610   D: 6775   SI1    :13065  
+##  1st Qu.:0.4000   Good     : 4906   E: 9797   VS2    :12258  
+##  Median :0.7000   Very Good:12082   F: 9542   SI2    : 9194  
+##  Mean   :0.7979   Premium  :13791   G:11292   VS1    : 8171  
+##  3rd Qu.:1.0400   Ideal    :21551   H: 8304   VVS2   : 5066  
+##  Max.   :5.0100                     I: 5422   VVS1   : 3655  
+##                                     J: 2808   (Other): 2531  
+##      depth           table           price             x         
+##  Min.   :43.00   Min.   :43.00   Min.   :  326   Min.   : 0.000  
+##  1st Qu.:61.00   1st Qu.:56.00   1st Qu.:  950   1st Qu.: 4.710  
+##  Median :61.80   Median :57.00   Median : 2401   Median : 5.700  
+##  Mean   :61.75   Mean   :57.46   Mean   : 3933   Mean   : 5.731  
+##  3rd Qu.:62.50   3rd Qu.:59.00   3rd Qu.: 5324   3rd Qu.: 6.540  
+##  Max.   :79.00   Max.   :95.00   Max.   :18823   Max.   :10.740  
+##                                                                  
+##        y                z         
+##  Min.   : 0.000   Min.   : 0.000  
+##  1st Qu.: 4.720   1st Qu.: 2.910  
+##  Median : 5.710   Median : 3.530  
+##  Mean   : 5.735   Mean   : 3.539  
+##  3rd Qu.: 6.540   3rd Qu.: 4.040  
+##  Max.   :58.900   Max.   :31.800  
+## &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;scatterplot&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Scatterplot&lt;/h1&gt;
+&lt;p&gt;We’ll start by examining two variables in the set. A scatterplot is a powerful tool to help you understand the relationship between two continuous variables.&lt;/p&gt;
+&lt;p&gt;We can quickly see if the relationship is linear or not. In this case, we can use a variety of diamond characteristics to help us figure out whether the price advertised for any given diamond is reasonable or a rip-off.&lt;/p&gt;
+&lt;p&gt;Consider the price of a diamond and it’s carat weight.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## create a scatterplot of price and carat 
+ggplot(diamonds, aes(carat, price)) +
+  geom_point(fill = I(&amp;quot;#F79420&amp;quot;), color = I(&amp;quot;black&amp;quot;), shape = 23) +
+  xlim(0, quantile(diamonds$carat,0.99)) +
+  ylim(0, quantile(diamonds$price,0.99)) +
+  ggtitle(&amp;#39;Price vs. Carat&amp;#39;) +
+  theme_classic()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 926 rows containing missing values (geom_point).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./project/2019-01-25-predict-the-diamond-price-based-on-the-4-c-s_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Observations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The larger the diamond is (or the more carats it has), the more expensive the diamond is (price), which is probably what we would have expected.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## create a scatterplot of price and carat with linear trend
+ggplot(diamonds, aes(carat, price)) +
+  geom_point(fill = I(&amp;quot;#F79420&amp;quot;), color = I(&amp;quot;black&amp;quot;), shape = 23) +
+  stat_smooth(method = &amp;quot;lm&amp;quot;) +
+  scale_x_continuous(lim = c(0, quantile(diamonds$carat, 0.99)) ) +
+  scale_y_continuous(lim = c(0, quantile(diamonds$price, 0.99)) ) +
+  ggtitle(&amp;quot;Price vs. Carat&amp;quot;) +
+  theme_classic()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 926 rows containing non-finite values (stat_smooth).&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 926 rows containing missing values (geom_point).&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 4 rows containing missing values (geom_smooth).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./project/2019-01-25-predict-the-diamond-price-based-on-the-4-c-s_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Observations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The linear trend line doesn’t go through the center of the data at some key places. It should curve in certain parts of the graph, i.e slope up more towards the end. If we tried to use this for predictions, we might be off some key places inside and outside of the existing data that we have displayed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## sample 10,000 diamonds from the set to get a snapshop of the large dataframe
+set.seed(20022012)
+diamond_samp &amp;lt;- diamonds[sample(1:length(diamonds$price), 10000), ]
+ggpairs(diamond_samp, 
+        lower = list(continuous = wrap(&amp;quot;points&amp;quot;, shape = I(&amp;#39;.&amp;#39;))), 
+        upper = list(combo = wrap(&amp;quot;box&amp;quot;, outlier.shape = I(&amp;#39;.&amp;#39;))))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./project/2019-01-25-predict-the-diamond-price-based-on-the-4-c-s_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Observations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Price is almost linearly correlated with carat: These are the critical factors driving price.&lt;/li&gt;
+&lt;li&gt;Price appears related to &lt;strong&gt;cut/color/clarity&lt;/strong&gt; but, is not very clear from this plot.&lt;/li&gt;
+&lt;li&gt;Price appears not to be directly related to depth and table.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## create hist of price and price(log10)
+plot1 &amp;lt;- ggplot(diamonds, aes(price)) +
+  geom_histogram(color = &amp;#39;blue&amp;#39;, fill = &amp;#39;blue&amp;#39;, binwidth = 200) +
+  scale_x_continuous(breaks = seq(300, 19000, 1000), limit = c(300, 19000)) +
+  ggtitle(&amp;#39;Price&amp;#39;) +
+  theme_classic()
+
+plot2 &amp;lt;- ggplot(diamonds, aes(price)) +
+  geom_histogram(color = &amp;#39;red&amp;#39;, fill = &amp;#39;red&amp;#39;, binwidth = 0.01) +
+  scale_x_log10(breaks = seq(300, 19000, 1000), limit = c(300, 19000)) +
+  ggtitle(&amp;#39;Price(log10)&amp;#39;) +
+  theme_classic()
+
+grid.arrange(plot1, plot2, ncol = 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 1 rows containing missing values (geom_bar).&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 2 rows containing missing values (geom_bar).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./project/2019-01-25-predict-the-diamond-price-based-on-the-4-c-s_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Observations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Price histogram is skewed to the right, while the log10(price) tends to be a bell curve distributed. Also, the two peaks in the log10(price) plot coincides with the 1st and 3rd quantile of price.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## create scatterplot of price and price(log10)
+p1 &amp;lt;- ggplot(diamonds, aes(carat, price, color=clarity)) +
+  geom_point() +
+  ggtitle(&amp;quot;Price by Carat&amp;quot;) +
+  theme_classic()
+
+p2 &amp;lt;- ggplot(diamonds, aes(carat, price, color=clarity)) +
+  geom_point() +
+  scale_y_continuous(trans = log10_trans()) +
+  ggtitle(&amp;quot;Price(log10) by Carat&amp;quot;) +
+  theme_classic()
+grid.arrange(p1, p2, ncol=1)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./project/2019-01-25-predict-the-diamond-price-based-on-the-4-c-s_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Observations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;On the log scale, the prices look less dispersed at the high end of carat size and price, however, we can do better. Let’s try using the cube root of carat in light of our speculation about flaws being exponentially more likely in diamonds with more volume. Remember, volume is on a cubic scale!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;### create a new function to transform the carat variable
+cuberoot_trans = function() trans_new(&amp;#39;cuberoot&amp;#39;,
+                                      transform = function(x) x^(1/3),
+                                      inverse = function(x) x^3)
+
+### use the cuberoot_trans function
+ggplot(diamonds, aes(carat, price, color=clarity)) + 
+  geom_point(alpha = 1/2, size = 1, position = &amp;quot;jitter&amp;quot;) + 
+  scale_x_continuous(trans = cuberoot_trans(), limits = c(0.2, 3),
+                     breaks = c(0.2, 0.5, 1, 2, 3)) + 
+  scale_y_continuous(trans = log10_trans(), limits = c(350, 15000),
+                     breaks = c(350, 1000, 5000, 10000, 15000)) +
+  ggtitle(&amp;#39;Price(log10) by Cube-Root of Carat&amp;#39;) +
+  theme_classic()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 1691 rows containing missing values (geom_point).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./project/2019-01-25-predict-the-diamond-price-based-on-the-4-c-s_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Observations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The price(log10) is almost linear with cuberoot of carat. We can now move ahead and see how to model our data using just a linear model.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&#34;price-vs.carat-and-clarity&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Price vs. Carat and Clarity&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## to work around overplotting, the alpha, size, and and jitter options are used in our plot
+ggplot(diamonds, aes(x = carat, y = price)) + 
+  geom_point(alpha = 1/2, size = 1, position = &amp;#39;jitter&amp;#39;, aes(color=clarity)) +
+  scale_color_brewer(type = &amp;#39;div&amp;#39;,
+    guide = guide_legend(title = &amp;#39;Clarity&amp;#39;, reverse = T,
+    override.aes = list(alpha = 1, size = 2))) +                         
+  scale_x_continuous(trans = cuberoot_trans(), limits = c(0.2, 3),
+    breaks = c(0.2, 0.5, 1, 2, 3)) + 
+  scale_y_continuous(trans = log10_trans(), limits = c(350, 15000),
+    breaks = c(350, 1000, 5000, 10000, 15000)) +
+  ggtitle(&amp;#39;Price(log10) by Cube-Root of Carat and Clarity&amp;#39;) +
+  theme_classic()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 1693 rows containing missing values (geom_point).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./project/2019-01-25-predict-the-diamond-price-based-on-the-4-c-s_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Observations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Clarity factors into the price of a diamond. Hence, a better clarity results in a higher price than lower end clarity.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;price-vs.carat-and-cut&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Price vs. Carat and Cut&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## to work around overplotting, the alpha, size, and and jitter options are used in our plot
+ggplot(diamonds, aes(x = carat, y = price)) + 
+  geom_point(alpha = 1/2, size = 1, position = &amp;#39;jitter&amp;#39;, aes(color=cut)) +
+  scale_color_brewer(type = &amp;#39;div&amp;#39;,
+    guide = guide_legend(title = &amp;#39;Cut&amp;#39;, reverse = T,
+    override.aes = list(alpha = 1, size = 2))) +                         
+  scale_x_continuous(trans = cuberoot_trans(), limits = c(0.2, 3),
+    breaks = c(0.2, 0.5, 1, 2, 3)) + 
+  scale_y_continuous(trans = log10_trans(), limits = c(350, 15000),
+    breaks = c(350, 1000, 5000, 10000, 15000)) +
+  ggtitle(&amp;#39;Price(log10) by Cube-Root of Carat and Cut&amp;#39;) +
+  theme_classic()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 1696 rows containing missing values (geom_point).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./project/2019-01-25-predict-the-diamond-price-based-on-the-4-c-s_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Observations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Whilst cut does not show as obvious pattern as clarity, it’s still clear that with the same carat the diamonds with the best cut are priced higher. Hence, I think cut should be also included in the price prediction algorithm.
+Note, clarity explains a lot of the variance found in price!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;price-vs.carat-and-color&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Price vs. Carat and Color&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## to work around overplotting, the alpha, size, and and jitter options are used in our plot
+ggplot(diamonds, aes(x = carat, y = price)) + 
+  geom_point(alpha = 1/2, size = 1, position = &amp;#39;jitter&amp;#39;, aes(color=color)) +
+  scale_color_brewer(type = &amp;#39;div&amp;#39;,
+    guide = guide_legend(title = &amp;#39;Color&amp;#39;, reverse = F,
+    override.aes = list(alpha = 1, size = 2))) +                         
+  scale_x_continuous(trans = cuberoot_trans(), limits = c(0.2, 3),
+    breaks = c(0.2, 0.5, 1, 2, 3)) + 
+  scale_y_continuous(trans = log10_trans(), limits = c(350, 15000),
+    breaks = c(350, 1000, 5000, 10000, 15000)) +
+  ggtitle(&amp;#39;Price(log10) by Cube-Root of Carat and Color&amp;#39;) +
+  theme_classic()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 1688 rows containing missing values (geom_point).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./project/2019-01-25-predict-the-diamond-price-based-on-the-4-c-s_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(diamonds) +
+  geom_bar(mapping = aes(clarity, fill=cut), position = &amp;quot;fill&amp;quot; ) +
+  scale_fill_manual(values = c(&amp;quot;red&amp;quot;, &amp;quot;orange&amp;quot;, &amp;quot;darkgreen&amp;quot;, &amp;quot;dodgerblue&amp;quot;, &amp;quot;purple4&amp;quot;)) +
+  labs(title = &amp;quot;Clearer diamonds tend to be of higher quality cut&amp;quot;,
+       subtitle = &amp;quot;The majority of IF diamonds are an \&amp;quot;Ideal\&amp;quot; cut&amp;quot;) +
+  ylab(&amp;quot;proportion&amp;quot;) +
+  theme_classic()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./project/2019-01-25-predict-the-diamond-price-based-on-the-4-c-s_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Observations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;This looks similar with previous clarity plot. Color should be also considered as an factor for price.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;build-the-linear-model&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Build the Linear Model&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;m1 &amp;lt;- lm(I(log10(price)) ~ I(carat^(1/3)), diamonds)
+m2 &amp;lt;- update(m1,~ . +carat)
+m3 &amp;lt;- update(m2,~ . +cut)
+m4 &amp;lt;- update(m3,~ . +color)
+m5 &amp;lt;- update(m4,~ . +clarity)
+mtable(m1, m2, m3, m4, m5, sdigits = 4)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Calls:
+## m1: lm(formula = I(log10(price)) ~ I(carat^(1/3)), data = diamonds)
+## m2: lm(formula = I(log10(price)) ~ I(carat^(1/3)) + carat, data = diamonds)
+## m3: lm(formula = I(log10(price)) ~ I(carat^(1/3)) + carat + cut, 
+##     data = diamonds)
+## m4: lm(formula = I(log10(price)) ~ I(carat^(1/3)) + carat + cut + 
+##     color, data = diamonds)
+## m5: lm(formula = I(log10(price)) ~ I(carat^(1/3)) + carat + cut + 
+##     color + clarity, data = diamonds)
+## 
+## ==============================================================================================
+##                        m1             m2             m3             m4              m5        
+## ----------------------------------------------------------------------------------------------
+##   (Intercept)          1.225***       0.451***       0.380***       0.405***        0.180***  
+##                       (0.003)        (0.008)        (0.008)        (0.007)         (0.004)    
+##   I(carat^(1/3))       2.414***       3.721***       3.780***       3.665***        3.971***  
+##                       (0.003)        (0.014)        (0.013)        (0.012)         (0.007)    
+##   carat                              -0.494***      -0.505***      -0.431***       -0.474***  
+##                                      (0.005)        (0.005)        (0.004)         (0.003)    
+##   cut: .L                                            0.097***       0.097***        0.052***  
+##                                                     (0.002)        (0.002)         (0.001)    
+##   cut: .Q                                           -0.027***      -0.027***       -0.013***  
+##                                                     (0.002)        (0.001)         (0.001)    
+##   cut: .C                                            0.022***       0.022***        0.006***  
+##                                                     (0.001)        (0.001)         (0.001)    
+##   cut: ^4                                            0.008***       0.008***       -0.001     
+##                                                     (0.001)        (0.001)         (0.001)    
+##   color: .L                                                        -0.162***       -0.191***  
+##                                                                    (0.001)         (0.001)    
+##   color: .Q                                                        -0.056***       -0.040***  
+##                                                                    (0.001)         (0.001)    
+##   color: .C                                                         0.001          -0.006***  
+##                                                                    (0.001)         (0.001)    
+##   color: ^4                                                         0.012***        0.005***  
+##                                                                    (0.001)         (0.001)    
+##   color: ^5                                                        -0.007***       -0.001*    
+##                                                                    (0.001)         (0.001)    
+##   color: ^6                                                        -0.010***        0.001     
+##                                                                    (0.001)         (0.001)    
+##   clarity: .L                                                                       0.394***  
+##                                                                                    (0.001)    
+##   clarity: .Q                                                                      -0.104***  
+##                                                                                    (0.001)    
+##   clarity: .C                                                                       0.057***  
+##                                                                                    (0.001)    
+##   clarity: ^4                                                                      -0.027***  
+##                                                                                    (0.001)    
+##   clarity: ^5                                                                       0.011***  
+##                                                                                    (0.001)    
+##   clarity: ^6                                                                      -0.001     
+##                                                                                    (0.001)    
+##   clarity: ^7                                                                       0.014***  
+##                                                                                    (0.001)    
+## ----------------------------------------------------------------------------------------------
+##   R-squared            0.9236         0.9349         0.9391         0.9514          0.9839    
+##   adj. R-squared       0.9236         0.9349         0.9391         0.9514          0.9839    
+##   sigma                0.1218         0.1124         0.1087         0.0972          0.0559    
+##   F               652012.0628    387489.3661    138654.5235     87959.4667     173791.0840    
+##   p                    0.0000         0.0000         0.0000         0.0000          0.0000    
+##   Log-likelihood   37025.2108     41356.3916     43150.2943     49222.9505      79078.9821    
+##   Deviance           800.2475       681.5220       637.6655       509.1030        168.2821    
+##   AIC             -74044.4217    -82704.7832    -86284.5886    -98417.9011    -158115.9642    
+##   BIC             -74017.7348    -82669.2007    -86213.4236    -98293.3623    -157929.1560    
+##   N                53940          53940          53940          53940           53940         
+## ==============================================================================================&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Observations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We get some very nice R square values. We are accounting for almost all of the variance in price using carat, cut, color and clarity. If we want to know whether the price of a diamond is reasonable, we could use this model.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;thisDiamond &amp;lt;- data.frame(carat = 1, cut = &amp;#39;Very Good&amp;#39;,
+                          color = &amp;#39;G&amp;#39;, clarity = &amp;#39;VS2&amp;#39;)
+modelEstimate &amp;lt;- predict(m5, newdata = thisDiamond,
+                         interval = &amp;quot;prediction&amp;quot;, level = .95)
+10^modelEstimate&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        fit      lwr      upr
+## 1 5232.111 4065.993 6732.668&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;exp(modelEstimate)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        fit      lwr      upr
+## 1 41.20984 36.93526 45.97911&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Data Tidying Project</title>
       <link>/project/data_tidying/data-tidying-project/</link>
       <pubDate>Mon, 14 Jan 2019 00:00:00 +0000</pubDate>
@@ -201,8 +557,8 @@ ggplot(df_total, aes(x=year,y=as.numeric(n), colour=business)) +
 
 &lt;div id=&#34;preamble&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Preamble:&lt;/h2&gt;
-&lt;p&gt;This document focuses on the analysis of the mtcars data frame.&lt;/p&gt;
-&lt;p&gt;Descriotion of data frame mtcars can be found at &lt;a href=&#34;https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html&#34; class=&#34;uri&#34;&gt;https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This document focuses on the analysis of the mtcars dataframe.&lt;/p&gt;
+&lt;p&gt;Description of dataframe mtcars can be found at &lt;a href=&#34;https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html&#34; class=&#34;uri&#34;&gt;https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;research-questions&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Research questions:&lt;/h2&gt;
@@ -215,18 +571,18 @@ ggplot(df_total, aes(x=year,y=as.numeric(n), colour=business)) +
 &lt;h2&gt;Structure of analysis:&lt;/h2&gt;
 &lt;p&gt;I will asssess both queries from different perspectives employing a set of methodologies that can be broadly grouped as follows:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Univariate Analysis on target varibale (mpg).&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Bivariate Analysis on target varibale &amp;amp; relevant covariates.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Univariate Analysis on target varibale (mpg).&lt;/li&gt;
+&lt;li&gt;Bivariate Analysis on target varibale &amp;amp; relevant covariates.&lt;/li&gt;
+&lt;li&gt;Multivariate Analysis by estimating a set of regresssion models for the conditional mean of mpg. For model selection, I compare the best fit and forward stepwise selection process.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;*Multivariate Analysis estimate a set of regresssion models for the conditional mean of mpg. For model selection, I compare the best fit &amp;amp; forward stepwise selection procedures.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;univariate-analysis&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Univariate Analysis&lt;/h1&gt;
 &lt;p&gt;Analysing the target variable alone by splitting the observations into two groups, i.e. vehicles with auto or manual transmission. I shall deploy 3 analysis:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Compute sample means by group ie auto VS manual.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Validate if the difference of the group means are statistically significant by computing a 95% confidence interval for means’ difference.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Verify the robustness of this result by executing a permutation test with Monte Carlo trials that shuffle the allocation group &amp;gt; mpg.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Compute sample means by group ie auto VS manual.&lt;/li&gt;
+&lt;li&gt;Validate if the difference of the group means are statistically significant by computing a 95% confidence interval for means’ difference.&lt;/li&gt;
+&lt;li&gt;Verify the robustness of this result by executing a permutation test with Monte Carlo trials that shuffle the allocation group &amp;gt; mpg.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div id=&#34;get-to-know-the-data&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Get to know the data&lt;/h2&gt;
@@ -295,7 +651,7 @@ mean(cars_auto$mpg); mean(cars_manu$mpg)
 &lt;h1&gt;Including plots&lt;/h1&gt;
 &lt;p&gt;To get a feel for the distribution of some of the data to be analyzed, we plot some histograms, the first against mpg - auto transmission, the second against mpg - manual transission:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;boxplot(mpg ~ am, data = mtcars, col=rgb(0.3,0.2,0.5,0.6), ylab = &amp;quot;mpg&amp;quot;, xlab = &amp;quot;am&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Conclusions:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;mpg empirical mean of vehicles with manual transmission is greater than cars with auto transmission, however this also has a higher variance.&lt;/li&gt;
@@ -364,14 +720,14 @@ par(mfrow = c(2, 1), mar = c(4, 4, 2, 2))
 hist(permutations, main = &amp;quot;Distribution of shuffled group mean differences&amp;quot;) # distribution of difference of averages of permuted groups
 plot(permutations, type = &amp;quot;b&amp;quot;, main = &amp;quot;Shuffled group mean trials&amp;quot;, xlab = &amp;quot;trial&amp;quot;, ylab = &amp;quot;shuffled group mean differences&amp;quot;, ylim = c(-14, 14))
 abline(h = observedDiff, col = &amp;quot;red&amp;quot;, lwd = 3)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# there is not even 1 case where by chance I get a difference greater than the observed!
 mean(permutations &amp;gt; observedDiff)
-## [1] 0.00017&lt;/code&gt;&lt;/pre&gt;
+## [1] 0.00023&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Conclusions:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;out of 100,000 trails only 0.002% has breached the observed value for the diffs in the group empirical means.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;concluding that empirical means diffs of groups is robust with regards to random reshuffling and is not likely to be generated by pure chance. &lt;em&gt;is this correct?&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;out of 100,000 trails only 0.002% has breached the observed value for the diffs in the group empirical means.&lt;/li&gt;
+&lt;li&gt;concluding that empirical means diffs of groups is robust with regards to random reshuffling and is not likely to be generated by pure chance. &lt;em&gt;is this correct?&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;bivariate-analysis&#34; class=&#34;section level2&#34;&gt;
@@ -383,7 +739,7 @@ cars_manu = subset(mtcars, am == 1)
 
 #### Visual inspection of all covariates ####
 pairs(mtcars)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#### 4 bivariate analysis: hp / wt / drat / disp ####
 par(mfrow = c(2, 2), mar = c(2, 3, 2, 3))
 
@@ -424,13 +780,13 @@ legend(&amp;quot;topright&amp;quot;, pch = 20, col = c(&amp;quot;red&amp;quot;, 
 labels = with(mtcars, paste(as.character(disp), as.character(mpg), sep = &amp;quot;,&amp;quot;)) # generate point labels
 with(mtcars, text(disp, mpg, labels = labels, cex = 0.7, pos = 2))
 abline(v = 167.6, lty = 2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Conclusions:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;mpg vs hp: linear negative relation: as horse power of the engine (hp) increases, the mileage (mpg) reduces. Vehicles with manual transmission seems however to be more efficient: the group restricted regression (blue) has a higher intercept. It has to be highlighted however, that the parameters of blue regression might be influenced by two extreme values with high hp - the regression should be re-estimated by removing the two datapoints.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;mpg vs weight: negative relation, the functional form might be non-linear (hyperbolic ?), as weight of the vehicle increases, the mileage decreases. The weight variable seems to provide perfect separation between manual and auto transmission vehilces, i.e. all vehicles that are heavier than 3.2 ton (circa) are auto and vice-versa.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;mpg vs drat: the functional form is not clear: it appears also to be an increase in the variance as the rear axel ratio (drat) increases. To verify this a regression model using all observations has to be estimated and analyse the residuals for verifying if the model is heteroskedastic.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;mpg vs disp: seems to have a negative (hyperbolic ?) relation: as the displacement (disp) of the engine increases, the mileage decreases. Also, in this case it seems that disp accounts for perfect separation in the transmission type: almost all vehilces with disp &amp;gt; 180 are auto.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;mpg vs hp: linear negative relation: as horse power of the engine (hp) increases, the mileage (mpg) reduces. Vehicles with manual transmission seems however to be more efficient: the group restricted regression (blue) has a higher intercept. It has to be highlighted however, that the parameters of blue regression might be influenced by two extreme values with high hp - the regression should be re-estimated by removing the two datapoints.&lt;/li&gt;
+&lt;li&gt;mpg vs weight: negative relation, the functional form might be non-linear (hyperbolic ?), as weight of the vehicle increases, the mileage decreases. The weight variable seems to provide perfect separation between manual and auto transmission vehilces, i.e. all vehicles that are heavier than 3.2 ton (circa) are auto and vice-versa.&lt;/li&gt;
+&lt;li&gt;mpg vs drat: the functional form is not clear: it appears also to be an increase in the variance as the rear axel ratio (drat) increases. To verify this a regression model using all observations has to be estimated and analyse the residuals for verifying if the model is heteroskedastic.&lt;/li&gt;
+&lt;li&gt;mpg vs disp: seems to have a negative (hyperbolic ?) relation: as the displacement (disp) of the engine increases, the mileage decreases. Also, in this case it seems that disp accounts for perfect separation in the transmission type: almost all vehilces with disp &amp;gt; 180 are auto.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;multivariate-analysis&#34; class=&#34;section level2&#34;&gt;
@@ -451,7 +807,7 @@ z &amp;lt;- cor(mtcars)
 require(lattice)
 ## Loading required package: lattice&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;levelplot(z)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;A model with only transmission:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# only am
 data = mtcars
@@ -480,9 +836,9 @@ summary(model2)
 ## F-statistic: 16.86 on 1 and 30 DF,  p-value: 0.000285&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Observations:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;the intercept is 17.15: exactly the same mean of mpg for vehicles with auto transmission.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;the coefficient of am is 7.24: exactly the difference of mpg means for vehicles with manual / auto transmission.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;the sum of intercept and am coefficient gives the mpg unconditional mean for vehicles with manual transmission.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;the intercept is 17.15: exactly the same mean of mpg for vehicles with auto transmission.&lt;/li&gt;
+&lt;li&gt;the coefficient of am is 7.24: exactly the difference of mpg means for vehicles with manual / auto transmission.&lt;/li&gt;
+&lt;li&gt;the sum of intercept and am coefficient gives the mpg unconditional mean for vehicles with manual transmission.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;best-fit-procedure&#34; class=&#34;section level2&#34;&gt;
@@ -529,7 +885,7 @@ reg.summary
 &lt;h2&gt;Plot the analysis&lt;/h2&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# how I selected the optimal number of variables?
 plot(reg.summary$cp, xlab = &amp;quot;Number of variables&amp;quot;, ylab = &amp;quot;cp&amp;quot;, type = &amp;quot;b&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;forward-stepwise-procedure&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Forward Stepwise Procedure&lt;/h2&gt;
@@ -567,7 +923,7 @@ summary(regfit.fwd)
 &lt;div id=&#34;plot-the-analysis-2&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Plot the analysis&lt;/h2&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(regfit.fwd, scale = &amp;quot;Cp&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-21-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Appendix&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;A model including all regressors.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#### lm with all variables / no split ####
@@ -612,11 +968,11 @@ summary(model1)
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# plot residual analysis
 par(mfrow = c(2, 2))
 plot(model1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-22-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-23-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# plot hist
 par(mfrow = c(1, 1))
 hist(model1$residuals)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-23-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-24-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# normality test on residuals
 shapiro.test(model1$residuals)
 ## 

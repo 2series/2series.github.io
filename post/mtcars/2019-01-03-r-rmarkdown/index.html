@@ -15,8 +15,8 @@
   
     
   
-  <meta name="description" content="Preamble: This document focuses on the analysis of the mtcars data frame.
-Descriotion of data frame mtcars can be found at https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html
+  <meta name="description" content="Preamble: This document focuses on the analysis of the mtcars dataframe.
+Description of dataframe mtcars can be found at https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html
  Research questions: is a vehicle with auto or manual transmission better in terms of miles p/gallons(mpg)?
  quantify the (mpg) difference between auto &amp; manual transmission.
    Structure of analysis: I will asssess both queries from different perspectives employing a set of methodologies that can be broadly grouped as follows:">
@@ -123,8 +123,8 @@ Descriotion of data frame mtcars can be found at https://stat.ethz.ch/R-manual/R
   <meta property="og:site_name" content="Rihad Variawa">
   <meta property="og:url" content="/post/mtcars/2019-01-03-r-rmarkdown/">
   <meta property="og:title" content="mtcars Data Analysis | Rihad Variawa">
-  <meta property="og:description" content="Preamble: This document focuses on the analysis of the mtcars data frame.
-Descriotion of data frame mtcars can be found at https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html
+  <meta property="og:description" content="Preamble: This document focuses on the analysis of the mtcars dataframe.
+Description of dataframe mtcars can be found at https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html
  Research questions: is a vehicle with auto or manual transmission better in terms of miles p/gallons(mpg)?
  quantify the (mpg) difference between auto &amp; manual transmission.
    Structure of analysis: I will asssess both queries from different perspectives employing a set of methodologies that can be broadly grouped as follows:"><meta property="og:image" content="/img/headers/61728.jpg">
@@ -489,8 +489,8 @@ Descriotion of data frame mtcars can be found at https://stat.ethz.ch/R-manual/R
 
 <div id="preamble" class="section level2">
 <h2>Preamble:</h2>
-<p>This document focuses on the analysis of the mtcars data frame.</p>
-<p>Descriotion of data frame mtcars can be found at <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html" class="uri">https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html</a></p>
+<p>This document focuses on the analysis of the mtcars dataframe.</p>
+<p>Description of dataframe mtcars can be found at <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html" class="uri">https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html</a></p>
 </div>
 <div id="research-questions" class="section level2">
 <h2>Research questions:</h2>
@@ -503,18 +503,18 @@ Descriotion of data frame mtcars can be found at https://stat.ethz.ch/R-manual/R
 <h2>Structure of analysis:</h2>
 <p>I will asssess both queries from different perspectives employing a set of methodologies that can be broadly grouped as follows:</p>
 <ul>
-<li><p>Univariate Analysis on target varibale (mpg).</p></li>
-<li><p>Bivariate Analysis on target varibale &amp; relevant covariates.</p></li>
+<li>Univariate Analysis on target varibale (mpg).</li>
+<li>Bivariate Analysis on target varibale &amp; relevant covariates.</li>
+<li>Multivariate Analysis by estimating a set of regresssion models for the conditional mean of mpg. For model selection, I compare the best fit and forward stepwise selection process.</li>
 </ul>
-<p>*Multivariate Analysis estimate a set of regresssion models for the conditional mean of mpg. For model selection, I compare the best fit &amp; forward stepwise selection procedures.</p>
 </div>
 <div id="univariate-analysis" class="section level1">
 <h1>Univariate Analysis</h1>
 <p>Analysing the target variable alone by splitting the observations into two groups, i.e. vehicles with auto or manual transmission. I shall deploy 3 analysis:</p>
 <ul>
-<li><p>Compute sample means by group ie auto VS manual.</p></li>
-<li><p>Validate if the difference of the group means are statistically significant by computing a 95% confidence interval for means’ difference.</p></li>
-<li><p>Verify the robustness of this result by executing a permutation test with Monte Carlo trials that shuffle the allocation group &gt; mpg.</p></li>
+<li>Compute sample means by group ie auto VS manual.</li>
+<li>Validate if the difference of the group means are statistically significant by computing a 95% confidence interval for means’ difference.</li>
+<li>Verify the robustness of this result by executing a permutation test with Monte Carlo trials that shuffle the allocation group &gt; mpg.</li>
 </ul>
 <div id="get-to-know-the-data" class="section level2">
 <h2>Get to know the data</h2>
@@ -583,7 +583,7 @@ mean(cars_auto$mpg); mean(cars_manu$mpg)
 <h1>Including plots</h1>
 <p>To get a feel for the distribution of some of the data to be analyzed, we plot some histograms, the first against mpg - auto transmission, the second against mpg - manual transission:</p>
 <pre class="r"><code>boxplot(mpg ~ am, data = mtcars, col=rgb(0.3,0.2,0.5,0.6), ylab = &quot;mpg&quot;, xlab = &quot;am&quot;)</code></pre>
-<p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Conclusions:</p>
 <ul>
 <li>mpg empirical mean of vehicles with manual transmission is greater than cars with auto transmission, however this also has a higher variance.</li>
@@ -652,14 +652,14 @@ par(mfrow = c(2, 1), mar = c(4, 4, 2, 2))
 hist(permutations, main = &quot;Distribution of shuffled group mean differences&quot;) # distribution of difference of averages of permuted groups
 plot(permutations, type = &quot;b&quot;, main = &quot;Shuffled group mean trials&quot;, xlab = &quot;trial&quot;, ylab = &quot;shuffled group mean differences&quot;, ylim = c(-14, 14))
 abline(h = observedDiff, col = &quot;red&quot;, lwd = 3)</code></pre>
-<p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <pre class="r"><code># there is not even 1 case where by chance I get a difference greater than the observed!
 mean(permutations &gt; observedDiff)
-## [1] 0.00017</code></pre>
+## [1] 0.00023</code></pre>
 <p>Conclusions:</p>
 <ul>
-<li><p>out of 100,000 trails only 0.002% has breached the observed value for the diffs in the group empirical means.</p></li>
-<li><p>concluding that empirical means diffs of groups is robust with regards to random reshuffling and is not likely to be generated by pure chance. <em>is this correct?</em></p></li>
+<li>out of 100,000 trails only 0.002% has breached the observed value for the diffs in the group empirical means.</li>
+<li>concluding that empirical means diffs of groups is robust with regards to random reshuffling and is not likely to be generated by pure chance. <em>is this correct?</em></li>
 </ul>
 </div>
 <div id="bivariate-analysis" class="section level2">
@@ -671,7 +671,7 @@ cars_manu = subset(mtcars, am == 1)
 
 #### Visual inspection of all covariates ####
 pairs(mtcars)</code></pre>
-<p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <pre class="r"><code>#### 4 bivariate analysis: hp / wt / drat / disp ####
 par(mfrow = c(2, 2), mar = c(2, 3, 2, 3))
 
@@ -712,13 +712,13 @@ legend(&quot;topright&quot;, pch = 20, col = c(&quot;red&quot;, &quot;blue&quot;
 labels = with(mtcars, paste(as.character(disp), as.character(mpg), sep = &quot;,&quot;)) # generate point labels
 with(mtcars, text(disp, mpg, labels = labels, cex = 0.7, pos = 2))
 abline(v = 167.6, lty = 2)</code></pre>
-<p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>Conclusions:</p>
 <ul>
-<li><p>mpg vs hp: linear negative relation: as horse power of the engine (hp) increases, the mileage (mpg) reduces. Vehicles with manual transmission seems however to be more efficient: the group restricted regression (blue) has a higher intercept. It has to be highlighted however, that the parameters of blue regression might be influenced by two extreme values with high hp - the regression should be re-estimated by removing the two datapoints.</p></li>
-<li><p>mpg vs weight: negative relation, the functional form might be non-linear (hyperbolic ?), as weight of the vehicle increases, the mileage decreases. The weight variable seems to provide perfect separation between manual and auto transmission vehilces, i.e. all vehicles that are heavier than 3.2 ton (circa) are auto and vice-versa.</p></li>
-<li><p>mpg vs drat: the functional form is not clear: it appears also to be an increase in the variance as the rear axel ratio (drat) increases. To verify this a regression model using all observations has to be estimated and analyse the residuals for verifying if the model is heteroskedastic.</p></li>
-<li><p>mpg vs disp: seems to have a negative (hyperbolic ?) relation: as the displacement (disp) of the engine increases, the mileage decreases. Also, in this case it seems that disp accounts for perfect separation in the transmission type: almost all vehilces with disp &gt; 180 are auto.</p></li>
+<li>mpg vs hp: linear negative relation: as horse power of the engine (hp) increases, the mileage (mpg) reduces. Vehicles with manual transmission seems however to be more efficient: the group restricted regression (blue) has a higher intercept. It has to be highlighted however, that the parameters of blue regression might be influenced by two extreme values with high hp - the regression should be re-estimated by removing the two datapoints.</li>
+<li>mpg vs weight: negative relation, the functional form might be non-linear (hyperbolic ?), as weight of the vehicle increases, the mileage decreases. The weight variable seems to provide perfect separation between manual and auto transmission vehilces, i.e. all vehicles that are heavier than 3.2 ton (circa) are auto and vice-versa.</li>
+<li>mpg vs drat: the functional form is not clear: it appears also to be an increase in the variance as the rear axel ratio (drat) increases. To verify this a regression model using all observations has to be estimated and analyse the residuals for verifying if the model is heteroskedastic.</li>
+<li>mpg vs disp: seems to have a negative (hyperbolic ?) relation: as the displacement (disp) of the engine increases, the mileage decreases. Also, in this case it seems that disp accounts for perfect separation in the transmission type: almost all vehilces with disp &gt; 180 are auto.</li>
 </ul>
 </div>
 <div id="multivariate-analysis" class="section level2">
@@ -739,7 +739,7 @@ z &lt;- cor(mtcars)
 require(lattice)
 ## Loading required package: lattice</code></pre>
 <pre class="r"><code>levelplot(z)</code></pre>
-<p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>A model with only transmission:</p>
 <pre class="r"><code># only am
 data = mtcars
@@ -768,9 +768,9 @@ summary(model2)
 ## F-statistic: 16.86 on 1 and 30 DF,  p-value: 0.000285</code></pre>
 <p>Observations:</p>
 <ul>
-<li><p>the intercept is 17.15: exactly the same mean of mpg for vehicles with auto transmission.</p></li>
-<li><p>the coefficient of am is 7.24: exactly the difference of mpg means for vehicles with manual / auto transmission.</p></li>
-<li><p>the sum of intercept and am coefficient gives the mpg unconditional mean for vehicles with manual transmission.</p></li>
+<li>the intercept is 17.15: exactly the same mean of mpg for vehicles with auto transmission.</li>
+<li>the coefficient of am is 7.24: exactly the difference of mpg means for vehicles with manual / auto transmission.</li>
+<li>the sum of intercept and am coefficient gives the mpg unconditional mean for vehicles with manual transmission.</li>
 </ul>
 </div>
 <div id="best-fit-procedure" class="section level2">
@@ -817,7 +817,7 @@ reg.summary
 <h2>Plot the analysis</h2>
 <pre class="r"><code># how I selected the optimal number of variables?
 plot(reg.summary$cp, xlab = &quot;Number of variables&quot;, ylab = &quot;cp&quot;, type = &quot;b&quot;)</code></pre>
-<p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 </div>
 <div id="forward-stepwise-procedure" class="section level2">
 <h2>Forward Stepwise Procedure</h2>
@@ -855,7 +855,7 @@ summary(regfit.fwd)
 <div id="plot-the-analysis-2" class="section level2">
 <h2>Plot the analysis</h2>
 <pre class="r"><code>plot(regfit.fwd, scale = &quot;Cp&quot;)</code></pre>
-<p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 <p><strong><em>Appendix</em></strong></p>
 <p>A model including all regressors.</p>
 <pre class="r"><code>#### lm with all variables / no split ####
@@ -900,11 +900,11 @@ summary(model1)
 <pre class="r"><code># plot residual analysis
 par(mfrow = c(2, 2))
 plot(model1)</code></pre>
-<p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <pre class="r"><code># plot hist
 par(mfrow = c(1, 1))
 hist(model1$residuals)</code></pre>
-<p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <pre class="r"><code># normality test on residuals
 shapiro.test(model1$residuals)
 ## 

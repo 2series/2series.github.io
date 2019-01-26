@@ -388,22 +388,22 @@ modelEstimate &amp;lt;- predict(m5, newdata = thisDiamond,
 
 GET(&amp;quot;https://query.data.world/s/gdk7iwtlisq6vkktmybqqr7hjjty5s&amp;quot;, write_disk(tf &amp;lt;- tempfile(fileext = &amp;quot;.xls&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Response [https://download.data.world/file_download/retail/department-store-sales/retail-trade-report-department-stores.xls?auth=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm9kLXVzZXItY2xpZW50OnNoYW5lbGxpcyIsImlzcyI6ImFnZW50OnNoYW5lbGxpczo6OTA5ZDZlNTQtMmQwZC00MDczLWE4Y2UtYWExNzI3OGJkN2ViIiwiaWF0IjoxNTIzOTkwNDIzLCJyb2xlIjpbInVzZXIiLCJ1c2VyX2FwaV9hZG1pbiIsInVzZXJfYXBpX3JlYWQiLCJ1c2VyX2FwaV93cml0ZSJdLCJnZW5lcmFsLXB1cnBvc2UiOmZhbHNlLCJ1cmwiOiI0YWU5NmEzZjc4Y2EyOGE5MWM1ZDZlMTgxYzg5YjI0NjIzZDY0ZThlIn0.jBFlyy1aloE-EpeYyosD3iRaDPoY75DBqdh7suLoZxKcrsG8N5GtOiFb6sNMjTqqclsHX7P8RUw7T5sAArPbcw]
-##   Date: 2019-01-16 08:17
+##   Date: 2019-01-26 21:57
 ##   Status: 200
 ##   Content-Type: application/vnd.ms-excel
 ##   Size: 62.5 kB
-## &amp;lt;ON DISK&amp;gt;  /tmp/Rtmpg4fRHo/file991386eee59.xls&lt;/code&gt;&lt;/pre&gt;
+## &amp;lt;ON DISK&amp;gt;  /tmp/RtmpbDizpx/file425bddb3fff.xls&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df1 &amp;lt;- read_excel(tf)
 
 #2009-2014
 # https://data.world/garyhoov/retail-sales-growth
 GET(&amp;quot;https://query.data.world/s/py7kinxvyuxjpzwdjs2ti4wdmui6bi&amp;quot;, write_disk(tf &amp;lt;- tempfile(fileext = &amp;quot;.xls&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Response [https://download.data.world/file_download/garyhoov/retail-sales-growth/US%20Retail%20Sales%20by%20Store%20Type%202009-2014.xls?auth=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm9kLXVzZXItY2xpZW50OnNoYW5lbGxpcyIsImlzcyI6ImFnZW50OnNoYW5lbGxpczo6OTA5ZDZlNTQtMmQwZC00MDczLWE4Y2UtYWExNzI3OGJkN2ViIiwiaWF0IjoxNTIzOTkwNTAwLCJyb2xlIjpbInVzZXIiLCJ1c2VyX2FwaV9hZG1pbiIsInVzZXJfYXBpX3JlYWQiLCJ1c2VyX2FwaV93cml0ZSJdLCJnZW5lcmFsLXB1cnBvc2UiOmZhbHNlLCJ1cmwiOiI5OWRhMDIwMzRlY2Q1YmZmZTRmODFjYzJlMTg4ZmUxOGQyZmEyNDdlIn0.NLTr571lKSZMKhmvIFFQGuoVeFVFr9DrQ7nxBO3LOcLTJUrKivBxWpUrcJcY8dxnkL4FlGba3wsL65c3wLzzxA]
-##   Date: 2019-01-16 08:17
+##   Date: 2019-01-26 21:57
 ##   Status: 200
 ##   Content-Type: application/vnd.ms-excel
 ##   Size: 169 kB
-## &amp;lt;ON DISK&amp;gt;  /tmp/Rtmpg4fRHo/file9911b695802.xls&lt;/code&gt;&lt;/pre&gt;
+## &amp;lt;ON DISK&amp;gt;  /tmp/RtmpbDizpx/file425b7afcc0a6.xls&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df2 &amp;lt;- read_excel(tf)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## New names:
 ## * `` -&amp;gt; `..2`
@@ -723,7 +723,7 @@ abline(h = observedDiff, col = &amp;quot;red&amp;quot;, lwd = 3)&lt;/code&gt;&lt
 &lt;p&gt;&lt;img src=&#34;./post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# there is not even 1 case where by chance I get a difference greater than the observed!
 mean(permutations &amp;gt; observedDiff)
-## [1] 0.00023&lt;/code&gt;&lt;/pre&gt;
+## [1] 0.00015&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Conclusions:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;out of 100,000 trails only 0.002% has breached the observed value for the diffs in the group empirical means.&lt;/li&gt;

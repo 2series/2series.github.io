@@ -15,11 +15,7 @@
   
     
   
-  <meta name="description" content="Preamble: This document focuses on the analysis of the mtcars dataframe.
-Description of dataframe mtcars can be found at https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html
- Research questions: is a vehicle with auto or manual transmission better in terms of miles p/gallons(mpg)?
- quantify the (mpg) difference between auto &amp; manual transmission.
-   Structure of analysis: I will asssess both queries from different perspectives employing a set of methodologies that can be broadly grouped as follows:">
+  <meta name="description" content="MauWhich is fuel efficient?">
 
   
   <link rel="alternate" hreflang="en-us" href="../../../post/mtcars/2019-01-03-r-rmarkdown/">
@@ -123,11 +119,7 @@ Description of dataframe mtcars can be found at https://stat.ethz.ch/R-manual/R-
   <meta property="og:site_name" content="Rihad Variawa">
   <meta property="og:url" content="/post/mtcars/2019-01-03-r-rmarkdown/">
   <meta property="og:title" content="mtcars Data Analysis | Rihad Variawa">
-  <meta property="og:description" content="Preamble: This document focuses on the analysis of the mtcars dataframe.
-Description of dataframe mtcars can be found at https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html
- Research questions: is a vehicle with auto or manual transmission better in terms of miles p/gallons(mpg)?
- quantify the (mpg) difference between auto &amp; manual transmission.
-   Structure of analysis: I will asssess both queries from different perspectives employing a set of methodologies that can be broadly grouped as follows:"><meta property="og:image" content="/img/headers/61728.jpg">
+  <meta property="og:description" content="MauWhich is fuel efficient?"><meta property="og:image" content="/img/headers/61728.jpg">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-01-03T21:13:14-05:00">
@@ -655,7 +647,7 @@ abline(h = observedDiff, col = &quot;red&quot;, lwd = 3)</code></pre>
 <p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <pre class="r"><code># there is not even 1 case where by chance I get a difference greater than the observed!
 mean(permutations &gt; observedDiff)
-## [1] 0.00023</code></pre>
+## [1] 0.00015</code></pre>
 <p>Conclusions:</p>
 <ul>
 <li>out of 100,000 trails only 0.002% has breached the observed value for the diffs in the group empirical means.</li>

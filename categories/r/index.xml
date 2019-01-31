@@ -62,17 +62,5 @@ Description of dataframe mtcars can be found at https://stat.ethz.ch/R-manual/R-
    Structure of analysis: I will asssess both queries from different perspectives employing a set of methodologies that can be broadly grouped as follows:</description>
     </item>
     
-    <item>
-      <title>AirPassengers Time Series Analysis</title>
-      <link>/project/ts_analysis/code/final_code/airpassengers_ts_analysis/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/project/ts_analysis/code/final_code/airpassengers_ts_analysis/</guid>
-      <description>Preamble: This document focuses on the analysis of the airpassengers dataframe.
-The AirPassenger dataset in R provides monthly totals of US airline passengers, from 1949 to 1960.
-Description of dataframe airpassengers can be found at https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/airpassengers.html
- Research question: through analysis and modelling, preview a time series forecast   Structure of analysis: I will asssess whether a linear regression or arima model is a best fit for the time series forecast as follows:</description>
-    </item>
-    
   </channel>
 </rss>

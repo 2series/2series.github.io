@@ -15,7 +15,7 @@
   
     
   
-  <meta name="description" content="MauWhich is fuel efficient?">
+  <meta name="description" content="Which type of vehicle transmission is more fuel efficient?">
 
   
   <link rel="alternate" hreflang="en-us" href="../../../post/mtcars/2019-01-03-r-rmarkdown/">
@@ -119,7 +119,7 @@
   <meta property="og:site_name" content="Rihad Variawa">
   <meta property="og:url" content="/post/mtcars/2019-01-03-r-rmarkdown/">
   <meta property="og:title" content="mtcars Data Analysis | Rihad Variawa">
-  <meta property="og:description" content="MauWhich is fuel efficient?"><meta property="og:image" content="/img/headers/61728.jpg">
+  <meta property="og:description" content="Which type of vehicle transmission is more fuel efficient?"><meta property="og:image" content="/img/headers/mtcars.jpg">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-01-03T21:13:14-05:00">
@@ -341,7 +341,7 @@
 <div class="article-header">
   
   
-  <img src="../../../img/headers/61728.jpg" class="article-banner" itemprop="image" alt="">
+  <img src="../../../img/headers/mtcars.jpg" class="article-banner" itemprop="image" alt="">
   
 
   
@@ -647,7 +647,7 @@ abline(h = observedDiff, col = &quot;red&quot;, lwd = 3)</code></pre>
 <p><img src="../../../post/mtcars/2019-01-03-r-rmarkdown_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <pre class="r"><code># there is not even 1 case where by chance I get a difference greater than the observed!
 mean(permutations &gt; observedDiff)
-## [1] 0.00015</code></pre>
+## [1] 1e-04</code></pre>
 <p>Conclusions:</p>
 <ul>
 <li>out of 100,000 trails only 0.002% has breached the observed value for the diffs in the group empirical means.</li>

@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Fri, 25 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 31 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Time Series Analysis</title>
+      <link>/post/time_series_ap/time-series-analysis/</link>
+      <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/time_series_ap/time-series-analysis/</guid>
+      <description>Preamble: This document focuses on the analysis of the airpassengers dataframe.
+The AirPassenger dataset in R provides monthly totals of US airline passengers, from 1949 to 1960.
+Description of dataframe airpassengers can be found at https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/airpassengers.html
+ Research question: through analysis and modelling, preview a time series forecast   Structure of analysis: I will asssess whether a linear regression or arima model is a best fit for the time series forecast as follows:</description>
+    </item>
     
     <item>
       <title>Predict the diamond price based on the 4 c&#39;s</title>

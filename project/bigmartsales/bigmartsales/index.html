@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 3.3.0">
+  <meta name="generator" content="Hugo 0.53" />
+  <meta name="author" content="Rihad Variawa">
+
+  
+  
+  
+  
+    
+  
+  <meta name="description" content="Load Packages and Data train = fread(&quot;Train_UWu5bXk.csv&quot;) test = fread(&quot;Test_u94Q5KV.csv&quot;) submission = fread(&quot;SampleSubmission_TmnO39y.csv&quot;)  Get to know the Data dim(train); dim(test) ## [1] 8523 12 ## [1] 5681 11 str(train) ## Classes &#39;data.table&#39; and &#39;data.frame&#39;: 8523 obs. of 12 variables: ## $ Item_Identifier : chr &quot;FDA15&quot; &quot;DRC01&quot; &quot;FDN15&quot; &quot;FDX07&quot; ... ## $ Item_Weight : num 9.3 5.92 17.5 19.2 8.93 ... ## $ Item_Fat_Content : chr &quot;Low Fat&quot; &quot;Regular&quot; &quot;Low Fat&quot; &quot;Regular&quot; .">
+
+  
+  <link rel="alternate" hreflang="en-us" href="../../../project/bigmartsales/bigmartsales/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#3f51b5">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous">
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Playfair+Display:400,700|Fauna+One">
+  
+
+  <link rel="stylesheet" href="../../../styles.css">
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-132898309-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+  <link rel="alternate" href="../../../index.xml" type="application/rss+xml" title="Rihad Variawa">
+  <link rel="feed" href="../../../index.xml" type="application/rss+xml" title="Rihad Variawa">
+  
+
+  <link rel="manifest" href="../../../site.webmanifest">
+  <link rel="icon" type="image/png" href="../../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../../img/icon-192.png">
+
+  <link rel="canonical" href="../../../project/bigmartsales/bigmartsales/">
+
+  
+  
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="Rihad Variawa">
+  <meta property="og:url" content="/project/bigmartsales/bigmartsales/">
+  <meta property="og:title" content="BigMartSales | Rihad Variawa">
+  <meta property="og:description" content="Load Packages and Data train = fread(&quot;Train_UWu5bXk.csv&quot;) test = fread(&quot;Test_u94Q5KV.csv&quot;) submission = fread(&quot;SampleSubmission_TmnO39y.csv&quot;)  Get to know the Data dim(train); dim(test) ## [1] 8523 12 ## [1] 5681 11 str(train) ## Classes &#39;data.table&#39; and &#39;data.frame&#39;: 8523 obs. of 12 variables: ## $ Item_Identifier : chr &quot;FDA15&quot; &quot;DRC01&quot; &quot;FDN15&quot; &quot;FDX07&quot; ... ## $ Item_Weight : num 9.3 5.92 17.5 19.2 8.93 ... ## $ Item_Fat_Content : chr &quot;Low Fat&quot; &quot;Regular&quot; &quot;Low Fat&quot; &quot;Regular&quot; ."><meta property="og:image" content="/img/Rihad%20Variawa.png">
+  <meta property="og:locale" content="en-us">
+  
+  
+  
+  
+
+  
+
+  
+
+  <title>BigMartSales | Rihad Variawa</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="../../../">Rihad Variawa</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../#publications_selected">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../#posts">
+            
+            <span>Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../files/resume.pdf">
+            
+            <span>Resume</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article article-project" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">BigMartSales</h1>
+
+  
+
+  
+    
+
+<div class="article-metadata">
+
+  
+  
+  <span itemscope itemprop="author" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Rihad Variawa">
+  </span>
+  
+
+  <span class="article-date">
+    
+    <meta content="" itemprop="datePublished">
+    <time datetime="" itemprop="dateModified">
+      Jan 1, 0001
+    </time>
+  </span>
+  <span itemscope itemprop="publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Rihad Variawa">
+  </span>
+
+  
+
+  
+  
+
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=BigMartSales&amp;url=%2fproject%2fbigmartsales%2fbigmartsales%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fproject%2fbigmartsales%2fbigmartsales%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fproject%2fbigmartsales%2fbigmartsales%2f&amp;title=BigMartSales"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fproject%2fbigmartsales%2fbigmartsales%2f&amp;title=BigMartSales"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=BigMartSales&amp;body=%2fproject%2fbigmartsales%2fbigmartsales%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+
+<div id="load-packages-and-data" class="section level1">
+<h1>Load Packages and Data</h1>
+<pre class="r"><code>train = fread(&quot;Train_UWu5bXk.csv&quot;) 
+test = fread(&quot;Test_u94Q5KV.csv&quot;)
+submission = fread(&quot;SampleSubmission_TmnO39y.csv&quot;)</code></pre>
+</div>
+<div id="get-to-know-the-data" class="section level1">
+<h1>Get to know the Data</h1>
+<pre class="r"><code>dim(train); dim(test)</code></pre>
+<pre><code>## [1] 8523   12</code></pre>
+<pre><code>## [1] 5681   11</code></pre>
+<pre class="r"><code>str(train)</code></pre>
+<pre><code>## Classes &#39;data.table&#39; and &#39;data.frame&#39;:   8523 obs. of  12 variables:
+##  $ Item_Identifier          : chr  &quot;FDA15&quot; &quot;DRC01&quot; &quot;FDN15&quot; &quot;FDX07&quot; ...
+##  $ Item_Weight              : num  9.3 5.92 17.5 19.2 8.93 ...
+##  $ Item_Fat_Content         : chr  &quot;Low Fat&quot; &quot;Regular&quot; &quot;Low Fat&quot; &quot;Regular&quot; ...
+##  $ Item_Visibility          : num  0.016 0.0193 0.0168 0 0 ...
+##  $ Item_Type                : chr  &quot;Dairy&quot; &quot;Soft Drinks&quot; &quot;Meat&quot; &quot;Fruits and Vegetables&quot; ...
+##  $ Item_MRP                 : num  249.8 48.3 141.6 182.1 53.9 ...
+##  $ Outlet_Identifier        : chr  &quot;OUT049&quot; &quot;OUT018&quot; &quot;OUT049&quot; &quot;OUT010&quot; ...
+##  $ Outlet_Establishment_Year: int  1999 2009 1999 1998 1987 2009 1987 1985 2002 2007 ...
+##  $ Outlet_Size              : chr  &quot;Medium&quot; &quot;Medium&quot; &quot;Medium&quot; &quot;&quot; ...
+##  $ Outlet_Location_Type     : chr  &quot;Tier 1&quot; &quot;Tier 3&quot; &quot;Tier 1&quot; &quot;Tier 3&quot; ...
+##  $ Outlet_Type              : chr  &quot;Supermarket Type1&quot; &quot;Supermarket Type2&quot; &quot;Supermarket Type1&quot; &quot;Grocery Store&quot; ...
+##  $ Item_Outlet_Sales        : num  3735 443 2097 732 995 ...
+##  - attr(*, &quot;.internal.selfref&quot;)=&lt;externalptr&gt;</code></pre>
+<pre class="r"><code>str(test)</code></pre>
+<pre><code>## Classes &#39;data.table&#39; and &#39;data.frame&#39;:   5681 obs. of  11 variables:
+##  $ Item_Identifier          : chr  &quot;FDW58&quot; &quot;FDW14&quot; &quot;NCN55&quot; &quot;FDQ58&quot; ...
+##  $ Item_Weight              : num  20.75 8.3 14.6 7.32 NA ...
+##  $ Item_Fat_Content         : chr  &quot;Low Fat&quot; &quot;reg&quot; &quot;Low Fat&quot; &quot;Low Fat&quot; ...
+##  $ Item_Visibility          : num  0.00756 0.03843 0.09957 0.01539 0.1186 ...
+##  $ Item_Type                : chr  &quot;Snack Foods&quot; &quot;Dairy&quot; &quot;Others&quot; &quot;Snack Foods&quot; ...
+##  $ Item_MRP                 : num  107.9 87.3 241.8 155 234.2 ...
+##  $ Outlet_Identifier        : chr  &quot;OUT049&quot; &quot;OUT017&quot; &quot;OUT010&quot; &quot;OUT017&quot; ...
+##  $ Outlet_Establishment_Year: int  1999 2007 1998 2007 1985 1997 2009 1985 2002 2007 ...
+##  $ Outlet_Size              : chr  &quot;Medium&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ Outlet_Location_Type     : chr  &quot;Tier 1&quot; &quot;Tier 2&quot; &quot;Tier 3&quot; &quot;Tier 2&quot; ...
+##  $ Outlet_Type              : chr  &quot;Supermarket Type1&quot; &quot;Supermarket Type1&quot; &quot;Grocery Store&quot; &quot;Supermarket Type1&quot; ...
+##  - attr(*, &quot;.internal.selfref&quot;)=&lt;externalptr&gt;</code></pre>
+<div id="combine-train-and-test" class="section level2">
+<h2>Combine Train and Test</h2>
+<pre class="r"><code>test[,Item_Outlet_Sales := NA]
+combi = rbind(train, test) # combining train and test datasets
+dim(combi)</code></pre>
+<pre><code>## [1] 14204    12</code></pre>
+</div>
+</div>
+<div id="univariate-analysis" class="section level1">
+<h1>Univariate Analysis</h1>
+<div id="target-variable" class="section level2">
+<h2>Target Variable</h2>
+<p>As our target variable (Item_Outlet_Sales) is continuous. We can visualise it by plotting its histogram.</p>
+<pre class="r"><code>ggplot(train) + geom_histogram(aes(train$Item_Outlet_Sales), binwidth = 100, fill = &quot;yellow&quot;) +
+  xlab(&quot;Item_Outlet_Sales&quot;)</code></pre>
+<p><img src="../../../project/BigMartSales/BigMartSales_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Observations:</p>
+<ul>
+<li>As you can see, it is a right skewd variable and would need some data transformation to treat its skewness.</li>
+</ul>
+</div>
+<div id="independent-variables-numeric-variables" class="section level2">
+<h2>Independent Variables (Numeric Variables)</h2>
+<p>Let’s preview the numeric independent variables. We’ll again use the histograms for visualizations because that will help us in visualizing the distribution of the variables.</p>
+<pre class="r"><code>p1 = ggplot(combi) + geom_histogram(aes(Item_Weight), binwidth = 0.5, fill = &quot;blue&quot;)
+p2 = ggplot(combi) + geom_histogram(aes(Item_Visibility), binwidth = 0.005, fill = &quot;blue&quot;)
+p3 = ggplot(combi) + geom_histogram(aes(Item_MRP), binwidth = 1, fill = &quot;blue&quot;)
+plot_grid(p1, p2, p3, nrow = 1) # plot_grid() from cowplot package</code></pre>
+<pre><code>## Warning: Removed 2439 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="../../../project/BigMartSales/BigMartSales_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Observations:</p>
+<ul>
+<li>There appears to be no clear-cut pattern in Item_Weight.</li>
+<li>Item_Visibility is right-skewed and should be transformed to curb its skewness.</li>
+<li>We can clearly see 4 different distributions for Item_MRP. <strong>It’s an interesting insight!</strong></li>
+</ul>
+</div>
+<div id="independent-variables-categorical-variables" class="section level2">
+<h2>Independent Variables (Categorical Variables)</h2>
+<p>Now we’ll try to explore and gain some insights from the categorical variables. A categorical variable or feature can have only a finite set of values. Let’s first plot Item_Fat_Content.</p>
+<pre class="r"><code>ggplot(combi %&gt;% group_by(Item_Fat_Content) %&gt;% summarise(Count = n())) + 
+  geom_bar(aes(Item_Fat_Content, Count), stat = &quot;identity&quot;, fill = &quot;coral1&quot;)</code></pre>
+<p><img src="../../../project/BigMartSales/BigMartSales_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Observations:</p>
+<ul>
+<li>In the figure above, ‘LF’, ‘low fat’, and ‘Low Fat’ are the same category and can be combined into one. Similarly, ‘reg’ and ‘Regular’ can be combined into one. After making these corrections we’ll plot the same figure again.</li>
+</ul>
+<pre class="r"><code>combi$Item_Fat_Content[combi$Item_Fat_Content == &quot;LF&quot;] = &quot;Low Fat&quot;
+combi$Item_Fat_Content[combi$Item_Fat_Content == &quot;low fat&quot;] = &quot;Low Fat&quot;
+combi$Item_Fat_Content[combi$Item_Fat_Content == &quot;reg&quot;] = &quot;Regular&quot;
+ggplot(combi %&gt;% group_by(Item_Fat_Content) %&gt;% summarise(Count = n())) + 
+  geom_bar(aes(Item_Fat_Content, Count), stat = &quot;identity&quot;, fill = &quot;coral1&quot;)</code></pre>
+<p><img src="../../../project/BigMartSales/BigMartSales_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Now let’s check the other categorical variables.</p>
+<pre class="r"><code># plot for Item_Type
+p4 = ggplot(combi %&gt;% group_by(Item_Type) %&gt;% summarise(Count = n())) + 
+  geom_bar(aes(Item_Type, Count), stat = &quot;identity&quot;, fill = &quot;coral1&quot;) +
+  xlab(&quot;&quot;) +
+  geom_label(aes(Item_Type, Count, label = Count), vjust = 0.5) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+  ggtitle(&quot;Item_Type&quot;)</code></pre>
+<pre class="r"><code># plot for Outlet_Identifier
+p5 = ggplot(combi %&gt;% group_by(Outlet_Identifier) %&gt;% summarise(Count = n())) + 
+  geom_bar(aes(Outlet_Identifier, Count), stat = &quot;identity&quot;, fill = &quot;coral1&quot;) +
+  geom_label(aes(Outlet_Identifier, Count, label = Count), vjust = 0.5) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))</code></pre>
+<pre class="r"><code># plot for Outlet_Size
+p6 = ggplot(combi %&gt;% group_by(Outlet_Size) %&gt;% summarise(Count = n())) + 
+  geom_bar(aes(Outlet_Size, Count), stat = &quot;identity&quot;, fill = &quot;coral1&quot;) +
+  geom_label(aes(Outlet_Size, Count, label = Count), vjust = 0.5) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))</code></pre>
+<pre class="r"><code>second_row = plot_grid(p5, p6, nrow = 1)
+plot_grid(p4, second_row, ncol = 1)</code></pre>
+<p><img src="../../../project/BigMartSales/BigMartSales_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>Observations:</p>
+<ul>
+<li>In Outlet_Size’s plot, for 4016 observations, Outlet_Size is blank or missing. We’ll check for this in the <strong>Bivariate Analysis</strong> to substitute the missing values in the Outlet_Size.</li>
+</ul>
+<p>We’ll also check the remaining categorical variables.</p>
+<pre class="r"><code># plot for Outlet_Establishment_Year
+p7 = ggplot(combi %&gt;% group_by(Outlet_Establishment_Year) %&gt;% summarise(Count = n())) + 
+  geom_bar(aes(factor(Outlet_Establishment_Year), Count), stat = &quot;identity&quot;, fill = &quot;coral1&quot;) +
+  geom_label(aes(factor(Outlet_Establishment_Year), Count, label = Count), vjust = 0.5) +
+  xlab(&quot;Outlet_Establishment_Year&quot;) +
+  theme(axis.text.x = element_text(size = 8.5))</code></pre>
+<pre class="r"><code># plot for Outlet_Type
+p8 = ggplot(combi %&gt;% group_by(Outlet_Type) %&gt;% summarise(Count = n())) + 
+  geom_bar(aes(Outlet_Type, Count), stat = &quot;identity&quot;, fill = &quot;coral1&quot;) +
+  geom_label(aes(factor(Outlet_Type), Count, label = Count), vjust = 0.5) +
+  theme(axis.text.x = element_text(size = 8.5))</code></pre>
+<pre class="r"><code># ploting both plots together
+plot_grid(p7, p8, ncol = 2)</code></pre>
+<p><img src="../../../project/BigMartSales/BigMartSales_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>Observations:</p>
+<ul>
+<li>Lesser number of observations in the data for the outlets established in the year 1998 as compared to the other years.</li>
+<li>Supermarket Type 1 seems to be the most popular category of Outlet_Type.</li>
+</ul>
+</div>
+</div>
+<div id="bivariate-analysis" class="section level1">
+<h1>Bivariate Analysis</h1>
+<p>After looking at every feature individually, let’s now do some <strong>bivariate analysis.</strong> Here, we’ll explore the independent variables with respect to the target variable. The objective is to discover hidden relationships between the independent variable and the target variable and use those findings in missing data imputation and feature engineering.</p>
+<p>We’ll make use of <strong>scatter plots</strong> for the continuous or numeric variables and <strong>violin plots</strong> for the categorical variables.</p>
+<pre class="r"><code>train = combi[1:nrow(train)] # extracting train data from the combined data</code></pre>
+<div id="target-variable-vs-independent-numerical-variables" class="section level2">
+<h2>Target Variable vs Independent Numerical Variables</h2>
+<p>Let’s explore the numerical variables first.</p>
+<pre class="r"><code># Item_Weight vs Item_Outlet_Sales
+p9 = ggplot(train) + 
+     geom_point(aes(Item_Weight, Item_Outlet_Sales), colour = &quot;violet&quot;, alpha = 0.3) +
+     theme(axis.title = element_text(size = 8.5))</code></pre>
+<pre class="r"><code># Item_Visibility vs Item_Outlet_Sales
+p10 = ggplot(train) + 
+      geom_point(aes(Item_Visibility, Item_Outlet_Sales), colour = &quot;violet&quot;, alpha = 0.3) +
+      theme(axis.title = element_text(size = 8.5))</code></pre>
+<pre class="r"><code># Item_MRP vs Item_Outlet_Sales
+p11 = ggplot(train) + 
+      geom_point(aes(Item_MRP, Item_Outlet_Sales), colour = &quot;violet&quot;, alpha = 0.3) +
+      theme(axis.title = element_text(size = 8.5))</code></pre>
+<pre class="r"><code>second_row_2 = plot_grid(p10, p11, ncol = 2)
+plot_grid(p9, second_row_2, nrow = 2)</code></pre>
+<pre><code>## Warning: Removed 1463 rows containing missing values (geom_point).</code></pre>
+<p><img src="../../../project/BigMartSales/BigMartSales_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>Observations:</p>
+<ul>
+<li>Item_Outlet_Sales is spread well across the entire range of the Item_Weight without any obvious pattern.</li>
+<li>In Item_Visibility vs Item_Outlet_Sales, there is a string of points at Item_Visibility = 0.0 which seems strange as item visibility cannot be completely zero. <em>We will take note of this issue and deal with it in the later stages.</em></li>
+<li>In the third plot of Item_MRP vs Item_Outlet_Sales, we can clearly see 4 segments of prices that can be used in feature engineering to create a new variable.</li>
+</ul>
+</div>
+<div id="target-variable-vs-independent-categorical-variables" class="section level2">
+<h2>Target Variable vs Independent Categorical Variables</h2>
+<p>Now we’ll visualise the categorical variables with respect to Item_Outlet_Sales. We will try to check the distribution of the target variable across all the categories of each of the categorical variable.</p>
+<p>We could have used boxplots here, but instead we’ll use the violin plots as they show the full distribution of the data. The width of a violin plot at a particular level indicates the concentration or density of data at that level. The height of a violin tells us about the range of the target variable values.</p>
+<pre class="r"><code># Item_Type vs Item_Outlet_Sales
+p12 = ggplot(train) + 
+      geom_violin(aes(Item_Type, Item_Outlet_Sales), fill = &quot;magenta&quot;) +
+      theme(axis.text.x = element_text(angle = 45, hjust = 1),
+            axis.text = element_text(size = 6),
+            axis.title = element_text(size = 8.5))</code></pre>
+<pre class="r"><code># Item_Fat_Content vs Item_Outlet_Sales
+p13 = ggplot(train) + 
+      geom_violin(aes(Item_Fat_Content, Item_Outlet_Sales), fill = &quot;magenta&quot;) +
+      theme(axis.text.x = element_text(angle = 45, hjust = 1),
+            axis.text = element_text(size = 8),
+            axis.title = element_text(size = 8.5))</code></pre>
+<pre class="r"><code># Outlet_Identifier vs Item_Outlet_Sales
+p14 = ggplot(train) + 
+      geom_violin(aes(Outlet_Identifier, Item_Outlet_Sales), fill = &quot;magenta&quot;) +
+      theme(axis.text.x = element_text(angle = 45, hjust = 1),
+            axis.text = element_text(size = 8),
+            axis.title = element_text(size = 8.5))</code></pre>
+<pre class="r"><code>second_row_3 = plot_grid(p13, p14, ncol = 2)
+plot_grid(p12, second_row_3, ncol = 1)</code></pre>
+<p><img src="../../../project/BigMartSales/BigMartSales_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p>Observations:</p>
+<ul>
+<li>Distribution of Item_Outlet_Sales across the categories of Item_Type is not very distinct and same is the case with Item_Fat_Content.</li>
+<li>The distribution for OUT010 and OUT019 categories of Outlet_Identifier are quite similar and very much different from the rest of the categories of Outlet_Identifier.</li>
+</ul>
+<p>In <strong>Univariate Analysis,</strong> we come to know about the empty values in Outlet_Size variable. Let’s check the distribution of the target variable across Outlet_Size.</p>
+<pre class="r"><code>ggplot(train) + geom_violin(aes(Outlet_Size, Item_Outlet_Sales), fill = &quot;magenta&quot;)</code></pre>
+<p><img src="../../../project/BigMartSales/BigMartSales_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<p>Observations:</p>
+<ul>
+<li>The distribution of ‘Small’ Outlet_Size is almost identical to the distribution of the blank category (first vioin) of Outlet_Size. So, we can substitute the blanks in Outlet_Size with ‘Small’.</li>
+<li><em>Please note that this is not the only way to impute missing values, but for the time being we will go ahead and impute the missing values with ‘Small’.</em></li>
+</ul>
+<p>Let’s examine the remaining variables.</p>
+<pre class="r"><code>p15 = ggplot(train) + geom_violin(aes(Outlet_Location_Type, Item_Outlet_Sales), fill = &quot;magenta&quot;)
+p16 = ggplot(train) + geom_violin(aes(Outlet_Type, Item_Outlet_Sales), fill = &quot;magenta&quot;)
+plot_grid(p15, p16, ncol = 1)</code></pre>
+<p><img src="../../../project/BigMartSales/BigMartSales_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<p>Observations:</p>
+<ul>
+<li>Tier 1 and Tier 3 locations of Outlet_Location_Type look similar.</li>
+<li>In the Outlet_Type plot, Grocery Store has most of its data points around the lower sales values as compared to the other categories.</li>
+</ul>
+</div>
+</div>
+<div id="missing-value-treatment" class="section level1">
+<h1>Missing Value Treatment</h1>
+<p>There are different methods to treat missing values based on the problem and the data. Some of the common techniques are as follows:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Deletion of rows:</strong> In train dataset, observations having missing values in any variable are deleted. The downside of this method is the loss of information and drop in prediction power of model.</p></li>
+<li><p><strong>Mean/Median/Mode Imputation:</strong> In case of continuous variable, missing values can be replaced with mean or median of all known values of that variable. For categorical variables, we can use mode of the given values to replace the missing values.</p></li>
+<li><p><strong>Building Prediction Model:</strong> We can even make a predictive model to impute missing data in a variable. Here we will treat the variable having missing data as the target variable and the other variables as predictors. We will divide our data into 2 datasets—one without any missing value for that variable and the other with missing values for that variable. The former set would be used as training set to build the predictive model and it would then be applied to the latter set to predict the missing values.</p></li>
+</ol>
+<p>You can try the following code to quickly find missing values in a variable.</p>
+<pre class="r"><code>sum(is.na(combi$Item_Weight))</code></pre>
+<pre><code>## [1] 2439</code></pre>
+<div id="imputing-missing-values" class="section level2">
+<h2>Imputing Missing Values</h2>
+<p>As seen above, we have missing values in Item_Weight and Item_Outlet_Sales. Missing data in Item_Outlet_Sales can be ignored since they belong to the test dataset. We’ll now impute Item_Weight with mean weight based on the Item_Identifier variable.</p>
+<pre class="r"><code>missing_index = which(is.na(combi$Item_Weight))
+for(i in missing_index){
+  
+  item = combi$Item_Identifier[i]
+  combi$Item_Weight[i] = mean(combi$Item_Weight[combi$Item_Identifier == item], na.rm = T)
+}</code></pre>
+<p>Now let’s see if there is still any missing data in Item_Weight?</p>
+<pre class="r"><code>sum(is.na(combi$Item_Weight))</code></pre>
+<pre><code>## [1] 0</code></pre>
+<p>Observations:</p>
+<ul>
+<li>Zero missing values! GREAT. It means we have successfully imputed the missing data in the feature.</li>
+</ul>
+</div>
+<div id="replacing-0s-in-item_visibility-variable" class="section level2">
+<h2>Replacing 0’s in Item_Visibility variable</h2>
+<p>Similarly, zeroes in Item_Visibility variable can be replaced with Item_Identifier wise mean values of Item_Visibility. It can be visualized in the plot below.</p>
+<pre class="r"><code>ggplot(combi) + geom_histogram(aes(Item_Visibility), bins = 100, fill = &quot;yellow&quot;)</code></pre>
+<p><img src="../../../project/BigMartSales/BigMartSales_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<p>Let’s replace the zeroes.</p>
+<pre class="r"><code>zero_index = which(combi$Item_Visibility == 0)
+for(i in zero_index){
+  
+  item = combi$Item_Identifier[i]
+  combi$Item_Visibility[i] = mean(combi$Item_Visibility[combi$Item_Identifier == item], na.rm = T)
+}</code></pre>
+<p>After the replacement of zeroes, We’ll plot the histogram of Item_Visibility again. In the histogram, we can see that the issue of zero item visibility has been resolved.</p>
+<pre class="r"><code>ggplot(combi) + geom_histogram(aes(Item_Visibility), bins = 100, fill = &quot;yellow&quot;)</code></pre>
+<p><img src="../../../project/BigMartSales/BigMartSales_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+</div>
+</div>
+<div id="feature-engineering" class="section level1">
+<h1>Feature Engineering</h1>
+<p>In this section we will create the following new features:</p>
+<ul>
+<li><strong>Item_Type_new:</strong> Broader categories for the variable Item_Type.</li>
+<li><strong>Item_category:</strong> Categorical variable derived from Item_Identifier.</li>
+<li><strong>Outlet_Years:</strong> Years of operation for outlets.</li>
+<li><strong>price_per_unit_wt:</strong> Item_MRP/Item_Weight</li>
+<li><strong>Item_MRP_clusters:</strong> Binned feature for Item_MRP.</li>
+</ul>
+<p>We can have a look at the Item_Type variable and classify the categories into <strong>perishable</strong> and <strong>non_perishable</strong> as per our understanding and make it into a new feature.</p>
+<pre class="r"><code>perishable = c(&quot;Breads&quot;, &quot;Breakfast&quot;, &quot;Dairy&quot;, &quot;Fruits and Vegetables&quot;, &quot;Meat&quot;, &quot;Seafood&quot;)</code></pre>
+<pre class="r"><code>non_perishable = c(&quot;Baking Goods&quot;, &quot;Canned&quot;, &quot;Frozen Foods&quot;, &quot;Hard Drinks&quot;, &quot;Health and Hygiene&quot;, &quot;Household&quot;, &quot;Soft Drinks&quot;)</code></pre>
+<pre class="r"><code># create a new feature &#39;Item_Type_new&#39;
+combi[,Item_Type_new := ifelse(Item_Type %in% perishable, &quot;perishable&quot;, ifelse(Item_Type %in% non_perishable, &quot;non_perishable&quot;, &quot;not_sure&quot;))]</code></pre>
+<p>Let’s compare Item_Type with the first 2 characters of Item_Identifier, i.e., ‘DR’, ‘FD’, and ‘NC’. These identifiers most probably stand for <strong>drinks,</strong> <strong>food,</strong> and <strong>non-consumable.</strong></p>
+<pre class="r"><code>table(combi$Item_Type, substr(combi$Item_Identifier, 1, 2))</code></pre>
+<pre><code>##                        
+##                           DR   FD   NC
+##   Baking Goods             0 1086    0
+##   Breads                   0  416    0
+##   Breakfast                0  186    0
+##   Canned                   0 1084    0
+##   Dairy                  229  907    0
+##   Frozen Foods             0 1426    0
+##   Fruits and Vegetables    0 2013    0
+##   Hard Drinks            362    0    0
+##   Health and Hygiene       0    0  858
+##   Household                0    0 1548
+##   Meat                     0  736    0
+##   Others                   0    0  280
+##   Seafood                  0   89    0
+##   Snack Foods              0 1989    0
+##   Soft Drinks            726    0    0
+##   Starchy Foods            0  269    0</code></pre>
+<p>Observations:</p>
+<ul>
+<li>Based on the above table we can create a new feature. Let’s call it Item_category.</li>
+</ul>
+<pre class="r"><code>combi[,Item_category := substr(combi$Item_Identifier, 1, 2)]</code></pre>
+<p>We’ll also change the values of <em>Item_Fat_Content</em> wherever Item_category is ‘NC’ because non-consumable items cannot have any fat content. We’ll also create a couple of more features — <strong>Outlet_Years</strong> (years of operation) and <strong>price_per_unit_wt</strong> (price per unit weight).</p>
+<pre class="r"><code>combi$Item_Fat_Content[combi$Item_category == &quot;NC&quot;] = &quot;Non-Edible&quot;
+# years of operation for outlets
+combi[,Outlet_Years := 2013 - Outlet_Establishment_Year]
+combi$Outlet_Establishment_Year = as.factor(combi$Outlet_Establishment_Year)
+# Price per unit weight
+combi[,price_per_unit_wt := Item_MRP/Item_Weight]</code></pre>
+<p>Earlier in the Item_MRP vs Item_Outlet_Sales plot, we saw Item_MRP was spread across in 4 chunks. Now let’s assign a label to each of these chunks and use this label as a new variable.</p>
+<pre class="r"><code># creating new independent variable - Item_MRP_clusters
+combi[,Item_MRP_clusters := ifelse(Item_MRP &lt; 69, &quot;1st&quot;, 
+                                   ifelse(Item_MRP &gt;= 69 &amp; Item_MRP &lt; 136, &quot;2nd&quot;,
+                                          ifelse(Item_MRP &gt;= 136 &amp; Item_MRP &lt; 203, &quot;3rd&quot;, &quot;4th&quot;)))]</code></pre>
+</div>
+<div id="encoding-categorical-variables" class="section level1">
+<h1>Encoding Categorical Variables</h1>
+<div id="why-encoding-categorical-variables-is-essential" class="section level2">
+<h2>Why Encoding Categorical Variables is essential?</h2>
+<p>Most of the ML algorithms produce better result with numerical variables only. So, it is essential to treat the categorical variables present in the data. One thing that can be done is to completely remove the categorical variables, but that would lead to enormous loss of information. Fortunately we have smarter techniques to deal with the categorical variables.</p>
+<p>We’ll convert our categorical variables into numerical ones. We’ll use 2 techniques — <em>Label Encoding</em> and <em>One Hot Encoding:</em></p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Label Encoding</strong> simply means converting each category in a variable to a number. It is more suitable for ordinal variables — categorical variables with some order.</p></li>
+<li><p><strong>One Hot Encoding,</strong> each category of a categorical variable is converted into a new binary column (1/0).</p></li>
+</ol>
+</div>
+<div id="label-encoding-for-the-categorical-variables" class="section level2">
+<h2>Label Encoding for the Categorical Variables</h2>
+<p>We’ll label encode Outlet_Size and Outlet_Location_Type as these are ordinal variables.</p>
+<pre class="r"><code>combi[,Outlet_Size_num := ifelse(Outlet_Size == &quot;Small&quot;, 0,
+                                 ifelse(Outlet_Size == &quot;Medium&quot;, 1, 2))]
+combi[,Outlet_Location_Type_num := ifelse(Outlet_Location_Type == &quot;Tier 3&quot;, 0,
+                                          ifelse(Outlet_Location_Type == &quot;Tier 2&quot;, 1, 2))]
+# removing categorical variables after label encoding
+combi[, c(&quot;Outlet_Size&quot;, &quot;Outlet_Location_Type&quot;) := NULL]</code></pre>
+</div>
+<div id="one-hot-encoding-for-the-categorical-variable" class="section level2">
+<h2>One Hot Encoding for the Categorical Variable</h2>
+<pre class="r"><code>ohe = dummyVars(&quot;~.&quot;, data = combi[,-c(&quot;Item_Identifier&quot;, &quot;Outlet_Establishment_Year&quot;, &quot;Item_Type&quot;)], fullRank = T)
+ohe_df = data.table(predict(ohe, combi[,-c(&quot;Item_Identifier&quot;, &quot;Outlet_Establishment_Year&quot;, &quot;Item_Type&quot;)]))
+combi = cbind(combi[,&quot;Item_Identifier&quot;], ohe_df)</code></pre>
+</div>
+</div>
+<div id="preprocessing-data" class="section level1">
+<h1>PreProcessing Data</h1>
+<div id="what-is-data-preprocessing" class="section level2">
+<h2>What is Data Preprocessing?</h2>
+<p>In simple words, pre-processing refers to the transformations applied to your data before feeding it to the algorithm. It invloves further cleaning of data, data transformation, data scaling and many more things.</p>
+<p>For our data, we’ll deal with the skewness and scale the numerical variables.</p>
+</div>
+<div id="removing-skewness" class="section level2">
+<h2>Removing Skewness</h2>
+<p>Skewness in variables is undesirable for predictive modeling. Some ML methods assume normally distributed data and a skewed variable can be transformed by taking its log, square root, or cube root so as to make its distribution as close to normal distribution as possible. In our data, variables Item_Visibility and price_per_unit_wt are highly skewed. So, we’ll treat their skewness with the help of log transformation.</p>
+<pre class="r"><code>combi[,Item_Visibility := log(Item_Visibility + 1)] # log + 1 to avoid division by zero
+combi[,price_per_unit_wt := log(price_per_unit_wt + 1)]</code></pre>
+</div>
+<div id="scaling-numeric-predictors" class="section level2">
+<h2>Scaling Numeric Predictors</h2>
+<p>Let’s scale and center the numeric variables to make them have a mean of zero, standard deviation of one and scale of 0 to 1. Scaling and centering is required for linear regression models.</p>
+<pre class="r"><code>num_vars = which(sapply(combi, is.numeric)) # index of numeric features
+num_vars_names = names(num_vars)
+combi_numeric = combi[,setdiff(num_vars_names, &quot;Item_Outlet_Sales&quot;), with = F]
+prep_num = preProcess(combi_numeric, method=c(&quot;center&quot;, &quot;scale&quot;))
+combi_numeric_norm = predict(prep_num, combi_numeric)</code></pre>
+<pre class="r"><code>combi[,setdiff(num_vars_names, &quot;Item_Outlet_Sales&quot;) := NULL] # removing numeric independent variables
+combi = cbind(combi, combi_numeric_norm)</code></pre>
+<p>Split the combined data back to train and test set.</p>
+<pre class="r"><code>train = combi[1:nrow(train)]
+test = combi[(nrow(train) + 1):nrow(combi)]
+test[,Item_Outlet_Sales := NULL] # removing Item_Outlet_Sales as it contains only NA for test dataset</code></pre>
+</div>
+<div id="correlated-variables" class="section level2">
+<h2>Correlated Variables</h2>
+<p>Let’s examine the correlated features of train dataset. Correlation varies from -1 to 1.</p>
+<ul>
+<li>negative correlation: &lt; 0 and &gt;= -1</li>
+<li>positive correlation: &gt; 0 and &lt;= 1</li>
+<li>no correlation: 0</li>
+</ul>
+<p>It is not desirable to have correlated features if we are using linear regressions.</p>
+<pre class="r"><code>cor_train = cor(train[,-c(&quot;Item_Identifier&quot;)])
+corrplot(cor_train, method = &quot;pie&quot;, type = &quot;lower&quot;, tl.cex = 0.9)</code></pre>
+<p><img src="../../../project/BigMartSales/BigMartSales_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p>Observations:</p>
+<ul>
+<li><p>The correlation plot above shows correlation between all the possible pairs of variables in out data. The correlation between any two variables is represented by a pie. A blueish pie indicates positive correlation and reddish pie indicates negative correlation. The magnitude of the correlation is denoted by the area covered by the pie.</p></li>
+<li><p>Variables price_per_unit_wt and Item_Weight are highly correlated as the former one was created from the latter. Similarly price_per_unit_wt and Item_MRP are highly correlated for the same reason.</p></li>
+</ul>
+</div>
+</div>
+<div id="model-building" class="section level1">
+<h1>Model Building</h1>
+<p>At the competition’s page, it has been mentioned that our submission data would be evaluated based on the RMSE score. Hence, we will use RMSE as our evaluation metric.</p>
+<ul>
+<li><strong>Root Mean Squared Error (RMSE)</strong> is the square root of the mean of the squared errors.</li>
+</ul>
+</div>
+<div id="linear-regression" class="section level1">
+<h1>Linear Regression</h1>
+<p>Linear regression is the simplest and most widely used statistical technique for predictive modeling.</p>
+<p>We will use 5-fold cross validation in all the models we are going to build. Basically cross vaidation gives an idea as to how well a model generalizes to unseen data.</p>
+<div id="build-model" class="section level2">
+<h2>Build Model</h2>
+<pre class="r"><code>linear_reg_mod = lm(Item_Outlet_Sales ~ ., data = train[,-c(&quot;Item_Identifier&quot;)])</code></pre>
+</div>
+<div id="make-predictions-on-test-data" class="section level2">
+<h2>Make Predictions on Test Data</h2>
+<pre class="r"><code># preparing dataframe for submission and writing it in a csv file
+submission$Item_Outlet_Sales = predict(linear_reg_mod, test[,-c(&quot;Item_Identifier&quot;)])</code></pre>
+<pre><code>## Warning in predict.lm(linear_reg_mod, test[, -c(&quot;Item_Identifier&quot;)]):
+## prediction from a rank-deficient fit may be misleading</code></pre>
+<pre class="r"><code>write.csv(submission, &quot;Linear_Reg_submit.csv&quot;, row.names = F)</code></pre>
+</div>
+</div>
+<div id="regularized-linear-regression" class="section level1">
+<h1>Regularized Linear Regression</h1>
+<p><strong>Regularised regression models</strong> can handle the correlated independent variables well and helps in overcoming overfitting. <strong>Ridge</strong> penalty shrinks the coefficients of correlated predictors towards each other, while the <strong>Lasso</strong> tends to pick one of a pair of correlated features and discard the other. The tuning parameter <strong>lambda</strong> controls the strength of the penalty.</p>
+<div id="lasso-regression" class="section level2">
+<h2>Lasso Regression</h2>
+<pre class="r"><code>set.seed(1235)
+my_control = trainControl(method=&quot;cv&quot;, number=5)
+Grid = expand.grid(alpha = 1, lambda = seq(0.001,0.1,by = 0.0002))
+
+lasso_linear_reg_mod = train(x = train[, -c(&quot;Item_Identifier&quot;, &quot;Item_Outlet_Sales&quot;)], y = train$Item_Outlet_Sales,
+                       method=&#39;glmnet&#39;, trControl= my_control, tuneGrid = Grid)</code></pre>
+</div>
+<div id="ridge-regression" class="section level2">
+<h2>Ridge Regression</h2>
+<pre class="r"><code>set.seed(1236)
+my_control = trainControl(method=&quot;cv&quot;, number=5)
+Grid = expand.grid(alpha = 0, lambda = seq(0.001,0.1,by = 0.0002))
+
+ridge_linear_reg_mod = train(x = train[, -c(&quot;Item_Identifier&quot;, &quot;Item_Outlet_Sales&quot;)], y = train$Item_Outlet_Sales,
+                       method=&#39;glmnet&#39;, trControl= my_control, tuneGrid = Grid)</code></pre>
+</div>
+</div>
+<div id="random-forest" class="section level1">
+<h1>Random Forest</h1>
+<p><strong>RandomForest</strong> is a tree based bootstrapping algorithm wherein a certain number of weak learners (decision trees) are combined to make a powerful prediction model. For every individual learner, a random sample of rows and a few randomly chosen variables are used to build a decision tree model. Final prediction can be a function of all the predictions made by the individual learners. In case of a regression problem, the final prediction can be mean of all the predictions.</p>
+<p>We’ll now build a RandomForest model with 400 trees. The other tuning parameters used here are mtry — no. of predictor variables randomly sampled at each split, and min.node.size — minimum size of terminal nodes (setting this number large causes smaller trees and reduces overfitting).</p>
+<pre class="r"><code>set.seed(1237)
+my_control = trainControl(method=&quot;cv&quot;, number=5) # 5-fold CV
+tgrid = expand.grid(
+  .mtry = c(3:10),
+  .splitrule = &quot;variance&quot;,
+  .min.node.size = c(10,15,20)
+)
+rf_mod = train(x = train[, -c(&quot;Item_Identifier&quot;, &quot;Item_Outlet_Sales&quot;)], 
+               y = train$Item_Outlet_Sales,
+               method=&#39;ranger&#39;, 
+               trControl= my_control, 
+               tuneGrid = tgrid,
+               num.trees = 400,
+               importance = &quot;permutation&quot;)</code></pre>
+<div id="best-model-parameters" class="section level2">
+<h2>Best Model Parameters</h2>
+<pre class="r"><code>plot(rf_mod)</code></pre>
+<p><img src="../../../project/BigMartSales/BigMartSales_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<p>Observations:</p>
+<ul>
+<li>As per the plot shown above, the best score is achieved at mtry = 5 and min.node.size = 20.</li>
+</ul>
+</div>
+<div id="variable-importance" class="section level2">
+<h2>Variable Importance</h2>
+<p>Let’s plot feature importance based on the RandomForest model</p>
+<pre class="r"><code>plot(varImp(rf_mod))</code></pre>
+<p><img src="../../../project/BigMartSales/BigMartSales_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<p>Observations:</p>
+<ul>
+<li>As expected Item_MRP is the most important variable in predicting the target variable. New features created by us, like price_per_unit_wt, Outlet_Years, Item_MRP_Clusters, are also among the top most important variables. This is why feature engineering plays such a crucial role in predictive modeling.</li>
+</ul>
+</div>
+</div>
+<div id="xgboost" class="section level1">
+<h1>XGBoost</h1>
+<p>XGBoost is a fast and efficient algorithm and has been used to by the winners of many data science competitions. XGBoost works only with numeric variables and we have already replaced the categorical variables with numeric variables. There are many tuning parameters in XGBoost which can be broadly classified into General Parameters, Booster Parameters and Task Parameters.</p>
+<p><em>General parameters refer to which booster we are using to do boosting. The commonly used are tree or linear model.
+</em>Booster parameters depend on which booster you have chosen.
+*Learning Task parameters that decide on the learning scenario, for example, regression tasks may use different parameters with ranking tasks.</p>
+<p>Let’s preview the parameters that we are going to use in our model.</p>
+<ol style="list-style-type: decimal">
+<li><strong>eta:</strong> It is also known as the learning rate or the shrinkage factor. It actually shrinks the feature weights to make the boosting process more conservative. The range is 0 to 1. Low eta value means the model is more robust to overfitting.</li>
+<li><strong>gamma:</strong> The range is 0 to ∞. Larger the gamma more conservative the algorithm is.</li>
+<li><strong>max_depth:</strong> We can specify maximum depth of a tree using this parameter.</li>
+<li><strong>subsample:</strong> It is the proportion of rows that the model will randomly select to grow trees.</li>
+<li><strong>colsample_bytree:</strong> It is the ratio of variables randomly chosen to build each tree in the model.</li>
+</ol>
+<pre class="r"><code>param_list = list(
+        
+        objective = &quot;reg:linear&quot;,
+        eta=0.01,
+        gamma = 1,
+        max_depth=6,
+        subsample=0.8,
+        colsample_bytree=0.5
+        )</code></pre>
+<pre class="r"><code>dtrain = xgb.DMatrix(data = as.matrix(train[,-c(&quot;Item_Identifier&quot;, &quot;Item_Outlet_Sales&quot;)]), label= train$Item_Outlet_Sales)
+dtest = xgb.DMatrix(data = as.matrix(test[,-c(&quot;Item_Identifier&quot;)]))</code></pre>
+<div id="cross-validation" class="section level2">
+<h2>Cross Validation</h2>
+<p>We are going to use the xgb.cv() function for cross validation. This function comes with the xgboost package itself. Here we are using cross validation for finding the optimal value of nrounds.</p>
+<pre class="r"><code>set.seed(112)
+xgbcv = xgb.cv(params = param_list, 
+               data = dtrain, 
+               nrounds = 1000, 
+               nfold = 5, 
+               print_every_n = 10, 
+               early_stopping_rounds = 30, 
+               maximize = F)</code></pre>
+<pre><code>## [1]  train-rmse:2746.725586+7.336395 test-rmse:2746.741797+30.998116 
+## Multiple eval metrics are present. Will use test_rmse for early stopping.
+## Will train until test_rmse hasn&#39;t improved in 30 rounds.
+## 
+## [11] train-rmse:2537.260938+5.858499 test-rmse:2539.031055+31.050055 
+## [21] train-rmse:2349.231885+4.482735 test-rmse:2352.873389+32.255671 
+## [31] train-rmse:2182.393750+4.819384 test-rmse:2187.824902+31.588163 
+## [41] train-rmse:2033.432080+3.195964 test-rmse:2040.415454+31.588752 
+## [51] train-rmse:1900.760058+2.740688 test-rmse:1910.174609+30.442020 
+## [61] train-rmse:1784.256690+2.877070 test-rmse:1796.284033+28.750707 
+## [71] train-rmse:1680.479932+2.497050 test-rmse:1695.349048+28.331918 
+## [81] train-rmse:1590.351367+2.354304 test-rmse:1607.833301+27.908130 
+## [91] train-rmse:1510.894165+2.035948 test-rmse:1531.593726+27.522115 
+## [101]    train-rmse:1441.319312+1.659380 test-rmse:1465.053589+29.087921 
+## [111]    train-rmse:1381.578052+2.426386 test-rmse:1408.426611+27.691651 
+## [121]    train-rmse:1329.565503+2.454451 test-rmse:1359.327344+27.161061 
+## [131]    train-rmse:1283.176050+2.888625 test-rmse:1316.178931+26.197404 
+## [141]    train-rmse:1243.624048+2.574635 test-rmse:1280.237305+25.250655 
+## [151]    train-rmse:1210.155518+2.584130 test-rmse:1250.134522+25.117012 
+## [161]    train-rmse:1180.639380+2.815261 test-rmse:1224.006177+24.242971 
+## [171]    train-rmse:1155.042627+2.457568 test-rmse:1201.782520+23.791665 
+## [181]    train-rmse:1133.263232+2.564969 test-rmse:1183.207934+22.977824 
+## [191]    train-rmse:1114.468555+2.585744 test-rmse:1167.656421+22.294357 
+## [201]    train-rmse:1098.238403+3.042034 test-rmse:1154.633814+21.729746 
+## [211]    train-rmse:1083.767114+3.474945 test-rmse:1143.161670+21.285152 
+## [221]    train-rmse:1071.447070+3.508526 test-rmse:1134.116235+20.871062 
+## [231]    train-rmse:1060.780518+3.622241 test-rmse:1126.463550+20.575531 
+## [241]    train-rmse:1051.508252+3.255189 test-rmse:1119.907349+20.552631 
+## [251]    train-rmse:1043.312622+3.268359 test-rmse:1114.685669+20.173664 
+## [261]    train-rmse:1035.746997+2.930902 test-rmse:1110.081641+19.966049 
+## [271]    train-rmse:1028.874536+2.943542 test-rmse:1105.989917+19.530901 
+## [281]    train-rmse:1022.628345+2.937003 test-rmse:1102.838232+19.300798 
+## [291]    train-rmse:1017.216028+2.821218 test-rmse:1100.273462+19.221121 
+## [301]    train-rmse:1012.029614+2.743604 test-rmse:1098.101782+19.030941 
+## [311]    train-rmse:1007.425781+2.755408 test-rmse:1096.336670+18.986031 
+## [321]    train-rmse:1003.200305+2.701284 test-rmse:1094.916968+19.005910 
+## [331]    train-rmse:999.357104+2.599227  test-rmse:1093.706055+19.035905 
+## [341]    train-rmse:995.499194+2.425299  test-rmse:1092.699609+18.929201 
+## [351]    train-rmse:991.902954+2.492520  test-rmse:1091.845703+18.983826 
+## [361]    train-rmse:988.751245+2.519240  test-rmse:1091.190332+18.899727 
+## [371]    train-rmse:985.493445+2.504406  test-rmse:1090.730664+18.812897 
+## [381]    train-rmse:982.394104+2.462072  test-rmse:1090.280884+18.888615 
+## [391]    train-rmse:979.547412+2.462087  test-rmse:1089.998340+18.846508 
+## [401]    train-rmse:976.771387+2.411750  test-rmse:1089.900439+18.755224 
+## [411]    train-rmse:973.951404+2.436468  test-rmse:1089.861890+18.818395 
+## [421]    train-rmse:971.220996+2.519783  test-rmse:1089.869263+18.860485 
+## [431]    train-rmse:968.606470+2.528438  test-rmse:1089.797754+18.815133 
+## [441]    train-rmse:966.202258+2.767049  test-rmse:1089.844604+18.789729 
+## [451]    train-rmse:963.874219+2.858829  test-rmse:1089.895117+18.779128 
+## Stopping. Best iteration:
+## [430]    train-rmse:968.889343+2.497103  test-rmse:1089.786206+18.836296</code></pre>
+</div>
+<div id="model-training" class="section level2">
+<h2>Model Training</h2>
+<p>As per the verbose above, we got the best validation/test score at the 430th iteration. Hence, we will use nrounds = 430 for building the XGBoost model.</p>
+<pre class="r"><code>xgb_model = xgb.train(data = dtrain, params = param_list, nrounds = 430)</code></pre>
+</div>
+<div id="variable-importance-1" class="section level2">
+<h2>Variable Importance</h2>
+<pre class="r"><code>var_imp = xgb.importance(feature_names = setdiff(names(train), c(&quot;Item_Identifier&quot;, &quot;Item_Outlet_Sales&quot;)), 
+                         model = xgb_model)
+xgb.plot.importance(var_imp)</code></pre>
+<p><img src="../../../project/BigMartSales/BigMartSales_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+<p>Observations:</p>
+<ul>
+<li>Again the features created by us, like price_per_unit_wt, Outlet_Years, Item_MRP_Clusters, are among the top most important variables.</li>
+</ul>
+</div>
+</div>
+
+    </div>
+
+    
+
+    
+
+
+
+
+
+
+<div class="media author-card" itemscope itemtype="http://schema.org/Person">
+  
+  <img class="portrait mr-3" src="../../../img/Rihad%20Variawa.png" itemprop="image" alt="Avatar">
+  
+  <div class="media-body">
+    <h5 class="card-title" itemprop="name"><a href="../../../">Rihad Variawa</a></h5>
+    <h6 class="card-subtitle">Data Scientist</h6>
+    
+    <ul class="network-icon" aria-hidden="true">
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="../../../rihadv021@gmail.com" >
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://twitter.com/2series_rv" target="_blank" rel="noopener">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://github.com/2series" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://www.linkedin.com/in/rihad-variawa-7422017b" target="_blank" rel="noopener">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+
+    
+    
+
+    
+
+      
+      
+      
+
+      
+      
+      
+
+      
+      
+      
+    
+
+  </div>
+</article>
+
+
+
+<div class="container">
+  <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="../../../privacy/">Privacy Policy</a>
+  </p>
+  
+
+  <p class="powered-by">
+    &copy; 2019 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="../../../js/academic.min.70f0041f5a24c6a675ac218c98d7ef71.js"></script>
+
+    
+
+  </body>
+</html>
+

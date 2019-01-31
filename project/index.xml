@@ -69,5 +69,26 @@ Ethereum, for example, enables users to store code snippets called ‘smart cont
  Analysis Approach You can click on the link below to see the working code in Python and reproduce it to test the strength of your own password.</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>/project/ts_analysis/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/project/ts_analysis/readme/</guid>
+      <description>ts_analysis airpassengers dataframe</description>
+    </item>
+    
+    <item>
+      <title>AirPassengers Time Series Analysis</title>
+      <link>/project/ts_analysis/code/final_code/airpassengers_ts_analysis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/project/ts_analysis/code/final_code/airpassengers_ts_analysis/</guid>
+      <description>Preamble: This document focuses on the analysis of the airpassengers dataframe.
+The AirPassenger dataset in R provides monthly totals of US airline passengers, from 1949 to 1960.
+Description of dataframe airpassengers can be found at https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/airpassengers.html
+ Research question: through analysis and modelling, preview a time series forecast   Structure of analysis: I will asssess whether a linear regression or arima model is a best fit for the time series forecast as follows:</description>
+    </item>
+    
   </channel>
 </rss>

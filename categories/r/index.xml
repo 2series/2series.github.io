@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Thu, 31 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 02 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Energy Demand Analysis w/ Time Series Forecasting</title>
+      <link>/post/energyd/energy-demand-analysis-w-time-series-forecasting/</link>
+      <pubDate>Sat, 02 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/energyd/energy-demand-analysis-w-time-series-forecasting/</guid>
+      <description>Preamble: This document focuses on an analysis of the energy demands of a European country.
+The dataset of the daily energy needs (in GWh) between 2004 and 2010.
+ References:  R. H. Shumway, D. S. Stoffer. Time Series Analysis and Its Applications. 2010. R. J. Hyndman. Forecasting: principles and practice. 2013. P. S. P. Cowpertwait, A. V. Metcalfe. Introductory Time Series with R. 2009.   Reseach questions: build a model for energy demand forecasting using time series analysis.</description>
+    </item>
     
     <item>
       <title>Time Series Analysis</title>

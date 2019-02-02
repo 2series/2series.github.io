@@ -544,7 +544,6 @@ ggplot(diamonds, aes(carat, price)) +
   ylim(0, quantile(diamonds$price,0.99)) +
   ggtitle(&#39;Price vs. Carat&#39;) +
   theme_classic()</code></pre>
-<pre><code>## Warning: Removed 926 rows containing missing values (geom_point).</code></pre>
 <p><img src="../../../project/diamonds/2019-01-25-predict-the-diamond-price-based-on-the-4-c-s_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Observations:</p>
 <ul>
@@ -558,9 +557,6 @@ ggplot(diamonds, aes(carat, price)) +
   scale_y_continuous(lim = c(0, quantile(diamonds$price, 0.99)) ) +
   ggtitle(&quot;Price vs. Carat&quot;) +
   theme_classic()</code></pre>
-<pre><code>## Warning: Removed 926 rows containing non-finite values (stat_smooth).</code></pre>
-<pre><code>## Warning: Removed 926 rows containing missing values (geom_point).</code></pre>
-<pre><code>## Warning: Removed 4 rows containing missing values (geom_smooth).</code></pre>
 <p><img src="../../../project/diamonds/2019-01-25-predict-the-diamond-price-based-on-the-4-c-s_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Observations:</p>
 <ul>
@@ -614,8 +610,6 @@ plot2 &lt;- ggplot(diamonds, aes(price)) +
   theme_classic()
 
 grid.arrange(plot1, plot2, ncol = 2)</code></pre>
-<pre><code>## Warning: Removed 1 rows containing missing values (geom_bar).</code></pre>
-<pre><code>## Warning: Removed 2 rows containing missing values (geom_bar).</code></pre>
 <p><img src="../../../project/diamonds/2019-01-25-predict-the-diamond-price-based-on-the-4-c-s_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Observations:</p>
 <ul>
@@ -652,7 +646,6 @@ ggplot(diamonds, aes(carat, price, color=clarity)) +
                      breaks = c(350, 1000, 5000, 10000, 15000)) +
   ggtitle(&#39;Price(log10) by Cube-Root of Carat&#39;) +
   theme_classic()</code></pre>
-<pre><code>## Warning: Removed 1691 rows containing missing values (geom_point).</code></pre>
 <p><img src="../../../project/diamonds/2019-01-25-predict-the-diamond-price-based-on-the-4-c-s_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Observations:</p>
 <ul>
@@ -672,7 +665,6 @@ ggplot(diamonds, aes(x = carat, y = price)) +
     breaks = c(350, 1000, 5000, 10000, 15000)) +
   ggtitle(&#39;Price(log10) by Cube-Root of Carat and Clarity&#39;) +
   theme_classic()</code></pre>
-<pre><code>## Warning: Removed 1693 rows containing missing values (geom_point).</code></pre>
 <p><img src="../../../project/diamonds/2019-01-25-predict-the-diamond-price-based-on-the-4-c-s_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>Observations:</p>
 <ul>
@@ -693,7 +685,6 @@ ggplot(diamonds, aes(x = carat, y = price)) +
     breaks = c(350, 1000, 5000, 10000, 15000)) +
   ggtitle(&#39;Price(log10) by Cube-Root of Carat and Cut&#39;) +
   theme_classic()</code></pre>
-<pre><code>## Warning: Removed 1696 rows containing missing values (geom_point).</code></pre>
 <p><img src="../../../project/diamonds/2019-01-25-predict-the-diamond-price-based-on-the-4-c-s_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>Observations:</p>
 <ul>
@@ -715,7 +706,6 @@ ggplot(diamonds, aes(x = carat, y = price)) +
     breaks = c(350, 1000, 5000, 10000, 15000)) +
   ggtitle(&#39;Price(log10) by Cube-Root of Carat and Color&#39;) +
   theme_classic()</code></pre>
-<pre><code>## Warning: Removed 1688 rows containing missing values (geom_point).</code></pre>
 <p><img src="../../../project/diamonds/2019-01-25-predict-the-diamond-price-based-on-the-4-c-s_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <pre class="r"><code>ggplot(diamonds) +
   geom_bar(mapping = aes(clarity, fill=cut), position = &quot;fill&quot; ) +

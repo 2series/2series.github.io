@@ -11,6 +11,189 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>energyE</title>
+      <link>/post/energye/energye/</link>
+      <pubDate>Sun, 03 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/energye/energye/</guid>
+      <description>
+
+
+&lt;div id=&#34;preamble&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Preamble:&lt;/h2&gt;
+&lt;p&gt;The dataset is available at [&lt;a href=&#34;https://archive.ics.uci.edu/ml/datasets/Energy+efficiency&#34; class=&#34;uri&#34;&gt;https://archive.ics.uci.edu/ml/datasets/Energy+efficiency&lt;/a&gt;].&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;reseach-questions&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Reseach questions:&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;to explore three data points, and visualize how they influence the energy load.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The following variables &lt;strong&gt;Wall.Area&lt;/strong&gt;, &lt;strong&gt;Roof.Area&lt;/strong&gt;, &lt;strong&gt;Glazing.Area&lt;/strong&gt; are identified as key indicators that can influence the energy load efficiency for both (Heating and Cooling spaces).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;structure-of-analysis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Structure of analysis:&lt;/h2&gt;
+&lt;p&gt;A time series forecast using the arima model as follows:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Exploratory Data Analysis&lt;/li&gt;
+&lt;li&gt;Plot Load Distribution Using Scatter Plot&lt;/li&gt;
+&lt;li&gt;Plot Heating Load Efficiency&lt;/li&gt;
+&lt;li&gt;Plot Cooling Load Efficiency&lt;/li&gt;
+&lt;li&gt;Plot Energy Efficiency&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rm(list = ls())
+
+sourceURL &amp;lt;- &amp;quot;https://raw.githubusercontent.com/StephenElston/DataScience350/master/Lecture1/EnergyEfficiencyData.csv&amp;quot;
+
+df &amp;lt;- read.csv( sourceURL, header = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;exploratory-data-analysis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Exploratory Data Analysis&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(df)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   Relative.Compactness Surface.Area Wall.Area Roof.Area Overall.Height
+## 1                 0.98        514.5     294.0    110.25              7
+## 2                 0.98        514.5     294.0    110.25              7
+## 3                 0.98        514.5     294.0    110.25              7
+## 4                 0.98        514.5     294.0    110.25              7
+## 5                 0.90        563.5     318.5    122.50              7
+## 6                 0.90        563.5     318.5    122.50              7
+##   Orientation Glazing.Area Glazing.Area.Distribution Heating.Load
+## 1           2            0                         0        15.55
+## 2           3            0                         0        15.55
+## 3           4            0                         0        15.55
+## 4           5            0                         0        15.55
+## 5           2            0                         0        20.84
+## 6           3            0                         0        21.46
+##   Cooling.Load
+## 1        21.33
+## 2        21.33
+## 3        21.33
+## 4        21.33
+## 5        28.28
+## 6        25.38&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(df)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;data.frame&amp;#39;:    768 obs. of  10 variables:
+##  $ Relative.Compactness     : num  0.98 0.98 0.98 0.98 0.9 0.9 0.9 0.9 0.86 0.86 ...
+##  $ Surface.Area             : num  514 514 514 514 564 ...
+##  $ Wall.Area                : num  294 294 294 294 318 ...
+##  $ Roof.Area                : num  110 110 110 110 122 ...
+##  $ Overall.Height           : num  7 7 7 7 7 7 7 7 7 7 ...
+##  $ Orientation              : int  2 3 4 5 2 3 4 5 2 3 ...
+##  $ Glazing.Area             : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Glazing.Area.Distribution: int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Heating.Load             : num  15.6 15.6 15.6 15.6 20.8 ...
+##  $ Cooling.Load             : num  21.3 21.3 21.3 21.3 28.3 ...&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Categorize useful variables and convert them to a categorical variables, namely &lt;strong&gt;Orientation&lt;/strong&gt;, &lt;strong&gt;Glazing.Area.Distribution&lt;/strong&gt;, and &lt;strong&gt;Glazing.Area&lt;/strong&gt; (variance) variables.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## change vector values to factor values
+df$Orientation &amp;lt;- as.factor(df$Orientation) 
+
+## attributes of variable 
+levels(df$Orientation) &amp;lt;- c(&amp;quot;North&amp;quot;, &amp;quot;East&amp;quot;, &amp;quot;South&amp;quot;, &amp;quot;West&amp;quot;)
+
+## change vector values to factor values
+df$Glazing.Area.Distribution &amp;lt;- as.factor(df$Glazing.Area.Distribution)
+
+## attributes of variable
+levels(df$Glazing.Area.Distribution) &amp;lt;- c(&amp;quot;UnKnown&amp;quot;, &amp;quot;Uniform&amp;quot;, &amp;quot;North&amp;quot;, &amp;quot;East&amp;quot;, &amp;quot;South&amp;quot;, &amp;quot;West&amp;quot;)
+
+## change vector values to factor values
+df$Glazing.Area &amp;lt;- as.factor(df$Glazing.Area) 
+
+## attributes of variable
+levels(df$Glazing.Area) &amp;lt;- c(&amp;quot;0%&amp;quot;, &amp;quot;10%&amp;quot;, &amp;quot;25%&amp;quot;, &amp;quot;40%&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(df)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  Relative.Compactness  Surface.Area     Wall.Area       Roof.Area    
+##  Min.   :0.6200       Min.   :514.5   Min.   :245.0   Min.   :110.2  
+##  1st Qu.:0.6825       1st Qu.:606.4   1st Qu.:294.0   1st Qu.:140.9  
+##  Median :0.7500       Median :673.8   Median :318.5   Median :183.8  
+##  Mean   :0.7642       Mean   :671.7   Mean   :318.5   Mean   :176.6  
+##  3rd Qu.:0.8300       3rd Qu.:741.1   3rd Qu.:343.0   3rd Qu.:220.5  
+##  Max.   :0.9800       Max.   :808.5   Max.   :416.5   Max.   :220.5  
+##  Overall.Height Orientation Glazing.Area Glazing.Area.Distribution
+##  Min.   :3.50   North:192   0% : 48      UnKnown: 48              
+##  1st Qu.:3.50   East :192   10%:240      Uniform:144              
+##  Median :5.25   South:192   25%:240      North  :144              
+##  Mean   :5.25   West :192   40%:240      East   :144              
+##  3rd Qu.:7.00                            South  :144              
+##  Max.   :7.00                            West   :144              
+##   Heating.Load    Cooling.Load  
+##  Min.   : 6.01   Min.   :10.90  
+##  1st Qu.:12.99   1st Qu.:15.62  
+##  Median :18.95   Median :22.08  
+##  Mean   :22.31   Mean   :24.59  
+##  3rd Qu.:31.67   3rd Qu.:33.13  
+##  Max.   :43.10   Max.   :48.03&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plot-load-distribution-using-scatter-plot&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Plot Load Distribution Using Scatter Plot&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## visualize if there is any relation between &amp;#39;Roof.Area&amp;#39;, &amp;#39;Surface.Area&amp;#39; and &amp;#39;Glazing.Area&amp;#39; and how load is distributed using scatter plot.
+ggplot(df, aes(x = Cooling.Load, y = Heating.Load), alpha = 0.5)+
+  geom_point(aes(colour = Roof.Area ))+
+  facet_grid(Overall.Height + Glazing.Area ~ Surface.Area,  space = &amp;quot;free&amp;quot;) +
+  ggtitle(&amp;quot;Load distribuiton of energy by Roof Area and Surface Area \n by Glazing Area and Overall Height&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./post/energyE/2019-02-03-energye_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Observations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Roof area and Surface area range is high for minimum/ lowest (3.5) over-all height and&lt;/li&gt;
+&lt;li&gt;Roof area and Surface area range is low for maximum/ highest (7.0) over-all height.&lt;/li&gt;
+&lt;li&gt;There are no data points when the overall height is 7 and highest surface area range and also for low overall height 3.5, we have no data points with the low surface area range.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plot-heating-load-efficiency&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Plot Heating Load Efficiency&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## plot how &amp;#39;Wall.Area&amp;#39; influence heating load using raster plot.
+ggplot(df, aes( Surface.Area, Roof.Area)) +
+  geom_raster(aes(fill = Heating.Load), interpolate = TRUE) +
+  scale_fill_gradient(low = &amp;quot;steelblue&amp;quot;, high = &amp;quot;red&amp;quot;)+
+  facet_wrap(~Wall.Area, scales = &amp;quot;free&amp;quot; )+
+  ggtitle(&amp;#39;Measuring Heating Load distribution \n by Wall Area, Surface Area and Roof Area&amp;#39;) +
+  xlab(&amp;#39;Surface Area&amp;#39;) + ylab(&amp;#39;Roof Area&amp;#39;) +
+  theme_classic()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./post/energyE/2019-02-03-energye_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;864&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Observations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;By looking at the figures, we can conclude that &lt;strong&gt;Wall Area&lt;/strong&gt; plays a significant role in heating, irrespective of Surface Area and Roof Area. (Higher the wall area, higher the heating load).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plot-cooling-load-efficiency&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Plot Cooling Load Efficiency&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## plot how &amp;#39;Wall.Area&amp;#39; influence cooling load using raster plot.
+ggplot(df, aes(Surface.Area, Roof.Area)) +
+  geom_raster(aes(fill = Cooling.Load), interpolate = TRUE) +
+  scale_fill_gradient(low = &amp;quot;grey&amp;quot;, high = &amp;quot;steelblue&amp;quot;)+
+  facet_wrap(~Wall.Area, scales = &amp;quot;free&amp;quot; )+
+  ggtitle(&amp;#39;Measuring Cooling Load distribution \n by Wall Area, Surface Area and Roof Area&amp;#39;) +
+  xlab(&amp;#39;Surface Area&amp;#39;) + ylab(&amp;#39;Roof Area&amp;#39;) +
+  theme_classic()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./post/energyE/2019-02-03-energye_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;864&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Observations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;So, &lt;strong&gt;Wall Area&lt;/strong&gt; plays a significant role in both Heating and Cooling Load efficiency.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plot-energy-efficiency&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Plot Energy Efficiency&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## we have seen more variation in load data when the overall height is (7.0). So lets create a subset named(energy.eff.sub7.0) which contains the filtered data with overall height = 7.0. Lets visualize, if the &amp;#39;Roof.Area&amp;#39;, &amp;#39;Wall.Area&amp;#39;, &amp;#39;Surface.Area&amp;#39; and &amp;#39;Glazing.Area&amp;#39; are influencing the load efficiency.
+energy.eff.sub7.0 &amp;lt;- df[ df$Overall.Height ==7.0,]
+ggplot(energy.eff.sub7.0,
+       aes(x = Cooling.Load, y = Heating.Load, group = factor(round(Wall.Area)), 
+           size = Glazing.Area,
+           shape = factor(round(Wall.Area))))+
+  geom_point(aes(colour= factor(round(Surface.Area))), alpha = 0.3)+
+  geom_smooth(method = &amp;quot;lm&amp;quot;,se = TRUE )+
+  facet_wrap(~ Roof.Area) +
+  ggtitle(&amp;#39;Load efficiency by Roof Area, by Wall Area by Surface Area and by Glazing Area&amp;#39;) +
+  theme_classic()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./post/energyE/2019-02-03-energye_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;864&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Observations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It is clearly evident that the Load efficiency is influenced by the Roof Area, Wall Area, Surface Area, and Glazing Area.&lt;/li&gt;
+&lt;li&gt;When the Glazing Area is high, Roof Area is high and Wall Area is high, Load will be high and viceversa.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Energy Demand Analysis w/ Time Series Forecasting</title>
       <link>/post/energyd/energy-demand-analysis-w-time-series-forecasting/</link>
       <pubDate>Sat, 02 Feb 2019 00:00:00 +0000</pubDate>
@@ -19,18 +202,17 @@
       <description>
 
 
-&lt;div id=&#34;preamble&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Preamble:&lt;/h2&gt;
-&lt;p&gt;This document focuses on an analysis of the energy demands of a European country.&lt;/p&gt;
-&lt;p&gt;The dataset of the daily energy needs (in GWh) between 2004 and 2010.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;references&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;References:&lt;/h2&gt;
+&lt;div id=&#34;references&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;References:&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;R. H. Shumway, D. S. Stoffer. &lt;em&gt;Time Series Analysis and Its Applications&lt;/em&gt;. 2010.&lt;/li&gt;
 &lt;li&gt;R. J. Hyndman. &lt;em&gt;Forecasting: principles and practice&lt;/em&gt;. 2013.&lt;/li&gt;
 &lt;li&gt;P. S. P. Cowpertwait, A. V. Metcalfe. &lt;em&gt;Introductory Time Series with R&lt;/em&gt;. 2009.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;div id=&#34;preamble&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Preamble:&lt;/h2&gt;
+&lt;p&gt;This document focuses on an analysis of the energy demands of a European country.&lt;/p&gt;
+&lt;p&gt;The dataset of the daily energy needs (in GWh) between 2004 and 2010.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;reseach-questions&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Reseach questions:&lt;/h2&gt;
@@ -299,6 +481,7 @@ percerr&lt;/code&gt;&lt;/pre&gt;
   labs(x=&amp;quot;Time&amp;quot;, y=&amp;quot;Energy Demand (GWh)&amp;quot;) +
   theme_classic()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./post/energyD/2019-02-02-energy-demand-analysis-w-time-series-forecasting_files/figure-html/unnamed-chunk-27-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>

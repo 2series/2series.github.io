@@ -7,13 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Sun, 03 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 07 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>energyE</title>
+      <title>Bank ATM Cash Machine Forecast w/ Time Series</title>
+      <link>/post/atm/bank/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/atm/bank/</guid>
+      <description>Preamble: This document focuses on the time series analysis. The variable ‘Cash’ is provided in hundreds of dollars.
+This is a time series spanning daily transactions from May 1, 2009 to April 30, 2010 from four ATMs.
+ Research question: forecast how much cash is taken out of 4 different ATM machines for May 2010   Structure of analysis: Exploratory Data Analysis Visualizations ACF and PACF Clean The Data Trend Preview Data Decomposition Plot Stationarity Test Model Data Transformation ARIMA Model Evaluation Box-Ljung Test Forecasting Model Accuracy  sourceURL &amp;lt;- &amp;quot;https://raw.</description>
+    </item>
+    
+    <item>
+      <title>Energy Forecasting w/ Time Series Analysis</title>
+      <link>/post/residential_energy/residential-energy-usage/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/residential_energy/residential-energy-usage/</guid>
+      <description>Preamble: This document focuses on the time series analysis. A simple dataset of residential power usage from January 1998 to December 2013.
+ Research question: through an analysis, model this data and monthly forecast for 2014   Structure of analysis: Exploratory Data Analysis Visualizations ACF and PACF Clean The Data Trend Preview Data Decomposition Plot Stationarity Test Model Data Transformation ARIMA Model Evaluation Box-Ljung Test Forecasting Model Accuracy  sourceURL &amp;lt;- &amp;quot;https://raw.</description>
+    </item>
+    
+    <item>
+      <title>Energy Efficiency on Buildings</title>
       <link>/post/energye/energye/</link>
       <pubDate>Sun, 03 Feb 2019 00:00:00 +0000</pubDate>
       

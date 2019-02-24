@@ -7,22 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Thu, 10 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 06 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/python/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Machine Learning using linear regression to predict house prices</title>
-      <link>/project/machine_learning_using_lr/machine-learning-using-linear-regression-to-predict-house-prices/</link>
-      <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/project/machine_learning_using_lr/machine-learning-using-linear-regression-to-predict-house-prices/</guid>
-      <description> Intro &amp;amp; Background Linear regression being one of the most basic and popular algorithms in machine learning, so when aspiring data scientist starts off in this field, linear regression is inevitably the first algorithm they come across.
- Analysis Approach You can click on the link below to see the working code in Python and reproduce it to test the strength of your own password.
-https://github.com/2series/100_Days_of_ML_Code/blob/master/Linear_Regression_from_Scratch.ipynb
- </description>
-    </item>
     
     <item>
       <title>Build A Simple Blockchain</title>

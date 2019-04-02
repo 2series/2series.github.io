@@ -4,6 +4,22 @@
     
     <url>
     
+      <loc>/post/sales_analysis/sales-analysis/</loc>
+      <lastmod>2019-03-28T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/post/nycflights13/nyc-fights13/</loc>
+      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/post/atm/bank/</loc>
       <lastmod>2019-02-07T00:00:00+00:00</lastmod>
     </url>
@@ -77,7 +93,7 @@
     <url>
     
       <loc>/post/mtcars/2019-01-03-r-rmarkdown/</loc>
-      <lastmod>2019-01-03T21:13:14-05:00</lastmod>
+      <lastmod>2019-01-03T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -124,14 +140,6 @@
     
     <url>
     
-      <loc>/post/mtcars/</loc>
-      <lastmod>2017-01-01T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
       <loc>/publication/</loc>
       <lastmod>2017-01-01T00:00:00+00:00</lastmod>
     </url>
@@ -157,8 +165,8 @@
     
     <url>
     
-      <loc>/categories/blockchain/</loc>
-      <lastmod>2019-01-06T00:00:00+00:00</lastmod>
+      <loc>/tags/blockchain/</loc>
+      <lastmod>2018-08-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -166,8 +174,8 @@
     
     <url>
     
-      <loc>/tags/blockchain/</loc>
-      <lastmod>2018-08-20T00:00:00+00:00</lastmod>
+      <loc>/categories/blockchain/</loc>
+      <lastmod>2019-01-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -212,7 +220,7 @@
     <url>
     
       <loc>/post/</loc>
-      <lastmod>2019-02-07T00:00:00+00:00</lastmod>
+      <lastmod>2019-03-28T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -238,15 +246,6 @@
     
     <url>
     
-      <loc>/categories/python/</loc>
-      <lastmod>2019-01-06T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
       <loc>/tags/python/</loc>
       <lastmod>2019-01-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -256,8 +255,17 @@
     
     <url>
     
+      <loc>/categories/python/</loc>
+      <lastmod>2019-01-06T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/categories/r/</loc>
-      <lastmod>2019-02-07T00:00:00+00:00</lastmod>
+      <lastmod>2019-03-28T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -299,7 +307,7 @@
     <url>
     
       <loc>/tags/plot/</loc>
-      <lastmod>2019-01-03T21:13:14-05:00</lastmod>
+      <lastmod>2019-03-27T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

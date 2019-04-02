@@ -28,11 +28,11 @@ Descriotion of data frame diamonds can be found at https://stat.ethz.ch/R-manual
     <item>
       <title>mtcars Data Analysis</title>
       <link>/post/mtcars/2019-01-03-r-rmarkdown/</link>
-      <pubDate>Thu, 03 Jan 2019 21:13:14 -0500</pubDate>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/mtcars/2019-01-03-r-rmarkdown/</guid>
       <description>Preamble: This document focuses on the analysis of the mtcars dataframe.
-Description of dataframe mtcars can be found at https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html
+Description of dataframe mtcars can be found at the link
  Research questions: is a vehicle with auto or manual transmission better in terms of miles p/gallons(mpg)?
  quantify the (mpg) difference between auto &amp;amp; manual transmission.
    Structure of analysis: I will asssess both queries from different perspectives employing a set of methodologies that can be broadly grouped as follows:</description>

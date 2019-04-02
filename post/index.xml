@@ -7,10 +7,29 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Thu, 07 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Sales Analysis</title>
+      <link>/post/sales_analysis/sales-analysis/</link>
+      <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sales_analysis/sales-analysis/</guid>
+      <description>Sample Sales Data, Order Info, Sales, Customer, Shipping, etc., Used for Segmentation, Customer Analytics, Clustering and More. Inspired for retail analytics. This was originally used for Pentaho DI Kettle, But I found the set could be useful for Sales Simulation training.  Originally Written by María Carina Roldán, Pentaho Community Member, BI consultant (Assert Solutions), Argentina. This work is licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License. Modified by Gus Segura June 2014.</description>
+    </item>
+    
+    <item>
+      <title>NYC_Fights13</title>
+      <link>/post/nycflights13/nyc-fights13/</link>
+      <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/nycflights13/nyc-fights13/</guid>
+      <description>About the dataset In this analysis, we explore the dplyr functions used to ask interesting questions of a more complex dataset We’ll use a dataset of flights that departed from New York city airports (including Newark, John F. Kennedy, and Laguardia airports) in 2013. This dataset is also featured online in the Introduction to dplyr vignette, and is drawn from the Bureau of Transportation Statistics database.
+This dataset will use over 300,000 observations to ask the following questions:</description>
+    </item>
     
     <item>
       <title>Bank ATM Cash Machine Forecast w/ Time Series</title>
@@ -66,6 +85,19 @@ The dataset of the daily energy needs (in GWh) between 2004 and 2010.
 The AirPassenger dataset in R provides monthly totals of US airline passengers, from 1949 to 1960.
 Description of dataframe airpassengers can be found at https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/airpassengers.html
  Research question: through analysis and modelling, preview a time series forecast   Structure of analysis: I will asssess whether a linear regression or arima model is a best fit for the time series forecast as follows:</description>
+    </item>
+    
+    <item>
+      <title>mtcars Data Analysis</title>
+      <link>/post/mtcars/2019-01-03-r-rmarkdown/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/mtcars/2019-01-03-r-rmarkdown/</guid>
+      <description>Preamble: This document focuses on the analysis of the mtcars dataframe.
+Description of dataframe mtcars can be found at the link
+ Research questions: is a vehicle with auto or manual transmission better in terms of miles p/gallons(mpg)?
+ quantify the (mpg) difference between auto &amp;amp; manual transmission.
+   Structure of analysis: I will asssess both queries from different perspectives employing a set of methodologies that can be broadly grouped as follows:</description>
     </item>
     
   </channel>

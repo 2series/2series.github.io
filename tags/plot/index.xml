@@ -7,19 +7,29 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Thu, 03 Jan 2019 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 27 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/plot/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>NYC_Fights13</title>
+      <link>/post/nycflights13/nyc-fights13/</link>
+      <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/nycflights13/nyc-fights13/</guid>
+      <description>About the dataset In this analysis, we explore the dplyr functions used to ask interesting questions of a more complex dataset We’ll use a dataset of flights that departed from New York city airports (including Newark, John F. Kennedy, and Laguardia airports) in 2013. This dataset is also featured online in the Introduction to dplyr vignette, and is drawn from the Bureau of Transportation Statistics database.
+This dataset will use over 300,000 observations to ask the following questions:</description>
+    </item>
+    
+    <item>
       <title>mtcars Data Analysis</title>
       <link>/post/mtcars/2019-01-03-r-rmarkdown/</link>
-      <pubDate>Thu, 03 Jan 2019 21:13:14 -0500</pubDate>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/mtcars/2019-01-03-r-rmarkdown/</guid>
       <description>Preamble: This document focuses on the analysis of the mtcars dataframe.
-Description of dataframe mtcars can be found at https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html
+Description of dataframe mtcars can be found at the link
  Research questions: is a vehicle with auto or manual transmission better in terms of miles p/gallons(mpg)?
  quantify the (mpg) difference between auto &amp;amp; manual transmission.
    Structure of analysis: I will asssess both queries from different perspectives employing a set of methodologies that can be broadly grouped as follows:</description>

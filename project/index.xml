@@ -7,10 +7,84 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Fri, 25 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 08 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Earnings Prediction From Census Data</title>
+      <link>/project/earnings/earnings/</link>
+      <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/earnings/earnings/</guid>
+      <description>The United States government periodically collects demographic information by conducting a census.
+In this analysis, we are going to use census information about an individual to predict how much a person earns – in particular, whether the person earns more than $50,000 per year. This data comes from the UCI Machine Learning Repository.
+The file census.csv contains 1994 census data for 31,978 individuals in the United States.
+The dataset includes the following 13 variables:</description>
+    </item>
+    
+    <item>
+      <title>Understanding Why People Vote?</title>
+      <link>/project/understanding_votes/votes/</link>
+      <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/understanding_votes/votes/</guid>
+      <description>In August 2006 three researchers (Alan Gerber and Donald Green of Yale University, and Christopher Larimer of the University of Northern Iowa) carried out a large scale field experiment in Michigan, USA to test the hypothesis that one of the reasons people vote is social, or extrinsic, pressure. To quote the first paragraph of their 2008 research paper:
+ “Among the most striking features of a democratic political system is the participation of millions of voters in elections.</description>
+    </item>
+    
+    <item>
+      <title>Predict Loan Repayments</title>
+      <link>/project/loan_repayment/loan_repayments/</link>
+      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/loan_repayment/loan_repayments/</guid>
+      <description>In the lending industry, investors provide loans to borrowers in exchange for the promise of repayment with interest. If the borrower repays the loan, then the lender profits from the interest. However, if the borrower is unable to repay the loan, then the lender loses money. Therefore, lenders face the problem of predicting the risk of a borrower being unable to repay a loan.
+To address this problem, we will use publicly available data from LendingClub.</description>
+    </item>
+    
+    <item>
+      <title>Predict Popular Songs</title>
+      <link>/project/music/music/</link>
+      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/music/music/</guid>
+      <description>Popularity of music records
+The music industry has a well-developed market with a global annual revenue around $15 billion. The recording industry is highly competitive and is dominated by three big production companies which make up nearly 82% of the total annual album sales.
+Artists are at the core of the music industry and record labels provide them with the necessary resources to sell their music on a large scale.</description>
+    </item>
+    
+    <item>
+      <title>Detecting Flu Epidemics via Search Engine Query Data</title>
+      <link>/project/flu_epidemics/flu_epidemics/</link>
+      <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/flu_epidemics/flu_epidemics/</guid>
+      <description>Flu epidemics constitute a major public health concern causing respiratory illnesses, hospitalizations, and deaths. According to the National Vital Statistics Reports published in October 2012, influenza ranked as the eighth leading cause of death in 2011 in the United States. Each year, 250,000 to 500,000 deaths are attributed to influenza related diseases throughout the world.
+The U.S. Centers for Disease Control and Prevention (CDC) and the European Influenza Surveillance Scheme (EISS) detect influenza activity through virologic and clinical data, including Influenza-like Illness (ILI) physician visits.</description>
+    </item>
+    
+    <item>
+      <title>Reading Test Scores</title>
+      <link>/project/pisa2009/pisa/</link>
+      <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/pisa2009/pisa/</guid>
+      <description>The Programme for International Student Assessment (PISA) is a test given every three years to 15-year-old students from around the world to evaluate their performance in mathematics, reading, and science. This test provides a quantitative way to compare the performance of students from different parts of the world. In this analysis, I’ll predict the reading scores of students from the USA on the 2009 PISA exam.
+The datasets contain information about the demographics and schools for American students taking the exam, derived from 2009 PISA Public-Use Data Files distributed by the United States National Center for Education Statistics (NCES).</description>
+    </item>
+    
+    <item>
+      <title>climate_change</title>
+      <link>/project/climate_change/climate_change/</link>
+      <pubDate>Fri, 05 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/climate_change/climate_change/</guid>
+      <description>There have been many studies documenting that the average global temperature has been increasing over the last century. The consequences of a continued rise in global temperature will be dire. Rising sea levels and an increased frequency of extreme weather events will affect billions of people.
+In this analysis, we will attempt to study the relationship between average global temperature and several other factors.
+The file climate_change.csv contains climate data from May 1983 to December 2008.</description>
+    </item>
     
     <item>
       <title>Predict the diamond price based on the 4 c&#39;s</title>
@@ -55,6 +129,17 @@ Ethereum, for example, enables users to store code snippets called ‘smart cont
       <guid>/project/password_detection_strength/password-detection-strength/</guid>
       <description>Intro &amp;amp; Background A function written that uses regular expressions to make sure the password string it is passed is strong. A strong password is defined as one that is at least eight characters long, contains both uppercase and lowercase characters, and has at least one digit. You may need to test the string against multiple regex patterns to validate its strength.
  Analysis Approach You can click on the link below to see the working code in Python and reproduce it to test the strength of your own password.</description>
+    </item>
+    
+    <item>
+      <title>Predict Parole Violators</title>
+      <link>/project/parole_violators/parole_violators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/project/parole_violators/parole_violators/</guid>
+      <description>Predicting parole violators
+In many criminal justice systems around the world, inmates deemed not to be a threat to society are released from prison under the parole system prior to completing their sentence. They are still considered to be serving their sentence while on parole, and they can be returned to prison if they violate the terms of their parole.
+Parole boards are charged with identifying which inmates are good candidates for release on parole.</description>
     </item>
     
   </channel>

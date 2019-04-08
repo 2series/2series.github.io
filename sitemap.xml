@@ -4,6 +4,62 @@
     
     <url>
     
+      <loc>/project/earnings/earnings/</loc>
+      <lastmod>2019-04-08T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/project/understanding_votes/votes/</loc>
+      <lastmod>2019-04-08T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/project/loan_repayment/loan_repayments/</loc>
+      <lastmod>2019-04-07T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/project/music/music/</loc>
+      <lastmod>2019-04-07T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/project/flu_epidemics/flu_epidemics/</loc>
+      <lastmod>2019-04-06T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/project/pisa2009/pisa/</loc>
+      <lastmod>2019-04-06T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/project/climate_change/climate_change/</loc>
+      <lastmod>2019-04-05T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/post/sales_analysis/sales-analysis/</loc>
       <lastmod>2019-03-28T00:00:00+00:00</lastmod>
     </url>
@@ -228,8 +284,15 @@
     
     <url>
     
+      <loc>/project/parole_violators/parole_violators/</loc>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/project/</loc>
-      <lastmod>2019-01-25T00:00:00+00:00</lastmod>
+      <lastmod>2019-04-08T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -316,7 +379,7 @@
     <url>
     
       <loc>/tags/regression/</loc>
-      <lastmod>2019-01-25T00:00:00+00:00</lastmod>
+      <lastmod>2019-04-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

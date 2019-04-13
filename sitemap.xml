@@ -309,8 +309,8 @@
     
     <url>
     
-      <loc>/tags/blockchain/</loc>
-      <lastmod>2018-08-20T00:00:00+00:00</lastmod>
+      <loc>/categories/blockchain/</loc>
+      <lastmod>2019-01-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -318,8 +318,8 @@
     
     <url>
     
-      <loc>/categories/blockchain/</loc>
-      <lastmod>2019-01-06T00:00:00+00:00</lastmod>
+      <loc>/tags/blockchain/</loc>
+      <lastmod>2018-08-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -390,15 +390,6 @@
     
     <url>
     
-      <loc>/tags/python/</loc>
-      <lastmod>2019-01-06T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
       <loc>/categories/python/</loc>
       <lastmod>2019-01-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -408,7 +399,25 @@
     
     <url>
     
+      <loc>/tags/python/</loc>
+      <lastmod>2019-01-06T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/categories/r/</loc>
+      <lastmod>2019-04-11T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/r/</loc>
       <lastmod>2019-04-11T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>

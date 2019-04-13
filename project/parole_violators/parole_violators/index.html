@@ -15,7 +15,7 @@
   
     
   
-  <meta name="description" content="Build &amp; validate a model that predicts if an inmate will violate the terms of his or her parole">
+  <meta name="description" content="Predict if an inmate will violate his or her terms of parole">
 
   
   <link rel="alternate" hreflang="en-us" href="../../../project/parole_violators/parole_violators/">
@@ -119,11 +119,12 @@
   <meta property="og:site_name" content="Rihad Variawa">
   <meta property="og:url" content="/project/parole_violators/parole_violators/">
   <meta property="og:title" content="Predict Parole Violators | Rihad Variawa">
-  <meta property="og:description" content="Build &amp; validate a model that predicts if an inmate will violate the terms of his or her parole"><meta property="og:image" content="/img/headers/cri.jpg">
+  <meta property="og:description" content="Predict if an inmate will violate his or her terms of parole"><meta property="og:image" content="/img/headers/cri.jpg">
   <meta property="og:locale" content="en-us">
   
+  <meta property="article:published_time" content="2019-04-07T00:00:00&#43;00:00">
   
-  
+  <meta property="article:modified_time" content="2019-04-07T00:00:00&#43;00:00">
   
 
   
@@ -373,9 +374,9 @@
 
   <span class="article-date">
     
-    <meta content="" itemprop="datePublished">
-    <time datetime="" itemprop="dateModified">
-      Jan 1, 0001
+    <meta content="2019-04-07 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+    <time datetime="2019-04-07 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+      Apr 7, 2019
     </time>
   </span>
   <span itemscope itemprop="publisher" itemtype="http://schema.org/Person">
@@ -462,10 +463,12 @@
       
 
 
-<p>Predicting parole violators</p>
 <p>In many criminal justice systems around the world, inmates deemed not to be a threat to society are released from prison under the parole system prior to completing their sentence. They are still considered to be serving their sentence while on parole, and they can be returned to prison if they violate the terms of their parole.</p>
-<p>Parole boards are charged with identifying which inmates are good candidates for release on parole. They seek to release inmates who will not commit additional crimes after release. In this problem, we will build and validate a model that predicts if an inmate will violate the terms of his or her parole. Such a model could be useful to a parole board when deciding to approve or deny an application for parole.</p>
-<p>For this prediction task, we will use datafrom the United States 2004 National Corrections Reporting Program, a nationwide census of parole releases that occurred during 2004. We limited our focus to parolees who served no more than 6 months in prison and whose maximum sentence for all charges did not exceed 18 months. The dataset contains all such parolees who either successfully completed their term of parole during 2004 or those who violated the terms of their parole during that year. The dataset contains the following variables:</p>
+<p>Parole boards are charged with identifying which inmates are good candidates for release on parole. They seek to release inmates who will not commit additional crimes after release. In this analysis, I’ll build and validate a model that predicts if an inmate will violate the terms of his or her parole.</p>
+<p><strong>Such a model could be useful to a parole board when deciding to approve or deny an application for parole.</strong></p>
+<p>For this prediction task, I’ll use data from the U.S 2004 National Corrections Reporting Program, a nationwide census of parole releases that occurred during 2004.</p>
+<p>I’ve limited my focus to parolees who served no more than 6 months in prison and whose maximum sentence for all charges did not exceed 18 months.</p>
+<p>The dataset contains all such parolees who either successfully completed their term of parole during 2004 or those who violated the terms of their parole during that year. The dataset contains the following variables:</p>
 <ul>
 <li>male: 1 if the parolee is male, 0 if female</li>
 <li>race: 1 if the parolee is white, 2 otherwise</li>
@@ -513,27 +516,18 @@ str(parole)</code></pre>
 ##  Mean   :0.1156  
 ##  3rd Qu.:0.0000  
 ##  Max.   :1.0000</code></pre>
-<p>How many parolees are contained in the dataset?</p>
-<div id="section" class="section level4">
-<h4>675</h4>
-<p>How many of the parolees in the dataset violated the terms of their parole?</p>
-<pre class="r"><code>table(parole$violator)</code></pre>
-<pre><code>## 
-##   0   1 
-## 597  78</code></pre>
-<p>78</p>
-</div>
+<p>How many parolees are contained in the dataset?
+#### 675</p>
 </div>
 <div id="problem-1.1---preparing-the-dataset" class="section level3">
 <h3>Problem 1.1 - Preparing the Dataset</h3>
-<p>You should be familiar with unordered factors (if not, review the Week 2 homework problem “Reading Test Scores”). Which variables in this dataset are unordered factors with at least three levels? Select all that apply.</p>
-<div id="state-crime" class="section level4">
-<h4>state, crime</h4>
-</div>
+<p>Which variables in this dataset are unordered factors with at least three levels?
+#### state, crime</p>
 </div>
 <div id="problem-1.2---preparing-the-dataset" class="section level3">
 <h3>Problem 1.2 - Preparing the Dataset</h3>
-<p>In the last subproblem, we identified variables that are unordered factors with at least 3 levels, so we need to convert them to factors for our prediction problem (we introduced this idea in the “Reading Test Scores” problem last week). Using the as.factor() function, convert these variables to factors. Keep in mind that we are not changing the values, just the way R understands them (the values are still numbers).</p>
+<p>In the last subproblem, we identified variables that are unordered factors with at least 3 levels, so we need to convert them to factors for our prediction problem.</p>
+<p>Using the as.factor() function, we convert these variables to factors. Keep in mind that we are not changing the values, just the way R understands them (the values are still numbers).</p>
 <pre class="r"><code>parole$state &lt;- as.factor(parole$state)
 parole$crime &lt;- as.factor(parole$crime)</code></pre>
 <p>How does the output of summary() change for a factor variable as compared to a numerical variable?</p>
@@ -552,14 +546,14 @@ parole$crime &lt;- as.factor(parole$crime)</code></pre>
 ##  Mean   :13.06   Mean   :0.5363    4:101   Mean   :0.1156  
 ##  3rd Qu.:15.00   3rd Qu.:1.0000            3rd Qu.:0.0000  
 ##  Max.   :18.00   Max.   :1.0000            Max.   :1.0000</code></pre>
-<p>The output becomes similar to that of the table() function applied to that variable</p>
+<div id="the-output-becomes-similar-to-that-of-the-table-function-applied-to-that-variable" class="section level4">
+<h4>The output becomes similar to that of the table() function applied to that variable</h4>
+</div>
 </div>
 <div id="problem-2.1---splitting-into-a-training-and-testing-set" class="section level3">
 <h3>Problem 2.1 - Splitting into a Training and Testing Set</h3>
 <p>To ensure consistent training/testing set splits, run the following 5 lines of code (do not include the line numbers at the beginning):</p>
 <pre class="r"><code>set.seed(144)
-library(caTools)
-
 # 70% to the training set, 30% to the testing set
 split = sample.split(parole$violator, SplitRatio = 0.7)
 train = subset(parole, split == TRUE)
@@ -595,22 +589,17 @@ test = subset(parole, split == FALSE)</code></pre>
 <div id="problem-2.2---splitting-into-a-training-and-testing-set" class="section level3">
 <h3>Problem 2.2 - Splitting into a Training and Testing Set</h3>
 <p>Now, suppose you re-ran lines [1]-[5] of Problem 3.1. What would you expect?
-?sample.split</p>
-<p>The exact same training/testing set split as the first execution of [1]-[5]</p>
-<p>If you instead ONLY re-ran lines [3]-[5], what would you expect?</p>
-<div id="a-different-trainingtesting-set-split-from-the-first-execution-of-1-5" class="section level4">
-<h4>A different training/testing set split from the first execution of [1]-[5]</h4>
-<p>If you instead called set.seed() with a different number and then re-ran lines [3]-[5] of Problem 3.1, what would you expect?</p>
-</div>
-<div id="a-different-trainingtesting-set-split-from-the-first-execution-of-1-5-1" class="section level4">
-<h4>A different training/testing set split from the first execution of [1]-[5]</h4>
+#### The exact same training/testing set split as the first execution of [1]-[5]</p>
+<p>If you instead ONLY re-ran lines [3]-[5], what would you expect?
+#### A different training/testing set split from the first execution of [1]-[5]</p>
+<p>If you instead called set.seed() with a different number and then re-ran lines [3]-[5] of Problem 3.1, what would you expect?
+#### A different training/testing set split from the first execution of [1]-[5]</p>
 <pre class="r"><code>?sample.split</code></pre>
-</div>
 </div>
 <div id="problem-3.1---building-a-logistic-regression-model" class="section level3">
 <h3>Problem 3.1 - Building a Logistic Regression Model</h3>
 <p>If you tested other training/testing set splits in the previous section, please re-run the original 5 lines of code to obtain the original split. Using glm (and remembering the parameter family=“binomial”), train a logistic regression model on the training set. Your dependent variable is “violator”, and you should use all of the other variables as independent variables.</p>
-<p>What variables are significant in this model? Significant variables should have a least one star, or should have a probability less than 0.05 (the column Pr(&gt;|z|) in the summary output). Select all that apply.</p>
+<p>What variables are significant in this model? Significant variables should have a least one star, or should have a probability less than 0.05 (the column Pr(&gt;|z|) in the summary output).</p>
 <pre class="r"><code>ParoleViolatorLog &lt;- glm(violator ~ ., data = train, family = binomial)
 summary(ParoleViolatorLog)</code></pre>
 <pre><code>## 
@@ -652,18 +641,19 @@ summary(ParoleViolatorLog)</code></pre>
 </div>
 <div id="problem-3.2---building-a-logistic-regression-model" class="section level3">
 <h3>Problem 3.2 - Building a Logistic Regression Model</h3>
-<p>What can we say based on the coefficient of the multiple.offenses variable? The following two properties might be useful to you when answering this question:</p>
+<p>What can we say based on the coefficient of the multiple.offenses variable? The following two properties might be useful to you when exploring this question:</p>
 <ol style="list-style-type: decimal">
 <li>If we have a coefficient c for a variable, then that means the log odds (or Logit) are increased by c for a unit increase in the variable.</li>
 <li>If we have a coefficient c for a variable, then that means the odds are multiplied by e^c for a unit increase in the variable.</li>
 </ol>
 <pre class="r"><code>exp(1.6119919)</code></pre>
 <pre><code>## [1] 5.012786</code></pre>
-<p>Our model predicts that a parolee who committed multiple offenses has 5.01 times higher odds of being a violator than a parolee who did not commit multiple offenses but is otherwise identical.</p>
+<p>Our model predicts that a parolee who committed multiple offenses has 5.01 times higher odds of being a violator than a parolee who did not commit multiple offenses but, is otherwise identical.</p>
 </div>
 <div id="problem-3.3---building-a-logistic-regression-model" class="section level3">
 <h3>Problem 3.3 - Building a Logistic Regression Model</h3>
-<p>Consider a parolee who is male, of white race, aged 50 years at prison release, from the state of Maryland, served 3 months, had a maximum sentence of 12 months, did not commit multiple offenses, and committed a larceny. Answer the following questions based on the model’s predictions for this individual. (HINT: You should use the coefficients of your model, the Logistic Response Function, and the Odds equation to solve this problem.) According to the model, what are the odds this individual is a violator?</p>
+<p>Consider a parolee who is male, of white race, aged 50 years at prison release, from the state of Maryland, served 3 months, had a maximum sentence of 12 months, did not commit multiple offenses, and committed a larceny.</p>
+<p>Explore the following questions based on the model’s predictions for this individual. (HINT: We should use the coefficients of our model, the Logistic Response Function, and the Odds equation to solve this problem.) According to the model, what are the odds this individual is a violator?</p>
 <pre class="r"><code>exp(-4.2411574 + # intercept
         0.3869904 * 1 + # male
         0.8867192 * 1 + # white race
@@ -701,7 +691,7 @@ max(ParolePredTest)</code></pre>
 </div>
 <div id="problem-4.2---evaluating-the-model-on-the-testing-set" class="section level3">
 <h3>Problem 4.2 - Evaluating the Model on the Testing Set</h3>
-<p>In the following questions, evaluate the model’s predictions on the test set using a threshold of 0.5.</p>
+<p>In the following questions, evaluate the model’s predictions on the test-set using a threshold of 0.5.</p>
 <pre class="r"><code>table(test$violator, ParolePredTest &gt; 0.5)</code></pre>
 <pre><code>##    
 ##     FALSE TRUE
@@ -729,60 +719,41 @@ max(ParolePredTest)</code></pre>
 </div>
 <div id="problem-4.4---evaluating-the-model-on-the-testing-set" class="section level3">
 <h3>Problem 4.4 - Evaluating the Model on the Testing Set</h3>
-<p>Consider a parole board using the model to predict whether parolees will be violators or not. The job of a parole board is to make sure that a prisoner is ready to be released into free society, and therefore parole boards tend to be particularily concerned about releasing prisoners who will violate their parole. Which of the following most likely describes their preferences and best course of action?</p>
-<div id="the-board-assigns-more-cost-to-a-false-negative-than-a-false-positive-and-should-therefore-use-a-logistic-regression-cutoff-less-than-0.5." class="section level4">
-<h4>The board assigns more cost to a false negative than a false positive, and should therefore use a logistic regression cutoff less than 0.5.</h4>
-</div>
+<p>Consider a parole board using the model to predict whether parolees will be violators or not.</p>
+<p>The job of a parole board is to make sure that a prisoner is ready to be released into free society, and therefore <strong>parole boards tend to be particularily concerned about releasing prisoners who will violate their parole.</strong></p>
+<p>Which of the following most likely describes their preferences and best course of action?
+#### The board assigns more cost to a false negative than a false positive, and should therefore use a logistic regression cut-off less than 0.5.</p>
 </div>
 <div id="problem-4.5---evaluating-the-model-on-the-testing-set" class="section level3">
 <h3>Problem 4.5 - Evaluating the Model on the Testing Set</h3>
-<p>Which of the following is the most accurate assessment of the value of the logistic regression model with a cutoff 0.5 to a parole board, based on the model’s accuracy as compared to the simple baseline model?</p>
-<div id="the-model-is-likely-of-value-to-the-board-and-using-a-different-logistic-regression-cutoff-is-likely-to-improve-the-models-value." class="section level4">
-<h4>The model is likely of value to the board, and using a different logistic regression cutoff is likely to improve the model’s value.</h4>
-</div>
+<p>Which of the following is the most accurate assessment of the value of the logistic regression model with a cut-off 0.5 to a parole board, based on the model’s accuracy as compared to the simple baseline model?
+#### The model is likely of value to the board, and using a different logistic regression cut-off is likely to improve the model’s value.</p>
 </div>
 <div id="problem-4.6---evaluating-the-model-on-the-testing-set" class="section level3">
 <h3>Problem 4.6 - Evaluating the Model on the Testing Set</h3>
 <p>Using the ROCR package, what is the AUC value for the model?</p>
-<pre class="r"><code>library(ROCR)</code></pre>
-<pre><code>## Loading required package: gplots</code></pre>
-<pre><code>## 
-## Attaching package: &#39;gplots&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:stats&#39;:
-## 
-##     lowess</code></pre>
 <pre class="r"><code>ROCRpred = prediction(ParolePredTest, test$violator)
 as.numeric(performance(ROCRpred, &quot;auc&quot;)@y.values)</code></pre>
 <pre><code>## [1] 0.8945834</code></pre>
 </div>
 <div id="problem-4.7---evaluating-the-model-on-the-testing-set" class="section level3">
 <h3>Problem 4.7 - Evaluating the Model on the Testing Set</h3>
-<p>Describe the meaning of AUC in this context.</p>
-<div id="the-probability-the-model-can-correctly-differentiate-between-a-randomly-selected-parole-violator-and-a-randomly-selected-parole-non-violator." class="section level4">
-<h4>The probability the model can correctly differentiate between a randomly selected parole violator and a randomly selected parole non-violator.</h4>
-</div>
+<p>Describe the meaning of AUC in this context.
+#### The probability the model can correctly differentiate between a randomly selected parole violator and a randomly selected parole non-violator.</p>
 </div>
 <div id="problem-5.1---identifying-bias-in-observational-data" class="section level3">
 <h3>Problem 5.1 - Identifying Bias in Observational Data</h3>
-<p>Our goal has been to predict the outcome of a parole decision, and we used a publicly available dataset of parole releases for predictions. In this final problem, we’ll evaluate a potential source of bias associated with our analysis. It is always important to evaluate a dataset for possible sources of bias.</p>
-<p>The dataset contains all individuals released from parole in 2004, either due to completing their parole term or violating the terms of their parole. However, it does not contain parolees who neither violated their parole nor completed their term in 2004, causing non-violators to be underrepresented. This is called “selection bias” or “selecting on the dependent variable,” because only a subset of all relevant parolees were included in our analysis, based on our dependent variable in this analysis (parole violation). How could we improve our dataset to best address selection bias?</p>
-<div id="we-should-use-a-dataset-tracking-a-group-of-parolees-from-the-start-of-their-parole-until-either-they-violated-parole-or-they-completed-their-term." class="section level4">
-<h4>We should use a dataset tracking a group of parolees from the start of their parole until either they violated parole or they completed their term.</h4>
-</div>
+<p>Our goal has been to predict the outcome of a parole decision, and we used a publicly available dataset of parole releases for predictions.</p>
+<p>In this final problem, we’ll evaluate a potential source of bias associated with our analysis. It is always important to evaluate a dataset for possible sources of bias.</p>
+<p>The dataset contains all individuals released from parole in 2004, either due to completing their parole term or violating the terms of their parole. However, it does not contain parolees who neither violated their parole nor completed their term in 2004, causing non-violators to be underrepresented.</p>
+<p>This is called “selection bias” or “selecting on the dependent variable,” because only a subset of all relevant parolees were included in our analysis, based on our dependent variable in this analysis (parole violation).</p>
+<p>How could we improve our dataset to best address selection bias?
+#### We should use a dataset tracking a group of parolees from the start of their parole until either they violated parole or they completed their term.</p>
 </div>
 
     </div>
 
     
-
-
-<div class="article-tags">
-  
-  <a class="badge badge-light" href="../../../tags/regression/">regression</a>
-  
-</div>
-
-
 
     
 

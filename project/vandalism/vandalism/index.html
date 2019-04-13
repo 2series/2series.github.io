@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 3.3.0">
+  <meta name="generator" content="Hugo 0.53" />
+  <meta name="author" content="Rihad Variawa">
+
+  
+  
+  
+  
+    
+  
+  <meta name="description" content="Developing a vandalism detector">
+
+  
+  <link rel="alternate" hreflang="en-us" href="../../../project/vandalism/vandalism/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#3f51b5">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous">
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Playfair+Display:400,700|Fauna+One">
+  
+
+  <link rel="stylesheet" href="../../../styles.css">
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-132898309-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+  <link rel="alternate" href="../../../index.xml" type="application/rss+xml" title="Rihad Variawa">
+  <link rel="feed" href="../../../index.xml" type="application/rss+xml" title="Rihad Variawa">
+  
+
+  <link rel="manifest" href="../../../site.webmanifest">
+  <link rel="icon" type="image/png" href="../../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../../img/icon-192.png">
+
+  <link rel="canonical" href="../../../project/vandalism/vandalism/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Rihad Variawa">
+  <meta property="og:url" content="/project/vandalism/vandalism/">
+  <meta property="og:title" content="Vandalism Detection On Wikipedia | Rihad Variawa">
+  <meta property="og:description" content="Developing a vandalism detector"><meta property="og:image" content="/img/headers/vda.jpg">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-04-08T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2019-04-08T00:00:00&#43;00:00">
+  
+
+  
+
+  
+
+  <title>Vandalism Detection On Wikipedia | Rihad Variawa</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="../../../">Rihad Variawa</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../#publications">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../#posts">
+            
+            <span>Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../files/resume.pdf">
+            
+            <span>Resume</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article article-project" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+<div class="article-header">
+  
+  
+  <img src="../../../img/headers/vda.jpg" class="article-banner" itemprop="image" alt="">
+  
+
+  
+</div>
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">Vandalism Detection On Wikipedia</h1>
+
+  
+
+  
+    
+
+<div class="article-metadata">
+
+  
+  
+  <span itemscope itemprop="author" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Rihad Variawa">
+  </span>
+  
+
+  <span class="article-date">
+    
+    <meta content="2019-04-08 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+    <time datetime="2019-04-08 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+      Apr 8, 2019
+    </time>
+  </span>
+  <span itemscope itemprop="publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Rihad Variawa">
+  </span>
+
+  
+
+  
+  
+
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Vandalism%20Detection%20On%20Wikipedia&amp;url=%2fproject%2fvandalism%2fvandalism%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fproject%2fvandalism%2fvandalism%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fproject%2fvandalism%2fvandalism%2f&amp;title=Vandalism%20Detection%20On%20Wikipedia"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fproject%2fvandalism%2fvandalism%2f&amp;title=Vandalism%20Detection%20On%20Wikipedia"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Vandalism%20Detection%20On%20Wikipedia&amp;body=%2fproject%2fvandalism%2fvandalism%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+
+<p>Wikipedia is a free online encyclopedia that anyone can edit and contribute to. It’s available in many languages and is growing all the time. On the English language version of Wikipedia:</p>
+<ul>
+<li>There are currently 4.7 million pages.</li>
+<li>There have been a total over 760 million edits (also called revisions) over its lifetime.</li>
+<li>There are approximately 130,000 edits per day.</li>
+</ul>
+<p>One of the consequences of being editable by anyone is that some people vandalize pages.</p>
+<p>This can take the form of <strong>removing content, adding promotional or inappropriate content, or more subtle shifts that change the meaning of the article.</strong></p>
+<p>With these many articles and edits per day it is difficult for humans to detect all instances of vandalism and revert (undo) them. As a result, Wikipedia uses bots - computer programs that automatically revert edits that look like vandalism. In this analysis I’ll attempt to develop a vandalism detector that uses ML to distinguish between a valid edit and vandalism.</p>
+<p>The data for this analysis is based on the revision history of the page Language. Wikipedia provides a history for each page that consists of the state of the page at each revision. Rather than manually considering each revision, a script was run that checked whether edits stayed or were reverted. If a change was eventually reverted then that revision is marked as vandalism. This may result in some misclassifications, but the script performs well enough for our needs.</p>
+<p>As a result of this preprocessing, some common processing tasks have already been done, including lower-casing and punctuation removal. The columns in the dataset are:</p>
+<ul>
+<li>Vandal = 1 if this edit was vandalism, 0 if not.</li>
+<li>Minor = 1 if the user marked this edit as a “minor edit”, 0 if not.</li>
+<li>Loggedin = 1 if the user made this edit while using a Wikipedia account, 0 if they did not.</li>
+<li>Added = The unique words added.</li>
+<li>Removed = The unique words removed.</li>
+</ul>
+<p>Notice the repeated use of unique. The data we have available is not the traditional bag of words - rather it is the set of words that were removed or added. For example, if a word was removed multiple times in a revision it will only appear one time in the “Removed” column.</p>
+<div id="loading-the-packages" class="section level3">
+<h3>Loading the packages</h3>
+<pre class="r"><code># install packages if necessary
+list.of.packages &lt;- c(&quot;SnowballC&quot;)
+new.packages &lt;- list.of.packages[!(list.of.packages %in% installed.packages()[,&quot;Package&quot;])]
+if(length(new.packages)) install.packages(new.packages)
+
+## load packages
+library(tm)</code></pre>
+<pre><code>## Loading required package: NLP</code></pre>
+<pre class="r"><code>library(SnowballC)
+library(caTools) # to use sample.split function.
+library(rpart)
+library(rpart.plot)
+library(ROCR)</code></pre>
+<pre><code>## Loading required package: gplots</code></pre>
+<pre><code>## 
+## Attaching package: &#39;gplots&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:stats&#39;:
+## 
+##     lowess</code></pre>
+<div id="problem-1.1---bags-of-words" class="section level4">
+<h4>Problem 1.1 - Bags of Words</h4>
+<p>Load the data wiki.csv with the option stringsAsFactors=FALSE, calling the dataframe “wiki”. Convert the “Vandal” column to a factor using the code wiki<span class="math inline">\(Vandal = as.factor(wiki\)</span>Vandal).</p>
+<pre class="r"><code>wiki &lt;- read.csv(&quot;wiki.csv&quot;, stringsAsFactors = FALSE)
+wiki$Vandal &lt;- as.factor(wiki$Vandal)
+str(wiki)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    3876 obs. of  7 variables:
+##  $ X.1     : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ X       : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ Vandal  : Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Minor   : int  1 1 0 1 1 0 0 0 1 0 ...
+##  $ Loggedin: int  1 1 1 0 1 1 1 1 1 0 ...
+##  $ Added   : chr  &quot;  represent psycholinguisticspsycholinguistics orthographyorthography help text all actions through human ethno&quot;| __truncated__ &quot; website external links&quot; &quot; &quot; &quot; afghanistan used iran mostly that farsiis is countries some xmlspacepreservepersian parts tajikestan region&quot; ...
+##  $ Removed : chr  &quot; &quot; &quot; talklanguagetalk&quot; &quot; regarded as technologytechnologies human first&quot; &quot;  represent psycholinguisticspsycholinguistics orthographyorthography help all actions through ethnologue relat&quot;| __truncated__ ...</code></pre>
+<p>How many cases of vandalism were detected in the history of this page?</p>
+<pre class="r"><code>table(wiki$Vandal)</code></pre>
+<pre><code>## 
+##    0    1 
+## 2061 1815</code></pre>
+<p>1815</p>
+</div>
+</div>
+<div id="problem-1.2---bags-of-words" class="section level3">
+<h3>Problem 1.2 - Bags of Words</h3>
+<p>We will now use the bag of words approach to build a model. We have two columns of textual data, with different meanings. For example, adding rude words has a different meaning to removing rude words. The text already is lowercase and stripped of punctuation. So to pre-process the data, just complete the following four steps:</p>
+<pre class="r"><code># 1) Create the corpus for the Added column, and call it &quot;corpusAdded&quot;.
+corpusAdded &lt;- Corpus(VectorSource(wiki$Added))
+corpusAdded[[1]]$content</code></pre>
+<pre><code>## [1] &quot;  represent psycholinguisticspsycholinguistics orthographyorthography help text all actions through human ethnologue relationships linguistics regarded writing languages to other listing xmlspacepreservelanguages metaverse formal term philology common each including phonologyphonology often ten list humans affiliation see computer are speechpathologyspeech our what for ways dialects please artificial written body be of quite hypothesis found alone refers by about language profanity study programming priorities rosenfelders technologytechnologies makes or first among useful languagephilosophy one sounds use area create phrases mark their genetic basic families complete but sapirwhorfhypothesissapirwhorf with talklanguagetalk population animals this science up vocal can concepts called at and topics locations as numbers have in pathology different develop 4000 things ideas grouped complex animal mathematics fairly literature httpwwwzompistcom philosophy most important meaningful a historicallinguisticsorphilologyhistorical semanticssemantics patterns the oral&quot;</code></pre>
+<pre class="r"><code># 2) Remove the English-language stopwords.
+corpusAdded &lt;- tm_map(corpusAdded, removeWords, stopwords(&quot;english&quot;))</code></pre>
+<pre><code>## Warning in tm_map.SimpleCorpus(corpusAdded, removeWords,
+## stopwords(&quot;english&quot;)): transformation drops documents</code></pre>
+<pre class="r"><code>corpusAdded[[1]]$content</code></pre>
+<pre><code>## [1] &quot;  represent psycholinguisticspsycholinguistics orthographyorthography help text  actions  human ethnologue relationships linguistics regarded writing languages   listing xmlspacepreservelanguages metaverse formal term philology common  including phonologyphonology often ten list humans affiliation see computer  speechpathologyspeech    ways dialects please artificial written body   quite hypothesis found alone refers   language profanity study programming priorities rosenfelders technologytechnologies makes  first among useful languagephilosophy one sounds use area create phrases mark  genetic basic families complete  sapirwhorfhypothesissapirwhorf  talklanguagetalk population animals  science  vocal can concepts called   topics locations  numbers   pathology different develop 4000 things ideas grouped complex animal mathematics fairly literature httpwwwzompistcom philosophy  important meaningful  historicallinguisticsorphilologyhistorical semanticssemantics patterns  oral&quot;</code></pre>
+<pre class="r"><code># 3) Stem the words.
+corpusAdded &lt;- tm_map(corpusAdded, stemDocument)</code></pre>
+<pre><code>## Warning in tm_map.SimpleCorpus(corpusAdded, stemDocument): transformation
+## drops documents</code></pre>
+<pre class="r"><code>corpusAdded[[1]]$content</code></pre>
+<pre><code>## [1] &quot;repres psycholinguisticspsycholinguist orthographyorthographi help text action human ethnologu relationship linguist regard write languag list xmlspacepreservelanguag metavers formal term philolog common includ phonologyphonolog often ten list human affili see comput speechpathologyspeech way dialect pleas artifici written bodi quit hypothesi found alon refer languag profan studi program prioriti rosenfeld technologytechnolog make first among use languagephilosophi one sound use area creat phrase mark genet basic famili complet sapirwhorfhypothesissapirwhorf talklanguagetalk popul anim scienc vocal can concept call topic locat number patholog differ develop 4000 thing idea group complex anim mathemat fair literatur httpwwwzompistcom philosophi import meaning historicallinguisticsorphilologyhistor semanticssemant pattern oral&quot;</code></pre>
+<pre class="r"><code># 4) Build the DocumentTermMatrix, and call it dtmAdded.
+dtmAdded = DocumentTermMatrix(corpusAdded)
+dtmAdded</code></pre>
+<pre><code>## &lt;&lt;DocumentTermMatrix (documents: 3876, terms: 6675)&gt;&gt;
+## Non-/sparse entries: 15368/25856932
+## Sparsity           : 100%
+## Maximal term length: 784
+## Weighting          : term frequency (tf)</code></pre>
+<p>How many terms appear in dtmAdded?
+#### 6675</p>
+<p>If the code length(stopwords(“english”)) does not return 174 for you, then please run the line of code in this file, which will store the standard stop words in a variable called sw. When removing stop words, use tm_map(corpusAdded, removeWords, sw) instead of tm_map(corpusAdded, removeWords, stopwords(“english”)).</p>
+<pre class="r"><code>length(stopwords(&quot;english&quot;))</code></pre>
+<pre><code>## [1] 174</code></pre>
+</div>
+<div id="problem-1.3---bags-of-words" class="section level3">
+<h3>Problem 1.3 - Bags of Words</h3>
+<p>Filter out sparse terms by keeping only terms that appear in 0.3% or more of the revisions, and call the new matrix sparseAdded.</p>
+<pre class="r"><code>sparseAdded &lt;- removeSparseTerms(dtmAdded, 0.997)
+sparseAdded</code></pre>
+<pre><code>## &lt;&lt;DocumentTermMatrix (documents: 3876, terms: 166)&gt;&gt;
+## Non-/sparse entries: 2681/640735
+## Sparsity           : 100%
+## Maximal term length: 28
+## Weighting          : term frequency (tf)</code></pre>
+<p>How many terms appear in sparseAdded?
+#### 166</p>
+</div>
+<div id="problem-1.4---bags-of-words" class="section level3">
+<h3>Problem 1.4 - Bags of Words</h3>
+<p>Convert sparseAdded to a dataframe called wordsAdded, and then prepend all the words with the letter A, by using the code:</p>
+<pre class="r"><code>wordsAdded &lt;- as.data.frame(as.matrix(sparseAdded))
+colnames(wordsAdded) &lt;- paste(&quot;A&quot;, colnames(wordsAdded))
+str(wordsAdded)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    3876 obs. of  166 variables:
+##  $ A bodi                        : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A call                        : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A complet                     : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A concept                     : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A creat                       : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A develop                     : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A differ                      : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A famili                      : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A first                       : num  1 0 0 0 0 0 0 0 0 0 ...
+##  $ A group                       : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A help                        : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A idea                        : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A import                      : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A includ                      : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A linguist                    : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A make                        : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A number                      : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A pattern                     : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A popul                       : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A refer                       : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A relationship                : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A repres                      : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A sound                       : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A studi                       : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A ten                         : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A use                         : num  2 0 0 1 2 0 0 0 0 0 ...
+##  $ A write                       : num  1 0 0 0 1 0 0 0 0 0 ...
+##  $ A part                        : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ A name                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A communic                    : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A defin                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A express                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A mean                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A must                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A set                         : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A featur                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A form                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A symbol                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A talk                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A type                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A learn                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A general                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A exampl                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A provid                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A speak                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A thought                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A cours                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A german                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A onlin                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A biolog                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A close                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A communiti                   : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A distinct                    : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A dutch                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A intellig                    : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A least                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A note                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A parallel                    : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A possibl                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A principl                    : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A sentenc                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A standard                    : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A stem                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A understood                  : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A utter                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A arbitrari                   : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A combin                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A cultur                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A discuss                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A invent                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A properti                    : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A research                    : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A unit                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A work                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A direct                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A relat                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A agre                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A exist                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A wide                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A describ                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A literari                    : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A purpos                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A fantasi                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A promin                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A manipul                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A tolkien                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A follow                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A regular                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A gestur                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A similar                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A imposs                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A interact                    : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A person                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A reason                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A writer                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A phenomenon                  : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A accord                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A individu                    : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ A object                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##   [list output truncated]</code></pre>
+<p>Now repeat all of the steps we’ve done so far (create a corpus, remove stop words, stem the document, create a sparse document term matrix, and convert it to a dataframe) to create a Removed bag-of-words dataframe, called wordsRemoved, except this time, prepend all of the words with the letter R:</p>
+<pre class="r"><code># 1) Create the corpus for the Removed column, and call it &quot;corpusRemoved&quot;.
+corpusRemoved &lt;- Corpus(VectorSource(wiki$Removed))
+corpusRemoved[[3]]$content</code></pre>
+<pre><code>## [1] &quot; regarded as technologytechnologies human first&quot;</code></pre>
+<pre class="r"><code># 2) Remove the English-language stopwords.
+corpusRemoved &lt;- tm_map(corpusRemoved, removeWords, stopwords(&quot;english&quot;))</code></pre>
+<pre><code>## Warning in tm_map.SimpleCorpus(corpusRemoved, removeWords,
+## stopwords(&quot;english&quot;)): transformation drops documents</code></pre>
+<pre class="r"><code>corpusRemoved[[3]]$content</code></pre>
+<pre><code>## [1] &quot; regarded  technologytechnologies human first&quot;</code></pre>
+<pre class="r"><code># 3) Stem the words.
+corpusRemoved &lt;- tm_map(corpusRemoved, stemDocument)</code></pre>
+<pre><code>## Warning in tm_map.SimpleCorpus(corpusRemoved, stemDocument): transformation
+## drops documents</code></pre>
+<pre class="r"><code>corpusRemoved[[3]]$content</code></pre>
+<pre><code>## [1] &quot;regard technologytechnolog human first&quot;</code></pre>
+<pre class="r"><code># 4) Build the DocumentTermMatrix, and call it dtmRemoved.
+dtmRemoved &lt;- DocumentTermMatrix(corpusRemoved)
+dtmRemoved</code></pre>
+<pre><code>## &lt;&lt;DocumentTermMatrix (documents: 3876, terms: 5403)&gt;&gt;
+## Non-/sparse entries: 13293/20928735
+## Sparsity           : 100%
+## Maximal term length: 784
+## Weighting          : term frequency (tf)</code></pre>
+<pre class="r"><code># 5) Sparse document term matrix
+sparseRemoved &lt;- removeSparseTerms(dtmRemoved, 0.997)
+sparseRemoved</code></pre>
+<pre><code>## &lt;&lt;DocumentTermMatrix (documents: 3876, terms: 162)&gt;&gt;
+## Non-/sparse entries: 2552/625360
+## Sparsity           : 100%
+## Maximal term length: 28
+## Weighting          : term frequency (tf)</code></pre>
+<pre class="r"><code># 6) Create dataframe and preppend the colnames with the letter &quot;R&quot;
+wordsRemoved &lt;- as.data.frame(as.matrix(sparseRemoved))
+colnames(wordsRemoved) &lt;- paste(&quot;R&quot;, colnames(wordsRemoved))
+str(wordsRemoved)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    3876 obs. of  162 variables:
+##  $ R first                       : num  0 0 1 0 0 0 0 0 0 0 ...
+##  $ R bodi                        : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R call                        : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R complet                     : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R concept                     : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R creat                       : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R develop                     : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R differ                      : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R famili                      : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R group                       : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R idea                        : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R includ                      : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R linguist                    : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R make                        : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R pattern                     : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R popul                       : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R quit                        : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R refer                       : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R relationship                : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R repres                      : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R sound                       : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R studi                       : num  0 0 0 1 0 0 0 0 0 0 ...
+##  $ R use                         : num  0 0 0 2 1 0 0 0 0 0 ...
+##  $ R part                        : num  0 0 0 0 1 0 0 0 0 0 ...
+##  $ R communic                    : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R defin                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R express                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R mean                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R must                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R name                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R featur                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R set                         : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R symbol                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R type                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R know                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R method                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R quot                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R suggest                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R want                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R speak                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R agre                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R regular                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R actual                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R spanish                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R cours                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R onlin                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R fuck                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R person                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R believ                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R direct                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R experiment                  : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R will                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R deriv                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R gestur                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R least                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R logic                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R mainlinguist                : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R possibl                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R reason                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R result                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R standard                    : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R thought                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R tri                         : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R say                         : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R origin                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R process                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R languageenglish             : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R analog                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R subject                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R learn                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R peopl                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R discuss                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R biologyanalog               : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R govern                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R linguisticssent             : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R object                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R sentenc                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R verb                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R compar                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R get                         : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R provid                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R serv                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R clear                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R intern                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R combin                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R distinct                    : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R relat                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R map                         : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R nation                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R care                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R geograph                    : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R notion                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R present                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R appar                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R close                       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R wide                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R bigger                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R follow                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ R recent                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##   [list output truncated]</code></pre>
+<p>How many words are in the wordsRemoved dataframe?
+#### 162</p>
+</div>
+<div id="problem-1.5---bags-of-words" class="section level3">
+<h3>Problem 1.5 - Bags of Words</h3>
+<p>Combine the two dataframes into a dataframe called wikiWords with the following:</p>
+<pre class="r"><code>wikiWords &lt;- cbind(wordsAdded, wordsRemoved)</code></pre>
+<p>The cbind function combines two sets of variables for the same observations into one dataframe. Then add the Vandal column. Set the random seed to 123 and then split the dataset using sample.split from the “caTools” package to put 70% in the training set.</p>
+<pre class="r"><code>wikiWords$Vandal &lt;- wiki$Vandal
+set.seed(123)
+wikiSplit &lt;- sample.split(wikiWords$Vandal, 0.7)
+wikiTrain &lt;- subset(wikiWords, wikiSplit == TRUE)
+wikiTest &lt;- subset(wikiWords, wikiSplit == FALSE)</code></pre>
+<pre class="r"><code>table(wikiTest$Vandal)</code></pre>
+<pre><code>## 
+##   0   1 
+## 618 545</code></pre>
+<pre class="r"><code>618 / (618 + 545)</code></pre>
+<pre><code>## [1] 0.5313844</code></pre>
+</div>
+<div id="problem-1.6---bags-of-words" class="section level3">
+<h3>Problem 1.6 - Bags of Words</h3>
+<p>Build a CART model to predict Vandal, using all of the other variables as independent variables. Use the training set to build the model and the default parameters (don’t set values for minbucket or cp).</p>
+<pre class="r"><code>wikiTree &lt;- rpart(Vandal ~ ., data = wikiTrain, method = &quot;class&quot;)</code></pre>
+<p>What is the accuracy of the model on the test-set, using a threshold of 0.5? (Remember that if you add the argument type=“class” when making predictions, the output of predict will automatically use a threshold of 0.5.)</p>
+<pre class="r"><code>wikiPred &lt;- as.vector(predict(wikiTree, newdata = wikiTest, type=&quot;class&quot;))
+head(wikiPred)</code></pre>
+<pre><code>## [1] &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;</code></pre>
+<pre class="r"><code>table(wikiTest$Vandal, wikiPred)</code></pre>
+<pre><code>##    wikiPred
+##       0   1
+##   0 614   4
+##   1 526  19</code></pre>
+<pre class="r"><code>(618 + 12) / nrow(wikiTest)</code></pre>
+<pre><code>## [1] 0.5417025</code></pre>
+</div>
+<div id="problem-1.7---bags-of-words" class="section level3">
+<h3>Problem 1.7 - Bags of Words</h3>
+<p>Plot the CART tree.</p>
+<p>How many word stems does the CART model use?</p>
+<pre class="r"><code>prp(wikiTree)</code></pre>
+<p><img src="../../../project/vandalism/vandalism_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<div id="section" class="section level4">
+<h4>2</h4>
+</div>
+</div>
+<div id="problem-1.8---bags-of-words" class="section level3">
+<h3>Problem 1.8 - Bags of Words</h3>
+<p>Given the performance of the CART model relative to the baseline, what is the best explanation for these results?
+#### Although it beats the baseline, bag of words is not very predictive for this problem.</p>
+</div>
+<div id="problem-2.1---problem-specific-knowledge" class="section level3">
+<h3>Problem 2.1 - Problem-specific Knowledge</h3>
+<p>We weren’t able to improve on the baseline using the raw textual information. More specifically, the words themselves were not useful. There are other options though, and in this section we will try two techniques - identifying a key class of words, and counting words. The key class of words we will use are website addresses. “Website addresses” (also known as URLs - Uniform Resource Locators) are comprised of two main parts. An example would be “<a href="http://www.google.com" class="uri">http://www.google.com</a>”. The first part is the protocol, which is usually “http” (HyperText Transfer Protocol). The second part is the address of the site, e.g. “www.google.com”.</p>
+<p>We have stripped all punctuation so links to websites appear in the data as one word, e.g. “httpwwwgooglecom”. We hypothesize that given, given that a lot of vandalism seems to be adding links to promotional or irrelevant websites. The presence of a web address is a sign of vandalism. We can search for the presence of a web address in the words added by searching for “http” in the Added column. The grepl function returns TRUE if a string is found in another string, e.g.
+* grepl(“cat”,“dogs and cats”,fixed=TRUE) # TRUE
+* grepl(“cat”,“dogs and rats”,fixed=TRUE) # FALSE</p>
+<p>Create a copy of your dataframe from the previous question:</p>
+<pre class="r"><code>wikiWords2 &lt;- wikiWords
+
+# make a new column in wikiWords2 that is 1 if &quot;http&quot; was in Added:
+wikiWords2$HTTP &lt;- ifelse(grepl(&quot;http&quot;, wiki$Added, fixed = TRUE), 1, 0)
+
+# based on this new column, how many revisions added a link?
+table(wikiWords2$HTTP)</code></pre>
+<pre><code>## 
+##    0    1 
+## 3659  217</code></pre>
+<div id="section-1" class="section level4">
+<h4>217</h4>
+</div>
+</div>
+<div id="problem-2.2---problem-specific-knowledge" class="section level3">
+<h3>Problem 2.2 - Problem-Specific Knowledge</h3>
+<p>In problem 1.5, you computed a vector called “spl” that identified the observations to put in the training and testing sets. Use that variable (do not recompute it with sample.split) to make new training and testing sets:</p>
+<pre class="r"><code>wikiTrain2 &lt;- subset(wikiWords2, wikiSplit == TRUE)
+wikiTest2 &lt;- subset(wikiWords2, wikiSplit == FALSE)</code></pre>
+<p>Then create a new CART model using this new variable as one of the independent variables.</p>
+<pre class="r"><code>wikiTree2 &lt;- rpart(Vandal ~ ., data = wikiTrain2, method = &quot;class&quot;)</code></pre>
+<p>What is the new accuracy of the CART model on the test-set, using a threshold of 0.5?</p>
+<pre class="r"><code>wikiPred2 &lt;- as.vector(predict(wikiTree2, newdata = wikiTest2, type=&quot;class&quot;))
+head(wikiPred2)</code></pre>
+<pre><code>## [1] &quot;0&quot; &quot;0&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;</code></pre>
+<pre class="r"><code>table(wikiTest2$Vandal, wikiPred2)</code></pre>
+<pre><code>##    wikiPred2
+##       0   1
+##   0 605  13
+##   1 481  64</code></pre>
+<pre class="r"><code>(609 + 57) / nrow(wikiTest2)</code></pre>
+<pre><code>## [1] 0.5726569</code></pre>
+</div>
+<div id="problem-2.3---problem-specific-knowledge" class="section level3">
+<h3>Problem 2.3 - Problem-Specific Knowledge</h3>
+<p>Another possibility is that the number of words added and removed is predictive, perhaps more so than the actual words themselves. We already have a word count available in the form of the document-term matrices (DTMs). Sum the rows of dtmAdded and dtmRemoved and add them as new variables in our dataframe wikiWords2 (called NumWordsAdded and NumWordsRemoved):</p>
+<pre class="r"><code>wikiWords2$NumWordsAdded &lt;- rowSums(as.matrix(dtmAdded))
+wikiWords2$NumWordsRemoved &lt;- rowSums(as.matrix(dtmRemoved))</code></pre>
+<p>What is the average number of words added?</p>
+<pre class="r"><code>mean(wikiWords2$NumWordsAdded)</code></pre>
+<pre><code>## [1] 4.050052</code></pre>
+</div>
+<div id="problem-2.4---problem-specific-knowledge" class="section level3">
+<h3>Problem 2.4 - Problem-Specific Knowledge</h3>
+<p>In problem 1.5, you computed a vector called “spl” that identified the observations to put in the training and testing sets. Use that variable (do not recompute it with sample.split) to make new training and testing sets with wikiWords2.</p>
+<p>Create the CART model again (using the training set and the default parameters).</p>
+<pre class="r"><code>wikiTrain2b &lt;- subset(wikiWords2, wikiSplit == TRUE)
+wikiTest2b &lt;- subset(wikiWords2, wikiSplit == FALSE)</code></pre>
+<p>Then create a new CART model using this new variable as one of the independent variables.</p>
+<pre class="r"><code>wikiTree2b &lt;- rpart(Vandal ~ ., data = wikiTrain2b, method = &quot;class&quot;)</code></pre>
+<p>What is the new accuracy of the CART model on the test-set?</p>
+<pre class="r"><code>wikiPred2b &lt;- as.vector(predict(wikiTree2b, newdata = wikiTest2b, type=&quot;class&quot;))
+head(wikiPred2b)</code></pre>
+<pre><code>## [1] &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot;</code></pre>
+<pre class="r"><code>table(wikiTest2b$Vandal, wikiPred2b)</code></pre>
+<pre><code>##    wikiPred2b
+##       0   1
+##   0 514 104
+##   1 297 248</code></pre>
+<pre class="r"><code>(514 + 248) / nrow(wikiTest2b)</code></pre>
+<pre><code>## [1] 0.6552021</code></pre>
+</div>
+<div id="problem-3.1---using-non-textual-data" class="section level3">
+<h3>Problem 3.1 - Using Non-Textual Data</h3>
+<p>We have two pieces of “metadata” (data about data) that we haven’t yet used.</p>
+<p>Make a copy of wikiWords2, and call it wikiWords3:</p>
+<pre class="r"><code>wikiWords3 &lt;- wikiWords2</code></pre>
+<p>Then add the two original variables Minor and Loggedin to this new dataframe:</p>
+<pre class="r"><code>wikiWords3$Minor &lt;- wiki$Minor
+wikiWords3$Loggedin &lt;- wiki$Loggedin</code></pre>
+<p>In problem 1.5, you computed a vector called “spl” that identified the observations to put in the training and testing sets. Use that variable (do not recompute it with sample.split) to make new training and testing sets with wikiWords3.</p>
+<pre class="r"><code>wikiTrain3 &lt;- subset(wikiWords3, wikiSplit == TRUE)
+wikiTest3 &lt;- subset(wikiWords3, wikiSplit == FALSE)</code></pre>
+<p>Build a CART model using all the training data.</p>
+<p>What is the accuracy of the model on the test-set?</p>
+<p>Then create a new CART model using this new variable as one of the independentvariables.</p>
+<pre class="r"><code>wikiTree3 &lt;- rpart(Vandal ~ ., data = wikiTrain3, method = &quot;class&quot;)
+wikiPred3 &lt;- as.vector(predict(wikiTree3, newdata = wikiTest3, type=&quot;class&quot;))
+head(wikiPred3)</code></pre>
+<pre><code>## [1] &quot;0&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;</code></pre>
+<pre class="r"><code>table(wikiTest3$Vandal, wikiPred3)</code></pre>
+<pre><code>##    wikiPred3
+##       0   1
+##   0 595  23
+##   1 304 241</code></pre>
+<pre class="r"><code>(595 + 241) / nrow(wikiTest3)</code></pre>
+<pre><code>## [1] 0.7188306</code></pre>
+</div>
+<div id="problem-3.2---using-non-textual-data" class="section level3">
+<h3>Problem 3.2 - Using Non-Textual Data</h3>
+<p>There is a substantial difference in the accuracy of the model using the meta data. Is this because we made a more complicated model?</p>
+<p>Plot the CART tree. How many splits are there in the tree?</p>
+<pre class="r"><code>prp(wikiTree3)</code></pre>
+<p><img src="../../../project/vandalism/vandalism_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<div id="section-2" class="section level4">
+<h4>3</h4>
+</div>
+</div>
+
+    </div>
+
+    
+
+    
+
+
+
+
+
+
+<div class="media author-card" itemscope itemtype="http://schema.org/Person">
+  
+  <img class="portrait mr-3" src="../../../img/Rihad%20Variawa.png" itemprop="image" alt="Avatar">
+  
+  <div class="media-body">
+    <h5 class="card-title" itemprop="name"><a href="../../../">Rihad Variawa</a></h5>
+    <h6 class="card-subtitle">Data Scientist</h6>
+    
+    <ul class="network-icon" aria-hidden="true">
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="../../../rihadv021@gmail.com" >
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://twitter.com/2series_rv" target="_blank" rel="noopener">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://github.com/2series" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://www.linkedin.com/in/rihad-variawa-7422017b" target="_blank" rel="noopener">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+
+    
+    
+
+    
+
+      
+      
+      
+
+      
+      
+      
+
+      
+      
+      
+    
+
+  </div>
+</article>
+
+
+
+<div class="container">
+  <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="../../../privacy/">Privacy Policy</a>
+  </p>
+  
+
+  <p class="powered-by">
+    &copy; 2019 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="../../../js/academic.min.70f0041f5a24c6a675ac218c98d7ef71.js"></script>
+
+    
+
+  </body>
+</html>
+

@@ -15,7 +15,7 @@
   
     
   
-  <meta name="description" content="The Google Flu Trends project was initiated to see if faster reporting can be made possible by considering flu-related online search queries -- data that is available almost immediately.">
+  <meta name="description" content="The Google Flu Trends project">
 
   
   <link rel="alternate" hreflang="en-us" href="../../../project/flu_epidemics/flu_epidemics/">
@@ -119,7 +119,7 @@
   <meta property="og:site_name" content="Rihad Variawa">
   <meta property="og:url" content="/project/flu_epidemics/flu_epidemics/">
   <meta property="og:title" content="Detecting Flu Epidemics via Search Engine Query Data | Rihad Variawa">
-  <meta property="og:description" content="The Google Flu Trends project was initiated to see if faster reporting can be made possible by considering flu-related online search queries -- data that is available almost immediately."><meta property="og:image" content="/img/headers/yt.jpg">
+  <meta property="og:description" content="The Google Flu Trends project"><meta property="og:image" content="/img/headers/yt.jpg">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-04-06T00:00:00&#43;00:00">
@@ -463,9 +463,22 @@
       
 
 
-<p>Flu epidemics constitute a major public health concern causing respiratory illnesses, hospitalizations, and deaths. According to the National Vital Statistics Reports published in October 2012, influenza ranked as the eighth leading cause of death in 2011 in the United States. Each year, 250,000 to 500,000 deaths are attributed to influenza related diseases throughout the world.</p>
+<p>Flu epidemics constitute a major public health concern causing respiratory illnesses, hospitalizations, and deaths. According to the National Vital Statistics Reports published in October 2012, influenza ranked as the eighth leading cause of death in 2011 in the U.S. Each year, 250,000 to 500,000 deaths are attributed to influenza related diseases throughout the world.</p>
 <p>The U.S. Centers for Disease Control and Prevention (CDC) and the European Influenza Surveillance Scheme (EISS) detect influenza activity through virologic and clinical data, including Influenza-like Illness (ILI) physician visits. Reporting national and regional data, however, are published with a 1-2 week lag.</p>
-<p>The Google Flu Trends project was initiated to see if faster reporting can be made possible by considering flu-related online search queries – data that is available almost immediately.</p>
+<p>The Google Flu Trends project was initiated to see if faster reporting can be made possible by considering <strong>flu-related online search queries</strong> – data that is available almost immediately.</p>
+<p>I would like to estimate influenza-like illness (ILI) activity using Google web search logs. Fortunately, one can easily access this data online:</p>
+<ul>
+<li>ILI Data - The CDC publishes on its website the official regional and state-level percentage of patient visits to healthcare providers for ILI purposes on a weekly basis.</li>
+<li>Google Search Queries - Google Trends allows public retrieval of weekly counts for every query searched by users around the world.</li>
+</ul>
+<p>For each location, the counts are normalized by dividing the count for each query in a particular week by the total number of online search queries submitted in that location during the week. Then, the values are adjusted to be between 0 and 1.</p>
+<p>The csv file FluTrain.csv aggregates this data from January 1, 2004 until December 31, 2011 as follows:</p>
+<ul>
+<li>“Week” - The range of dates represented by this observation, in year/month/day format.</li>
+<li>“ILI” - This column lists the percentage of ILI-related physician visits for the corresponding week.</li>
+<li>“Queries” - This column lists the fraction of queries that are ILI-related for the corresponding week, adjusted to be between 0 and 1 (higher values correspond to more ILI-related search queries).</li>
+</ul>
+<p>Before applying analytics tools on the training set, we first need to understand the data at hand. Looking at the time period 2004-2011, which week corresponds to the highest percentage of ILI-related physician visits?</p>
 <div id="loading-the-data" class="section level3">
 <h3>Loading the data</h3>
 <pre class="r"><code>FluTrain &lt;- read.csv(&quot;FluTrain.csv&quot;)
@@ -483,23 +496,15 @@ summary(FluTrain)</code></pre>
 ##  $ Week   : Factor w/ 417 levels &quot;2004-01-04 - 2004-01-10&quot;,..: 1 2 3 4 5 6 7 8 9 10 ...
 ##  $ ILI    : num  2.42 1.81 1.71 1.54 1.44 ...
 ##  $ Queries: num  0.238 0.22 0.226 0.238 0.224 ...</code></pre>
-<p>We would like to estimate influenza-like illness (ILI) activity using Google web search logs. Fortunately, one can easily access this data online:
-- ILI Data - The CDC publishes on its website the official regional and state-level percentage of patient visits to healthcare providers for ILI purposes on a weekly basis.
-- Google Search Queries - Google Trends allows public retrieval of weekly counts for every query searched by users around the world. For each location, the counts are normalized by dividing the count for each query in a particular week by the total number of online search queries submitted in that location during the week. Then, the values are adjusted to be between 0 and 1.</p>
-<p>The csv file FluTrain.csv aggregates this data from January 1, 2004 until December 31, 2011 as follows:
-- “Week” - The range of dates represented by this observation, in year/month/day format.
-- “ILI” - This column lists the percentage of ILI-related physician visits for the corresponding week.
-- “Queries” - This column lists the fraction of queries that are ILI-related for the corresponding week, adjusted to be between 0 and 1 (higher values correspond to more ILI-related search queries).</p>
-<p>Before applying analytics tools on the training set, we first need to understand the data at hand. Looking at the time period 2004-2011, which week corresponds to the highest percentage of ILI-related physician visits?</p>
 </div>
 <div id="problem-1.1---eda" class="section level3">
 <h3>Problem 1.1 - EDA</h3>
-<pre class="r"><code># select the day of the month corresponding to the start of this week
-FluTrain[which.max(FluTrain$ILI),]</code></pre>
+<p>Select the day of the month corresponding to the start of this week?</p>
+<pre class="r"><code>FluTrain[which.max(FluTrain$ILI),]</code></pre>
 <pre><code>##                        Week      ILI Queries
 ## 303 2009-10-18 - 2009-10-24 7.618892       1</code></pre>
-<pre class="r"><code># which week corresponds to the highest percentage of ILI-related query fraction?
-FluTrain[which.max(FluTrain$Queries),]</code></pre>
+<p>Which week corresponds to the highest percentage of ILI-related query fraction?</p>
+<pre class="r"><code>FluTrain[which.max(FluTrain$Queries),]</code></pre>
 <pre><code>##                        Week      ILI Queries
 ## 303 2009-10-18 - 2009-10-24 7.618892       1</code></pre>
 <pre class="r"><code>subset(FluTrain, Queries == 1)</code></pre>
@@ -509,27 +514,29 @@ FluTrain[which.max(FluTrain$Queries),]</code></pre>
 </div>
 <div id="problem-1.2---eda" class="section level3">
 <h3>Problem 1.2 - EDA</h3>
-<p>Let us now understand the data at a high level. Plot the histogram of the dependent variable, ILI. What best describes the distribution of values of ILI?</p>
+<p>Let’s now understand the data at a high level. Plot the histogram of the dependent variable, ILI.</p>
+<p>What best describes the distribution of values of ILI?</p>
 <pre class="r"><code>hist(FluTrain$ILI)</code></pre>
 <p><img src="../../../project/flu_epidemics/flu_epidemics_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<p>Most of the ILI values are small, with a relatively small number of much larger values (in statistics, this sort of data is called “skew right”).</p>
+<div id="most-of-the-ili-values-are-small-with-a-relatively-small-number-of-much-larger-values-in-statistics-this-sort-of-data-is-called-skew-right." class="section level4">
+<h4>Most of the ILI values are small, with a relatively small number of much larger values (in statistics, this sort of data is called “skew right”).</h4>
+</div>
 </div>
 <div id="problem-1.3---eda" class="section level3">
 <h3>Problem 1.3 - EDA</h3>
 <p>When handling a skewed dependent variable, it is often useful to predict the logarithm of the dependent variable instead of the dependent variable itself – this prevents the small number of unusually large or small observations from having an undue influence on the sum of squared errors of predictive models.</p>
-<p>In this problem, we will predict the natural log of the ILI variable, which can be computed using the log() function.</p>
-<pre class="r"><code># plot the natural logarithm of ILI versus Queries
-plot(log(FluTrain$ILI), FluTrain$Queries)</code></pre>
+<p>In this problem, I’ll predict the natural log of the ILI variable, which can be computed using the log() function. Plot the natural logarithm of ILI versus Queries.</p>
+<pre class="r"><code>plot(log(FluTrain$ILI), FluTrain$Queries)</code></pre>
 <p><img src="../../../project/flu_epidemics/flu_epidemics_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <pre class="r"><code>plot(FluTrain$Queries, log(FluTrain$ILI))</code></pre>
 <p><img src="../../../project/flu_epidemics/flu_epidemics_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
 <p>What does the plot suggest?
-<strong>There is a positive, linear relationship between log(ILI) and Queries.</strong></p>
+#### There is a positive, linear relationship between log(ILI) and Queries.</p>
 </div>
 <div id="problem-2.1---linear-regression-model" class="section level3">
 <h3>Problem 2.1 - Linear Regression Model</h3>
-<p>Based on the plot we just made, it seems that a linear regression model could be a good modeling choice. Based on our understanding of the data from the previous subproblem, which model best describes our estimation problem?</p>
-<p>log(ILI) = intercept + coefficient x Queries, where the coefficient is positive.</p>
+<p>Based on the plot we just made, it seems that a linear regression model could be a good modeling choice. Based on our understanding of the data from the previous subproblem, which model best describes our estimation problem?
+#### log(ILI) = intercept + coefficient x Queries, where the coefficient is positive.</p>
 </div>
 <div id="problem-2.2---linear-regression-model" class="section level3">
 <h3>Problem 2.2 - Linear Regression Model</h3>
@@ -559,7 +566,8 @@ plot(log(FluTrain$ILI), FluTrain$Queries)</code></pre>
 </div>
 <div id="problem-2.3---linear-regression-model" class="section level3">
 <h3>Problem 2.3 - Linear Regression Model</h3>
-<p>For a single variable linear regression model, there is a direct relationship between the R-squared and the correlation between the independent and the dependent variables. What is the relationship we infer from our problem? (Don’t forget that you can use the cor function to compute the correlation between two variables.)</p>
+<p>For a single variable linear regression model, there is a direct relationship between the R-squared and the correlation between the independent and the dependent variables.</p>
+<p>What is the relationship we infer from our problem? (Don’t forget that you can use the cor function to compute the correlation between two variables.)</p>
 <pre class="r"><code>corILIQueries &lt;- cor(log(FluTrain$ILI), FluTrain$Queries)
 cor(FluTrain$ILI, FluTrain$Queries)</code></pre>
 <pre><code>## [1] 0.8142115</code></pre>
@@ -569,18 +577,17 @@ cor(FluTrain$ILI, FluTrain$Queries)</code></pre>
 <pre><code>## [1] 0.1719357</code></pre>
 <pre class="r"><code>exp(-0.5 * corILIQueries)</code></pre>
 <pre><code>## [1] 0.6563792</code></pre>
-<p>ANSWER = R-squared = Correlation^2<br />
+<p>Note = R-squared = Correlation^2<br />
 Note that the “exp” function stands for the exponential function. The exponential can be computed in R using the function exp().</p>
 </div>
 <div id="problem-3.1---performance-on-the-test-set" class="section level3">
 <h3>Problem 3.1 - Performance on the Test Set</h3>
-<p>The csv file FluTest.csv provides the 2012 weekly data of the ILI-related search queries and the observed weekly percentage of ILI-related physician visits.</p>
+<p>The file provides the 2012 weekly data of the ILI-related search queries and the observed weekly percentage of ILI-related physician visits.</p>
 <p>Load this data into a dataframe called FluTest.</p>
 <pre class="r"><code>FluTest &lt;- read.csv(&quot;FluTest.csv&quot;)</code></pre>
 <p>Normally, we would obtain test-set predictions from the model FluTrend1 using the code PredTest1 = predict(FluTrend1, newdata=FluTest) However, the dependent variable in our model is log(ILI), so PredTest1 would contain predictions of the log(ILI) value.</p>
-<p>We are instead interested in obtaining predictions of the ILI value. We can convert from predictions of log(ILI) to predictions of ILI via exponentiation, or the exp() function.</p>
-<pre class="r"><code># the new code, which predicts the ILI value
-PredTest1 = exp(predict(FluTrend1, newdata=FluTest))</code></pre>
+<p>We are instead interested in obtaining predictions of the ILI value. We can convert from predictions of log(ILI) to predictions of ILI via exponentiation, or the exp() function. The new code, which predicts the ILI value.</p>
+<pre class="r"><code>PredTest1 = exp(predict(FluTrend1, newdata=FluTest))</code></pre>
 <p>What is our estimate for the percentage of ILI-related physician visits for the week of March 11, 2012? (HINT: You can either just output FluTest$Week to find which element corresponds to March 11, 2012, or you can use the “which” function in R. To learn more about the which function, type ?which in your R console.)</p>
 <pre class="r"><code>FluTest$Week</code></pre>
 <pre><code>##  [1] 2012-01-01 - 2012-01-07 2012-01-08 - 2012-01-14
@@ -620,8 +627,7 @@ PredTest1 = exp(predict(FluTrend1, newdata=FluTest))</code></pre>
 </div>
 <div id="problem-3.2---performance-on-the-test-set" class="section level3">
 <h3>Problem 3.2 - Performance on the Test Set</h3>
-<p>What is the relative error betweeen the estimate (our prediction) and the observed value for the week of March 11, 2012? Note that the relative error is calculated as (Observed ILI - Estimated ILI)/Observed ILI
-(FluTest[11, 2] - PredTest1[11]) / FluTest[11, 2]</p>
+<p>What is the relative error betweeen the estimate (our prediction) and the observed value for the week of March 11, 2012? Note that the relative error is calculated as (Observed ILI - Estimated ILI)/Observed ILI.</p>
 <pre class="r"><code>(FluTest[11, 2] - PredTest1[11]) / FluTest[11, 2]</code></pre>
 <pre><code>##         11 
 ## 0.04623827</code></pre>
@@ -636,14 +642,16 @@ FluTestRMSE</code></pre>
 </div>
 <div id="problem-4.1---training-a-time-series-model" class="section level3">
 <h3>Problem 4.1 - Training a Time Series Model</h3>
-<p>The observations in this dataset are consecutive weekly measurements of the dependent and independent variables. This sort of dataset is called a <strong>“time series.”</strong> Often, statistical models can be improved by predicting the current value of the dependent variable using the value of the dependent variable from earlier weeks. In our models, this means we will predict the ILI variable in the current week using values of the ILI variable from previous weeks.</p>
+<p>The observations in this dataset are consecutive weekly measurements of the dependent and independent variables. This sort of dataset is called a <strong>“time series.”</strong></p>
+<p>Often, statistical models can be improved by predicting the current value of the dependent variable using the value of the dependent variable from earlier weeks. In our models, this means we will predict the ILI variable in the current week using values of the ILI variable from previous weeks.</p>
 <p>First, we need to decide the amount of time to lag the observations. Because the ILI variable is reported with a 1- or 2-week lag, a decision maker cannot rely on the previous week’s ILI value to predict the current week’s value. Instead, the decision maker will only have data available from 2 or more weeks ago.</p>
 <p>We will build a variable called ILILag2 that contains the ILI value from 2 weeks before the current observation.</p>
-<p>To do so, we will use the “zoo” package, which provides a number of helpful methods for time series models. While many functions are built into R, you need to add new packages to use some functions. New packages can be installed and loaded easily in R. Run the following two commands to install and load the zoo package. In the first command, you will be prompted to select a CRAN mirror to use for your download. Select a mirror near you geographically. install.packages(“zoo”)</p>
-<p>After installing and loading the zoo package, run the following commands to create the ILILag2 variable in the training set.</p>
+<p>To do so, we’ll use the <strong>“zoo” package,</strong> which provides a number of helpful methods for time series models. While many functions are built into R, you need to add new packages to use some functions. New packages can be installed and loaded easily in R. Run the following two codes to install and load the zoo package.</p>
+<p>In the first code, you will be prompted to select a CRAN mirror to use for your download. Select a mirror near you geographically. install.packages(“zoo”)</p>
+<p>After installing and loading the zoo package, create the ILILag2 variable in the training set.</p>
 <pre class="r"><code>ILILag2 = lag(zoo(FluTrain$ILI), -2, na.pad=TRUE)
 FluTrain$ILILag2 = coredata(ILILag2)</code></pre>
-<p>In these commands, the value of -2 passed to lag means to return 2 observations before the current one; a positive value would have returned future observations. The parameter na.pad=TRUE means to add missing values for the first two weeks of our dataset, where we can’t compute the data from 2 weeks earlier.</p>
+<p>The value of -2 passed to lag means to return 2 observations before the current one; a positive value would have returned future observations. The parameter na.pad=TRUE means to add missing values for the first two weeks of our dataset, where we can’t compute the data from 2 weeks earlier.</p>
 <pre class="r"><code>?lag
 ?coredata
 ILILag2</code></pre>
@@ -773,7 +781,8 @@ ILILag2</code></pre>
 </div>
 <div id="problem-4.2---training-a-time-series-model" class="section level3">
 <h3>Problem 4.2 - Training a Time Series Model</h3>
-<p>Use the plot() function to plot the log of ILILag2 against the log of ILI. Which best describes the relationship between these two variables?</p>
+<p>Use the plot() function to plot the log of ILILag2 against the log of ILI.</p>
+<p>Which best describes the relationship between these two variables?</p>
 <pre class="r"><code>plot(log(FluTrain$ILILag2), log(FluTrain$ILI))</code></pre>
 <p><img src="../../../project/flu_epidemics/flu_epidemics_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 <p>There is a strong positive relationship between log(ILILag2) and log(ILI).</p>
@@ -782,7 +791,7 @@ ILILag2</code></pre>
 <h3>Problem 4.3 - Training a Time Series Model</h3>
 <p>Train a linear regression model on the FluTrain dataset to predict the log of the ILI variable using the Queries variable as well as the log of the ILILag2 variable. Call this model FluTrend2.</p>
 <pre class="r"><code>FluTrend2 &lt;- lm(log(ILI) ~ Queries + log(ILILag2), data = FluTrain)</code></pre>
-<p>Which coefficients are significant at the p=0.05 level in this regression model? (Select all that apply.)</p>
+<p>Which coefficients are significant at the p=0.05 level in this regression model?</p>
 <pre class="r"><code>summary(FluTrend2)</code></pre>
 <pre><code>## 
 ## Call:
@@ -851,14 +860,16 @@ ILILag2</code></pre>
 ##   (2 observations deleted due to missingness)
 ## Multiple R-squared:  0.9063, Adjusted R-squared:  0.9059 
 ## F-statistic:  1993 on 2 and 412 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p><strong>FluTrend2 is a stronger model than FluTrend1 on the training set, due to it’s higher R^2 value.</strong></p>
+<div id="flutrend2-is-a-stronger-model-than-flutrend1-on-the-training-set-due-to-its-higher-r2-value." class="section level4">
+<h4>FluTrend2 is a stronger model than FluTrend1 on the training set, due to it’s higher R^2 value.</h4>
+</div>
 </div>
 <div id="problem-5.1---evaluating-the-time-series-model-in-the-test-set" class="section level3">
 <h3>Problem 5.1 - Evaluating the Time Series Model in the Test Set</h3>
-<p>So far, we have only added the ILILag2 variable to the FluTrain dataframe. To make predictions with our FluTrend2 model, we will also need to add ILILag2 to the FluTest dataframe (note that adding variables before splitting into a training and testing set can prevent this duplication of effort).</p>
+<p>So far, we have only added the ILILag2 variable to the FluTrain dataframe. To make predictions with our FluTrend2 model, we’ll also need to add ILILag2 to the FluTest dataframe (note that adding variables before splitting into a training and testing set can prevent this duplication of effort).</p>
 <p>Modifying the code from the previous subproblem to add an ILILag2 variable to the FluTest dataframe.</p>
-<pre class="r"><code># how many missing values are there in this new variable?
-Test_ILILag2 = lag(zoo(FluTest$ILI), -2, na.pad=TRUE)
+<p>How many missing values are there in this new variable?</p>
+<pre class="r"><code>Test_ILILag2 = lag(zoo(FluTest$ILI), -2, na.pad=TRUE)
 FluTest$ILILag2 = coredata(Test_ILILag2)
 sum(is.na(FluTest$ILILag2))</code></pre>
 <pre><code>## [1] 2</code></pre>
@@ -867,7 +878,8 @@ sum(is.na(FluTest$ILILag2))</code></pre>
 <h3>Problem 5.2 - Evaluating the Time Series Model in the Test Set</h3>
 <p>In this problem, the training and testing sets are split sequentially – the training set contains all observations from 2004-2011 and the testing set contains all observations from 2012.</p>
 <p>There is no time gap between the two datasets, meaning the first observation in FluTest was recorded one week after the last observation in FluTrain. From this, we can identify how to fill in the missing values for the ILILag2 variable in FluTest. Which value should be used to fill in the ILILag2 variable for the first observation in FluTest?</p>
-<p>The ILI value of the second-to-last observation in the FluTrain dataframe. Which value should be used to fill in the ILILag2 variable for the second observation in FluTest? The ILI value of the last observation in the FluTrain dataframe.</p>
+<p>The ILI value of the second-to-last observation in the FluTrain dataframe. Which value should be used to fill in the ILILag2 variable for the second observation in FluTest?
+#### The ILI value of the last observation in the FluTrain dataframe.</p>
 </div>
 <div id="problem-5.3---evaluating-the-time-series-model-in-the-test-set" class="section level3">
 <h3>Problem 5.3 - Evaluating the Time Series Model in the Test Set</h3>
@@ -891,8 +903,8 @@ FluTest$ILILag2[2] = FluTrain$ILI[417]</code></pre>
 <div id="problem-5.4---evaluating-the-time-series-model-in-the-test-set" class="section level3">
 <h3>Problem 5.4 - Evaluating the Time Series Model in the Test Set</h3>
 <p>Obtain test-set predictions of the ILI variable from the FluTrend2 model, again remembering to call the exp() function on the result of the predict() function to obtain predictions for ILI instead of log(ILI).</p>
-<pre class="r"><code># what is the test-set RMSE of the FluTrend2 model?
-PredTest2 = exp(predict(FluTrend2, newdata=FluTest))
+<p>What is the test-set RMSE of the FluTrend2 model?</p>
+<pre class="r"><code>PredTest2 = exp(predict(FluTrend2, newdata=FluTest))
 FluTestSSE2 = sum((PredTest2 - FluTest$ILI)^2)
 FluTestRMSE2 = sqrt(FluTestSSE2/nrow(FluTest))
 FluTestRMSE2</code></pre>
@@ -900,11 +912,11 @@ FluTestRMSE2</code></pre>
 </div>
 <div id="problem-5.5---evaluating-the-time-series-model-in-the-test-set" class="section level3">
 <h3>Problem 5.5 - Evaluating the Time Series Model in the Test Set</h3>
-<p>Which model obtained the best test-set RMSE?</p>
-<p>FluTrend2 (less RMSE is better)</p>
+<p>Which model obtained the best test-set RMSE?
+#### FluTrend2 (less RMSE is better)</p>
 <div id="conclusion" class="section level4">
 <h4>Conclusion</h4>
-<p>In this problem, we used a simple time series model with a single lag term. ARIMA models are a more general form of the model we built, which can include multiple lag terms as well as more complicated combinations of previous values of the dependent variable.</p>
+<p>In this analysis, I’ve used a simple time series model with a single lag term. ARIMA models are a more general form of the model we built, which can include multiple lag terms as well as more complicated combinations of previous values of the dependent variable.</p>
 </div>
 </div>
 

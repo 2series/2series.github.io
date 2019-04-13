@@ -15,7 +15,7 @@
   
     
   
-  <meta name="description" content="Using census information about an individual to predict how much a person earns -- in particular, whether the person earns more than $50,000 per year">
+  <meta name="description" content="Predict how much a person earns">
 
   
   <link rel="alternate" hreflang="en-us" href="../../../project/earnings/earnings/">
@@ -119,7 +119,7 @@
   <meta property="og:site_name" content="Rihad Variawa">
   <meta property="og:url" content="/project/earnings/earnings/">
   <meta property="og:title" content="Earnings Prediction From Census Data | Rihad Variawa">
-  <meta property="og:description" content="Using census information about an individual to predict how much a person earns -- in particular, whether the person earns more than $50,000 per year"><meta property="og:image" content="/img/headers/em.jpg">
+  <meta property="og:description" content="Predict how much a person earns"><meta property="og:image" content="/img/headers/em.jpg">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-04-08T00:00:00&#43;00:00">
@@ -464,9 +464,8 @@
 
 
 <p>The United States government periodically collects demographic information by conducting a census.</p>
-<p>In this analysis, we are going to use census information about an individual to predict how much a person earns – in particular, whether the person earns more than $50,000 per year. This data comes from the UCI Machine Learning Repository.</p>
-<p>The file census.csv contains 1994 census data for 31,978 individuals in the United States.</p>
-<p>The dataset includes the following 13 variables:</p>
+<p>In this analysis, I am are going to use census information about individuals to predict how much a person earns – in particular, whether the person earns more than $50,000 per year. This data comes from the UCI Machine Learning Repository.</p>
+<p>The file census.csv contains 1994 census data for 31,978 individuals in the U.S. The dataset includes the following 13 variables:</p>
 <ul>
 <li>age = the age of the individual in years</li>
 <li>workclass = the classification of the individual’s working status (does the person work for the federal government, work for the local government, work without pay, and so on)
@@ -554,7 +553,7 @@ nrow(censusTrain)</code></pre>
 <pre class="r"><code>nrow(censusTest)</code></pre>
 <pre><code>## [1] 12791</code></pre>
 <p>Next, build a logistic regression model to predict the dependent variable “over50k”, using all of the other variables in the dataset as independent variables. Use the training set to build the model.</p>
-<p>Which variables are significant, or have factors that are significant? (Use 0.1 as your significance threshold, so variables with a period or dot in the stars column should be counted too. You might see a warning message here - you can ignore it and proceed. This message is a warning that we might be overfitting our model to the training set.) Select all that apply.</p>
+<p>Which variables are significant, or have factors that are significant? (Use 0.1 as your significance threshold, so variables with a period or dot in the stars column should be counted too. You might see a warning message here - you can ignore it and proceed. This message is a warning that we might be overfitting our model to the training set.)</p>
 <pre class="r"><code>CensusLog &lt;- glm(over50k ~ ., data = censusTrain, family = binomial)</code></pre>
 <pre><code>## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
 <pre class="r"><code>summary(CensusLog)</code></pre>
@@ -775,11 +774,8 @@ nrow(censusTrain)</code></pre>
 ## AIC: 12298
 ## 
 ## Number of Fisher Scoring iterations: 15</code></pre>
-<div id="age-workclass-education-maritalstatus-occupation-relationship-sex" class="section level4">
-<h4>age, workclass, education, maritalstatus, occupation, relationship, sex,</h4>
-</div>
-<div id="capitalgain-capitalloss-housperweek" class="section level4">
-<h4>capitalgain, capitalloss, housperweek</h4>
+<div id="age-workclass-education-maritalstatus-occupation-relationship-sex-capitalgain-capitalloss-housperweek" class="section level4">
+<h4>age, workclass, education, maritalstatus, occupation, relationship, sex, capitalgain, capitalloss, housperweek</h4>
 </div>
 </div>
 <div id="problem-1.2---a-logistic-regression-model" class="section level3">
@@ -822,29 +818,28 @@ as.numeric(performance(ROCRpredLog, &quot;auc&quot;)@y.values)</code></pre>
 </div>
 <div id="problem-2.1---a-cart-model" class="section level3">
 <h3>Problem 2.1 - A CART Model</h3>
-<p>We have just seen how the logistic regression model for this data achieves a high accuracy. Moreover, the significances of the variables give us a way to gauge which variables are relevant for this prediction task. However, it is not immediately clear which variables are more important than the others, especially due to the large number of factor variables in this problem.</p>
-<p>Let us now build a classification tree to predict “over50k”. Using the training set to build the model, and all of the other variables as independent variables. Using the default parameters, so don’t set a value for minbucket or cp. Remember to specify method=“class” as an argument to rpart, since this is a classification problem. After you are done building the model, plot the resulting tree.</p>
+<p>I have just seen how the logistic regression model for this data achieves a high accuracy. Moreover, the significances of the variables give us a way to gauge which variables are relevant for this prediction task. However, it is not immediately clear which variables are more important than the others, especially due to the large number of factor variables in this problem.</p>
+<p>Let’s now build a classification tree to predict “over50k”. Using the training set to build the model, and all of the other variables as independent variables.</p>
+<p>Using the default parameters, so don’t set a value for minbucket or cp. Remember to specify method=“class” as an argument to rpart, since this is a classification problem. After you are done building the model, plot the resulting tree.</p>
 <p>How many splits does the tree have in total?</p>
 <pre class="r"><code>library(rpart)
 library(rpart.plot)
 censusTree &lt;- rpart(over50k ~ ., data = censusTrain, method=&quot;class&quot;)
 prp(censusTree)</code></pre>
 <p><img src="../../../project/earnings/earnings_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<p>4</p>
+<div id="section" class="section level4">
+<h4>4</h4>
+</div>
 </div>
 <div id="problem-2.2---a-cart-model" class="section level3">
 <h3>Problem 2.2 - A CART Model</h3>
-<p>Which variable does the tree split on at the first level (the very first split of the tree)?</p>
-<div id="relationship" class="section level4">
-<h4>relationship</h4>
-</div>
+<p>Which variable does the tree split on at the first level (the very first split of the tree)?
+#### relationship</p>
 </div>
 <div id="problem-2.3---a-cart-model" class="section level3">
 <h3>Problem 2.3 - A CART Model</h3>
-<p>Which variables does the tree split on at the second level (immediately after the first split of the tree)? Select all that apply.</p>
-<div id="capitalgain-education" class="section level4">
-<h4>capitalgain, education</h4>
-</div>
+<p>Which variables does the tree split on at the second level (immediately after the first split of the tree)?
+#### capitalgain, education</p>
 </div>
 <div id="problem-2.4---a-cart-model" class="section level3">
 <h3>Problem 2.4 - A CART Model</h3>
@@ -864,7 +859,7 @@ head(predictTree)</code></pre>
 </div>
 <div id="problem-2.5---a-cart-model" class="section level3">
 <h3>Problem 2.5 - A CART Model</h3>
-<p>Let us now consider the ROC curve and AUC for the CART model on the test-set. We will need to get predicted probabilities for the observations in the test-set to build the ROC curve and compute the AUC. Remember that you can do this by removing the type=“class” argument when making predictions, and taking the second column of the resulting object.</p>
+<p>Let’s now consider the ROC curve and AUC for the CART model on the test-set. I will need to get predicted probabilities for the observations in the test-set to build the ROC curve and compute the AUC. Remember that you can do this by removing the type=“class” argument when making predictions, and taking the second column of the resulting object.</p>
 <pre class="r"><code>predictTreeProb &lt;- predict(censusTree, newdata = censusTest)
 head(predictTreeProb)</code></pre>
 <pre><code>##        &lt;=50K       &gt;50K
@@ -895,18 +890,18 @@ plot(ROCRperfTree)</code></pre>
 </div>
 <div id="problem-3.1---a-random-forest-model" class="section level3">
 <h3>Problem 3.1 - A Random Forest Model</h3>
-<p>Before building a random forest model, we’ll down-sample our training set. While some modern personal computers can build a random forest model on the entire training set, others might run out of memory when trying to train the model since random forests is much more computationally intensive than CART or Logistic Regression.</p>
+<p>Before building a random forest model, I’ll down-sample our training set. While some modern personal computers can build a random forest model on the entire training set, others might run out of memory when trying to train the model since random forests is much more computationally intensive than CART or Logistic Regression.</p>
 <p>For this reason, before continuing I’ll define a new training set to be used when building our random forest model, that contains 2000 randomly selected obervations from the original training set.</p>
 <pre class="r"><code>set.seed(1)
 trainSmall &lt;- censusTrain[sample(nrow(censusTrain), 2000), ]</code></pre>
-<p>Let us now build a random forest model to predict “over50k”, using the dataset “trainSmall” as the data used to build the model. Set the seed to 1 again right before building the model, and use all of the other variables in the dataset as independent variables. (If you get an error that random forest “cannot handle categorical predictors with more than 32 categories”, re-build the model without the nativecountry variable as one of the independent variables.)</p>
+<p>Let’s now build a random forest model to predict “over50k”, using the dataset “trainSmall” as the data used to build the model. Set the seed to 1 again right before building the model, and use all of the other variables in the dataset as independent variables. (If you get an error that random forest “cannot handle categorical predictors with more than 32 categories”, re-build the model without the nativecountry variable as one of the independent variables.)</p>
 <pre class="r"><code>library(randomForest)</code></pre>
 <pre><code>## randomForest 4.6-14</code></pre>
 <pre><code>## Type rfNews() to see new features/changes/bug fixes.</code></pre>
 <pre class="r"><code>set.seed(1)
 CensusForest &lt;- randomForest(over50k ~ ., data = trainSmall)</code></pre>
 <p>Then, make predictions using this model on the entire test-set.</p>
-<p>What is the accuracy of the model on the test-set, using a threshold of 0.5? (Remember that you don’t need a “type” argument when making predictions with a random forest model if you want to use a threshold of 0.5. Also, note that your accuracy might be different from the one reported here, since random forest models can still differ depending on your operating system, even when the random seed is set.)</p>
+<p>What is the accuracy of the model on the test-set, using a threshold of 0.5? (Remember that you don’t need a “type” argument when making predictions with a random forest model if you want to use a threshold of 0.5. Also, note that our accuracy might be different from the one reported here, since random forest models can still differ depending on our operating system, even when the random seed is set.)</p>
 <pre class="r"><code>predictForest &lt;- predict(CensusForest, newdata = censusTest)
 table(censusTest$over50k, predictForest)</code></pre>
 <pre><code>##         predictForest
@@ -918,31 +913,30 @@ table(censusTest$over50k, predictForest)</code></pre>
 </div>
 <div id="problem-3.2---a-random-forest-model" class="section level3">
 <h3>Problem 3.2 - A Random Forest Model</h3>
-<p>As we discussed, random forest models work by building a large collection of trees. As a result, we lose some of the interpretability that comes with CART in terms of seeing how predictions are made and which variables are important. However, we can still compute metrics that give us insight into which variables are important. One metric that we can look at is the number of times, aggregated over all of the trees in the random forest model, that a certain variable is selected for a split. To view this metric, run the following lines of code (replace “MODEL” with the name of your random forest model):</p>
+<p>As we discussed, random forest models work by building a large collection of trees. As a result, we lose some of the interpretability that comes with CART in terms of seeing how predictions are made and which variables are important.</p>
+<p>However, we can still compute metrics that give us insight into which variables are important. One metric that we can look at is the number of times, aggregated over all of the trees in the random forest model, that a certain variable is selected for a split.</p>
+<p>To view this metric, run the following lines of code (replace “MODEL” with the name of your random forest model):</p>
 <pre class="r"><code>vu &lt;- varUsed(CensusForest, count=TRUE)
 vusorted &lt;- sort(vu, decreasing = FALSE, index.return = TRUE)
 dotchart(vusorted$x, names(CensusForest$forest$xlevels[vusorted$ix]))</code></pre>
 <p><img src="../../../project/earnings/earnings_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>This code produces a chart that for each variable measures the number of times that variable was selected for splitting (the value on the x-axis).</p>
-<p>Which of the following variables is the most important in terms of the number of splits?</p>
-<div id="age" class="section level4">
-<h4>age</h4>
-</div>
+<p>Which of the following variables is the most important in terms of the number of splits?
+#### age</p>
 </div>
 <div id="problem-3.3---a-random-forest-model" class="section level3">
 <h3>Problem 3.3 - A Random Forest Model</h3>
-<p>A different metric we can look at is related to “impurity”, which measures how homogenous each bucket or leaf of the tree is. In each tree in the forest, whenever we select a variable and perform a split, the impurity is decreased. Therefore, one way to measure the importance of a variable is to average the reduction in impurity, taken over all the times that variable is selected for splitting in all of the trees in the forest.</p>
+<p>A different metric we can look at is related to “impurity”, which measures how homogenous each bucket or leaf of the tree is. In each tree in the forest, whenever we select a variable and perform a split, the impurity is decreased.</p>
+<p>Therefore, one way to measure the importance of a variable is to average the reduction in impurity, taken over all the times that variable is selected for splitting in all of the trees in the forest.</p>
 <p>To compute this metric, run the following code (replace “MODEL” with the name of your random forest model):</p>
 <pre class="r"><code>varImpPlot(CensusForest)</code></pre>
 <p><img src="../../../project/earnings/earnings_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-<p>Which one of the following variables is the most important in terms of mean reduction in impurity?</p>
-<div id="occupation" class="section level4">
-<h4>occupation</h4>
-</div>
+<p>Which one of the following variables is the most important in terms of mean reduction in impurity?
+#### occupation</p>
 </div>
 <div id="problem-4.1---selecting-cp-by-cross-validation" class="section level3">
 <h3>Problem 4.1 - Selecting cp by Cross-Validation</h3>
-<p>We now conclude our analysis of this dataset by looking at how CART behaves with different choices of its parameters. Let us select the cp parameter for our CART model using k-fold cross validation, with k = 10 folds. Do this by using the train function. Set the seed beforehand to 2. Test cp values from 0.002 to 0.1 in 0.002 increments, by using the following code:</p>
+<p>We now conclude our analysis of this dataset by looking at how CART behaves with different choices of its parameters. Let us select the cp parameter for our CART model using k-fold cross validation, with k = 10 folds. Do this by using the train function. Set the seed beforehand to 2. Test cp values from 0.002 to 0.1 in 0.002 increments.</p>
 <p>Also, remember we using the entire training set “train” when building this model. The train function might take some time to run.</p>
 <p>Which value of cp does the train function recommend?</p>
 <pre class="r"><code>library(caret)</code></pre>
@@ -1103,11 +1097,13 @@ table(censusTest$over50k, predictTree2)</code></pre>
 <p>Plot the CART tree for this model. How many splits are there?</p>
 <pre class="r"><code>prp(censusTree2)</code></pre>
 <p><img src="../../../project/earnings/earnings_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
-<p>18</p>
+<div id="section-1" class="section level4">
+<h4>18</h4>
+</div>
 </div>
 <div id="conclusion" class="section level3">
 <h3>Conclusion</h3>
-<p>This highlights one important tradeoff in building predictive models. By tuning cp, we improved our accuracy by over 1%, but our tree became significantly more complicated. In some applications, such an improvement in accuracy would be worth the loss in interpretability. In others, we may prefer a less accurate model that is simpler to understand and describe over a more accurate – but more complicated – model.</p>
+<p>This highlights one important trade-off in building predictive models. By tuning cp, we improved our accuracy by over 1%, but our tree became significantly more complicated. In some applications, such an improvement in accuracy would be worth the loss in interpretability. In others, we may prefer a less accurate model that is simpler to understand and describe over a more accurate – but more complicated – model.</p>
 </div>
 
     </div>

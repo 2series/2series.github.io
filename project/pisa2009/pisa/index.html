@@ -15,7 +15,7 @@
   
     
   
-  <meta name="description" content="Predict reading scores of students from the USA in the 2009 PISA exam.">
+  <meta name="description" content="Predict reading scores of students in the 2009 PISA exam">
 
   
   <link rel="alternate" hreflang="en-us" href="../../../project/pisa2009/pisa/">
@@ -119,7 +119,7 @@
   <meta property="og:site_name" content="Rihad Variawa">
   <meta property="og:url" content="/project/pisa2009/pisa/">
   <meta property="og:title" content="Reading Test Scores | Rihad Variawa">
-  <meta property="og:description" content="Predict reading scores of students from the USA in the 2009 PISA exam."><meta property="og:image" content="/img/headers/rdg.jpg">
+  <meta property="og:description" content="Predict reading scores of students in the 2009 PISA exam"><meta property="og:image" content="/img/headers/rdg.jpg">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-04-06T00:00:00&#43;00:00">
@@ -463,8 +463,10 @@
       
 
 
-<p>The Programme for International Student Assessment (PISA) is a test given every three years to 15-year-old students from around the world to evaluate their performance in <strong>mathematics, reading, and science.</strong> This test provides a quantitative way to compare the performance of students from different parts of the world. In this analysis, I’ll predict the reading scores of students from the USA on the 2009 PISA exam.</p>
-<p>The datasets contain information about the demographics and schools for American students taking the exam, derived from 2009 PISA Public-Use Data Files distributed by the United States National Center for Education Statistics (NCES). While the datasets are not supposed to contain identifying information about students taking the test, by using the data you are bound by the NCES data use agreement, which prohibits any attempt to determine the identity of any student in the datasets.</p>
+<p>The Programme for International Student Assessment (PISA) is a test given every three years to 15-year-old students from around the world to evaluate their performance in <strong>mathematics, reading, and science.</strong></p>
+<p>The test provides a quantitative way to compare the performance of students from different parts of the world.</p>
+<p>In this analysis, I’ll predict the reading scores of students from the USA on the 2009 PISA exam.</p>
+<p>The datasets contain information about the demographics and schools for American students taking the exam, derived from 2009 PISA Public-Use Data Files distributed by the United States National Center for Education Statistics (NCES). While the datasets are not supposed to contain identifying information about students taking the test, <strong>by using the data we are bound by the NCES data use agreement, which prohibits any attempt to determine the identity of any student in the datasets.</strong></p>
 <p>Each row in the datasets represents one student taking the exam. The datasets have the following variables:</p>
 <ul>
 <li>grade: The grade in school of the student (most 15-year-olds in America are in 10th grade)</li>
@@ -650,13 +652,15 @@ str(pisaTrain)</code></pre>
 ##  3rd Qu.:1900   3rd Qu.:566.2  
 ##  Max.   :6694   Max.   :746.0  
 ##  NA&#39;s   :162</code></pre>
-<p>raceeth, preschool, expectBachelors, motherHS, motherBachelors, motherWork, fatherHS, fatherBachelors, fatherWork, selfBornUS, motherBornUS, fatherBornUS, englishAtHome, computerForSchoolWork, read30MinsADay, minutesPerWeekEnglish, studentsInEnglish, schoolHasLibrary, schoolSize</p>
+<div id="raceeth-preschool-expectbachelors-motherhs-motherbachelors-motherwork-fatherhs-fatherbachelors-fatherwork-selfbornus-motherbornus-fatherbornus-englishathome-computerforschoolwork-read30minsaday-minutesperweekenglish-studentsinenglish-schoolhaslibrary-schoolsize" class="section level4">
+<h4>raceeth, preschool, expectBachelors, motherHS, motherBachelors, motherWork, fatherHS, fatherBachelors, fatherWork, selfBornUS, motherBornUS, fatherBornUS, englishAtHome, computerForSchoolWork, read30MinsADay, minutesPerWeekEnglish, studentsInEnglish, schoolHasLibrary, schoolSize</h4>
+</div>
 </div>
 <div id="problem-1.4---removing-missing-values" class="section level3">
 <h3>Problem 1.4 - Removing missing values</h3>
-<p>Linear regression discards observations with missing data, so we’ll remove all such observations from the training and testing sets. Later, we will learn about imputation, which deals with missing data by filling in missing values with plausible information.</p>
-<pre class="r"><code># to remove observations with any missing value from pisaTrain and pisaTest:
-pisaTrain = na.omit(pisaTrain)
+<p>Linear regression discards observations with missing data, so I’ll remove all such observations from the training and testing sets. Later, we’ll learn about imputation, which deals with missing data by filling in missing values with plausible information.</p>
+<p>Removing observations with missing value from pisaTrain and pisaTest:</p>
+<pre class="r"><code>pisaTrain = na.omit(pisaTrain)
 pisaTest = na.omit(pisaTest)</code></pre>
 <p>How many observations are now in the training set?</p>
 <pre class="r"><code>str(pisaTrain)</code></pre>
@@ -752,15 +756,19 @@ pisaTest = na.omit(pisaTest)</code></pre>
 ##  $ readingScore         : num  575 458 614 439 466 ...
 ##  - attr(*, &quot;na.action&quot;)= &#39;omit&#39; Named int  1 3 6 7 9 11 13 21 29 30 ...
 ##   ..- attr(*, &quot;names&quot;)= chr  &quot;1&quot; &quot;3&quot; &quot;6&quot; &quot;7&quot; ...</code></pre>
-<p>raceeth</p>
-<p>Which of the following variables is an ordered factor with at least 3 levels?</p>
-<p>grade</p>
+<div id="raceeth" class="section level4">
+<h4>raceeth</h4>
+<p>Which of the following variables is an ordered factor with at least 3 levels?
+#### grade</p>
+</div>
 </div>
 <div id="problem-2.2---unordered-factors-in-regression-models" class="section level3">
 <h3>Problem 2.2 - Unordered factors in regression models</h3>
 <p>To include unordered factors in a linear regression model, we define one level as the “reference level” and add a binary variable for each of the remaining levels. In this way, a factor with n levels is replaced by n-1 binary variables. The reference level is typically selected to be the most frequently occurring level in the dataset.</p>
 <p>As an example, consider the unordered factor variable “color”, with levels “red”, “green”, and “blue”. If “green” were the reference level, then we would add binary variables “colored” and “colorblue” to a linear regression problem. All red examples would have colored=1 and colorblue=0. All blue examples would have colored=0 and colorblue=1. All green examples would have colored=0 and colorblue=0.</p>
-<p>Now, consider the variable “raceeth” in our problem, which has levels <strong>“American Indian/Alaska Native”, “Asian”, “Black”, “Hispanic”,</strong> “More than one race”, <strong>“Native Hawaiian/Other Pacific Islander”, and “White”.</strong> Because it’s the most common in our population, we will select White as the reference level.</p>
+<p>Now, consider the variable “raceeth” in our problem, which has levels <strong>“American Indian/Alaska Native”, “Asian”, “Black”, “Hispanic”,</strong></p>
+<p>“More than one race”, <strong>“Native Hawaiian/Other Pacific Islander”, and “White”.</strong></p>
+<p>Because it’s the most common in our population, we will select White as the reference level.</p>
 <p>Which binary variables will be included in the regression model?</p>
 <pre class="r"><code>str(pisaTrain)</code></pre>
 <pre><code>## &#39;data.frame&#39;:    2414 obs. of  24 variables:
@@ -801,20 +809,19 @@ pisaTest = na.omit(pisaTest)</code></pre>
 </div>
 <div id="problem-2.3---example-unordered-factors" class="section level3">
 <h3>Problem 2.3 - Example unordered factors</h3>
-<p>Consider again adding our unordered factor race to the regression model with reference level “White”.</p>
-<p>For a student who is Asian, which binary variables would be set to 0? All remaining variables will be set to 1. (Select all that apply.) (all except raceethAsian)</p>
-<p>For a student who is white, which binary variables would be set to 0? All remaining variables will be set to 1. (Select all that apply.)
-(all)</p>
+<p>Consider again adding our unordered factor race to the regression model with reference level “White”. For a student who is Asian, which binary variables would be set to 0. All remaining variables will be set to 1. (all except raceethAsian)
+#### all</p>
 </div>
 <div id="problem-3.1---building-a-model" class="section level3">
 <h3>Problem 3.1 - Building a model</h3>
-<p>Because the race variable takes on text values, it was loaded as a factor variable when we read in the dataset with read.csv() – you can see this when you run str(pisaTrain) or str(pisaTest). However, by default R selects the first level alphabetically (“American Indian/Alaska Native”) as the reference level of our factor instead of the most common level (“White”).</p>
-<p>Set the reference level of the factor by typing the following two lines in your R console:</p>
+<p>Because the race variable takes on text values, it was loaded as a factor variable when we read in the dataset with read.csv() – you can see this when you run str(pisaTrain) or str(pisaTest).</p>
+<p>However, by default R selects the first level alphabetically (“American Indian/Alaska Native”) as the reference level of our factor instead of the most common level (“White”).</p>
+<p>Let’s Set the reference level of the factor.</p>
 <pre class="r"><code>pisaTrain$raceeth = relevel(pisaTrain$raceeth, &quot;White&quot;)
 pisaTest$raceeth = relevel(pisaTest$raceeth, &quot;White&quot;)</code></pre>
 <p>Now, building a linear regression model (call it lmScore) using the training set to predict readingScore using all the remaining variables. It would be time-consuming to type all the variables, but R provides the shorthand notation “readingScore ~ .” to mean “predict readingScore using all the other variables in the dataframe.” The period is used to replace listing out all of the independent variables.</p>
-<p>As an example, if your dependent variable is called “Y”, your independent variables are called “X1”, “X2”, and “X3”, and your training dataset is called “Train”, instead of the regular notation: LinReg = lm(Y ~ X1 + X2 + X3, data = Train)</p>
-<p>You would use the following command to build your model:
+<p>As an example, if our dependent variable is called “Y”, our independent variables are called “X1”, “X2”, and “X3”, and our training dataset is called “Train”, instead of the regular notation: LinReg = lm(Y ~ X1 + X2 + X3, data = Train)</p>
+<p>You would use the following code to build our model:
 LinReg = lm(Y ~ ., data = Train)</p>
 <pre class="r"><code>lmScore &lt;- lm(readingScore ~ ., data = pisaTrain)</code></pre>
 <p>What is the Multiple R-squared value of lmScore on the training set?</p>
@@ -895,11 +902,11 @@ LinReg = lm(Y ~ ., data = Train)</p>
 ## Multiple R-squared:  0.3251, Adjusted R-squared:  0.3172 
 ## F-statistic: 41.04 on 28 and 2385 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>0.3251</p>
-<p>Note that this R-squared is lower than the ones for the models we saw in the lectures and recitation. This does not necessarily imply that the model is of poor quality. More often than not, it simply means that the prediction problem at hand (predicting a student’s test score based on demographic and school-related variables) is more difficult than other prediction problems (like predicting a team’s number of wins from their runs scored and allowed, or predicting the quality of wine from weather conditions).</p>
+<p>Note, that this R-squared is lower than the ones prevously observed. This does not necessarily imply that the model is of poor quality. More often than not, it simply means that the prediction problem at hand (predicting a student’s test score based on demographic and school-related variables) is more difficult than other prediction problems (like predicting a team’s number of wins from their runs scored and allowed, or predicting the quality of wine from weather conditions).</p>
 </div>
 <div id="problem-3.2---computing-the-root-mean-squared-error-of-the-model" class="section level3">
 <h3>Problem 3.2 - Computing the root-mean squared error of the model</h3>
-<p>What is the training-set root-mean squared error (RMSE) of lmScore?</p>
+<p>What is the training-set root mean squared error (RMSE) of lmScore?</p>
 <pre class="r"><code>lmScoreSSE &lt;- sum(lmScore$residuals^2)
 lmScoreSSE</code></pre>
 <pre><code>## [1] 12993365</code></pre>
@@ -1018,12 +1025,13 @@ predictedScores</code></pre>
 ## Residual standard error: 73.81 on 2385 degrees of freedom
 ## Multiple R-squared:  0.3251, Adjusted R-squared:  0.3172 
 ## F-statistic: 41.04 on 28 and 2385 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p>Predicted difference in the reading score between an Asian student and a white student who is otherwise identical.</p>
+<div id="predicted-difference-in-the-reading-score-between-an-asian-student-and-a-white-student-who-is-otherwise-identical." class="section level4">
+<h4>Predicted difference in the reading score between an Asian student and a white student who is otherwise identical.</h4>
+</div>
 </div>
 <div id="problem-3.5---identifying-variables-lacking-statistical-significance" class="section level3">
 <h3>Problem 3.5 - Identifying variables lacking statistical significance</h3>
-<p>Based on the significance codes, which variables are candidates for removal from the model?</p>
-<p>Select all that apply. (We’ll assume that the factor variable raceeth should only be removed if none of its levels are significant.)</p>
+<p>Based on the significance codes, which variables are candidates for removal from the model? (We’ll assume that the factor variable raceeth should only be removed if none of its levels are significant.)</p>
 <ul>
 <li>preschool, motherHS, motherWork, fatherHS, fatherWork, selfBornUS,</li>
 <li>motherBornUS, fatherBornUS, englishAtHome, minutesPerWeekEnglish,</li>
@@ -1033,7 +1041,7 @@ predictedScores</code></pre>
 <div id="problem-4.1---predicting-on-unseen-data" class="section level3">
 <h3>Problem 4.1 - Predicting on unseen data</h3>
 <p>Using the “predict” function and supplying the “newdata” argument, use the lmScore model to predict the reading scores of students in pisaTest. Call this vector of predictions “predTest”. Do not change the variables in the model (for example, do not remove variables that we found were not significant in the previous part of this problem). Use the summary function to describe the test-set predictions.</p>
-<p>What is the range between the maximum and minimum predicted reading score on the test set?</p>
+<p>What is the range between the max and min predicted reading score on the test-set?</p>
 <pre class="r"><code>predTest &lt;- predict(lmScore, newdata = pisaTest)
 summary(predTest)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
@@ -1046,14 +1054,14 @@ summary(predTest)</code></pre>
 <pre class="r"><code>test_set_SSE = sum((predTest - pisaTest$readingScore)^2)
 test_set_SSE</code></pre>
 <pre><code>## [1] 5762082</code></pre>
-<p>What is the root-mean squared error (RMSE) of lmScore on the testing set?</p>
+<p>What is the root mean squared error (RMSE) of lmScore on the testing set?</p>
 <pre class="r"><code>test_set_RMSE = sqrt(test_set_SSE/nrow(pisaTest))
 test_set_RMSE</code></pre>
 <pre><code>## [1] 76.29079</code></pre>
 </div>
 <div id="problem-4.3---baseline-prediction-and-test-set-sse" class="section level3">
 <h3>Problem 4.3 - Baseline prediction and test-set SSE</h3>
-<p>What is the predicted test score used in the baseline model? Remember to compute this value using the training set and not the test-set.</p>
+<p>What is the predicted test score used in the baseline model?</p>
 <pre class="r"><code>mean(pisaTrain$readingScore)</code></pre>
 <pre><code>## [1] 517.9629</code></pre>
 <p>What is the sum of squared errors of the baseline model on the testing set? HINT: We call the sum of squared errors for the baseline model the total sum of squares (SST).</p>
@@ -1071,15 +1079,6 @@ test_set_SST</code></pre>
     </div>
 
     
-
-
-<div class="article-tags">
-  
-  <a class="badge badge-light" href="../../../tags/regression/">regression</a>
-  
-</div>
-
-
 
     
 

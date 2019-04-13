@@ -4,7 +4,79 @@
     
     <url>
     
+      <loc>/project/interest_forecast/interest_forecast/</loc>
+      <lastmod>2019-04-11T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/project/energy_patterns/energy_patterns/</loc>
+      <lastmod>2019-04-11T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/project/retail_consumers/retail_consumers/</loc>
+      <lastmod>2019-04-11T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/project/visualizing_network/visualizing_network/</loc>
+      <lastmod>2019-04-10T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/project/election_forecasting/election_forecasting/</loc>
+      <lastmod>2019-04-10T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/project/market_segmentation_for_airlines/market/</loc>
+      <lastmod>2019-04-09T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/project/stock_returns/stock/</loc>
+      <lastmod>2019-04-09T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/project/medicine/medicine/</loc>
+      <lastmod>2019-04-08T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/project/earnings/earnings/</loc>
+      <lastmod>2019-04-08T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/project/letter_recognition/letters/</loc>
       <lastmod>2019-04-08T00:00:00+00:00</lastmod>
     </url>
     
@@ -20,7 +92,23 @@
     
     <url>
     
+      <loc>/project/vandalism/vandalism/</loc>
+      <lastmod>2019-04-08T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/project/loan_repayment/loan_repayments/</loc>
+      <lastmod>2019-04-07T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/project/parole_violators/parole_violators/</loc>
       <lastmod>2019-04-07T00:00:00+00:00</lastmod>
     </url>
     
@@ -284,15 +372,8 @@
     
     <url>
     
-      <loc>/project/parole_violators/parole_violators/</loc>
-    </url>
-    
-  
-    
-    <url>
-    
       <loc>/project/</loc>
-      <lastmod>2019-04-08T00:00:00+00:00</lastmod>
+      <lastmod>2019-04-11T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

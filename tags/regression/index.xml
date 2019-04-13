@@ -13,16 +13,6 @@
     
     
     <item>
-      <title>Predict Loan Repayments</title>
-      <link>/project/loan_repayment/loan_repayments/</link>
-      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/project/loan_repayment/loan_repayments/</guid>
-      <description>In the lending industry, investors provide loans to borrowers in exchange for the promise of repayment with interest. If the borrower repays the loan, then the lender profits from the interest. However, if the borrower is unable to repay the loan, then the lender loses money. Therefore, lenders face the problem of predicting the risk of a borrower being unable to repay a loan.
-To address this problem, we will use publicly available data from LendingClub.</description>
-    </item>
-    
-    <item>
       <title>Predict Popular Songs</title>
       <link>/project/music/music/</link>
       <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
@@ -31,27 +21,6 @@ To address this problem, we will use publicly available data from LendingClub.</
       <description>Popularity of music records
 The music industry has a well-developed market with a global annual revenue around $15 billion. The recording industry is highly competitive and is dominated by three big production companies which make up nearly 82% of the total annual album sales.
 Artists are at the core of the music industry and record labels provide them with the necessary resources to sell their music on a large scale.</description>
-    </item>
-    
-    <item>
-      <title>Reading Test Scores</title>
-      <link>/project/pisa2009/pisa/</link>
-      <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/project/pisa2009/pisa/</guid>
-      <description>The Programme for International Student Assessment (PISA) is a test given every three years to 15-year-old students from around the world to evaluate their performance in mathematics, reading, and science. This test provides a quantitative way to compare the performance of students from different parts of the world. In this analysis, I’ll predict the reading scores of students from the USA on the 2009 PISA exam.
-The datasets contain information about the demographics and schools for American students taking the exam, derived from 2009 PISA Public-Use Data Files distributed by the United States National Center for Education Statistics (NCES).</description>
-    </item>
-    
-    <item>
-      <title>climate_change</title>
-      <link>/project/climate_change/climate_change/</link>
-      <pubDate>Fri, 05 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/project/climate_change/climate_change/</guid>
-      <description>There have been many studies documenting that the average global temperature has been increasing over the last century. The consequences of a continued rise in global temperature will be dire. Rising sea levels and an increased frequency of extreme weather events will affect billions of people.
-In this analysis, we will attempt to study the relationship between average global temperature and several other factors.
-The file climate_change.csv contains climate data from May 1983 to December 2008.</description>
     </item>
     
     <item>
@@ -78,17 +47,6 @@ Description of dataframe mtcars can be found at the link
  Research questions: is a vehicle with auto or manual transmission better in terms of miles p/gallons(mpg)?
  quantify the (mpg) difference between auto &amp;amp; manual transmission.
    Structure of analysis: I will asssess both queries from different perspectives employing a set of methodologies that can be broadly grouped as follows:</description>
-    </item>
-    
-    <item>
-      <title>Predict Parole Violators</title>
-      <link>/project/parole_violators/parole_violators/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/project/parole_violators/parole_violators/</guid>
-      <description>Predicting parole violators
-In many criminal justice systems around the world, inmates deemed not to be a threat to society are released from prison under the parole system prior to completing their sentence. They are still considered to be serving their sentence while on parole, and they can be returned to prison if they violate the terms of their parole.
-Parole boards are charged with identifying which inmates are good candidates for release on parole.</description>
     </item>
     
   </channel>

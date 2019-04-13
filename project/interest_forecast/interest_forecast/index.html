@@ -389,6 +389,17 @@
   
 
   
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="../../../categories/r/">R</a>
+    
+  </span>
+  
+  
 
   
   
@@ -605,8 +616,10 @@ spl &lt;- sample.split(fedFunds$RaisedFedFunds, 0.7)</code></pre>
 <p>Split months into a training dataframe called “training” using the observations for which spl is TRUE and a testing dataframe called “testing” using the observations for which spl is FALSE.</p>
 <pre class="r"><code>training &lt;- subset(fedFunds, spl == TRUE)
 testing &lt;- subset(fedFunds, spl == FALSE)</code></pre>
-<p>Why do we use the sample.split() function to split into a training and testing set?
-#### It balances the dependent variable between the training and testing sets</p>
+<p>Why do we use the sample.split() function to split into a training and testing set?</p>
+<div id="it-balances-the-dependent-variable-between-the-training-and-testing-sets" class="section level4">
+<h4>It balances the dependent variable between the training and testing sets</h4>
+</div>
 </div>
 <div id="problem-5---training-a-logistic-regression-model" class="section level3">
 <h3>Problem 5 - Training a Logistic Regression Model</h3>
@@ -787,13 +800,17 @@ performance(PredTestLogROCR, &quot;auc&quot;)@y.values</code></pre>
 </div>
 <div id="problem-10---interpreting-auc" class="section level3">
 <h3>Problem 10 - Interpreting AUC</h3>
-<p>What is the meaning of the AUC?
-#### The proportion of the time the model can differentiate between a randomly selected month during which the fed funds were raised and a randomly selected month during which the federal funds were not raised.</p>
+<p>What is the meaning of the AUC?</p>
+<div id="the-proportion-of-the-time-the-model-can-differentiate-between-a-randomly-selected-month-during-which-the-fed-funds-were-raised-and-a-randomly-selected-month-during-which-the-federal-funds-were-not-raised." class="section level4">
+<h4>The proportion of the time the model can differentiate between a randomly selected month during which the fed funds were raised and a randomly selected month during which the federal funds were not raised.</h4>
+</div>
 </div>
 <div id="problem-11---roc-curves" class="section level3">
 <h3>Problem 11 - ROC Curves</h3>
-<p>Which logistic regression threshold is associated with the upper-right corner of the ROC plot (true positive rate 1 and false positive rate 1)?
-#### 0</p>
+<p>Which logistic regression threshold is associated with the upper-right corner of the ROC plot (true positive rate 1 and false positive rate 1)?</p>
+<div id="section" class="section level4">
+<h4>0</h4>
+</div>
 <div id="explanation" class="section level4">
 <h4>EXPLANATION</h4>
 <p>A model with threshold 0 predicts 1 for all observations, yielding a 100% true positive rate and a 100% false positive rate.</p>
@@ -807,14 +824,16 @@ plot(ROCRperf, colorize = TRUE,
      print.cutoffs.at = seq(0, 1, by = 0.1), 
      text.adj = c(-0.2, 1.7))</code></pre>
 <p><img src="../../../project/interest_forecast/interest_forecast_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
-<div id="section" class="section level4">
+<div id="section-1" class="section level4">
 <h4>0.37</h4>
 </div>
 </div>
 <div id="problem-13---cross-validation-to-select-parameters" class="section level3">
 <h3>Problem 13 - Cross-Validation to Select Parameters</h3>
-<p>Which of the following best describes how 10-fold cross-validation works when selecting between 2 different parameter values?
-#### 20 models are trained on subsets of the training set and evaluated on a portion of the training set</p>
+<p>Which of the following best describes how 10-fold cross-validation works when selecting between 2 different parameter values?</p>
+<div id="models-are-trained-on-subsets-of-the-training-set-and-evaluated-on-a-portion-of-the-training-set" class="section level4">
+<h4>20 models are trained on subsets of the training set and evaluated on a portion of the training set</h4>
+</div>
 </div>
 <div id="problem-14---cross-validation-for-a-cart-model" class="section level3">
 <h3>Problem 14 - Cross-Validation for a CART Model</h3>
@@ -905,8 +924,10 @@ trainCV</code></pre>
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
 ## The final value used for the model was cp = 0.05.</code></pre>
-<p>What cp value maximizes the cv accuracy?
-#### 0.016</p>
+<p>What cp value maximizes the cv accuracy?</p>
+<div id="section-2" class="section level4">
+<h4>0.016</h4>
+</div>
 </div>
 <div id="problem-15---train-cart-model" class="section level3">
 <h3>Problem 15 - Train CART Model</h3>
@@ -941,8 +962,10 @@ prp(TreeIntRate2)</code></pre>
 <div id="problem-16---predicting-using-a-cart-model" class="section level3">
 <h3>Problem 16 - Predicting Using a CART Model</h3>
 <p>If you were to use the CART model you created in Problem 15 to explore the question asked of the analyst in Problem 6, what would you predict for next month?</p>
-<p>Remember: The rate has been lowered for 3 straight months (Streak = -3). The previous month’s rate was 1.7%. The unemployment rate is 5.1%. The homeownership rate is 65.3%. The current U.S. president is a Republican and the next election will be held in 18 months.
-#### The Fed will not raise the federal funds rate. The Fed will not raise the fed funds rate.</p>
+<p>Remember: The rate has been lowered for 3 straight months (Streak = -3). The previous month’s rate was 1.7%. The unemployment rate is 5.1%. The homeownership rate is 65.3%. The current U.S. president is a Republican and the next election will be held in 18 months.</p>
+<div id="the-fed-will-not-raise-the-federal-funds-rate.-the-fed-will-not-raise-the-fed-funds-rate." class="section level4">
+<h4>The Fed will not raise the federal funds rate. The Fed will not raise the fed funds rate.</h4>
+</div>
 </div>
 <div id="problem-17---test-set-accuracy-for-cart-model" class="section level3">
 <h3>Problem 17 - Test-Set Accuracy for CART Model</h3>

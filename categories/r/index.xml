@@ -7,10 +7,196 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Thu, 28 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 11 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Forecasting U.S. Federal Reserve Interest Rate Hikes</title>
+      <link>/project/interest_forecast/interest_forecast/</link>
+      <pubDate>Thu, 11 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/interest_forecast/interest_forecast/</guid>
+      <description>The federal funds rate is the key interest rate that the U.S. Federal Reserve uses to influence economic growth. The Federal Open Market Committee meets regularly to decide whether to increase, decrease, or maintain the target interest rate. Their choice has important ramifications that cascade through the economy, so the announcement of the interest rates is eagerly awaited each month.
+In this analysis, I’ll use analytics to try to predict when the Fed will raise interest rates.</description>
+    </item>
+    
+    <item>
+      <title>Patterns In Renewable Energy Generation</title>
+      <link>/project/energy_patterns/energy_patterns/</link>
+      <pubDate>Thu, 11 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/energy_patterns/energy_patterns/</guid>
+      <description>The use of coal in the United States peaked in 2005, and since then has decreased by 25%, being replaced by renewable energy sources and more efficient use (Lovins, 2014). As the US pursues a portfolio of more diverse, sustainable and secure energy sources, there are many questions to consider.
+What are effective factors in incentivizing states to adopt more environmentally friendly energy generation methods? How do these factors vary by state?</description>
+    </item>
+    
+    <item>
+      <title>Understanding Retail Consumers Behaviour</title>
+      <link>/project/retail_consumers/retail_consumers/</link>
+      <pubDate>Thu, 11 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/retail_consumers/retail_consumers/</guid>
+      <description>Clustering can be used for market segmentation, the idea of dividing airline passengers into small, more similar groups, and then designing a marketing strategy specifically for each group. In this analysis, I’ll see how this idea can be applied to retail consumer data.
+I’ll use the dataset Households.csv.xz, which contains data collected over two years for a group of 2,500 households. Each row (observation) in our dataset represents a unique household.</description>
+    </item>
+    
+    <item>
+      <title>Network Data Visualizing</title>
+      <link>/project/visualizing_network/visualizing_network/</link>
+      <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/visualizing_network/visualizing_network/</guid>
+      <description>The cliche goes that the world is an increasingly interconnected place, and the connections between different entities are often best represented with a graph. Graphs are comprised of vertices (also often called “nodes”) and edges connecting those nodes. In this analysis, I’ll explore how to visualize networks using the igraph package in R.
+I’ll visualize social networking data using anonymized data from Facebook; this data was originally curated in a recent paper about computing social circles in social networks.</description>
+    </item>
+    
+    <item>
+      <title>Revisiting Election Forecasting</title>
+      <link>/project/election_forecasting/election_forecasting/</link>
+      <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/election_forecasting/election_forecasting/</guid>
+      <description>Prevously, we used logistic regression on polling data in order to construct US presidential election predictions. We separated our data into a training set, containing data from 2004 and 2008 polls, and a test-set, containing the data from 2012 polls. We then proceeded to develop a logistic regression model to forecast the 2012 US presidential election.
+In this problem, we’ll revisit our logistic regression model, and learn how to plot the output on a map of the United States.</description>
+    </item>
+    
+    <item>
+      <title>Market Segmentation For Airlines</title>
+      <link>/project/market_segmentation_for_airlines/market/</link>
+      <pubDate>Tue, 09 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/market_segmentation_for_airlines/market/</guid>
+      <description>Market segmentation is a strategy that divides a broad target market of customers into smaller, more similar groups, and then designs a marketing strategy specifically for each group. Clustering is a common technique for market segmentation since it automatically finds similar groups given a dataset.
+In this analysis, I’ll see how clustering can be used to find similar groups of customers who belong to an airline’s frequent flyer program. The airline is trying to learn more about its customers so that it can target different customer segments with different types of mileage offers.</description>
+    </item>
+    
+    <item>
+      <title>Stock Returns Prediction</title>
+      <link>/project/stock_returns/stock/</link>
+      <pubDate>Tue, 09 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/stock_returns/stock/</guid>
+      <description>About cluster-then-predict, a methodology in which you first cluster observations and then build cluster-specific prediction models. In this problem, I’ll use cluster-then-predict to predict future stock prices using historical stock data.
+When selecting which stocks to invest in, investors seek to obtain good future returns. In this analysis, I’ll first use clustering to identify clusters of stocks that have similar returns over time. Then, use logistic regression to predict whether or not the stocks will have positive future returns.</description>
+    </item>
+    
+    <item>
+      <title>Automating Reviews In Medicine</title>
+      <link>/project/medicine/medicine/</link>
+      <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/medicine/medicine/</guid>
+      <description>The medical literature is enormous! Pubmed, a database of medical publications maintained by the U.S. National Library of Medicine, has indexed over 23 million medical publications. Further, the rate of medical publication has increased over time, and now there are nearly 1 million new publications in the field each year, or more than one per minute.
+The large size and fast-changing nature of the medical literature has increased the need for reviews, which search databases like Pubmed for papers on a particular topic and then report results from the papers found.</description>
+    </item>
+    
+    <item>
+      <title>Earnings Prediction From Census Data</title>
+      <link>/project/earnings/earnings/</link>
+      <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/earnings/earnings/</guid>
+      <description>The United States government periodically collects demographic information by conducting a census.
+In this analysis, I am are going to use census information about individuals to predict how much a person earns – in particular, whether the person earns more than $50,000 per year. This data comes from the UCI Machine Learning Repository.
+The file census.csv contains 1994 census data for 31,978 individuals in the U.S. The dataset includes the following 13 variables:</description>
+    </item>
+    
+    <item>
+      <title>Letter Recognition</title>
+      <link>/project/letter_recognition/letters/</link>
+      <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/letter_recognition/letters/</guid>
+      <description>One of the earliest applications of predictive analytics methods applied so far was to automatically recognize letters, which post office machines use to sort mail. In this analysis, I’ll build a model that uses statistics of images of four letters in the Roman alphabet – A, B, P, and R – to predict which letter a particular image corresponds to.
+Note, that this is a multiclass classification problem. We have mostly focused on binary classification problems (e.</description>
+    </item>
+    
+    <item>
+      <title>Understanding Why People Vote?</title>
+      <link>/project/understanding_votes/votes/</link>
+      <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/understanding_votes/votes/</guid>
+      <description>In August 2006 three researchers (Alan Gerber and Donald Green of Yale University, and Christopher Larimer of the University of Northern Iowa) carried out a large scale field experiment in Michigan, USA to test the hypothesis that one of the reasons people vote is social, or extrinsic, pressure.
+To quote the first paragraph of their 2008 research paper:
+ “Among the most striking features of a democratic political system is the participation of millions of voters in elections.</description>
+    </item>
+    
+    <item>
+      <title>Vandalism Detection On Wikipedia</title>
+      <link>/project/vandalism/vandalism/</link>
+      <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/vandalism/vandalism/</guid>
+      <description>Wikipedia is a free online encyclopedia that anyone can edit and contribute to. It’s available in many languages and is growing all the time. On the English language version of Wikipedia:
+ There are currently 4.7 million pages. There have been a total over 760 million edits (also called revisions) over its lifetime. There are approximately 130,000 edits per day.  One of the consequences of being editable by anyone is that some people vandalize pages.</description>
+    </item>
+    
+    <item>
+      <title>Predict Loan Repayments</title>
+      <link>/project/loan_repayment/loan_repayments/</link>
+      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/loan_repayment/loan_repayments/</guid>
+      <description>In the lending industry, investors provide loans to borrowers in exchange for the promise of repayment with interest. If the borrower repays the loan, then the lender profits from the interest. However, if the borrower is unable to repay the loan, then the lender loses money. Therefore, lenders face the problem of predicting the risk of a borrower being unable to repay a loan.
+To address this analysis, I’ll use publicly available data from LendingClub.</description>
+    </item>
+    
+    <item>
+      <title>Predict Parole Violators</title>
+      <link>/project/parole_violators/parole_violators/</link>
+      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/parole_violators/parole_violators/</guid>
+      <description>In many criminal justice systems around the world, inmates deemed not to be a threat to society are released from prison under the parole system prior to completing their sentence. They are still considered to be serving their sentence while on parole, and they can be returned to prison if they violate the terms of their parole.
+Parole boards are charged with identifying which inmates are good candidates for release on parole.</description>
+    </item>
+    
+    <item>
+      <title>Predict Popular Songs</title>
+      <link>/project/music/music/</link>
+      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/music/music/</guid>
+      <description>Popularity of music records
+The music industry has a well-developed market with a global annual revenue around $15 billion. The recording industry is highly competitive and is dominated by three big production companies which make up nearly 82% of the total annual album sales.
+Artists are at the core of the music industry and record labels provide them with the necessary resources to sell their music on a large scale.</description>
+    </item>
+    
+    <item>
+      <title>Detecting Flu Epidemics via Search Engine Query Data</title>
+      <link>/project/flu_epidemics/flu_epidemics/</link>
+      <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/flu_epidemics/flu_epidemics/</guid>
+      <description>Flu epidemics constitute a major public health concern causing respiratory illnesses, hospitalizations, and deaths. According to the National Vital Statistics Reports published in October 2012, influenza ranked as the eighth leading cause of death in 2011 in the U.S. Each year, 250,000 to 500,000 deaths are attributed to influenza related diseases throughout the world.
+The U.S. Centers for Disease Control and Prevention (CDC) and the European Influenza Surveillance Scheme (EISS) detect influenza activity through virologic and clinical data, including Influenza-like Illness (ILI) physician visits.</description>
+    </item>
+    
+    <item>
+      <title>Reading Test Scores</title>
+      <link>/project/pisa2009/pisa/</link>
+      <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/pisa2009/pisa/</guid>
+      <description>The Programme for International Student Assessment (PISA) is a test given every three years to 15-year-old students from around the world to evaluate their performance in mathematics, reading, and science.
+The test provides a quantitative way to compare the performance of students from different parts of the world.
+In this analysis, I’ll predict the reading scores of students from the USA on the 2009 PISA exam.
+The datasets contain information about the demographics and schools for American students taking the exam, derived from 2009 PISA Public-Use Data Files distributed by the United States National Center for Education Statistics (NCES).</description>
+    </item>
+    
+    <item>
+      <title>climate_change</title>
+      <link>/project/climate_change/climate_change/</link>
+      <pubDate>Fri, 05 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/climate_change/climate_change/</guid>
+      <description>There have been many studies documenting that the average global temperature has been increasing over the last century. The consequences of a continued rise in global temperature will be dire. Rising sea levels and an increased frequency of extreme weather events will affect billions of people.
+In this analysis, I’ll attempt to study the relationship between average global temperature and several other factors.
+The file climate_change.csv contains climate data from May 1983 to December 2008.</description>
+    </item>
     
     <item>
       <title>Sales Analysis</title>

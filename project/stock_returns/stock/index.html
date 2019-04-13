@@ -389,6 +389,17 @@
   
 
   
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="../../../categories/r/">R</a>
+    
+  </span>
+  
+  
 
   
   
@@ -581,8 +592,10 @@ str(stocks)</code></pre>
 ##    ReturnNov 
 ##  0.011387440</code></pre>
 <p>ReturnApr = 0.026308147</p>
-<p>Which month (from January through November) has the smallest mean return across all observations in the dataset?
-#### ReturnSep = -0.014720768</p>
+<p>Which month (from January through November) has the smallest mean return across all observations in the dataset?</p>
+<div id="returnsep--0.014720768" class="section level4">
+<h4>ReturnSep = -0.014720768</h4>
+</div>
 </div>
 <div id="problem-2.1---initial-logistic-regression-model" class="section level3">
 <h3>Problem 2.1 - Initial Logistic Regression Model</h3>
@@ -642,8 +655,10 @@ head(StocksModelTestPred)</code></pre>
 limitedTrain$PositiveDec &lt;- NULL
 limitedTest &lt;- stocksTest
 limitedTest$PositiveDec &lt;- NULL</code></pre>
-<p>Why do we need to remove the dependent variable in the clustering phase of the cluster-then-predict methodology?
-#### Needing to know the dependent variable value to assign an observation to a cluster defeats the purpose of the methodology</p>
+<p>Why do we need to remove the dependent variable in the clustering phase of the cluster-then-predict methodology?</p>
+<div id="needing-to-know-the-dependent-variable-value-to-assign-an-observation-to-a-cluster-defeats-the-purpose-of-the-methodology" class="section level4">
+<h4>Needing to know the dependent variable value to assign an observation to a cluster defeats the purpose of the methodology</h4>
+</div>
 </div>
 <div id="problem-3.2---clustering-stocks" class="section level3">
 <h3>Problem 3.2 - Clustering Stocks</h3>
@@ -718,8 +733,10 @@ normTest &lt;- predict(preproc, limitedTest)</code></pre>
 </div>
 <div id="problem-3.3---clustering-stocks" class="section level3">
 <h3>Problem 3.3 - Clustering Stocks</h3>
-<p>Why is the mean ReturnJan variable much closer to 0 in normTrain than in normTest?
-#### The distribution of the ReturnJan variable is different in the training and testing set</p>
+<p>Why is the mean ReturnJan variable much closer to 0 in normTrain than in normTest?</p>
+<div id="the-distribution-of-the-returnjan-variable-is-different-in-the-training-and-testing-set" class="section level4">
+<h4>The distribution of the ReturnJan variable is different in the training and testing set</h4>
+</div>
 </div>
 <div id="problem-3.4---clustering-stocks" class="section level3">
 <h3>Problem 3.4 - Clustering Stocks</h3>

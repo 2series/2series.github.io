@@ -389,6 +389,17 @@
   
 
   
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="../../../categories/r/">R</a>
+    
+  </span>
+  
+  
 
   
   
@@ -633,8 +644,10 @@ str(loansNA)</code></pre>
 </ul>
 <pre class="r"><code>loans &lt;- read.csv(&quot;loans_imputed.csv&quot;)</code></pre>
 <p>Note, that to do this imputation, we set vars.for.imputation to all variables in the dataframe except for not.fully.paid, to impute the values using all of the other independent variables.</p>
-<p>What best describes the process we just used to handle missing values?
-#### We predicted missing variable values using the available independent variables for each observation.</p>
+<p>What best describes the process we just used to handle missing values?</p>
+<div id="we-predicted-missing-variable-values-using-the-available-independent-variables-for-each-observation." class="section level4">
+<h4>We predicted missing variable values using the available independent variables for each observation.</h4>
+</div>
 </div>
 <div id="problem-2.1---prediction-models" class="section level3">
 <h3>Problem 2.1 - Prediction Models</h3>
@@ -888,8 +901,10 @@ summary(LoansLog2)</code></pre>
 ## 
 ## Number of Fisher Scoring iterations: 4</code></pre>
 <p>The variable int.rate is highly significant in the bivariate model, but it is not significant at the 0.05 level in the model trained with all the independent variables.</p>
-<p>What is the most likely explanation for this difference?
-#### int.rate is correlated with other risk-related variables, and therefore does not incrementally improve the model when those other variables are included.</p>
+<p>What is the most likely explanation for this difference?</p>
+<div id="int.rate-is-correlated-with-other-risk-related-variables-and-therefore-does-not-incrementally-improve-the-model-when-those-other-variables-are-included." class="section level4">
+<h4>int.rate is correlated with other risk-related variables, and therefore does not incrementally improve the model when those other variables are included.</h4>
+</div>
 </div>
 <div id="problem-3.2---a-smart-baseline" class="section level3">
 <h3>Problem 3.2 - A “Smart Baseline”</h3>
@@ -955,8 +970,10 @@ as.numeric(performance(ROCRpred2, &quot;auc&quot;)@y.values)</code></pre>
 <div id="problem-4.3---computing-the-profitability-of-an-investment" class="section level3">
 <h3>Problem 4.3 - Computing the Profitability of an Investment</h3>
 <p>Now, consider the case where the investor made a $c investment, but it was not paid back in full. Assume, conservatively, that no money was received from the borrower (often a lender will receive some but not all of the value of the loan, making this a pessimistic assumption of how much is received).</p>
-<p>What is the loss to the investor in this scenario?
-#### -10</p>
+<p>What is the loss to the investor in this scenario?</p>
+<div id="section-2" class="section level4">
+<h4>-10</h4>
+</div>
 </div>
 <div id="problem-5.1---a-simple-investment-strategy" class="section level3">
 <h3>Problem 5.1 - A Simple Investment Strategy</h3>
@@ -1056,7 +1073,7 @@ summary(selectedLoans)</code></pre>
 <pre><code>## 
 ##  0  1 
 ## 81 19</code></pre>
-<div id="section-2" class="section level4">
+<div id="section-3" class="section level4">
 <h4>19</h4>
 </div>
 </div>

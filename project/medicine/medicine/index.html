@@ -389,6 +389,17 @@
   
 
   
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="../../../categories/r/">R</a>
+    
+  </span>
+  
+  
 
   
   
@@ -760,8 +771,10 @@ dtmAbstract &lt;- as.data.frame(as.matrix(dtmAbstract))</code></pre>
 </div>
 <div id="problem-2.2---preparing-the-corpus" class="section level3">
 <h3>Problem 2.2 - Preparing the Corpus</h3>
-<p>What is the most likely reason why dtmAbstract has so many more terms than dtmTitle?
-#### Abstracts tend to have many more words than titles</p>
+<p>What is the most likely reason why dtmAbstract has so many more terms than dtmTitle?</p>
+<div id="abstracts-tend-to-have-many-more-words-than-titles" class="section level4">
+<h4>Abstracts tend to have many more words than titles</h4>
+</div>
 </div>
 <div id="problem-2.3---preparing-the-corpus" class="section level3">
 <h3>Problem 2.3 - Preparing the Corpus</h3>
@@ -1164,8 +1177,10 @@ str(dtmAbstract)</code></pre>
 ##  $ Aestim          : num  0 0 0 1 1 0 0 0 0 0 ...
 ##  $ Afluorouracil   : num  0 0 0 1 1 0 0 0 0 0 ...
 ##   [list output truncated]</code></pre>
-<p>What was the effect of these functions?
-#### Adding the letter T in front of all the title variable names and adding the letter A in front of all the abstract variable names.</p>
+<p>What was the effect of these functions?</p>
+<div id="adding-the-letter-t-in-front-of-all-the-title-variable-names-and-adding-the-letter-a-in-front-of-all-the-abstract-variable-names." class="section level4">
+<h4>Adding the letter T in front of all the title variable names and adding the letter A in front of all the abstract variable names.</h4>
+</div>
 </div>
 <div id="problem-3.2---building-a-model" class="section level3">
 <h3>Problem 3.2 - Building a Model</h3>
@@ -1431,10 +1446,12 @@ max(predTrainProb)</code></pre>
 <pre class="r"><code>summary(predTrainProb)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ## 0.05455 0.13636 0.28750 0.43932 0.78231 0.87189</code></pre>
-<div id="problem-3.6---building-a-model" class="section level4">
-<h4>Problem 3.6 - Building a Model</h4>
-<p>Without running the analysis, how do you expect the maximum predicted probability to differ in the testing set?
-#### The maximum predicted probability will likely be exactly the same in the testing set. Because the CART tree assigns the same predicted probability to each leaf node and there are a small number of leaf nodes compared to data points, we expect exactly the same maximum predicted probability.</p>
+</div>
+<div id="problem-3.6---building-a-model" class="section level3">
+<h3>Problem 3.6 - Building a Model</h3>
+<p>Without running the analysis, how do you expect the maximum predicted probability to differ in the testing set?</p>
+<div id="the-maximum-predicted-probability-will-likely-be-exactly-the-same-in-the-testing-set.-because-the-cart-tree-assigns-the-same-predicted-probability-to-each-leaf-node-and-there-are-a-small-number-of-leaf-nodes-compared-to-data-points-we-expect-exactly-the-same-maximum-predicted-probability." class="section level4">
+<h4>The maximum predicted probability will likely be exactly the same in the testing set. Because the CART tree assigns the same predicted probability to each leaf node and there are a small number of leaf nodes compared to data points, we expect exactly the same maximum predicted probability.</h4>
 </div>
 </div>
 <div id="problem-3.7---building-a-model" class="section level3">
@@ -1491,18 +1508,24 @@ performance(predROCR, &quot;auc&quot;)@y.values</code></pre>
 </div>
 <div id="problem-5.1---decision-maker-tradeoffs" class="section level3">
 <h3>Problem 5.1 - Decision-Maker Tradeoffs</h3>
-<p>What is the cost associated with the model in Step 1 making a false negative prediction?
-#### A paper that should have been included in Set A will be missed, affecting the quality of the results of Step 3.</p>
+<p>What is the cost associated with the model in Step 1 making a false negative prediction?</p>
+<div id="a-paper-that-should-have-been-included-in-set-a-will-be-missed-affecting-the-quality-of-the-results-of-step-3." class="section level4">
+<h4>A paper that should have been included in Set A will be missed, affecting the quality of the results of Step 3.</h4>
+</div>
 </div>
 <div id="problem-5.2---decision-maker-tradeoffs" class="section level3">
 <h3>Problem 5.2 - Decision-Maker Tradeoffs</h3>
-<p>What is the cost associated with the model in Step 1 making a false positive prediction?
-#### A paper will be mistakenly added to Set A, yielding additional work in Step 2 of the process but not affecting the quality of the results of Step 3.</p>
+<p>What is the cost associated with the model in Step 1 making a false positive prediction?</p>
+<div id="a-paper-will-be-mistakenly-added-to-set-a-yielding-additional-work-in-step-2-of-the-process-but-not-affecting-the-quality-of-the-results-of-step-3." class="section level4">
+<h4>A paper will be mistakenly added to Set A, yielding additional work in Step 2 of the process but not affecting the quality of the results of Step 3.</h4>
+</div>
 </div>
 <div id="problem-5.3---decision-maker-tradeoffs" class="section level3">
 <h3>Problem 5.3 - Decision-Maker Tradeoffs</h3>
-<p>Given the costs associated with false positives and false negatives, which of the following is most accurate?
-#### A false negative is more costly than a false positive; the decision maker should use a probability threshold less than 0.5 for the machine learning model.</p>
+<p>Given the costs associated with false positives and false negatives, which of the following is most accurate?</p>
+<div id="a-false-negative-is-more-costly-than-a-false-positive-the-decision-maker-should-use-a-probability-threshold-less-than-0.5-for-the-machine-learning-model." class="section level4">
+<h4>A false negative is more costly than a false positive; the decision maker should use a probability threshold less than 0.5 for the machine learning model.</h4>
+</div>
 </div>
 
     </div>

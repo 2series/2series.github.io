@@ -389,6 +389,17 @@
   
 
   
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="../../../categories/r/">R</a>
+    
+  </span>
+  
+  
 
   
   
@@ -503,8 +514,9 @@ library(ROCR)</code></pre>
 <pre><code>## The following object is masked from &#39;package:stats&#39;:
 ## 
 ##     lowess</code></pre>
-<div id="problem-1.1---bags-of-words" class="section level4">
-<h4>Problem 1.1 - Bags of Words</h4>
+</div>
+<div id="problem-1.1---bags-of-words" class="section level3">
+<h3>Problem 1.1 - Bags of Words</h3>
 <p>Load the data wiki.csv with the option stringsAsFactors=FALSE, calling the dataframe “wiki”. Convert the “Vandal” column to a factor using the code wiki<span class="math inline">\(Vandal = as.factor(wiki\)</span>Vandal).</p>
 <pre class="r"><code>wiki &lt;- read.csv(&quot;wiki.csv&quot;, stringsAsFactors = FALSE)
 wiki$Vandal &lt;- as.factor(wiki$Vandal)
@@ -523,7 +535,6 @@ str(wiki)</code></pre>
 ##    0    1 
 ## 2061 1815</code></pre>
 <p>1815</p>
-</div>
 </div>
 <div id="problem-1.2---bags-of-words" class="section level3">
 <h3>Problem 1.2 - Bags of Words</h3>
@@ -552,11 +563,13 @@ dtmAdded</code></pre>
 ## Sparsity           : 100%
 ## Maximal term length: 784
 ## Weighting          : term frequency (tf)</code></pre>
-<p>How many terms appear in dtmAdded?
-#### 6675</p>
+<p>How many terms appear in dtmAdded?</p>
+<div id="section" class="section level4">
+<h4>6675</h4>
 <p>If the code length(stopwords(“english”)) does not return 174 for you, then please run the line of code in this file, which will store the standard stop words in a variable called sw. When removing stop words, use tm_map(corpusAdded, removeWords, sw) instead of tm_map(corpusAdded, removeWords, stopwords(“english”)).</p>
 <pre class="r"><code>length(stopwords(&quot;english&quot;))</code></pre>
 <pre><code>## [1] 174</code></pre>
+</div>
 </div>
 <div id="problem-1.3---bags-of-words" class="section level3">
 <h3>Problem 1.3 - Bags of Words</h3>
@@ -568,8 +581,10 @@ sparseAdded</code></pre>
 ## Sparsity           : 100%
 ## Maximal term length: 28
 ## Weighting          : term frequency (tf)</code></pre>
-<p>How many terms appear in sparseAdded?
-#### 166</p>
+<p>How many terms appear in sparseAdded?</p>
+<div id="section-1" class="section level4">
+<h4>166</h4>
+</div>
 </div>
 <div id="problem-1.4---bags-of-words" class="section level3">
 <h3>Problem 1.4 - Bags of Words</h3>
@@ -816,8 +831,10 @@ str(wordsRemoved)</code></pre>
 ##  $ R follow                      : num  0 0 0 0 0 0 0 0 0 0 ...
 ##  $ R recent                      : num  0 0 0 0 0 0 0 0 0 0 ...
 ##   [list output truncated]</code></pre>
-<p>How many words are in the wordsRemoved dataframe?
-#### 162</p>
+<p>How many words are in the wordsRemoved dataframe?</p>
+<div id="section-2" class="section level4">
+<h4>162</h4>
+</div>
 </div>
 <div id="problem-1.5---bags-of-words" class="section level3">
 <h3>Problem 1.5 - Bags of Words</h3>
@@ -858,14 +875,16 @@ head(wikiPred)</code></pre>
 <p>How many word stems does the CART model use?</p>
 <pre class="r"><code>prp(wikiTree)</code></pre>
 <p><img src="../../../project/vandalism/vandalism_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
-<div id="section" class="section level4">
+<div id="section-3" class="section level4">
 <h4>2</h4>
 </div>
 </div>
 <div id="problem-1.8---bags-of-words" class="section level3">
 <h3>Problem 1.8 - Bags of Words</h3>
-<p>Given the performance of the CART model relative to the baseline, what is the best explanation for these results?
-#### Although it beats the baseline, bag of words is not very predictive for this problem.</p>
+<p>Given the performance of the CART model relative to the baseline, what is the best explanation for these results?</p>
+<div id="although-it-beats-the-baseline-bag-of-words-is-not-very-predictive-for-this-problem." class="section level4">
+<h4>Although it beats the baseline, bag of words is not very predictive for this problem.</h4>
+</div>
 </div>
 <div id="problem-2.1---problem-specific-knowledge" class="section level3">
 <h3>Problem 2.1 - Problem-specific Knowledge</h3>
@@ -884,7 +903,7 @@ table(wikiWords2$HTTP)</code></pre>
 <pre><code>## 
 ##    0    1 
 ## 3659  217</code></pre>
-<div id="section-1" class="section level4">
+<div id="section-4" class="section level4">
 <h4>217</h4>
 </div>
 </div>
@@ -968,7 +987,7 @@ head(wikiPred3)</code></pre>
 <p>Plot the CART tree. How many splits are there in the tree?</p>
 <pre class="r"><code>prp(wikiTree3)</code></pre>
 <p><img src="../../../project/vandalism/vandalism_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
-<div id="section-2" class="section level4">
+<div id="section-5" class="section level4">
 <h4>3</h4>
 </div>
 </div>

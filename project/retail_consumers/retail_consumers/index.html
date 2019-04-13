@@ -389,6 +389,17 @@
   
 
   
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="../../../categories/r/">R</a>
+    
+  </span>
+  
+  
 
   
   
@@ -577,10 +588,13 @@ HouseHoldsNorm &lt;- predict(preproc, HouseHolds)</code></pre>
 ##  Mean   : 0.0000   Mean   : 0.00000  
 ##  3rd Qu.: 0.4926   3rd Qu.: 0.61755  
 ##  Max.   : 4.1617   Max.   : 3.04658</code></pre>
-<p>What is the maximum value of NumVisits in the normalized dataset?
-#### 10.2828</p>
-<p>What is the minimum value of AfternoonPct in the normalized dataset?
-#### -3.22843</p>
+<p>What is the maximum value of NumVisits in the normalized dataset?</p>
+<div id="section" class="section level4">
+<h4>10.2828</h4>
+<p>What is the minimum value of AfternoonPct in the normalized dataset?</p>
+</div>
+<div id="section-1" class="section level4">
+<h4>-3.22843</h4>
 <p>Create a dendrogram of our data:</p>
 <pre class="r"><code>set.seed(200)
 distances &lt;- dist(HouseHoldsNorm, method = &quot;euclidean&quot;)
@@ -588,10 +602,13 @@ ClusterShoppers &lt;- hclust(distances, method = &quot;ward.D&quot;)
 plot(ClusterShoppers, labels = FALSE)</code></pre>
 <p><img src="../../../project/retail_consumers/retail_consumers_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
+</div>
 <div id="problem-5---interpreting-the-dendrogram" class="section level3">
 <h3>Problem 5 - Interpreting the Dendrogram</h3>
-<p>Based on the dendrogram, how many clusters do you think would be appropriate for this problem?
-#### 2, 3, 5</p>
+<p>Based on the dendrogram, how many clusters do you think would be appropriate for this problem?</p>
+<div id="section-2" class="section level4">
+<h4>2, 3, 5</h4>
+</div>
 </div>
 <div id="problem-6---k-means-clustering" class="section level3">
 <h3>Problem 6 - K-means Clustering</h3>
@@ -622,13 +639,13 @@ table(kmeansGroups)</code></pre>
 <p>How many observations are in the smallest cluster?</p>
 <pre class="r"><code>min(table(kmeansGroups))</code></pre>
 <pre><code>## [1] 51</code></pre>
-<div id="section" class="section level4">
+<div id="section-3" class="section level4">
 <h4>51</h4>
 <p>How many observations are in the largest cluster?</p>
 <pre class="r"><code>max(table(kmeansGroups))</code></pre>
 <pre><code>## [1] 504</code></pre>
 </div>
-<div id="section-1" class="section level4">
+<div id="section-4" class="section level4">
 <h4>504</h4>
 </div>
 </div>
@@ -696,35 +713,51 @@ colMeans(kmeans1)</code></pre>
 ##     70.729381      6.479314      3.527893     19.688575     37.377204 
 ##  AfternoonPct 
 ##     38.916046</code></pre>
-<p>Which cluster best fits the description “morning shoppers stopping in to make a quick purchase”?
-#### Cluster 4</p>
+<p>Which cluster best fits the description “morning shoppers stopping in to make a quick purchase”?</p>
+<div id="cluster-4" class="section level4">
+<h4>Cluster 4</h4>
+</div>
 </div>
 <div id="problem-8---understanding-the-clusters" class="section level3">
 <h3>Problem 8 - Understanding the Clusters</h3>
-<p>Which cluster best fits the description “shoppers with high average product count and high average value per visit”?
-#### Cluster 2</p>
+<p>Which cluster best fits the description “shoppers with high average product count and high average value per visit”?</p>
+<div id="cluster-2" class="section level4">
+<h4>Cluster 2</h4>
+</div>
 </div>
 <div id="problem-9---understanding-the-clusters" class="section level3">
 <h3>Problem 9 - Understanding the Clusters</h3>
-<p>Which cluster best fits the description “frequent shoppers with low value per visit”?
-#### Cluster 9</p>
+<p>Which cluster best fits the description “frequent shoppers with low value per visit”?</p>
+<div id="cluster-9" class="section level4">
+<h4>Cluster 9</h4>
+</div>
 </div>
 <div id="problem-10---random-behavior" class="section level3">
 <h3>Problem 10 - Random Behavior</h3>
-<p>If we ran hierarchical clustering a second time without making any additional calls to set.seed, we would expect:
-#### Identical results to the first hierarchical clustering</p>
-<p>If we ran k-means clustering a second time without making any additional calls to set.seed, we would expect:
-#### Different results from the first k-means clustering</p>
-<p>If we ran k-means clustering a second time, again running the code set.seed(200) right before doing the clustering, we would expect:
-#### Identical results to the first k-means clustering</p>
-<p>If we ran k-means clustering a second time, running the code set.seed(100) right before doing the clustering, we would expect:
-#### Different results from the first k-means clustering</p>
+<p>If we ran hierarchical clustering a second time without making any additional calls to set.seed, we would expect:</p>
+<div id="identical-results-to-the-first-hierarchical-clustering" class="section level4">
+<h4>Identical results to the first hierarchical clustering</h4>
+<p>If we ran k-means clustering a second time without making any additional calls to set.seed, we would expect:</p>
+</div>
+<div id="different-results-from-the-first-k-means-clustering" class="section level4">
+<h4>Different results from the first k-means clustering</h4>
+<p>If we ran k-means clustering a second time, again running the code set.seed(200) right before doing the clustering, we would expect:</p>
+</div>
+<div id="identical-results-to-the-first-k-means-clustering" class="section level4">
+<h4>Identical results to the first k-means clustering</h4>
+<p>If we ran k-means clustering a second time, running the code set.seed(100) right before doing the clustering, we would expect:</p>
+</div>
+<div id="different-results-from-the-first-k-means-clustering-1" class="section level4">
+<h4>Different results from the first k-means clustering</h4>
+</div>
 </div>
 <div id="problem-11---the-number-of-clusters" class="section level3">
 <h3>Problem 11 - The Number of Clusters</h3>
 <p>Suppose the marketing department at the retail store decided that the 10 clusters were too specific, and they wanted more general clusters to describe the consumer base.</p>
-<p>Would they want to increase or decrease the number of clusters?
-#### Decrease the number of clusters</p>
+<p>Would they want to increase or decrease the number of clusters?</p>
+<div id="decrease-the-number-of-clusters" class="section level4">
+<h4>Decrease the number of clusters</h4>
+</div>
 </div>
 <div id="problem-12---increasing-the-number-of-clusters" class="section level3">
 <h3>Problem 12 - Increasing the Number of Clusters</h3>
@@ -755,13 +788,13 @@ table(kmeansGroups.5)</code></pre>
 <p>How many observations are in the smallest cluster?</p>
 <pre class="r"><code>min(table(kmeansGroups.5))</code></pre>
 <pre><code>## [1] 172</code></pre>
-<div id="section-2" class="section level4">
+<div id="section-5" class="section level4">
 <h4>172</h4>
 <p>How many observations are in the largest cluster?</p>
 <pre class="r"><code>max(table(kmeansGroups.5))</code></pre>
 <pre><code>## [1] 994</code></pre>
 </div>
-<div id="section-3" class="section level4">
+<div id="section-6" class="section level4">
 <h4>994</h4>
 </div>
 </div>
@@ -799,20 +832,26 @@ colMeans(kmeans1.5)</code></pre>
 ##     90.276243     13.628410      7.640804     41.803608     22.980428 
 ##  AfternoonPct 
 ##     58.626883</code></pre>
-<div id="cluster-4" class="section level4">
+<div id="cluster-4-1" class="section level4">
 <h4>Cluster 4</h4>
 </div>
 </div>
 <div id="problem-14---understanding-centroids" class="section level3">
 <h3>Problem 14 - Understanding Centroids</h3>
-<p>Why do we typically use cluster centroids to describe the clusters?
-#### The cluster centroid captures the average behavior in the cluster, and can be used to summarize the general pattern in the cluster.</p>
+<p>Why do we typically use cluster centroids to describe the clusters?</p>
+<div id="the-cluster-centroid-captures-the-average-behavior-in-the-cluster-and-can-be-used-to-summarize-the-general-pattern-in-the-cluster." class="section level4">
+<h4>The cluster centroid captures the average behavior in the cluster, and can be used to summarize the general pattern in the cluster.</h4>
+</div>
 </div>
 <div id="problem-15---using-a-visualization" class="section level3">
 <h3>Problem 15 - Using a Visualization</h3>
-<p>Which of the following visualizations could be used to observe the distribution of NumVisits, broken down by cluster?
-#### - A box plot of the variable NumVisits, subdivided by cluster
-#### - ggplot with NumVisits on the x-axis and the cluster number on the y-axis, plotting with geom_point()</p>
+<p>Which of the following visualizations could be used to observe the distribution of NumVisits, broken down by cluster?</p>
+<div id="a-box-plot-of-the-variable-numvisits-subdivided-by-cluster" class="section level4">
+<h4>- A box plot of the variable NumVisits, subdivided by cluster</h4>
+</div>
+<div id="ggplot-with-numvisits-on-the-x-axis-and-the-cluster-number-on-the-y-axis-plotting-with-geom_point" class="section level4">
+<h4>- ggplot with NumVisits on the x-axis and the cluster number on the y-axis, plotting with geom_point()</h4>
+</div>
 </div>
 
     </div>

@@ -161,8 +161,10 @@ spl &amp;lt;- sample.split(fedFunds$RaisedFedFunds, 0.7)&lt;/code&gt;&lt;/pre&gt
 &lt;p&gt;Split months into a training dataframe called “training” using the observations for which spl is TRUE and a testing dataframe called “testing” using the observations for which spl is FALSE.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;training &amp;lt;- subset(fedFunds, spl == TRUE)
 testing &amp;lt;- subset(fedFunds, spl == FALSE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Why do we use the sample.split() function to split into a training and testing set?
-#### It balances the dependent variable between the training and testing sets&lt;/p&gt;
+&lt;p&gt;Why do we use the sample.split() function to split into a training and testing set?&lt;/p&gt;
+&lt;div id=&#34;it-balances-the-dependent-variable-between-the-training-and-testing-sets&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;It balances the dependent variable between the training and testing sets&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-5---training-a-logistic-regression-model&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 5 - Training a Logistic Regression Model&lt;/h3&gt;
@@ -343,13 +345,17 @@ performance(PredTestLogROCR, &amp;quot;auc&amp;quot;)@y.values&lt;/code&gt;&lt;/
 &lt;/div&gt;
 &lt;div id=&#34;problem-10---interpreting-auc&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 10 - Interpreting AUC&lt;/h3&gt;
-&lt;p&gt;What is the meaning of the AUC?
-#### The proportion of the time the model can differentiate between a randomly selected month during which the fed funds were raised and a randomly selected month during which the federal funds were not raised.&lt;/p&gt;
+&lt;p&gt;What is the meaning of the AUC?&lt;/p&gt;
+&lt;div id=&#34;the-proportion-of-the-time-the-model-can-differentiate-between-a-randomly-selected-month-during-which-the-fed-funds-were-raised-and-a-randomly-selected-month-during-which-the-federal-funds-were-not-raised.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;The proportion of the time the model can differentiate between a randomly selected month during which the fed funds were raised and a randomly selected month during which the federal funds were not raised.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-11---roc-curves&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 11 - ROC Curves&lt;/h3&gt;
-&lt;p&gt;Which logistic regression threshold is associated with the upper-right corner of the ROC plot (true positive rate 1 and false positive rate 1)?
-#### 0&lt;/p&gt;
+&lt;p&gt;Which logistic regression threshold is associated with the upper-right corner of the ROC plot (true positive rate 1 and false positive rate 1)?&lt;/p&gt;
+&lt;div id=&#34;section&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;0&lt;/h4&gt;
+&lt;/div&gt;
 &lt;div id=&#34;explanation&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;EXPLANATION&lt;/h4&gt;
 &lt;p&gt;A model with threshold 0 predicts 1 for all observations, yielding a 100% true positive rate and a 100% false positive rate.&lt;/p&gt;
@@ -363,14 +369,16 @@ plot(ROCRperf, colorize = TRUE,
      print.cutoffs.at = seq(0, 1, by = 0.1), 
      text.adj = c(-0.2, 1.7))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./project/interest_forecast/interest_forecast_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div id=&#34;section&#34; class=&#34;section level4&#34;&gt;
+&lt;div id=&#34;section-1&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;0.37&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-13---cross-validation-to-select-parameters&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 13 - Cross-Validation to Select Parameters&lt;/h3&gt;
-&lt;p&gt;Which of the following best describes how 10-fold cross-validation works when selecting between 2 different parameter values?
-#### 20 models are trained on subsets of the training set and evaluated on a portion of the training set&lt;/p&gt;
+&lt;p&gt;Which of the following best describes how 10-fold cross-validation works when selecting between 2 different parameter values?&lt;/p&gt;
+&lt;div id=&#34;models-are-trained-on-subsets-of-the-training-set-and-evaluated-on-a-portion-of-the-training-set&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;20 models are trained on subsets of the training set and evaluated on a portion of the training set&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-14---cross-validation-for-a-cart-model&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 14 - Cross-Validation for a CART Model&lt;/h3&gt;
@@ -461,8 +469,10 @@ trainCV&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Accuracy was used to select the optimal model using the largest value.
 ## The final value used for the model was cp = 0.05.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;What cp value maximizes the cv accuracy?
-#### 0.016&lt;/p&gt;
+&lt;p&gt;What cp value maximizes the cv accuracy?&lt;/p&gt;
+&lt;div id=&#34;section-2&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;0.016&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-15---train-cart-model&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 15 - Train CART Model&lt;/h3&gt;
@@ -497,8 +507,10 @@ prp(TreeIntRate2)&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;problem-16---predicting-using-a-cart-model&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 16 - Predicting Using a CART Model&lt;/h3&gt;
 &lt;p&gt;If you were to use the CART model you created in Problem 15 to explore the question asked of the analyst in Problem 6, what would you predict for next month?&lt;/p&gt;
-&lt;p&gt;Remember: The rate has been lowered for 3 straight months (Streak = -3). The previous month’s rate was 1.7%. The unemployment rate is 5.1%. The homeownership rate is 65.3%. The current U.S. president is a Republican and the next election will be held in 18 months.
-#### The Fed will not raise the federal funds rate. The Fed will not raise the fed funds rate.&lt;/p&gt;
+&lt;p&gt;Remember: The rate has been lowered for 3 straight months (Streak = -3). The previous month’s rate was 1.7%. The unemployment rate is 5.1%. The homeownership rate is 65.3%. The current U.S. president is a Republican and the next election will be held in 18 months.&lt;/p&gt;
+&lt;div id=&#34;the-fed-will-not-raise-the-federal-funds-rate.-the-fed-will-not-raise-the-fed-funds-rate.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;The Fed will not raise the federal funds rate. The Fed will not raise the fed funds rate.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-17---test-set-accuracy-for-cart-model&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 17 - Test-Set Accuracy for CART Model&lt;/h3&gt;
@@ -660,8 +672,10 @@ str(energy)&lt;/code&gt;&lt;/pre&gt;
 ## 169             2              2     12.81243                    0      1&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;idaho-id&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;Idaho (ID)&lt;/h4&gt;
-&lt;p&gt;Which year did the above state produce the highest energy generation from renewable resources?
-#### 2000&lt;/p&gt;
+&lt;p&gt;Which year did the above state produce the highest energy generation from renewable resources?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;2000&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2---relationship-between-politics-and-greenhouse-emissions&#34; class=&#34;section level3&#34;&gt;
@@ -710,9 +724,12 @@ str(energy)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;priceBoxplot &amp;lt;- ggplot(energy, aes(STATE, EPriceTotal)) 
 priceBoxplot + geom_boxplot()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./project/energy_patterns/energy_patterns_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;What observations do we make?
-#### - The boxplot shows a clear outlier, the state of Hawaii, with much higher energy price compared to the rest of the U.S.
-#### - When looking at the average energy prices, there seems to be three price tiers ($5-$9, $10-$14, and $20+)&lt;/p&gt;
+&lt;p&gt;What observations do we make?&lt;/p&gt;
+&lt;div id=&#34;the-boxplot-shows-a-clear-outlier-the-state-of-hawaii-with-much-higher-energy-price-compared-to-the-rest-of-the-u.s.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;- The boxplot shows a clear outlier, the state of Hawaii, with much higher energy price compared to the rest of the U.S.&lt;/h4&gt;
+&lt;/div&gt;
+&lt;div id=&#34;when-looking-at-the-average-energy-prices-there-seems-to-be-three-price-tiers-5-9-10-14-and-20&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;- When looking at the average energy prices, there seems to be three price tiers ($5-$9, $10-$14, and $20+)&lt;/h4&gt;
 &lt;p&gt;Which state has the lowest average energy price of all? Using a table to explore this question.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(is.na(energy$EPriceTotal))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 0&lt;/code&gt;&lt;/pre&gt;
@@ -722,6 +739,7 @@ priceBoxplot + geom_boxplot()&lt;/code&gt;&lt;/pre&gt;
 avgPriceByState[which.min(avgPriceByState$EPriceTotal), ]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    STATE EPriceTotal
 ## 50    WY        5.51&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 &lt;div id=&#34;wyoming-wy&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;Wyoming (WY)&lt;/h4&gt;
 &lt;p&gt;Is this state associated with the highest mean total energy generation (GenTotal)?&lt;/p&gt;
@@ -967,8 +985,9 @@ str(test)&lt;/code&gt;&lt;/pre&gt;
 train.norm &amp;lt;- predict(preprocTrain, train.limited)
 preprocTest &amp;lt;- preProcess(test.limited)
 test.norm &amp;lt;- predict(preprocTest, test.limited)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Why didn’t I include the dependent variable GenSolarBinary in this clustering phase?
-#### - Needing to know the dependent variable value to assign an observation to a cluster defeats the purpose of the cluster-then-predict methodology&lt;/p&gt;
+&lt;p&gt;Why didn’t I include the dependent variable GenSolarBinary in this clustering phase?&lt;/p&gt;
+&lt;div id=&#34;needing-to-know-the-dependent-variable-value-to-assign-an-observation-to-a-cluster-defeats-the-purpose-of-the-cluster-then-predict-methodology&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;- Needing to know the dependent variable value to assign an observation to a cluster defeats the purpose of the cluster-then-predict methodology&lt;/h4&gt;
 &lt;p&gt;Let’s use kmeans clustering for this problem with a seed of 144, k=2 and keep the maximum number of iterations at 1,000.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(144)
 k &amp;lt;- 2
@@ -1140,6 +1159,7 @@ str(test1)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 0.0282891&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean(train2$AllSourcesNOx, na.rm = TRUE)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 0.007871944&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 &lt;div id=&#34;on-average-train1-contains-more-republican-states-than-train2&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;- On average, train1 contains more republican states than train2&lt;/h4&gt;
 &lt;/div&gt;
@@ -1450,10 +1470,13 @@ HouseHoldsNorm &amp;lt;- predict(preproc, HouseHolds)&lt;/code&gt;&lt;/pre&gt;
 ##  Mean   : 0.0000   Mean   : 0.00000  
 ##  3rd Qu.: 0.4926   3rd Qu.: 0.61755  
 ##  Max.   : 4.1617   Max.   : 3.04658&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;What is the maximum value of NumVisits in the normalized dataset?
-#### 10.2828&lt;/p&gt;
-&lt;p&gt;What is the minimum value of AfternoonPct in the normalized dataset?
-#### -3.22843&lt;/p&gt;
+&lt;p&gt;What is the maximum value of NumVisits in the normalized dataset?&lt;/p&gt;
+&lt;div id=&#34;section&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;10.2828&lt;/h4&gt;
+&lt;p&gt;What is the minimum value of AfternoonPct in the normalized dataset?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section-1&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;-3.22843&lt;/h4&gt;
 &lt;p&gt;Create a dendrogram of our data:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(200)
 distances &amp;lt;- dist(HouseHoldsNorm, method = &amp;quot;euclidean&amp;quot;)
@@ -1461,10 +1484,13 @@ ClusterShoppers &amp;lt;- hclust(distances, method = &amp;quot;ward.D&amp;quot;)
 plot(ClusterShoppers, labels = FALSE)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./project/retail_consumers/retail_consumers_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
+&lt;/div&gt;
 &lt;div id=&#34;problem-5---interpreting-the-dendrogram&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 5 - Interpreting the Dendrogram&lt;/h3&gt;
-&lt;p&gt;Based on the dendrogram, how many clusters do you think would be appropriate for this problem?
-#### 2, 3, 5&lt;/p&gt;
+&lt;p&gt;Based on the dendrogram, how many clusters do you think would be appropriate for this problem?&lt;/p&gt;
+&lt;div id=&#34;section-2&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;2, 3, 5&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-6---k-means-clustering&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 6 - K-means Clustering&lt;/h3&gt;
@@ -1495,13 +1521,13 @@ table(kmeansGroups)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;How many observations are in the smallest cluster?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;min(table(kmeansGroups))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 51&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;section&#34; class=&#34;section level4&#34;&gt;
+&lt;div id=&#34;section-3&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;51&lt;/h4&gt;
 &lt;p&gt;How many observations are in the largest cluster?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;max(table(kmeansGroups))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 504&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;div id=&#34;section-1&#34; class=&#34;section level4&#34;&gt;
+&lt;div id=&#34;section-4&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;504&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1569,35 +1595,51 @@ colMeans(kmeans1)&lt;/code&gt;&lt;/pre&gt;
 ##     70.729381      6.479314      3.527893     19.688575     37.377204 
 ##  AfternoonPct 
 ##     38.916046&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Which cluster best fits the description “morning shoppers stopping in to make a quick purchase”?
-#### Cluster 4&lt;/p&gt;
+&lt;p&gt;Which cluster best fits the description “morning shoppers stopping in to make a quick purchase”?&lt;/p&gt;
+&lt;div id=&#34;cluster-4&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Cluster 4&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-8---understanding-the-clusters&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 8 - Understanding the Clusters&lt;/h3&gt;
-&lt;p&gt;Which cluster best fits the description “shoppers with high average product count and high average value per visit”?
-#### Cluster 2&lt;/p&gt;
+&lt;p&gt;Which cluster best fits the description “shoppers with high average product count and high average value per visit”?&lt;/p&gt;
+&lt;div id=&#34;cluster-2&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Cluster 2&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-9---understanding-the-clusters&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 9 - Understanding the Clusters&lt;/h3&gt;
-&lt;p&gt;Which cluster best fits the description “frequent shoppers with low value per visit”?
-#### Cluster 9&lt;/p&gt;
+&lt;p&gt;Which cluster best fits the description “frequent shoppers with low value per visit”?&lt;/p&gt;
+&lt;div id=&#34;cluster-9&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Cluster 9&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-10---random-behavior&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 10 - Random Behavior&lt;/h3&gt;
-&lt;p&gt;If we ran hierarchical clustering a second time without making any additional calls to set.seed, we would expect:
-#### Identical results to the first hierarchical clustering&lt;/p&gt;
-&lt;p&gt;If we ran k-means clustering a second time without making any additional calls to set.seed, we would expect:
-#### Different results from the first k-means clustering&lt;/p&gt;
-&lt;p&gt;If we ran k-means clustering a second time, again running the code set.seed(200) right before doing the clustering, we would expect:
-#### Identical results to the first k-means clustering&lt;/p&gt;
-&lt;p&gt;If we ran k-means clustering a second time, running the code set.seed(100) right before doing the clustering, we would expect:
-#### Different results from the first k-means clustering&lt;/p&gt;
+&lt;p&gt;If we ran hierarchical clustering a second time without making any additional calls to set.seed, we would expect:&lt;/p&gt;
+&lt;div id=&#34;identical-results-to-the-first-hierarchical-clustering&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Identical results to the first hierarchical clustering&lt;/h4&gt;
+&lt;p&gt;If we ran k-means clustering a second time without making any additional calls to set.seed, we would expect:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;different-results-from-the-first-k-means-clustering&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Different results from the first k-means clustering&lt;/h4&gt;
+&lt;p&gt;If we ran k-means clustering a second time, again running the code set.seed(200) right before doing the clustering, we would expect:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;identical-results-to-the-first-k-means-clustering&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Identical results to the first k-means clustering&lt;/h4&gt;
+&lt;p&gt;If we ran k-means clustering a second time, running the code set.seed(100) right before doing the clustering, we would expect:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;different-results-from-the-first-k-means-clustering-1&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Different results from the first k-means clustering&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-11---the-number-of-clusters&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 11 - The Number of Clusters&lt;/h3&gt;
 &lt;p&gt;Suppose the marketing department at the retail store decided that the 10 clusters were too specific, and they wanted more general clusters to describe the consumer base.&lt;/p&gt;
-&lt;p&gt;Would they want to increase or decrease the number of clusters?
-#### Decrease the number of clusters&lt;/p&gt;
+&lt;p&gt;Would they want to increase or decrease the number of clusters?&lt;/p&gt;
+&lt;div id=&#34;decrease-the-number-of-clusters&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Decrease the number of clusters&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-12---increasing-the-number-of-clusters&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 12 - Increasing the Number of Clusters&lt;/h3&gt;
@@ -1628,13 +1670,13 @@ table(kmeansGroups.5)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;How many observations are in the smallest cluster?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;min(table(kmeansGroups.5))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 172&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;section-2&#34; class=&#34;section level4&#34;&gt;
+&lt;div id=&#34;section-5&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;172&lt;/h4&gt;
 &lt;p&gt;How many observations are in the largest cluster?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;max(table(kmeansGroups.5))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 994&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;div id=&#34;section-3&#34; class=&#34;section level4&#34;&gt;
+&lt;div id=&#34;section-6&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;994&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1672,20 +1714,26 @@ colMeans(kmeans1.5)&lt;/code&gt;&lt;/pre&gt;
 ##     90.276243     13.628410      7.640804     41.803608     22.980428 
 ##  AfternoonPct 
 ##     58.626883&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;cluster-4&#34; class=&#34;section level4&#34;&gt;
+&lt;div id=&#34;cluster-4-1&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;Cluster 4&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-14---understanding-centroids&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 14 - Understanding Centroids&lt;/h3&gt;
-&lt;p&gt;Why do we typically use cluster centroids to describe the clusters?
-#### The cluster centroid captures the average behavior in the cluster, and can be used to summarize the general pattern in the cluster.&lt;/p&gt;
+&lt;p&gt;Why do we typically use cluster centroids to describe the clusters?&lt;/p&gt;
+&lt;div id=&#34;the-cluster-centroid-captures-the-average-behavior-in-the-cluster-and-can-be-used-to-summarize-the-general-pattern-in-the-cluster.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;The cluster centroid captures the average behavior in the cluster, and can be used to summarize the general pattern in the cluster.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-15---using-a-visualization&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 15 - Using a Visualization&lt;/h3&gt;
-&lt;p&gt;Which of the following visualizations could be used to observe the distribution of NumVisits, broken down by cluster?
-#### - A box plot of the variable NumVisits, subdivided by cluster
-#### - ggplot with NumVisits on the x-axis and the cluster number on the y-axis, plotting with geom_point()&lt;/p&gt;
+&lt;p&gt;Which of the following visualizations could be used to observe the distribution of NumVisits, broken down by cluster?&lt;/p&gt;
+&lt;div id=&#34;a-box-plot-of-the-variable-numvisits-subdivided-by-cluster&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;- A box plot of the variable NumVisits, subdivided by cluster&lt;/h4&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ggplot-with-numvisits-on-the-x-axis-and-the-cluster-number-on-the-y-axis-plotting-with-geom_point&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;- ggplot with NumVisits on the x-axis and the cluster number on the y-axis, plotting with geom_point()&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -1940,9 +1988,9 @@ edges2&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;?graph.data.frame
 g &amp;lt;- graph.data.frame(edges, FALSE, users)
 g&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## IGRAPH 55fc982 UN-- 59 146 -- 
+&lt;pre&gt;&lt;code&gt;## IGRAPH f201a1a UN-- 59 146 -- 
 ## + attr: name (v/c), gender (v/c), school (v/c), locale (v/c)
-## + edges from 55fc982 (vertex names):
+## + edges from f201a1a (vertex names):
 ##  [1] 4019--4026 4023--4031 4023--4030 4027--4032 3988--4021 3982--3986
 ##  [7] 3994--3998 3998--3999 3993--3995 3982--4021 3982--4037 3997--4019
 ## [13] 3994--4019 3992--4017 3981--3998 3997--4018 4009--4030 3994--4018
@@ -1958,10 +2006,14 @@ g&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(g, vertex.size=5, vertex.label=NA)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./project/visualizing_network/visualizing_network_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;In this graph, there are a number of groups of nodes where all the nodes in each group are connected but, the groups are disjoint from one another, forming “islands” in the graph. Such groups are called “connected components,” or “components” for short.&lt;/p&gt;
-&lt;p&gt;How many connected components with at least 2 nodes are there in the graph?
-#### 4&lt;/p&gt;
-&lt;p&gt;How many users are there with no friends in the network?
-#### 7&lt;/p&gt;
+&lt;p&gt;How many connected components with at least 2 nodes are there in the graph?&lt;/p&gt;
+&lt;div id=&#34;section&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;4&lt;/h4&gt;
+&lt;p&gt;How many users are there with no friends in the network?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;section-1&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;7&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.3---creating-a-network&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.3 - Creating a Network&lt;/h3&gt;
@@ -2021,10 +2073,14 @@ V(g)$color[V(g)$school == &amp;quot;A&amp;quot;] = &amp;quot;red&amp;quot;
 V(g)$color[V(g)$school == &amp;quot;AB&amp;quot;] = &amp;quot;gray&amp;quot;
 plot(g, vertex.label=NA)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./project/visualizing_network/visualizing_network_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Are the two users who attended both schools A and B Facebook friends with each other?
-#### Yes&lt;/p&gt;
-&lt;p&gt;What best describes the users with highest degree?
-#### Some, but not all, of the high-degree users attended school A&lt;/p&gt;
+&lt;p&gt;Are the two users who attended both schools A and B Facebook friends with each other?&lt;/p&gt;
+&lt;div id=&#34;yes&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Yes&lt;/h4&gt;
+&lt;p&gt;What best describes the users with highest degree?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;some-but-not-all-of-the-high-degree-users-attended-school-a&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Some, but not all, of the high-degree users attended school A&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-3.3---coloring-vertices&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 3.3 - Coloring Vertices&lt;/h3&gt;
@@ -2038,10 +2094,14 @@ V(g)$color[V(g)$locale == &amp;quot;A&amp;quot;] = &amp;quot;red&amp;quot;
 V(g)$color[V(g)$locale == &amp;quot;B&amp;quot;] = &amp;quot;gray&amp;quot;
 plot(g, vertex.label=NA)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./project/visualizing_network/visualizing_network_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;The large connected component is most associated with which locale?
-#### Locale B&lt;/p&gt;
-&lt;p&gt;The 4-user connected component is most associated with which locale?
-#### Locale A&lt;/p&gt;
+&lt;p&gt;The large connected component is most associated with which locale?&lt;/p&gt;
+&lt;div id=&#34;locale-b-1&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Locale B&lt;/h4&gt;
+&lt;p&gt;The 4-user connected component is most associated with which locale?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;locale-a&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Locale A&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-4---other-plotting-options&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 4 - Other Plotting Options&lt;/h3&gt;
@@ -2096,8 +2156,10 @@ statesMap = map_data(&amp;quot;state&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(statesMap, aes(x = long, y = lat, group = group)) + 
     geom_polygon(fill = &amp;quot;white&amp;quot;, color = &amp;quot;black&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./project/election_forecasting/election_forecasting_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;We specified two colors in geom_polygon – fill and color. Which one defined the color of the outline of the states?
-#### color&lt;/p&gt;
+&lt;p&gt;We specified two colors in geom_polygon – fill and color. Which one defined the color of the outline of the states?&lt;/p&gt;
+&lt;div id=&#34;color&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;color&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.1---coloring-the-states-by-predictions&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.1 - Coloring the States by Predictions&lt;/h3&gt;
@@ -2193,8 +2255,10 @@ predictionMap &amp;lt;- predictionMap[order(predictionMap$order),]&lt;/code&gt;&
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.3---coloring-the-states-by-predictions&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.3 - Coloring the States by Predictions&lt;/h3&gt;
-&lt;p&gt;When we merged the data in the previous problem, it caused the number of observations to change. Why? Check out the help page for merge by typing ?merge to help us answer this question.
-#### Because we only make predictions for 45 states, we no longer have observations for some of the states. These observations were removed in the merging process.&lt;/p&gt;
+&lt;p&gt;When we merged the data in the previous problem, it caused the number of observations to change. Why? Check out the help page for merge by typing ?merge to help us answer this question.&lt;/p&gt;
+&lt;div id=&#34;because-we-only-make-predictions-for-45-states-we-no-longer-have-observations-for-some-of-the-states.-these-observations-were-removed-in-the-merging-process.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Because we only make predictions for 45 states, we no longer have observations for some of the states. These observations were removed in the merging process.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.4---coloring-the-states-by-predictions&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.4 - Coloring the States by Predictions&lt;/h3&gt;
@@ -2203,8 +2267,10 @@ predictionMap &amp;lt;- predictionMap[order(predictionMap$order),]&lt;/code&gt;&
        aes(x = long, y = lat, group = group, fill = TestPredictionBinary)) + 
     geom_polygon(color = &amp;quot;black&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./project/election_forecasting/election_forecasting_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;The states appear light blue and dark blue in this map. Which color represents a Republican prediction?
-#### Light blue&lt;/p&gt;
+&lt;p&gt;The states appear light blue and dark blue in this map. Which color represents a Republican prediction?&lt;/p&gt;
+&lt;div id=&#34;light-blue&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Light blue&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.5---coloring-the-states-by-predictions&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.5 - Coloring the States by Predictions&lt;/h3&gt;
@@ -2240,8 +2306,10 @@ predictionMap &amp;lt;- predictionMap[order(predictionMap$order),]&lt;/code&gt;&
 &lt;/div&gt;
 &lt;div id=&#34;problem-3.1---understanding-the-predictions&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 3.1 - Understanding the Predictions&lt;/h3&gt;
-&lt;p&gt;In the 2012 election, the state of Florida ended up being a very close race. It was ultimately won by the Democratic party. Did we predict this state correctly or incorrectly? To see the names and locations of the different states, take a look at the World Atlas map here.
-#### We incorrectly predicted this state by predicting that it would be won by the Republican party.&lt;/p&gt;
+&lt;p&gt;In the 2012 election, the state of Florida ended up being a very close race. It was ultimately won by the Democratic party. Did we predict this state correctly or incorrectly? To see the names and locations of the different states, take a look at the World Atlas map here.&lt;/p&gt;
+&lt;div id=&#34;we-incorrectly-predicted-this-state-by-predicting-that-it-would-be-won-by-the-republican-party.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;We incorrectly predicted this state by predicting that it would be won by the Republican party.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-3.2---understanding-the-predictions&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 3.2 - Understanding the Predictions&lt;/h3&gt;
@@ -2249,8 +2317,10 @@ predictionMap &amp;lt;- predictionMap[order(predictionMap$order),]&lt;/code&gt;&
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;predictionDataFrame[predictionDataFrame$region == &amp;quot;florida&amp;quot;, ]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    TestPrediction TestPredictionBinary Test.State  region
 ## 24      0.9640395                    1    Florida florida&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;What does this imply?
-#### Our prediction model did not do a very good job of correctly predicting the state of Florida, and we were very confident in our incorrect prediction.&lt;/p&gt;
+&lt;p&gt;What does this imply?&lt;/p&gt;
+&lt;div id=&#34;our-prediction-model-did-not-do-a-very-good-job-of-correctly-predicting-the-state-of-florida-and-we-were-very-confident-in-our-incorrect-prediction.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Our prediction model did not do a very good job of correctly predicting the state of Florida, and we were very confident in our incorrect prediction.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-4---parameter-settings&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;PROBLEM 4 - PARAMETER SETTINGS&lt;/h3&gt;
@@ -2349,8 +2419,10 @@ predictionMap &amp;lt;- predictionMap[order(predictionMap$order),]&lt;/code&gt;&
 &lt;div id=&#34;problem-1.2---normalizing-the-data&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 1.2 - Normalizing the Data&lt;/h3&gt;
 &lt;p&gt;In this problem, we will normalize our data before we run the clustering algorithms.&lt;/p&gt;
-&lt;p&gt;Why is it important to normalize the data before clustering?
-#### If we don’t normalize the data, the clustering will be dominated by the variables that are on a larger scale.&lt;/p&gt;
+&lt;p&gt;Why is it important to normalize the data before clustering?&lt;/p&gt;
+&lt;div id=&#34;if-we-dont-normalize-the-data-the-clustering-will-be-dominated-by-the-variables-that-are-on-a-larger-scale.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;If we don’t normalize the data, the clustering will be dominated by the variables that are on a larger scale.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-1.3---normalizing-the-data&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 1.3 - Normalizing the Data&lt;/h3&gt;
@@ -2378,10 +2450,14 @@ airlinesNorm &amp;lt;- predict(preproc, airlines)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 1&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sd(airlinesNorm$FlightTrans)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 1&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;In the normalized data, which variable has the largest maximum value?
-#### FlightMiles&lt;/p&gt;
-&lt;p&gt;In the normalized data, which variable has the smallest minimum value?
-#### DaysSinceEnroll&lt;/p&gt;
+&lt;p&gt;In the normalized data, which variable has the largest maximum value?&lt;/p&gt;
+&lt;div id=&#34;flightmiles&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;FlightMiles&lt;/h4&gt;
+&lt;p&gt;In the normalized data, which variable has the smallest minimum value?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;dayssinceenroll&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;DaysSinceEnroll&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.1---hierarchical-clustering&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.1 - Hierarchical Clustering&lt;/h3&gt;
@@ -2437,38 +2513,56 @@ table(hclustGroups)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tapply(airlines$DaysSinceEnroll, hclustGroups, mean)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##        1        2        3        4        5 
 ## 6235.365 4402.414 5615.709 2840.823 3060.081&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Compared to the other clusters, Cluster 1 has the largest average values in which variables (if any)?
-#### DaysSinceEnroll&lt;/p&gt;
-&lt;p&gt;How would you describe the customers in Cluster 1?
-#### Infrequent but loyal customers.&lt;/p&gt;
+&lt;p&gt;Compared to the other clusters, Cluster 1 has the largest average values in which variables (if any)?&lt;/p&gt;
+&lt;div id=&#34;dayssinceenroll-1&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;DaysSinceEnroll&lt;/h4&gt;
+&lt;p&gt;How would you describe the customers in Cluster 1?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;infrequent-but-loyal-customers.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Infrequent but loyal customers.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.4---hierarchical-clustering&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.4 - Hierarchical Clustering&lt;/h3&gt;
-&lt;p&gt;Compared to the other clusters, Cluster 2 has the largest average values in which variables?
-#### QualMiles, FlightMiles, FlightTrans&lt;/p&gt;
-&lt;p&gt;How would you describe the customers in Cluster 2?
-#### Customers who have accumulated a large amount of miles, and the ones with the largest number of flight transactions.&lt;/p&gt;
+&lt;p&gt;Compared to the other clusters, Cluster 2 has the largest average values in which variables?&lt;/p&gt;
+&lt;div id=&#34;qualmiles-flightmiles-flighttrans&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;QualMiles, FlightMiles, FlightTrans&lt;/h4&gt;
+&lt;p&gt;How would you describe the customers in Cluster 2?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;customers-who-have-accumulated-a-large-amount-of-miles-and-the-ones-with-the-largest-number-of-flight-transactions.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Customers who have accumulated a large amount of miles, and the ones with the largest number of flight transactions.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.5---hierarchical-clustering&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.5 - Hierarchical Clustering&lt;/h3&gt;
 &lt;p&gt;Compared to the other clusters, Cluster 3 has the largest average values in which variables?
 #### Balance, BonusMiles, BonusTrans&lt;/p&gt;
-&lt;p&gt;How would you describe the customers in Cluster 3?
-#### Customers who have accumulated a large amount of miles, mostly through non-flight transactions.&lt;/p&gt;
+&lt;p&gt;How would you describe the customers in Cluster 3?&lt;/p&gt;
+&lt;div id=&#34;customers-who-have-accumulated-a-large-amount-of-miles-mostly-through-non-flight-transactions.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Customers who have accumulated a large amount of miles, mostly through non-flight transactions.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.6---hierarchical-clustering&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.6 - Hierarchical Clustering&lt;/h3&gt;
-&lt;p&gt;Compared to the other clusters, Cluster 4 has the largest average values in which variables?
-#### None&lt;/p&gt;
-&lt;p&gt;How would you describe the customers in Cluster 4?
-#### Relatively new customers who seem to be accumulating miles, mostly through non-flight transactions.&lt;/p&gt;
+&lt;p&gt;Compared to the other clusters, Cluster 4 has the largest average values in which variables?&lt;/p&gt;
+&lt;div id=&#34;none&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;None&lt;/h4&gt;
+&lt;p&gt;How would you describe the customers in Cluster 4?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;relatively-new-customers-who-seem-to-be-accumulating-miles-mostly-through-non-flight-transactions.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Relatively new customers who seem to be accumulating miles, mostly through non-flight transactions.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.7---hierarchical-clustering&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.7 - Hierarchical Clustering&lt;/h3&gt;
-&lt;p&gt;Compared to the other clusters, Cluster 5 has the largest average values in which variables?
-#### None&lt;/p&gt;
-&lt;p&gt;How would you describe the customers in Cluster 5?
-#### Relatively new customers who don’t use the airline very often.&lt;/p&gt;
+&lt;p&gt;Compared to the other clusters, Cluster 5 has the largest average values in which variables?&lt;/p&gt;
+&lt;div id=&#34;none-1&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;None&lt;/h4&gt;
+&lt;p&gt;How would you describe the customers in Cluster 5?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;relatively-new-customers-who-dont-use-the-airline-very-often.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Relatively new customers who don’t use the airline very often.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-3.1---k-means-clustering&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 3.1 - K-Means Clustering&lt;/h3&gt;
@@ -2522,8 +2616,10 @@ tapply(airlines$Balance, kmeansGroups, mean)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tapply(airlines$DaysSinceEnroll, kmeansGroups, mean)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##        1        2        3        4        5 
 ## 5605.051 4684.901 3416.783 6109.540 2281.055&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Do you expect Cluster 1 of the K-Means clustering output to necessarily be similar to Cluster 1 of the Hierarchical clustering output?
-#### No, because cluster ordering is not meaningful in either k-means clustering or hierarchical clustering.&lt;/p&gt;
+&lt;p&gt;Do you expect Cluster 1 of the K-Means clustering output to necessarily be similar to Cluster 1 of the Hierarchical clustering output?&lt;/p&gt;
+&lt;div id=&#34;no-because-cluster-ordering-is-not-meaningful-in-either-k-means-clustering-or-hierarchical-clustering.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;No, because cluster ordering is not meaningful in either k-means clustering or hierarchical clustering.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -2655,8 +2751,10 @@ str(stocks)&lt;/code&gt;&lt;/pre&gt;
 ##    ReturnNov 
 ##  0.011387440&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;ReturnApr = 0.026308147&lt;/p&gt;
-&lt;p&gt;Which month (from January through November) has the smallest mean return across all observations in the dataset?
-#### ReturnSep = -0.014720768&lt;/p&gt;
+&lt;p&gt;Which month (from January through November) has the smallest mean return across all observations in the dataset?&lt;/p&gt;
+&lt;div id=&#34;returnsep--0.014720768&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;ReturnSep = -0.014720768&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.1---initial-logistic-regression-model&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.1 - Initial Logistic Regression Model&lt;/h3&gt;
@@ -2716,8 +2814,10 @@ head(StocksModelTestPred)&lt;/code&gt;&lt;/pre&gt;
 limitedTrain$PositiveDec &amp;lt;- NULL
 limitedTest &amp;lt;- stocksTest
 limitedTest$PositiveDec &amp;lt;- NULL&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Why do we need to remove the dependent variable in the clustering phase of the cluster-then-predict methodology?
-#### Needing to know the dependent variable value to assign an observation to a cluster defeats the purpose of the methodology&lt;/p&gt;
+&lt;p&gt;Why do we need to remove the dependent variable in the clustering phase of the cluster-then-predict methodology?&lt;/p&gt;
+&lt;div id=&#34;needing-to-know-the-dependent-variable-value-to-assign-an-observation-to-a-cluster-defeats-the-purpose-of-the-methodology&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Needing to know the dependent variable value to assign an observation to a cluster defeats the purpose of the methodology&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-3.2---clustering-stocks&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 3.2 - Clustering Stocks&lt;/h3&gt;
@@ -2792,8 +2892,10 @@ normTest &amp;lt;- predict(preproc, limitedTest)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-3.3---clustering-stocks&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 3.3 - Clustering Stocks&lt;/h3&gt;
-&lt;p&gt;Why is the mean ReturnJan variable much closer to 0 in normTrain than in normTest?
-#### The distribution of the ReturnJan variable is different in the training and testing set&lt;/p&gt;
+&lt;p&gt;Why is the mean ReturnJan variable much closer to 0 in normTrain than in normTest?&lt;/p&gt;
+&lt;div id=&#34;the-distribution-of-the-returnjan-variable-is-different-in-the-training-and-testing-set&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;The distribution of the ReturnJan variable is different in the training and testing set&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-3.4---clustering-stocks&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 3.4 - Clustering Stocks&lt;/h3&gt;
@@ -3241,8 +3343,10 @@ dtmAbstract &amp;lt;- as.data.frame(as.matrix(dtmAbstract))&lt;/code&gt;&lt;/pre
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.2---preparing-the-corpus&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.2 - Preparing the Corpus&lt;/h3&gt;
-&lt;p&gt;What is the most likely reason why dtmAbstract has so many more terms than dtmTitle?
-#### Abstracts tend to have many more words than titles&lt;/p&gt;
+&lt;p&gt;What is the most likely reason why dtmAbstract has so many more terms than dtmTitle?&lt;/p&gt;
+&lt;div id=&#34;abstracts-tend-to-have-many-more-words-than-titles&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Abstracts tend to have many more words than titles&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.3---preparing-the-corpus&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.3 - Preparing the Corpus&lt;/h3&gt;
@@ -3645,8 +3749,10 @@ str(dtmAbstract)&lt;/code&gt;&lt;/pre&gt;
 ##  $ Aestim          : num  0 0 0 1 1 0 0 0 0 0 ...
 ##  $ Afluorouracil   : num  0 0 0 1 1 0 0 0 0 0 ...
 ##   [list output truncated]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;What was the effect of these functions?
-#### Adding the letter T in front of all the title variable names and adding the letter A in front of all the abstract variable names.&lt;/p&gt;
+&lt;p&gt;What was the effect of these functions?&lt;/p&gt;
+&lt;div id=&#34;adding-the-letter-t-in-front-of-all-the-title-variable-names-and-adding-the-letter-a-in-front-of-all-the-abstract-variable-names.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Adding the letter T in front of all the title variable names and adding the letter A in front of all the abstract variable names.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-3.2---building-a-model&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 3.2 - Building a Model&lt;/h3&gt;
@@ -3912,10 +4018,12 @@ max(predTrainProb)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(predTrainProb)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ## 0.05455 0.13636 0.28750 0.43932 0.78231 0.87189&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;problem-3.6---building-a-model&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;Problem 3.6 - Building a Model&lt;/h4&gt;
-&lt;p&gt;Without running the analysis, how do you expect the maximum predicted probability to differ in the testing set?
-#### The maximum predicted probability will likely be exactly the same in the testing set. Because the CART tree assigns the same predicted probability to each leaf node and there are a small number of leaf nodes compared to data points, we expect exactly the same maximum predicted probability.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;problem-3.6---building-a-model&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Problem 3.6 - Building a Model&lt;/h3&gt;
+&lt;p&gt;Without running the analysis, how do you expect the maximum predicted probability to differ in the testing set?&lt;/p&gt;
+&lt;div id=&#34;the-maximum-predicted-probability-will-likely-be-exactly-the-same-in-the-testing-set.-because-the-cart-tree-assigns-the-same-predicted-probability-to-each-leaf-node-and-there-are-a-small-number-of-leaf-nodes-compared-to-data-points-we-expect-exactly-the-same-maximum-predicted-probability.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;The maximum predicted probability will likely be exactly the same in the testing set. Because the CART tree assigns the same predicted probability to each leaf node and there are a small number of leaf nodes compared to data points, we expect exactly the same maximum predicted probability.&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-3.7---building-a-model&#34; class=&#34;section level3&#34;&gt;
@@ -3972,18 +4080,24 @@ performance(predROCR, &amp;quot;auc&amp;quot;)@y.values&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-5.1---decision-maker-tradeoffs&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 5.1 - Decision-Maker Tradeoffs&lt;/h3&gt;
-&lt;p&gt;What is the cost associated with the model in Step 1 making a false negative prediction?
-#### A paper that should have been included in Set A will be missed, affecting the quality of the results of Step 3.&lt;/p&gt;
+&lt;p&gt;What is the cost associated with the model in Step 1 making a false negative prediction?&lt;/p&gt;
+&lt;div id=&#34;a-paper-that-should-have-been-included-in-set-a-will-be-missed-affecting-the-quality-of-the-results-of-step-3.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;A paper that should have been included in Set A will be missed, affecting the quality of the results of Step 3.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-5.2---decision-maker-tradeoffs&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 5.2 - Decision-Maker Tradeoffs&lt;/h3&gt;
-&lt;p&gt;What is the cost associated with the model in Step 1 making a false positive prediction?
-#### A paper will be mistakenly added to Set A, yielding additional work in Step 2 of the process but not affecting the quality of the results of Step 3.&lt;/p&gt;
+&lt;p&gt;What is the cost associated with the model in Step 1 making a false positive prediction?&lt;/p&gt;
+&lt;div id=&#34;a-paper-will-be-mistakenly-added-to-set-a-yielding-additional-work-in-step-2-of-the-process-but-not-affecting-the-quality-of-the-results-of-step-3.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;A paper will be mistakenly added to Set A, yielding additional work in Step 2 of the process but not affecting the quality of the results of Step 3.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-5.3---decision-maker-tradeoffs&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 5.3 - Decision-Maker Tradeoffs&lt;/h3&gt;
-&lt;p&gt;Given the costs associated with false positives and false negatives, which of the following is most accurate?
-#### A false negative is more costly than a false positive; the decision maker should use a probability threshold less than 0.5 for the machine learning model.&lt;/p&gt;
+&lt;p&gt;Given the costs associated with false positives and false negatives, which of the following is most accurate?&lt;/p&gt;
+&lt;div id=&#34;a-false-negative-is-more-costly-than-a-false-positive-the-decision-maker-should-use-a-probability-threshold-less-than-0.5-for-the-machine-learning-model.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;A false negative is more costly than a false positive; the decision maker should use a probability threshold less than 0.5 for the machine learning model.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -4367,13 +4481,17 @@ prp(censusTree)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.2---a-cart-model&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.2 - A CART Model&lt;/h3&gt;
-&lt;p&gt;Which variable does the tree split on at the first level (the very first split of the tree)?
-#### relationship&lt;/p&gt;
+&lt;p&gt;Which variable does the tree split on at the first level (the very first split of the tree)?&lt;/p&gt;
+&lt;div id=&#34;relationship&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;relationship&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.3---a-cart-model&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.3 - A CART Model&lt;/h3&gt;
-&lt;p&gt;Which variables does the tree split on at the second level (immediately after the first split of the tree)?
-#### capitalgain, education&lt;/p&gt;
+&lt;p&gt;Which variables does the tree split on at the second level (immediately after the first split of the tree)?&lt;/p&gt;
+&lt;div id=&#34;capitalgain-education&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;capitalgain, education&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.4---a-cart-model&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.4 - A CART Model&lt;/h3&gt;
@@ -4455,8 +4573,10 @@ vusorted &amp;lt;- sort(vu, decreasing = FALSE, index.return = TRUE)
 dotchart(vusorted$x, names(CensusForest$forest$xlevels[vusorted$ix]))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./project/earnings/earnings_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;This code produces a chart that for each variable measures the number of times that variable was selected for splitting (the value on the x-axis).&lt;/p&gt;
-&lt;p&gt;Which of the following variables is the most important in terms of the number of splits?
-#### age&lt;/p&gt;
+&lt;p&gt;Which of the following variables is the most important in terms of the number of splits?&lt;/p&gt;
+&lt;div id=&#34;age&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;age&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-3.3---a-random-forest-model&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 3.3 - A Random Forest Model&lt;/h3&gt;
@@ -4465,8 +4585,10 @@ dotchart(vusorted$x, names(CensusForest$forest$xlevels[vusorted$ix]))&lt;/code&g
 &lt;p&gt;To compute this metric, run the following code (replace “MODEL” with the name of your random forest model):&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;varImpPlot(CensusForest)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./project/earnings/earnings_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Which one of the following variables is the most important in terms of mean reduction in impurity?
-#### occupation&lt;/p&gt;
+&lt;p&gt;Which one of the following variables is the most important in terms of mean reduction in impurity?&lt;/p&gt;
+&lt;div id=&#34;occupation&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;occupation&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-4.1---selecting-cp-by-cross-validation&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 4.1 - Selecting cp by Cross-Validation&lt;/h3&gt;
@@ -5454,8 +5576,10 @@ prp(CARTmodel)&lt;/code&gt;&lt;/pre&gt;
           data=gerber, cp=0.0)
 prp(CARTmodel2)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./project/understanding_votes/votes_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;What do we observe about the order of the splits?
-#### Neighbor is the first split, civic duty is the last.&lt;/p&gt;
+&lt;p&gt;What do we observe about the order of the splits?&lt;/p&gt;
+&lt;div id=&#34;neighbor-is-the-first-split-civic-duty-is-the-last.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Neighbor is the first split, civic duty is the last.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.3---trees&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.3 - Trees&lt;/h3&gt;
@@ -5470,10 +5594,14 @@ prp(CARTmodel2)&lt;/code&gt;&lt;/pre&gt;
           data=gerber, cp=0.0)
 prp(CARTmodel3)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./project/understanding_votes/votes_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;In the control group, which gender is more likely to vote?
-#### Men (0)&lt;/p&gt;
-&lt;p&gt;In the “Civic Duty” group, which gender is more likely to vote?
-#### Men (0)&lt;/p&gt;
+&lt;p&gt;In the control group, which gender is more likely to vote?&lt;/p&gt;
+&lt;div id=&#34;men-0&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Men (0)&lt;/h4&gt;
+&lt;p&gt;In the “Civic Duty” group, which gender is more likely to vote?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;men-0-1&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Men (0)&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-3.1---interaction-terms&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 3.1 - Interaction Terms&lt;/h3&gt;
@@ -5602,8 +5730,10 @@ predict(VotingControlAndSexLog, newdata=Possibilities, type=&amp;quot;response&a
 &lt;div id=&#34;conclusion---interaction-terms&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Conclusion - Interaction Terms&lt;/h3&gt;
 &lt;p&gt;This example has shown that trees can capture nonlinear relationships that logistic regression cannot, but that we can get around this sometimes by using variables that are the combination of two variables.&lt;/p&gt;
-&lt;p&gt;Should we always include all possible interaction terms of the independent variables when building a logistic regression model?
-#### No (because of overfitting)&lt;/p&gt;
+&lt;p&gt;Should we always include all possible interaction terms of the independent variables when building a logistic regression model?&lt;/p&gt;
+&lt;div id=&#34;no-because-of-overfitting&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;No (because of overfitting)&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -5657,8 +5787,9 @@ library(ROCR)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The following object is masked from &amp;#39;package:stats&amp;#39;:
 ## 
 ##     lowess&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;problem-1.1---bags-of-words&#34; class=&#34;section level4&#34;&gt;
-&lt;h4&gt;Problem 1.1 - Bags of Words&lt;/h4&gt;
+&lt;/div&gt;
+&lt;div id=&#34;problem-1.1---bags-of-words&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Problem 1.1 - Bags of Words&lt;/h3&gt;
 &lt;p&gt;Load the data wiki.csv with the option stringsAsFactors=FALSE, calling the dataframe “wiki”. Convert the “Vandal” column to a factor using the code wiki&lt;span class=&#34;math inline&#34;&gt;\(Vandal = as.factor(wiki\)&lt;/span&gt;Vandal).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;wiki &amp;lt;- read.csv(&amp;quot;wiki.csv&amp;quot;, stringsAsFactors = FALSE)
 wiki$Vandal &amp;lt;- as.factor(wiki$Vandal)
@@ -5677,7 +5808,6 @@ str(wiki)&lt;/code&gt;&lt;/pre&gt;
 ##    0    1 
 ## 2061 1815&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;1815&lt;/p&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-1.2---bags-of-words&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 1.2 - Bags of Words&lt;/h3&gt;
@@ -5706,11 +5836,13 @@ dtmAdded&lt;/code&gt;&lt;/pre&gt;
 ## Sparsity           : 100%
 ## Maximal term length: 784
 ## Weighting          : term frequency (tf)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;How many terms appear in dtmAdded?
-#### 6675&lt;/p&gt;
+&lt;p&gt;How many terms appear in dtmAdded?&lt;/p&gt;
+&lt;div id=&#34;section&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;6675&lt;/h4&gt;
 &lt;p&gt;If the code length(stopwords(“english”)) does not return 174 for you, then please run the line of code in this file, which will store the standard stop words in a variable called sw. When removing stop words, use tm_map(corpusAdded, removeWords, sw) instead of tm_map(corpusAdded, removeWords, stopwords(“english”)).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;length(stopwords(&amp;quot;english&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 174&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-1.3---bags-of-words&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 1.3 - Bags of Words&lt;/h3&gt;
@@ -5722,8 +5854,10 @@ sparseAdded&lt;/code&gt;&lt;/pre&gt;
 ## Sparsity           : 100%
 ## Maximal term length: 28
 ## Weighting          : term frequency (tf)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;How many terms appear in sparseAdded?
-#### 166&lt;/p&gt;
+&lt;p&gt;How many terms appear in sparseAdded?&lt;/p&gt;
+&lt;div id=&#34;section-1&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;166&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-1.4---bags-of-words&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 1.4 - Bags of Words&lt;/h3&gt;
@@ -5970,8 +6104,10 @@ str(wordsRemoved)&lt;/code&gt;&lt;/pre&gt;
 ##  $ R follow                      : num  0 0 0 0 0 0 0 0 0 0 ...
 ##  $ R recent                      : num  0 0 0 0 0 0 0 0 0 0 ...
 ##   [list output truncated]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;How many words are in the wordsRemoved dataframe?
-#### 162&lt;/p&gt;
+&lt;p&gt;How many words are in the wordsRemoved dataframe?&lt;/p&gt;
+&lt;div id=&#34;section-2&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;162&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-1.5---bags-of-words&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 1.5 - Bags of Words&lt;/h3&gt;
@@ -6012,14 +6148,16 @@ head(wikiPred)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;How many word stems does the CART model use?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prp(wikiTree)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./project/vandalism/vandalism_files/figure-html/unnamed-chunk-22-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div id=&#34;section&#34; class=&#34;section level4&#34;&gt;
+&lt;div id=&#34;section-3&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;2&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-1.8---bags-of-words&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 1.8 - Bags of Words&lt;/h3&gt;
-&lt;p&gt;Given the performance of the CART model relative to the baseline, what is the best explanation for these results?
-#### Although it beats the baseline, bag of words is not very predictive for this problem.&lt;/p&gt;
+&lt;p&gt;Given the performance of the CART model relative to the baseline, what is the best explanation for these results?&lt;/p&gt;
+&lt;div id=&#34;although-it-beats-the-baseline-bag-of-words-is-not-very-predictive-for-this-problem.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Although it beats the baseline, bag of words is not very predictive for this problem.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.1---problem-specific-knowledge&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.1 - Problem-specific Knowledge&lt;/h3&gt;
@@ -6038,7 +6176,7 @@ table(wikiWords2$HTTP)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ##    0    1 
 ## 3659  217&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;section-1&#34; class=&#34;section level4&#34;&gt;
+&lt;div id=&#34;section-4&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;217&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -6122,7 +6260,7 @@ head(wikiPred3)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Plot the CART tree. How many splits are there in the tree?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prp(wikiTree3)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./project/vandalism/vandalism_files/figure-html/unnamed-chunk-36-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div id=&#34;section-2&#34; class=&#34;section level4&#34;&gt;
+&lt;div id=&#34;section-5&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;3&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -6308,8 +6446,10 @@ str(loansNA)&lt;/code&gt;&lt;/pre&gt;
 &lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;loans &amp;lt;- read.csv(&amp;quot;loans_imputed.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Note, that to do this imputation, we set vars.for.imputation to all variables in the dataframe except for not.fully.paid, to impute the values using all of the other independent variables.&lt;/p&gt;
-&lt;p&gt;What best describes the process we just used to handle missing values?
-#### We predicted missing variable values using the available independent variables for each observation.&lt;/p&gt;
+&lt;p&gt;What best describes the process we just used to handle missing values?&lt;/p&gt;
+&lt;div id=&#34;we-predicted-missing-variable-values-using-the-available-independent-variables-for-each-observation.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;We predicted missing variable values using the available independent variables for each observation.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.1---prediction-models&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.1 - Prediction Models&lt;/h3&gt;
@@ -6563,8 +6703,10 @@ summary(LoansLog2)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## Number of Fisher Scoring iterations: 4&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The variable int.rate is highly significant in the bivariate model, but it is not significant at the 0.05 level in the model trained with all the independent variables.&lt;/p&gt;
-&lt;p&gt;What is the most likely explanation for this difference?
-#### int.rate is correlated with other risk-related variables, and therefore does not incrementally improve the model when those other variables are included.&lt;/p&gt;
+&lt;p&gt;What is the most likely explanation for this difference?&lt;/p&gt;
+&lt;div id=&#34;int.rate-is-correlated-with-other-risk-related-variables-and-therefore-does-not-incrementally-improve-the-model-when-those-other-variables-are-included.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;int.rate is correlated with other risk-related variables, and therefore does not incrementally improve the model when those other variables are included.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-3.2---a-smart-baseline&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 3.2 - A “Smart Baseline”&lt;/h3&gt;
@@ -6630,8 +6772,10 @@ as.numeric(performance(ROCRpred2, &amp;quot;auc&amp;quot;)@y.values)&lt;/code&gt
 &lt;div id=&#34;problem-4.3---computing-the-profitability-of-an-investment&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 4.3 - Computing the Profitability of an Investment&lt;/h3&gt;
 &lt;p&gt;Now, consider the case where the investor made a $c investment, but it was not paid back in full. Assume, conservatively, that no money was received from the borrower (often a lender will receive some but not all of the value of the loan, making this a pessimistic assumption of how much is received).&lt;/p&gt;
-&lt;p&gt;What is the loss to the investor in this scenario?
-#### -10&lt;/p&gt;
+&lt;p&gt;What is the loss to the investor in this scenario?&lt;/p&gt;
+&lt;div id=&#34;section-2&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;-10&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-5.1---a-simple-investment-strategy&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 5.1 - A Simple Investment Strategy&lt;/h3&gt;
@@ -6731,7 +6875,7 @@ summary(selectedLoans)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ##  0  1 
 ## 81 19&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;section-2&#34; class=&#34;section level4&#34;&gt;
+&lt;div id=&#34;section-3&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;19&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -6805,13 +6949,17 @@ str(parole)&lt;/code&gt;&lt;/pre&gt;
 ##  Mean   :0.1156  
 ##  3rd Qu.:0.0000  
 ##  Max.   :1.0000&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;How many parolees are contained in the dataset?
-#### 675&lt;/p&gt;
+&lt;p&gt;How many parolees are contained in the dataset?&lt;/p&gt;
+&lt;div id=&#34;section&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;675&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-1.1---preparing-the-dataset&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 1.1 - Preparing the Dataset&lt;/h3&gt;
-&lt;p&gt;Which variables in this dataset are unordered factors with at least three levels?
-#### state, crime&lt;/p&gt;
+&lt;p&gt;Which variables in this dataset are unordered factors with at least three levels?&lt;/p&gt;
+&lt;div id=&#34;state-crime&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;state, crime&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-1.2---preparing-the-dataset&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 1.2 - Preparing the Dataset&lt;/h3&gt;
@@ -6877,13 +7025,19 @@ test = subset(parole, split == FALSE)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.2---splitting-into-a-training-and-testing-set&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.2 - Splitting into a Training and Testing Set&lt;/h3&gt;
-&lt;p&gt;Now, suppose you re-ran lines [1]-[5] of Problem 3.1. What would you expect?
-#### The exact same training/testing set split as the first execution of [1]-[5]&lt;/p&gt;
-&lt;p&gt;If you instead ONLY re-ran lines [3]-[5], what would you expect?
-#### A different training/testing set split from the first execution of [1]-[5]&lt;/p&gt;
-&lt;p&gt;If you instead called set.seed() with a different number and then re-ran lines [3]-[5] of Problem 3.1, what would you expect?
-#### A different training/testing set split from the first execution of [1]-[5]&lt;/p&gt;
+&lt;p&gt;Now, suppose you re-ran lines [1]-[5] of Problem 3.1. What would you expect?&lt;/p&gt;
+&lt;div id=&#34;the-exact-same-trainingtesting-set-split-as-the-first-execution-of-1-5&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;The exact same training/testing set split as the first execution of [1]-[5]&lt;/h4&gt;
+&lt;p&gt;If you instead ONLY re-ran lines [3]-[5], what would you expect?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-different-trainingtesting-set-split-from-the-first-execution-of-1-5&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;A different training/testing set split from the first execution of [1]-[5]&lt;/h4&gt;
+&lt;p&gt;If you instead called set.seed() with a different number and then re-ran lines [3]-[5] of Problem 3.1, what would you expect?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-different-trainingtesting-set-split-from-the-first-execution-of-1-5-1&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;A different training/testing set split from the first execution of [1]-[5]&lt;/h4&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;?sample.split&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-3.1---building-a-logistic-regression-model&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 3.1 - Building a Logistic Regression Model&lt;/h3&gt;
@@ -7010,13 +7164,17 @@ max(ParolePredTest)&lt;/code&gt;&lt;/pre&gt;
 &lt;h3&gt;Problem 4.4 - Evaluating the Model on the Testing Set&lt;/h3&gt;
 &lt;p&gt;Consider a parole board using the model to predict whether parolees will be violators or not.&lt;/p&gt;
 &lt;p&gt;The job of a parole board is to make sure that a prisoner is ready to be released into free society, and therefore &lt;strong&gt;parole boards tend to be particularily concerned about releasing prisoners who will violate their parole.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Which of the following most likely describes their preferences and best course of action?
-#### The board assigns more cost to a false negative than a false positive, and should therefore use a logistic regression cut-off less than 0.5.&lt;/p&gt;
+&lt;p&gt;Which of the following most likely describes their preferences and best course of action?&lt;/p&gt;
+&lt;div id=&#34;the-board-assigns-more-cost-to-a-false-negative-than-a-false-positive-and-should-therefore-use-a-logistic-regression-cut-off-less-than-0.5.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;The board assigns more cost to a false negative than a false positive, and should therefore use a logistic regression cut-off less than 0.5.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-4.5---evaluating-the-model-on-the-testing-set&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 4.5 - Evaluating the Model on the Testing Set&lt;/h3&gt;
-&lt;p&gt;Which of the following is the most accurate assessment of the value of the logistic regression model with a cut-off 0.5 to a parole board, based on the model’s accuracy as compared to the simple baseline model?
-#### The model is likely of value to the board, and using a different logistic regression cut-off is likely to improve the model’s value.&lt;/p&gt;
+&lt;p&gt;Which of the following is the most accurate assessment of the value of the logistic regression model with a cut-off 0.5 to a parole board, based on the model’s accuracy as compared to the simple baseline model?&lt;/p&gt;
+&lt;div id=&#34;the-model-is-likely-of-value-to-the-board-and-using-a-different-logistic-regression-cut-off-is-likely-to-improve-the-models-value.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;The model is likely of value to the board, and using a different logistic regression cut-off is likely to improve the model’s value.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-4.6---evaluating-the-model-on-the-testing-set&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 4.6 - Evaluating the Model on the Testing Set&lt;/h3&gt;
@@ -7027,8 +7185,10 @@ as.numeric(performance(ROCRpred, &amp;quot;auc&amp;quot;)@y.values)&lt;/code&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-4.7---evaluating-the-model-on-the-testing-set&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 4.7 - Evaluating the Model on the Testing Set&lt;/h3&gt;
-&lt;p&gt;Describe the meaning of AUC in this context.
-#### The probability the model can correctly differentiate between a randomly selected parole violator and a randomly selected parole non-violator.&lt;/p&gt;
+&lt;p&gt;Describe the meaning of AUC in this context.&lt;/p&gt;
+&lt;div id=&#34;the-probability-the-model-can-correctly-differentiate-between-a-randomly-selected-parole-violator-and-a-randomly-selected-parole-non-violator.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;The probability the model can correctly differentiate between a randomly selected parole violator and a randomly selected parole non-violator.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-5.1---identifying-bias-in-observational-data&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 5.1 - Identifying Bias in Observational Data&lt;/h3&gt;
@@ -7036,8 +7196,10 @@ as.numeric(performance(ROCRpred, &amp;quot;auc&amp;quot;)@y.values)&lt;/code&gt;
 &lt;p&gt;In this final problem, we’ll evaluate a potential source of bias associated with our analysis. It is always important to evaluate a dataset for possible sources of bias.&lt;/p&gt;
 &lt;p&gt;The dataset contains all individuals released from parole in 2004, either due to completing their parole term or violating the terms of their parole. However, it does not contain parolees who neither violated their parole nor completed their term in 2004, causing non-violators to be underrepresented.&lt;/p&gt;
 &lt;p&gt;This is called “selection bias” or “selecting on the dependent variable,” because only a subset of all relevant parolees were included in our analysis, based on our dependent variable in this analysis (parole violation).&lt;/p&gt;
-&lt;p&gt;How could we improve our dataset to best address selection bias?
-#### We should use a dataset tracking a group of parolees from the start of their parole until either they violated parole or they completed their term.&lt;/p&gt;
+&lt;p&gt;How could we improve our dataset to best address selection bias?&lt;/p&gt;
+&lt;div id=&#34;we-should-use-a-dataset-tracking-a-group-of-parolees-from-the-start-of-their-parole-until-either-they-violated-parole-or-they-completed-their-term.&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;We should use a dataset tracking a group of parolees from the start of their parole until either they violated parole or they completed their term.&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -7246,8 +7408,10 @@ str(songs)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ##    0    1    3    4    5    7 
 ##   10  143  503 6787  112   19&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Which timesignature value is the most frequent among songs in our dataset?
-#### 4&lt;/p&gt;
+&lt;p&gt;Which timesignature value is the most frequent among songs in our dataset?&lt;/p&gt;
+&lt;div id=&#34;section&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;4&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-1.5---understanding-the-data&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 1.5 - Understanding the Data&lt;/h3&gt;
@@ -7350,21 +7514,29 @@ summary(SongsLog1)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.3---creating-our-prediction-model&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.3 - Creating Our Prediction Model&lt;/h3&gt;
-&lt;p&gt;Let’s now think about the variables in our dataset related to the confidence of the time signature, key and tempo (timesignature_confidence, key_confidence, and tempo_confidence). Our model seems to indicate that these confidence variables are significant (rather than the variables timesignature, key and tempo themselves). What does the model suggest?
-#### The higher our confidence about time signature, key and tempo, the more likely the song is to be in the Top 10&lt;/p&gt;
+&lt;p&gt;Let’s now think about the variables in our dataset related to the confidence of the time signature, key and tempo (timesignature_confidence, key_confidence, and tempo_confidence). Our model seems to indicate that these confidence variables are significant (rather than the variables timesignature, key and tempo themselves). What does the model suggest?&lt;/p&gt;
+&lt;div id=&#34;the-higher-our-confidence-about-time-signature-key-and-tempo-the-more-likely-the-song-is-to-be-in-the-top-10&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;The higher our confidence about time signature, key and tempo, the more likely the song is to be in the Top 10&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.4---creating-our-prediction-model&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.4 - Creating Our Prediction Model&lt;/h3&gt;
 &lt;p&gt;In general, if the confidence is low for the time signature, tempo, and key, then the song is more likely to be complex.&lt;/p&gt;
-&lt;p&gt;What does Model 1 suggest in terms of complexity?
-#### Mainstream listeners tend to prefer less complex songs&lt;/p&gt;
+&lt;p&gt;What does Model 1 suggest in terms of complexity?&lt;/p&gt;
+&lt;div id=&#34;mainstream-listeners-tend-to-prefer-less-complex-songs&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Mainstream listeners tend to prefer less complex songs&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-2.5---creating-our-prediction-model&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 2.5 - Creating Our Prediction Model&lt;/h3&gt;
-&lt;p&gt;Songs with heavier instrumentation tend to be louder (have higher values in the variable “loudness”) and more energetic (have higher values in the variable “energy”). By inspecting the coefficient of the variable “loudness”, what does Model 1 suggest?
-#### Mainstream listeners prefer songs with heavy instrumentation&lt;/p&gt;
-&lt;p&gt;By inspecting the coefficient of the variable “energy”, do we draw the same conclusions as above?
-#### No&lt;/p&gt;
+&lt;p&gt;Songs with heavier instrumentation tend to be louder (have higher values in the variable “loudness”) and more energetic (have higher values in the variable “energy”). By inspecting the coefficient of the variable “loudness”, what does Model 1 suggest?&lt;/p&gt;
+&lt;div id=&#34;mainstream-listeners-prefer-songs-with-heavy-instrumentation&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Mainstream listeners prefer songs with heavy instrumentation&lt;/h4&gt;
+&lt;p&gt;By inspecting the coefficient of the variable “energy”, do we draw the same conclusions as above?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;no&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;No&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-3.1---beware-of-multicollinearity-issues&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 3.1 - Beware of Multicollinearity Issues!&lt;/h3&gt;
@@ -7531,8 +7703,10 @@ table(SongsTest$Top10, predSongsTest &amp;gt; 0.45)&lt;/code&gt;&lt;/pre&gt;
 ##   0   309    5
 ##   1    40   19&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;19&lt;/p&gt;
-&lt;p&gt;How many non-hit songs does Model 3 predict will be Top 10 hits (again, looking at the test set), using a threshold of 0.45?
-#### 5&lt;/p&gt;
+&lt;p&gt;How many non-hit songs does Model 3 predict will be Top 10 hits (again, looking at the test set), using a threshold of 0.45?&lt;/p&gt;
+&lt;div id=&#34;section-1&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;5&lt;/h4&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;problem-4.4---validating-our-model&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Problem 4.4 - Validating Our Model&lt;/h3&gt;

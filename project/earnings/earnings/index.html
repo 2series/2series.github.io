@@ -389,6 +389,17 @@
   
 
   
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="../../../categories/r/">R</a>
+    
+  </span>
+  
+  
 
   
   
@@ -833,13 +844,17 @@ prp(censusTree)</code></pre>
 </div>
 <div id="problem-2.2---a-cart-model" class="section level3">
 <h3>Problem 2.2 - A CART Model</h3>
-<p>Which variable does the tree split on at the first level (the very first split of the tree)?
-#### relationship</p>
+<p>Which variable does the tree split on at the first level (the very first split of the tree)?</p>
+<div id="relationship" class="section level4">
+<h4>relationship</h4>
+</div>
 </div>
 <div id="problem-2.3---a-cart-model" class="section level3">
 <h3>Problem 2.3 - A CART Model</h3>
-<p>Which variables does the tree split on at the second level (immediately after the first split of the tree)?
-#### capitalgain, education</p>
+<p>Which variables does the tree split on at the second level (immediately after the first split of the tree)?</p>
+<div id="capitalgain-education" class="section level4">
+<h4>capitalgain, education</h4>
+</div>
 </div>
 <div id="problem-2.4---a-cart-model" class="section level3">
 <h3>Problem 2.4 - A CART Model</h3>
@@ -921,8 +936,10 @@ vusorted &lt;- sort(vu, decreasing = FALSE, index.return = TRUE)
 dotchart(vusorted$x, names(CensusForest$forest$xlevels[vusorted$ix]))</code></pre>
 <p><img src="../../../project/earnings/earnings_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>This code produces a chart that for each variable measures the number of times that variable was selected for splitting (the value on the x-axis).</p>
-<p>Which of the following variables is the most important in terms of the number of splits?
-#### age</p>
+<p>Which of the following variables is the most important in terms of the number of splits?</p>
+<div id="age" class="section level4">
+<h4>age</h4>
+</div>
 </div>
 <div id="problem-3.3---a-random-forest-model" class="section level3">
 <h3>Problem 3.3 - A Random Forest Model</h3>
@@ -931,8 +948,10 @@ dotchart(vusorted$x, names(CensusForest$forest$xlevels[vusorted$ix]))</code></pr
 <p>To compute this metric, run the following code (replace “MODEL” with the name of your random forest model):</p>
 <pre class="r"><code>varImpPlot(CensusForest)</code></pre>
 <p><img src="../../../project/earnings/earnings_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-<p>Which one of the following variables is the most important in terms of mean reduction in impurity?
-#### occupation</p>
+<p>Which one of the following variables is the most important in terms of mean reduction in impurity?</p>
+<div id="occupation" class="section level4">
+<h4>occupation</h4>
+</div>
 </div>
 <div id="problem-4.1---selecting-cp-by-cross-validation" class="section level3">
 <h3>Problem 4.1 - Selecting cp by Cross-Validation</h3>

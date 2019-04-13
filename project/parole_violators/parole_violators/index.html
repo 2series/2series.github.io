@@ -389,6 +389,17 @@
   
 
   
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="../../../categories/r/">R</a>
+    
+  </span>
+  
+  
 
   
   
@@ -516,13 +527,17 @@ str(parole)</code></pre>
 ##  Mean   :0.1156  
 ##  3rd Qu.:0.0000  
 ##  Max.   :1.0000</code></pre>
-<p>How many parolees are contained in the dataset?
-#### 675</p>
+<p>How many parolees are contained in the dataset?</p>
+<div id="section" class="section level4">
+<h4>675</h4>
+</div>
 </div>
 <div id="problem-1.1---preparing-the-dataset" class="section level3">
 <h3>Problem 1.1 - Preparing the Dataset</h3>
-<p>Which variables in this dataset are unordered factors with at least three levels?
-#### state, crime</p>
+<p>Which variables in this dataset are unordered factors with at least three levels?</p>
+<div id="state-crime" class="section level4">
+<h4>state, crime</h4>
+</div>
 </div>
 <div id="problem-1.2---preparing-the-dataset" class="section level3">
 <h3>Problem 1.2 - Preparing the Dataset</h3>
@@ -588,13 +603,19 @@ test = subset(parole, split == FALSE)</code></pre>
 </div>
 <div id="problem-2.2---splitting-into-a-training-and-testing-set" class="section level3">
 <h3>Problem 2.2 - Splitting into a Training and Testing Set</h3>
-<p>Now, suppose you re-ran lines [1]-[5] of Problem 3.1. What would you expect?
-#### The exact same training/testing set split as the first execution of [1]-[5]</p>
-<p>If you instead ONLY re-ran lines [3]-[5], what would you expect?
-#### A different training/testing set split from the first execution of [1]-[5]</p>
-<p>If you instead called set.seed() with a different number and then re-ran lines [3]-[5] of Problem 3.1, what would you expect?
-#### A different training/testing set split from the first execution of [1]-[5]</p>
+<p>Now, suppose you re-ran lines [1]-[5] of Problem 3.1. What would you expect?</p>
+<div id="the-exact-same-trainingtesting-set-split-as-the-first-execution-of-1-5" class="section level4">
+<h4>The exact same training/testing set split as the first execution of [1]-[5]</h4>
+<p>If you instead ONLY re-ran lines [3]-[5], what would you expect?</p>
+</div>
+<div id="a-different-trainingtesting-set-split-from-the-first-execution-of-1-5" class="section level4">
+<h4>A different training/testing set split from the first execution of [1]-[5]</h4>
+<p>If you instead called set.seed() with a different number and then re-ran lines [3]-[5] of Problem 3.1, what would you expect?</p>
+</div>
+<div id="a-different-trainingtesting-set-split-from-the-first-execution-of-1-5-1" class="section level4">
+<h4>A different training/testing set split from the first execution of [1]-[5]</h4>
 <pre class="r"><code>?sample.split</code></pre>
+</div>
 </div>
 <div id="problem-3.1---building-a-logistic-regression-model" class="section level3">
 <h3>Problem 3.1 - Building a Logistic Regression Model</h3>
@@ -721,13 +742,17 @@ max(ParolePredTest)</code></pre>
 <h3>Problem 4.4 - Evaluating the Model on the Testing Set</h3>
 <p>Consider a parole board using the model to predict whether parolees will be violators or not.</p>
 <p>The job of a parole board is to make sure that a prisoner is ready to be released into free society, and therefore <strong>parole boards tend to be particularily concerned about releasing prisoners who will violate their parole.</strong></p>
-<p>Which of the following most likely describes their preferences and best course of action?
-#### The board assigns more cost to a false negative than a false positive, and should therefore use a logistic regression cut-off less than 0.5.</p>
+<p>Which of the following most likely describes their preferences and best course of action?</p>
+<div id="the-board-assigns-more-cost-to-a-false-negative-than-a-false-positive-and-should-therefore-use-a-logistic-regression-cut-off-less-than-0.5." class="section level4">
+<h4>The board assigns more cost to a false negative than a false positive, and should therefore use a logistic regression cut-off less than 0.5.</h4>
+</div>
 </div>
 <div id="problem-4.5---evaluating-the-model-on-the-testing-set" class="section level3">
 <h3>Problem 4.5 - Evaluating the Model on the Testing Set</h3>
-<p>Which of the following is the most accurate assessment of the value of the logistic regression model with a cut-off 0.5 to a parole board, based on the model’s accuracy as compared to the simple baseline model?
-#### The model is likely of value to the board, and using a different logistic regression cut-off is likely to improve the model’s value.</p>
+<p>Which of the following is the most accurate assessment of the value of the logistic regression model with a cut-off 0.5 to a parole board, based on the model’s accuracy as compared to the simple baseline model?</p>
+<div id="the-model-is-likely-of-value-to-the-board-and-using-a-different-logistic-regression-cut-off-is-likely-to-improve-the-models-value." class="section level4">
+<h4>The model is likely of value to the board, and using a different logistic regression cut-off is likely to improve the model’s value.</h4>
+</div>
 </div>
 <div id="problem-4.6---evaluating-the-model-on-the-testing-set" class="section level3">
 <h3>Problem 4.6 - Evaluating the Model on the Testing Set</h3>
@@ -738,8 +763,10 @@ as.numeric(performance(ROCRpred, &quot;auc&quot;)@y.values)</code></pre>
 </div>
 <div id="problem-4.7---evaluating-the-model-on-the-testing-set" class="section level3">
 <h3>Problem 4.7 - Evaluating the Model on the Testing Set</h3>
-<p>Describe the meaning of AUC in this context.
-#### The probability the model can correctly differentiate between a randomly selected parole violator and a randomly selected parole non-violator.</p>
+<p>Describe the meaning of AUC in this context.</p>
+<div id="the-probability-the-model-can-correctly-differentiate-between-a-randomly-selected-parole-violator-and-a-randomly-selected-parole-non-violator." class="section level4">
+<h4>The probability the model can correctly differentiate between a randomly selected parole violator and a randomly selected parole non-violator.</h4>
+</div>
 </div>
 <div id="problem-5.1---identifying-bias-in-observational-data" class="section level3">
 <h3>Problem 5.1 - Identifying Bias in Observational Data</h3>
@@ -747,8 +774,10 @@ as.numeric(performance(ROCRpred, &quot;auc&quot;)@y.values)</code></pre>
 <p>In this final problem, we’ll evaluate a potential source of bias associated with our analysis. It is always important to evaluate a dataset for possible sources of bias.</p>
 <p>The dataset contains all individuals released from parole in 2004, either due to completing their parole term or violating the terms of their parole. However, it does not contain parolees who neither violated their parole nor completed their term in 2004, causing non-violators to be underrepresented.</p>
 <p>This is called “selection bias” or “selecting on the dependent variable,” because only a subset of all relevant parolees were included in our analysis, based on our dependent variable in this analysis (parole violation).</p>
-<p>How could we improve our dataset to best address selection bias?
-#### We should use a dataset tracking a group of parolees from the start of their parole until either they violated parole or they completed their term.</p>
+<p>How could we improve our dataset to best address selection bias?</p>
+<div id="we-should-use-a-dataset-tracking-a-group-of-parolees-from-the-start-of-their-parole-until-either-they-violated-parole-or-they-completed-their-term." class="section level4">
+<h4>We should use a dataset tracking a group of parolees from the start of their parole until either they violated parole or they completed their term.</h4>
+</div>
 </div>
 
     </div>

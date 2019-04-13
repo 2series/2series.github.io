@@ -7,21 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Sun, 07 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 25 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/regression/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Predict Popular Songs</title>
-      <link>/project/music/music/</link>
-      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/project/music/music/</guid>
-      <description>Popularity of music records
-The music industry has a well-developed market with a global annual revenue around $15 billion. The recording industry is highly competitive and is dominated by three big production companies which make up nearly 82% of the total annual album sales.
-Artists are at the core of the music industry and record labels provide them with the necessary resources to sell their music on a large scale.</description>
-    </item>
     
     <item>
       <title>Predict the diamond price based on the 4 c&#39;s</title>

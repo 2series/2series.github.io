@@ -389,6 +389,17 @@
   
 
   
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="../../../categories/r/">R</a>
+    
+  </span>
+  
+  
 
   
   
@@ -530,13 +541,17 @@ summary(FluTrain)</code></pre>
 <p><img src="../../../project/flu_epidemics/flu_epidemics_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <pre class="r"><code>plot(FluTrain$Queries, log(FluTrain$ILI))</code></pre>
 <p><img src="../../../project/flu_epidemics/flu_epidemics_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
-<p>What does the plot suggest?
-#### There is a positive, linear relationship between log(ILI) and Queries.</p>
+<p>What does the plot suggest?</p>
+<div id="there-is-a-positive-linear-relationship-between-logili-and-queries." class="section level4">
+<h4>There is a positive, linear relationship between log(ILI) and Queries.</h4>
+</div>
 </div>
 <div id="problem-2.1---linear-regression-model" class="section level3">
 <h3>Problem 2.1 - Linear Regression Model</h3>
-<p>Based on the plot we just made, it seems that a linear regression model could be a good modeling choice. Based on our understanding of the data from the previous subproblem, which model best describes our estimation problem?
-#### log(ILI) = intercept + coefficient x Queries, where the coefficient is positive.</p>
+<p>Based on the plot we just made, it seems that a linear regression model could be a good modeling choice. Based on our understanding of the data from the previous subproblem, which model best describes our estimation problem?</p>
+<div id="logili-intercept-coefficient-x-queries-where-the-coefficient-is-positive." class="section level4">
+<h4>log(ILI) = intercept + coefficient x Queries, where the coefficient is positive.</h4>
+</div>
 </div>
 <div id="problem-2.2---linear-regression-model" class="section level3">
 <h3>Problem 2.2 - Linear Regression Model</h3>
@@ -814,8 +829,10 @@ ILILag2</code></pre>
 ## Multiple R-squared:  0.9063, Adjusted R-squared:  0.9059 
 ## F-statistic:  1993 on 2 and 412 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>All are significant at p&lt;0.05</p>
-<p>What is the R^2 value of the FluTrend2 model?
-#### 0.9063</p>
+<p>What is the R^2 value of the FluTrend2 model?</p>
+<div id="section" class="section level4">
+<h4>0.9063</h4>
+</div>
 </div>
 <div id="problem-4.4---training-a-time-series-model" class="section level3">
 <h3>Problem 4.4 - Training a Time Series Model</h3>
@@ -878,8 +895,10 @@ sum(is.na(FluTest$ILILag2))</code></pre>
 <h3>Problem 5.2 - Evaluating the Time Series Model in the Test Set</h3>
 <p>In this problem, the training and testing sets are split sequentially – the training set contains all observations from 2004-2011 and the testing set contains all observations from 2012.</p>
 <p>There is no time gap between the two datasets, meaning the first observation in FluTest was recorded one week after the last observation in FluTrain. From this, we can identify how to fill in the missing values for the ILILag2 variable in FluTest. Which value should be used to fill in the ILILag2 variable for the first observation in FluTest?</p>
-<p>The ILI value of the second-to-last observation in the FluTrain dataframe. Which value should be used to fill in the ILILag2 variable for the second observation in FluTest?
-#### The ILI value of the last observation in the FluTrain dataframe.</p>
+<p>The ILI value of the second-to-last observation in the FluTrain dataframe. Which value should be used to fill in the ILILag2 variable for the second observation in FluTest?</p>
+<div id="the-ili-value-of-the-last-observation-in-the-flutrain-dataframe." class="section level4">
+<h4>The ILI value of the last observation in the FluTrain dataframe.</h4>
+</div>
 </div>
 <div id="problem-5.3---evaluating-the-time-series-model-in-the-test-set" class="section level3">
 <h3>Problem 5.3 - Evaluating the Time Series Model in the Test Set</h3>
@@ -912,8 +931,10 @@ FluTestRMSE2</code></pre>
 </div>
 <div id="problem-5.5---evaluating-the-time-series-model-in-the-test-set" class="section level3">
 <h3>Problem 5.5 - Evaluating the Time Series Model in the Test Set</h3>
-<p>Which model obtained the best test-set RMSE?
-#### FluTrend2 (less RMSE is better)</p>
+<p>Which model obtained the best test-set RMSE?</p>
+<div id="flutrend2-less-rmse-is-better" class="section level4">
+<h4>FluTrend2 (less RMSE is better)</h4>
+</div>
 <div id="conclusion" class="section level4">
 <h4>Conclusion</h4>
 <p>In this analysis, I’ve used a simple time series model with a single lag term. ARIMA models are a more general form of the model we built, which can include multiple lag terms as well as more complicated combinations of previous values of the dependent variable.</p>

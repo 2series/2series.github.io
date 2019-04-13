@@ -389,6 +389,17 @@
   
 
   
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="../../../categories/r/">R</a>
+    
+  </span>
+  
+  
 
   
   
@@ -493,8 +504,10 @@ statesMap = map_data(&quot;state&quot;)</code></pre>
 <pre class="r"><code>ggplot(statesMap, aes(x = long, y = lat, group = group)) + 
     geom_polygon(fill = &quot;white&quot;, color = &quot;black&quot;)</code></pre>
 <p><img src="../../../project/election_forecasting/election_forecasting_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>We specified two colors in geom_polygon – fill and color. Which one defined the color of the outline of the states?
-#### color</p>
+<p>We specified two colors in geom_polygon – fill and color. Which one defined the color of the outline of the states?</p>
+<div id="color" class="section level4">
+<h4>color</h4>
+</div>
 </div>
 <div id="problem-2.1---coloring-the-states-by-predictions" class="section level3">
 <h3>Problem 2.1 - Coloring the States by Predictions</h3>
@@ -590,8 +603,10 @@ predictionMap &lt;- predictionMap[order(predictionMap$order),]</code></pre>
 </div>
 <div id="problem-2.3---coloring-the-states-by-predictions" class="section level3">
 <h3>Problem 2.3 - Coloring the States by Predictions</h3>
-<p>When we merged the data in the previous problem, it caused the number of observations to change. Why? Check out the help page for merge by typing ?merge to help us answer this question.
-#### Because we only make predictions for 45 states, we no longer have observations for some of the states. These observations were removed in the merging process.</p>
+<p>When we merged the data in the previous problem, it caused the number of observations to change. Why? Check out the help page for merge by typing ?merge to help us answer this question.</p>
+<div id="because-we-only-make-predictions-for-45-states-we-no-longer-have-observations-for-some-of-the-states.-these-observations-were-removed-in-the-merging-process." class="section level4">
+<h4>Because we only make predictions for 45 states, we no longer have observations for some of the states. These observations were removed in the merging process.</h4>
+</div>
 </div>
 <div id="problem-2.4---coloring-the-states-by-predictions" class="section level3">
 <h3>Problem 2.4 - Coloring the States by Predictions</h3>
@@ -600,8 +615,10 @@ predictionMap &lt;- predictionMap[order(predictionMap$order),]</code></pre>
        aes(x = long, y = lat, group = group, fill = TestPredictionBinary)) + 
     geom_polygon(color = &quot;black&quot;)</code></pre>
 <p><img src="../../../project/election_forecasting/election_forecasting_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
-<p>The states appear light blue and dark blue in this map. Which color represents a Republican prediction?
-#### Light blue</p>
+<p>The states appear light blue and dark blue in this map. Which color represents a Republican prediction?</p>
+<div id="light-blue" class="section level4">
+<h4>Light blue</h4>
+</div>
 </div>
 <div id="problem-2.5---coloring-the-states-by-predictions" class="section level3">
 <h3>Problem 2.5 - Coloring the States by Predictions</h3>
@@ -637,8 +654,10 @@ predictionMap &lt;- predictionMap[order(predictionMap$order),]</code></pre>
 </div>
 <div id="problem-3.1---understanding-the-predictions" class="section level3">
 <h3>Problem 3.1 - Understanding the Predictions</h3>
-<p>In the 2012 election, the state of Florida ended up being a very close race. It was ultimately won by the Democratic party. Did we predict this state correctly or incorrectly? To see the names and locations of the different states, take a look at the World Atlas map here.
-#### We incorrectly predicted this state by predicting that it would be won by the Republican party.</p>
+<p>In the 2012 election, the state of Florida ended up being a very close race. It was ultimately won by the Democratic party. Did we predict this state correctly or incorrectly? To see the names and locations of the different states, take a look at the World Atlas map here.</p>
+<div id="we-incorrectly-predicted-this-state-by-predicting-that-it-would-be-won-by-the-republican-party." class="section level4">
+<h4>We incorrectly predicted this state by predicting that it would be won by the Republican party.</h4>
+</div>
 </div>
 <div id="problem-3.2---understanding-the-predictions" class="section level3">
 <h3>Problem 3.2 - Understanding the Predictions</h3>
@@ -646,8 +665,10 @@ predictionMap &lt;- predictionMap[order(predictionMap$order),]</code></pre>
 <pre class="r"><code>predictionDataFrame[predictionDataFrame$region == &quot;florida&quot;, ]</code></pre>
 <pre><code>##    TestPrediction TestPredictionBinary Test.State  region
 ## 24      0.9640395                    1    Florida florida</code></pre>
-<p>What does this imply?
-#### Our prediction model did not do a very good job of correctly predicting the state of Florida, and we were very confident in our incorrect prediction.</p>
+<p>What does this imply?</p>
+<div id="our-prediction-model-did-not-do-a-very-good-job-of-correctly-predicting-the-state-of-florida-and-we-were-very-confident-in-our-incorrect-prediction." class="section level4">
+<h4>Our prediction model did not do a very good job of correctly predicting the state of Florida, and we were very confident in our incorrect prediction.</h4>
+</div>
 </div>
 <div id="problem-4---parameter-settings" class="section level3">
 <h3>PROBLEM 4 - PARAMETER SETTINGS</h3>

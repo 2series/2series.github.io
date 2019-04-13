@@ -389,6 +389,17 @@
   
 
   
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="../../../categories/r/">R</a>
+    
+  </span>
+  
+  
 
   
   
@@ -704,9 +715,9 @@ edges2</code></pre>
 <pre class="r"><code>?graph.data.frame
 g &lt;- graph.data.frame(edges, FALSE, users)
 g</code></pre>
-<pre><code>## IGRAPH 55fc982 UN-- 59 146 -- 
+<pre><code>## IGRAPH f201a1a UN-- 59 146 -- 
 ## + attr: name (v/c), gender (v/c), school (v/c), locale (v/c)
-## + edges from 55fc982 (vertex names):
+## + edges from f201a1a (vertex names):
 ##  [1] 4019--4026 4023--4031 4023--4030 4027--4032 3988--4021 3982--3986
 ##  [7] 3994--3998 3998--3999 3993--3995 3982--4021 3982--4037 3997--4019
 ## [13] 3994--4019 3992--4017 3981--3998 3997--4018 4009--4030 3994--4018
@@ -722,10 +733,14 @@ g</code></pre>
 <pre class="r"><code>plot(g, vertex.size=5, vertex.label=NA)</code></pre>
 <p><img src="../../../project/visualizing_network/visualizing_network_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>In this graph, there are a number of groups of nodes where all the nodes in each group are connected but, the groups are disjoint from one another, forming “islands” in the graph. Such groups are called “connected components,” or “components” for short.</p>
-<p>How many connected components with at least 2 nodes are there in the graph?
-#### 4</p>
-<p>How many users are there with no friends in the network?
-#### 7</p>
+<p>How many connected components with at least 2 nodes are there in the graph?</p>
+<div id="section" class="section level4">
+<h4>4</h4>
+<p>How many users are there with no friends in the network?</p>
+</div>
+<div id="section-1" class="section level4">
+<h4>7</h4>
+</div>
 </div>
 <div id="problem-2.3---creating-a-network" class="section level3">
 <h3>Problem 2.3 - Creating a Network</h3>
@@ -785,10 +800,14 @@ V(g)$color[V(g)$school == &quot;A&quot;] = &quot;red&quot;
 V(g)$color[V(g)$school == &quot;AB&quot;] = &quot;gray&quot;
 plot(g, vertex.label=NA)</code></pre>
 <p><img src="../../../project/visualizing_network/visualizing_network_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
-<p>Are the two users who attended both schools A and B Facebook friends with each other?
-#### Yes</p>
-<p>What best describes the users with highest degree?
-#### Some, but not all, of the high-degree users attended school A</p>
+<p>Are the two users who attended both schools A and B Facebook friends with each other?</p>
+<div id="yes" class="section level4">
+<h4>Yes</h4>
+<p>What best describes the users with highest degree?</p>
+</div>
+<div id="some-but-not-all-of-the-high-degree-users-attended-school-a" class="section level4">
+<h4>Some, but not all, of the high-degree users attended school A</h4>
+</div>
 </div>
 <div id="problem-3.3---coloring-vertices" class="section level3">
 <h3>Problem 3.3 - Coloring Vertices</h3>
@@ -802,10 +821,14 @@ V(g)$color[V(g)$locale == &quot;A&quot;] = &quot;red&quot;
 V(g)$color[V(g)$locale == &quot;B&quot;] = &quot;gray&quot;
 plot(g, vertex.label=NA)</code></pre>
 <p><img src="../../../project/visualizing_network/visualizing_network_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
-<p>The large connected component is most associated with which locale?
-#### Locale B</p>
-<p>The 4-user connected component is most associated with which locale?
-#### Locale A</p>
+<p>The large connected component is most associated with which locale?</p>
+<div id="locale-b-1" class="section level4">
+<h4>Locale B</h4>
+<p>The 4-user connected component is most associated with which locale?</p>
+</div>
+<div id="locale-a" class="section level4">
+<h4>Locale A</h4>
+</div>
 </div>
 <div id="problem-4---other-plotting-options" class="section level3">
 <h3>Problem 4 - Other Plotting Options</h3>

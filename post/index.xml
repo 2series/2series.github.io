@@ -6,98 +6,38 @@
     <description>Recent content in Posts on Rihad Variawa</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Thu, 28 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 23 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Sales Analysis</title>
-      <link>/post/sales_analysis/sales-analysis/</link>
-      <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
+      <title>Hello R Markdown</title>
+      <link>/post/2015-07-23-r-rmarkdown/</link>
+      <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/sales_analysis/sales-analysis/</guid>
-      <description>Sample Sales Data, Order Info, Sales, Customer, Shipping, etc., Used for Segmentation, Customer Analytics, Clustering and More. Inspired for retail analytics. This was originally used for Pentaho DI Kettle, But I found the set could be useful for Sales Simulation training.  Originally Written by María Carina Roldán, Pentaho Community Member, BI consultant (Assert Solutions), Argentina. This work is licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License. Modified by Gus Segura June 2014.</description>
+      <guid>/post/2015-07-23-r-rmarkdown/</guid>
+      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+You can embed an R code chunk like this:
+summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
     </item>
     
     <item>
-      <title>NYC_Fights13</title>
-      <link>/post/nycflights13/nyc-fights13/</link>
-      <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
+      <title>Display Jupyter Notebooks with Academic</title>
+      <link>/post/jupyter/</link>
+      <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/nycflights13/nyc-fights13/</guid>
-      <description>About the dataset In this analysis, we explore the dplyr functions used to ask interesting questions of a more complex dataset We’ll use a dataset of flights that departed from New York city airports (including Newark, John F. Kennedy, and Laguardia airports) in 2013. This dataset is also featured online in the Introduction to dplyr vignette, and is drawn from the Bureau of Transportation Statistics database.
-This dataset will use over 300,000 observations to ask the following questions:</description>
+      <guid>/post/jupyter/</guid>
+      <description>Learn how to blog in Academic using Jupyter notebooks</description>
     </item>
     
     <item>
-      <title>Bank ATM Cash Machine Forecast w/ Time Series</title>
-      <link>/post/atm/bank/</link>
-      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      <title>Academic: the website builder for Hugo</title>
+      <link>/post/getting-started/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/post/atm/bank/</guid>
-      <description>Preamble: This document focuses on the time series analysis. The variable ‘Cash’ is provided in hundreds of dollars.
-This is a time series spanning daily transactions from May 1, 2009 to April 30, 2010 from four ATMs.
- Research question: forecast how much cash is taken out of 4 different ATM machines for May 2010   Structure of analysis: Exploratory Data Analysis Visualizations ACF and PACF Clean The Data Trend Preview Data Decomposition Plot Stationarity Test Model Data Transformation ARIMA Model Evaluation Box-Ljung Test Forecasting Model Accuracy  sourceURL &amp;lt;- &amp;quot;https://raw.</description>
-    </item>
-    
-    <item>
-      <title>Energy Forecasting w/ Time Series Analysis</title>
-      <link>/post/residential_energy/residential-energy-usage/</link>
-      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/residential_energy/residential-energy-usage/</guid>
-      <description>Preamble: This document focuses on the time series analysis. A simple dataset of residential power usage from January 1998 to December 2013.
- Research question: through an analysis, model this data and monthly forecast for 2014   Structure of analysis: Exploratory Data Analysis Visualizations ACF and PACF Clean The Data Trend Preview Data Decomposition Plot Stationarity Test Model Data Transformation ARIMA Model Evaluation Box-Ljung Test Forecasting Model Accuracy  sourceURL &amp;lt;- &amp;quot;https://raw.</description>
-    </item>
-    
-    <item>
-      <title>Energy Efficiency on Buildings</title>
-      <link>/post/energye/energye/</link>
-      <pubDate>Sun, 03 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/energye/energye/</guid>
-      <description>Preamble: The dataset is available at [https://archive.ics.uci.edu/ml/datasets/Energy+efficiency].
- Reseach questions: to explore three data points, and visualize how they influence the energy load.  The following variables Wall.Area, Roof.Area, Glazing.Area are identified as key indicators that can influence the energy load efficiency for both (Heating and Cooling spaces).
- Structure of analysis: A time series forecast using the arima model as follows:
-Exploratory Data Analysis Plot Load Distribution Using Scatter Plot Plot Heating Load Efficiency Plot Cooling Load Efficiency Plot Energy Efficiency  rm(list = ls()) sourceURL &amp;lt;- &amp;quot;https://raw.</description>
-    </item>
-    
-    <item>
-      <title>Energy Demand Analysis w/ Time Series Forecasting</title>
-      <link>/post/energyd/energy-demand-analysis-w-time-series-forecasting/</link>
-      <pubDate>Sat, 02 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/energyd/energy-demand-analysis-w-time-series-forecasting/</guid>
-      <description>References:  R. H. Shumway, D. S. Stoffer. Time Series Analysis and Its Applications. 2010. R. J. Hyndman. Forecasting: principles and practice. 2013. P. S. P. Cowpertwait, A. V. Metcalfe. Introductory Time Series with R. 2009.  Preamble: This document focuses on an analysis of the energy demands of a European country.
-The dataset of the daily energy needs (in GWh) between 2004 and 2010.
- Reseach questions: build a model for energy demand forecasting using time series analysis.</description>
-    </item>
-    
-    <item>
-      <title>Time Series Analysis</title>
-      <link>/post/time_series_ap/time-series-analysis/</link>
-      <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/time_series_ap/time-series-analysis/</guid>
-      <description>Preamble: This document focuses on the analysis of the airpassengers dataframe.
-The AirPassenger dataset in R provides monthly totals of US airline passengers, from 1949 to 1960.
-Description of dataframe airpassengers can be found at https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/airpassengers.html
- Research question: through analysis and modelling, preview a time series forecast   Structure of analysis: I will asssess whether a linear regression or arima model is a best fit for the time series forecast as follows:</description>
-    </item>
-    
-    <item>
-      <title>mtcars Data Analysis</title>
-      <link>/post/mtcars/2019-01-03-r-rmarkdown/</link>
-      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/mtcars/2019-01-03-r-rmarkdown/</guid>
-      <description>Preamble: This document focuses on the analysis of the mtcars dataframe.
-Description of dataframe mtcars can be found at the link
- Research questions: is a vehicle with auto or manual transmission better in terms of miles p/gallons(mpg)?
- quantify the (mpg) difference between auto &amp;amp; manual transmission.
-   Structure of analysis: I will asssess both queries from different perspectives employing a set of methodologies that can be broadly grouped as follows:</description>
+      <guid>/post/getting-started/</guid>
+      <description>Create a beautifully simple website in under 10 minutes.</description>
     </item>
     
   </channel>

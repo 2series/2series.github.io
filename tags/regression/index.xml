@@ -6,36 +6,20 @@
     <description>Recent content in regression on Rihad Variawa</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Fri, 25 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 23 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/regression/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Predict the diamond price based on the 4 c&#39;s</title>
-      <link>/project/diamonds/predict-the-diamond-price-based-on-the-4-c-s/</link>
-      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
+      <title>Hello R Markdown</title>
+      <link>/post/2015-07-23-r-rmarkdown/</link>
+      <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/diamonds/predict-the-diamond-price-based-on-the-4-c-s/</guid>
-      <description>Preamble: This document focuses on the analysis of the diamonds data frame.
-Descriotion of data frame diamonds can be found at https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/diamonds.html
- Research questions: am i getting a fair deal when I purchase a diamond?
- The goal is to build a predictive model for diamonds, that is going to help figure out whether a given diamond is a good deal or a rip-off!
-   Structure of analysis: I will use Linear Regression to predict the diamond price using other varaibles in the diamonds dataframe.</description>
-    </item>
-    
-    <item>
-      <title>mtcars Data Analysis</title>
-      <link>/post/mtcars/2019-01-03-r-rmarkdown/</link>
-      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/mtcars/2019-01-03-r-rmarkdown/</guid>
-      <description>Preamble: This document focuses on the analysis of the mtcars dataframe.
-Description of dataframe mtcars can be found at the link
- Research questions: is a vehicle with auto or manual transmission better in terms of miles p/gallons(mpg)?
- quantify the (mpg) difference between auto &amp;amp; manual transmission.
-   Structure of analysis: I will asssess both queries from different perspectives employing a set of methodologies that can be broadly grouped as follows:</description>
+      <guid>/post/2015-07-23-r-rmarkdown/</guid>
+      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+You can embed an R code chunk like this:
+summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
     </item>
     
   </channel>

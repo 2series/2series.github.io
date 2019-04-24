@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Learning on Rihad Variawa</title>
+    <link>/categories/machine-learning/</link>
+    <description>Recent content in Machine Learning on Rihad Variawa</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 07 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Bank ATM Cash Machine Forecast w/ Time Series</title>
+      <link>/post/atm/bank/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/atm/bank/</guid>
+      <description>Forcast monthly residential energy usage</description>
+    </item>
+    
+    <item>
+      <title>Energy Forecasting w/ Time Series Analysis</title>
+      <link>/post/residential_energy/residential-energy-usage/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/residential_energy/residential-energy-usage/</guid>
+      <description>Forcast monthly residential energy usage</description>
+    </item>
+    
+    <item>
+      <title>Energy Demand Analysis w/ Time Series Forecasting</title>
+      <link>/post/energyd/energy-demand-analysis-w-time-series-forecasting/</link>
+      <pubDate>Sat, 02 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/energyd/energy-demand-analysis-w-time-series-forecasting/</guid>
+      <description>Energy Demand Forecasting</description>
+    </item>
+    
+    <item>
+      <title>Time Series Analysis</title>
+      <link>/post/time_series_ap/time-series-analysis/</link>
+      <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/time_series_ap/time-series-analysis/</guid>
+      <description>Time Series Forecast of airline passengers</description>
+    </item>
+    
+  </channel>
+</rss>

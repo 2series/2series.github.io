@@ -22,5 +22,68 @@ You can embed an R code chunk like this:
 summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
     </item>
     
+    <item>
+      <title>Sales Analysis</title>
+      <link>/post/sales_analysis/sales-analysis/</link>
+      <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/sales_analysis/sales-analysis/</guid>
+      <description>Sample Sales Data, Order Info, Sales, Customer, Shipping, etc., Used for Segmentation, Customer Analytics, Clustering and More. Inspired for retail analytics. This was originally used for Pentaho DI Kettle, But I found the set could be useful for Sales Simulation training.  Originally Written by María Carina Roldán, Pentaho Community Member, BI consultant (Assert Solutions), Argentina. This work is licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License. Modified by Gus Segura June 2014.</description>
+    </item>
+    
+    <item>
+      <title>Bank ATM Cash Machine Forecast w/ Time Series</title>
+      <link>/post/atm/bank/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/atm/bank/</guid>
+      <description>Forcast monthly residential energy usage</description>
+    </item>
+    
+    <item>
+      <title>Energy Forecasting w/ Time Series Analysis</title>
+      <link>/post/residential_energy/residential-energy-usage/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/residential_energy/residential-energy-usage/</guid>
+      <description>Forcast monthly residential energy usage</description>
+    </item>
+    
+    <item>
+      <title>Energy Efficiency on Buildings</title>
+      <link>/post/energye/energye/</link>
+      <pubDate>Sun, 03 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/energye/energye/</guid>
+      <description>Energy Efficiency On Buildings</description>
+    </item>
+    
+    <item>
+      <title>Energy Demand Analysis w/ Time Series Forecasting</title>
+      <link>/post/energyd/energy-demand-analysis-w-time-series-forecasting/</link>
+      <pubDate>Sat, 02 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/energyd/energy-demand-analysis-w-time-series-forecasting/</guid>
+      <description>Energy Demand Forecasting</description>
+    </item>
+    
+    <item>
+      <title>Time Series Analysis</title>
+      <link>/post/time_series_ap/time-series-analysis/</link>
+      <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/time_series_ap/time-series-analysis/</guid>
+      <description>Time Series Forecast of airline passengers</description>
+    </item>
+    
+    <item>
+      <title>mtcars Data Analysis</title>
+      <link>/post/mtcars/2019-01-03-r-rmarkdown/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/mtcars/2019-01-03-r-rmarkdown/</guid>
+      <description>Which type of vehicle transmission is more fuel efficient?</description>
+    </item>
+    
   </channel>
 </rss>

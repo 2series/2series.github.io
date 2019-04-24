@@ -6,18 +6,171 @@
     <description>Recent content in R on Rihad Variawa</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 11 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>ATUS Survey Analysis</title>
-      <link>/project/atus-survey-analysis/</link>
-      <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
+      <title>Forecasting U.S. Federal Reserve Interest Rate Hikes</title>
+      <link>/project/interest_forecast/interest_forecast/</link>
+      <pubDate>Thu, 11 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/project/atus-survey-analysis/</guid>
-      <description></description>
+      <guid>/project/interest_forecast/interest_forecast/</guid>
+      <description>Predict when the Fed will raise interest rates</description>
+    </item>
+    
+    <item>
+      <title>Patterns In Renewable Energy Generation</title>
+      <link>/project/energy_patterns/energy_patterns/</link>
+      <pubDate>Thu, 11 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/energy_patterns/energy_patterns/</guid>
+      <description>Exploring renewable energies</description>
+    </item>
+    
+    <item>
+      <title>Understanding Retail Consumers Behaviour</title>
+      <link>/project/retail_consumers/retail_consumers/</link>
+      <pubDate>Thu, 11 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/retail_consumers/retail_consumers/</guid>
+      <description>Understanding consumer behaviour</description>
+    </item>
+    
+    <item>
+      <title>Network Data Visualizing</title>
+      <link>/project/visualizing_network/visualizing_network/</link>
+      <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/visualizing_network/visualizing_network/</guid>
+      <description>Visualize social networking data from Facebook</description>
+    </item>
+    
+    <item>
+      <title>Revisiting Election Forecasting</title>
+      <link>/project/election_forecasting/election_forecasting/</link>
+      <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/election_forecasting/election_forecasting/</guid>
+      <description>How to plot the output on a map of the United States</description>
+    </item>
+    
+    <item>
+      <title>Market Segmentation For Airlines</title>
+      <link>/project/market_segmentation_for_airlines/market/</link>
+      <pubDate>Tue, 09 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/market_segmentation_for_airlines/market/</guid>
+      <description>Finding similar groups of travellers who belong to an airline&amp;rsquo;s frequent flyer program</description>
+    </item>
+    
+    <item>
+      <title>Stock Returns Prediction</title>
+      <link>/project/stock_returns/stock/</link>
+      <pubDate>Tue, 09 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/stock_returns/stock/</guid>
+      <description>Selecting which stocks to invest-in?</description>
+    </item>
+    
+    <item>
+      <title>Automating Reviews In Medicine</title>
+      <link>/project/medicine/medicine/</link>
+      <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/medicine/medicine/</guid>
+      <description>Automate the process of information retrieval</description>
+    </item>
+    
+    <item>
+      <title>Earnings Prediction From Census Data</title>
+      <link>/project/earnings/earnings/</link>
+      <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/earnings/earnings/</guid>
+      <description>Predict how much a person earns</description>
+    </item>
+    
+    <item>
+      <title>Letter Reecognition</title>
+      <link>/project/letter_recognition/letters/</link>
+      <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/letter_recognition/letters/</guid>
+      <description>Predict which letter a particular image corresponds to</description>
+    </item>
+    
+    <item>
+      <title>Understanding Why People Vote?</title>
+      <link>/project/understanding_votes/votes/</link>
+      <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/understanding_votes/votes/</guid>
+      <description>Why do people vote?</description>
+    </item>
+    
+    <item>
+      <title>Vandalism Detection On Wikipedia</title>
+      <link>/project/vandalism/vandalism/</link>
+      <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/vandalism/vandalism/</guid>
+      <description>Developing a vandalism detector</description>
+    </item>
+    
+    <item>
+      <title>Predict Loan Repayments</title>
+      <link>/project/loan_repayment/loan_repayments/</link>
+      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/loan_repayment/loan_repayments/</guid>
+      <description>Predict the risk of a borrower being unable to repay a loan</description>
+    </item>
+    
+    <item>
+      <title>Predict Parole Violators</title>
+      <link>/project/parole_violators/parole_violators/</link>
+      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/parole_violators/parole_violators/</guid>
+      <description>Predict if an inmate will violate his or her terms of parole</description>
+    </item>
+    
+    <item>
+      <title>Predict Popular Songs</title>
+      <link>/project/music/music/</link>
+      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/music/music/</guid>
+      <description>Predict whether a song will reach a spot in the Top 10, of the Billboard Hot 100 Chart</description>
+    </item>
+    
+    <item>
+      <title>Detecting Flu Epidemics via Search Engine Query Data</title>
+      <link>/project/flu_epidemics/flu_epidemics/</link>
+      <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/flu_epidemics/flu_epidemics/</guid>
+      <description>The Google Flu Trends project</description>
+    </item>
+    
+    <item>
+      <title>Reading Test Scores</title>
+      <link>/project/pisa2009/pisa/</link>
+      <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/pisa2009/pisa/</guid>
+      <description>Predict reading scores of students in the 2009 PISA exam</description>
+    </item>
+    
+    <item>
+      <title>Climate Change</title>
+      <link>/project/climate_change/climate_change/</link>
+      <pubDate>Fri, 05 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/climate_change/climate_change/</guid>
+      <description>Study the relationship between average global temperature &amp;amp; several other factors</description>
     </item>
     
   </channel>

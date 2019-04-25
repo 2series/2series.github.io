@@ -6,18 +6,45 @@
     <description>Recent content in 1 on Rihad Variawa</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jul 2013 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 09 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/publication_types/1/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>An example conference paper</title>
-      <link>/publication/conference-paper/</link>
-      <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
+      <title>Credit Card Fraud</title>
+      <link>/publication/credit_card_fraud/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/publication/conference-paper/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum.</description>
+      <guid>/publication/credit_card_fraud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lending Club Loan Defaulter Prediction</title>
+      <link>/publication/loan.defaulters/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/loan.defaulters/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Home Loan Default Risk</title>
+      <link>/publication/homeloan.default/</link>
+      <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/homeloan.default/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Earthquake Prediction</title>
+      <link>/publication/earthquake.challenge/</link>
+      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/earthquake.challenge/</guid>
+      <description></description>
     </item>
     
   </channel>

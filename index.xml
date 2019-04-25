@@ -12089,6 +12089,24 @@ ggplot(status_data, aes(x = PRODUCTLINE, y = total_sales)) +
     </item>
     
     <item>
+      <title>Credit Card Fraud</title>
+      <link>/publication/credit_card_fraud/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/credit_card_fraud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lending Club Loan Defaulter Prediction</title>
+      <link>/publication/loan.defaulters/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/loan.defaulters/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Bank ATM Cash Machine Forecast w/ Time Series</title>
       <link>/post/atm/bank/</link>
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
@@ -13470,6 +13488,15 @@ autoplot(forecastAP) + labs(x=&amp;quot;Time&amp;quot;, y=&amp;quot;Passenger nu
     </item>
     
     <item>
+      <title>Home Loan Default Risk</title>
+      <link>/publication/homeloan.default/</link>
+      <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/homeloan.default/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>mtcars Data Analysis</title>
       <link>/post/mtcars/2019-01-03-r-rmarkdown/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
@@ -13906,6 +13933,15 @@ data:  model1$residuals
 W = 0.95694, p-value = 0.2261&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Earthquake Prediction</title>
+      <link>/publication/earthquake.challenge/</link>
+      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/earthquake.challenge/</guid>
+      <description></description>
     </item>
     
     <item>

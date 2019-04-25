@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Rihad Variawa</title>
+    <link>/tags/python/</link>
+    <description>Recent content in Python on Rihad Variawa</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 09 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Credit Card Fraud</title>
+      <link>/publication/credit_card_fraud/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/credit_card_fraud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lending Club Loan Defaulter Prediction</title>
+      <link>/publication/loan.defaulters/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/loan.defaulters/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Home Loan Default Risk</title>
+      <link>/publication/homeloan.default/</link>
+      <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/homeloan.default/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Earthquake Prediction</title>
+      <link>/publication/earthquake.challenge/</link>
+      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/earthquake.challenge/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

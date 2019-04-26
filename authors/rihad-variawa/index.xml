@@ -6,44 +6,72 @@
     <description>Recent content on Rihad Variawa</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>&amp;copy; 2019</copyright>
     <lastBuildDate>Sat, 09 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/authors/rihad-variawa/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Credit Card Fraud</title>
-      <link>/publication/credit_card_fraud/</link>
+      <title>Credit Card Fraud Detection</title>
+      <link>/publication/fraudulent_credit_card_transaction/</link>
       <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/publication/credit_card_fraud/</guid>
+      <guid>/publication/fraudulent_credit_card_transaction/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Lending Club Loan Defaulter Prediction</title>
-      <link>/publication/loan.defaulters/</link>
+      <title>Predicting Loan Defaulters</title>
+      <link>/publication/predicting_loan_defaulters_lendingclub/</link>
       <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/publication/loan.defaulters/</guid>
+      <guid>/publication/predicting_loan_defaulters_lendingclub/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Home Loan Default Risk</title>
-      <link>/publication/homeloan.default/</link>
-      <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
+      <title>Predicting Customer Transactions</title>
+      <link>/publication/santander_customer_transaction/</link>
+      <pubDate>Tue, 26 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/publication/homeloan.default/</guid>
+      <guid>/publication/santander_customer_transaction/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Earthquake Prediction</title>
-      <link>/publication/earthquake.challenge/</link>
-      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+      <title>Earthquake Prediction Challenge</title>
+      <link>/publication/earthquake/</link>
+      <pubDate>Sun, 10 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/publication/earthquake.challenge/</guid>
+      <guid>/publication/earthquake/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Home Loan Default Prediction</title>
+      <link>/publication/home_credit_default/</link>
+      <pubDate>Sun, 10 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/home_credit_default/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bitcoin Price Prediction</title>
+      <link>/publication/bitcoin_price_prediction/</link>
+      <pubDate>Wed, 14 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/bitcoin_price_prediction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Crytocurrency Pricing Analysis</title>
+      <link>/publication/cryptocurrency_pricing_analysis/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/cryptocurrency_pricing_analysis/</guid>
       <description></description>
     </item>
     

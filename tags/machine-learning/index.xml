@@ -6,6 +6,7 @@
     <description>Recent content in Machine Learning on Rihad Variawa</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>&amp;copy; 2019</copyright>
     <lastBuildDate>Thu, 11 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
@@ -162,6 +163,60 @@
       
       <guid>/project/pisa2009/pisa/</guid>
       <description>Predict reading scores of students in the 2009 PISA exam</description>
+    </item>
+    
+    <item>
+      <title>Predicting Loan Defaulters</title>
+      <link>/publication/predicting_loan_defaulters_lendingclub/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/predicting_loan_defaulters_lendingclub/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Predicting Customer Transactions</title>
+      <link>/publication/santander_customer_transaction/</link>
+      <pubDate>Tue, 26 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/santander_customer_transaction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Earthquake Prediction Challenge</title>
+      <link>/publication/earthquake/</link>
+      <pubDate>Sun, 10 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/earthquake/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Home Loan Default Prediction</title>
+      <link>/publication/home_credit_default/</link>
+      <pubDate>Sun, 10 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/home_credit_default/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bitcoin Price Prediction</title>
+      <link>/publication/bitcoin_price_prediction/</link>
+      <pubDate>Wed, 14 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/bitcoin_price_prediction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Crytocurrency Pricing Analysis</title>
+      <link>/publication/cryptocurrency_pricing_analysis/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/cryptocurrency_pricing_analysis/</guid>
+      <description></description>
     </item>
     
   </channel>

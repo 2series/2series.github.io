@@ -179,12 +179,12 @@
   </url>
   
   <url>
-    <loc>/publication/credit_card_fraud/</loc>
+    <loc>/publication/fraudulent_credit_card_transaction/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publication/loan.defaulters/</loc>
+    <loc>/publication/predicting_loan_defaulters_lendingclub/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url>
   
@@ -209,6 +209,21 @@
     <loc>/authors/rihad-variawa/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/publication/santander_customer_transaction/</loc>
+    <lastmod>2019-02-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication/earthquake/</loc>
+    <lastmod>2019-02-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication/home_credit_default/</loc>
+    <lastmod>2019-02-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -254,11 +269,6 @@
   </url>
   
   <url>
-    <loc>/publication/homeloan.default/</loc>
-    <lastmod>2019-01-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post/mtcars/2019-01-03-r-rmarkdown/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
@@ -270,8 +280,13 @@
   </url>
   
   <url>
-    <loc>/publication/earthquake.challenge/</loc>
-    <lastmod>2018-12-04T00:00:00+00:00</lastmod>
+    <loc>/publication/bitcoin_price_prediction/</loc>
+    <lastmod>2018-11-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication/cryptocurrency_pricing_analysis/</loc>
+    <lastmod>2018-10-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>

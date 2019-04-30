@@ -75,5 +75,23 @@
       <description></description>
     </item>
     
+    <item>
+      <title>Air Travel Forecasting</title>
+      <link>/publication/air_passengers/</link>
+      <pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/air_passengers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>US Police Stop Analysis </title>
+      <link>/publication/police_analysis/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/police_analysis/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

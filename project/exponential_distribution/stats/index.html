@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.2.5">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Rihad Variawa">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Central limit theorem">
+
+  
+  <link rel="alternate" hreflang="en-us" href="../../../project/exponential_distribution/stats/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#3f51b5">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Playfair+Display:400,700|Fauna+One">
+  
+
+  <link rel="stylesheet" href="../../../styles.css">
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-132898309-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+
+  <link rel="manifest" href="../../../site.webmanifest">
+  <link rel="icon" type="image/png" href="../../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../../img/icon-192.png">
+
+  <link rel="canonical" href="../../../project/exponential_distribution/stats/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Rihad Variawa">
+  <meta property="og:url" content="/project/exponential_distribution/stats/">
+  <meta property="og:title" content="Investigating The Exponential Distribution &amp; Compare It With The Central Limit Theorem | Rihad Variawa">
+  <meta property="og:description" content="Central limit theorem"><meta property="og:image" content="/img/headers/sat.jpg">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-04-30T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2019-04-30T00:00:00&#43;00:00">
+  
+
+  
+
+  
+
+  <title>Investigating The Exponential Distribution &amp; Compare It With The Central Limit Theorem | Rihad Variawa</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="../../../">Rihad Variawa</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../#posts">
+            
+            <span>Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../#publications">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../../resume.pdf">
+            
+            <span>Resume</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article article-project" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+<div class="article-header">
+  
+  
+  <img src="../../../img/headers/sat.jpg" class="article-banner" itemprop="image" alt="">
+  
+
+  
+</div>
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">Investigating The Exponential Distribution &amp; Compare It With The Central Limit Theorem</h1>
+
+  
+
+  
+    
+
+
+
+<meta content="2019-04-30 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-04-30 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Apr 30, 2019</time>
+  </span>
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+    
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+
+<p>The analysis consists of two parts:</p>
+<ol style="list-style-type: decimal">
+<li>A simulation exercise.</li>
+<li>Basic inferential data analysis.</li>
+</ol>
+<div id="analysis" class="section level3">
+<h3>Analysis</h3>
+<div id="a-simulation-exercise." class="section level4">
+<h4>1. A simulation exercise.</h4>
+<p>In this analysis I’ll investigate the exponential distribution in R and compare it with the Central Limit Theorem. The exponential distribution can be simulated in R with rexp(n, lambda) where lambda is the rate parameter. The mean of exponential distribution is 1/lambda and the standard deviation is also 1/lambda. Set lambda = 0.2 for all of the simulations. I’ll investigate the distribution of averages of 40 exponentials. Note that you will need to do a thousand simulations.</p>
+<p>Illustrate via simulation and associated explanatory text the properties of the distribution of the mean of 40 exponentials. You should</p>
+<ol style="list-style-type: decimal">
+<li>Show the sample mean and compare it to the theoretical mean of the distribution.</li>
+<li>Show how variable the sample is (via variance) and compare it to the theoretical variance of the distribution.</li>
+<li>Show that the distribution is approximately normal.</li>
+</ol>
+</div>
+</div>
+<div id="task" class="section level3">
+<h3>Task</h3>
+<pre class="r"><code># set seed for reproducability
+set.seed(31)
+
+# set lambda to 0.2
+lambda &lt;- 0.2
+
+# 40 samples
+n &lt;- 40
+
+# 1000 simulations
+simulations &lt;- 1000
+
+# simulate
+simulated_exponentials &lt;- replicate(simulations, rexp(n, lambda))
+
+# calculate mean of exponentials
+means_exponentials &lt;- apply(simulated_exponentials, 2, mean)</code></pre>
+</div>
+<div id="question-1" class="section level3">
+<h3>Question 1</h3>
+<p>Show where the distribution is centered at and compare it to the theoretical center of the distribution.</p>
+<pre class="r"><code>analytical_mean &lt;- mean(means_exponentials)
+analytical_mean</code></pre>
+<pre><code>[1] 4.993867</code></pre>
+<pre class="r"><code># analytical mean
+theory_mean &lt;- 1/lambda
+theory_mean</code></pre>
+<pre><code>[1] 5</code></pre>
+<pre class="r"><code># visualization
+hist(means_exponentials, xlab = &quot;mean&quot;, main = &quot;Exponential Function Simulations&quot;)
+abline(v = analytical_mean, col = &quot;red&quot;)
+abline(v = theory_mean, col = &quot;orange&quot;)</code></pre>
+<p><img src="../../../project/exponential_distribution/stats_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>The analytics mean is 4.993867 the theoretical mean 5. The center of distribution of averages of 40 exponentials is very close to the theoretical center of the distribution.</p>
+</div>
+<div id="question-2" class="section level3">
+<h3>Question 2</h3>
+<p>Show how variable it is and compare it to the theoretical variance of the distribution..</p>
+<pre class="r"><code># standard deviation of distribution
+standard_deviation_dist &lt;- sd(means_exponentials)
+standard_deviation_dist</code></pre>
+<pre><code>[1] 0.7931608</code></pre>
+<pre class="r"><code># standard deviation from analytical expression
+standard_deviation_theory &lt;- (1/lambda)/sqrt(n)
+standard_deviation_theory</code></pre>
+<pre><code>[1] 0.7905694</code></pre>
+<pre class="r"><code># variance of distribution
+variance_dist &lt;- standard_deviation_dist^2
+variance_dist</code></pre>
+<pre><code>[1] 0.6291041</code></pre>
+<pre class="r"><code># variance from analytical expression
+variance_theory &lt;- ((1/lambda)*(1/sqrt(n)))^2
+variance_theory</code></pre>
+<pre><code>[1] 0.625</code></pre>
+<p>Standard Deviation of the distribution is 0.7931608 with the theoretical SD calculated as 0.7905694. The Theoretical variance is calculated as ((1 / ??) * (1/???n))<sup>2</sup> = 0.625. The actual variance of the distribution is 0.6291041</p>
+</div>
+<div id="question-3" class="section level3">
+<h3>Question 3</h3>
+<p>Show that the distribution is approximately normal.</p>
+<pre class="r"><code>xfit &lt;- seq(min(means_exponentials), max(means_exponentials), length=100)
+yfit &lt;- dnorm(xfit, mean=1/lambda, sd=(1/lambda/sqrt(n)))
+hist(means_exponentials,breaks=n,prob=T,col=&quot;orange&quot;,xlab = &quot;means&quot;,main=&quot;Density of means&quot;,ylab=&quot;density&quot;)
+lines(xfit, yfit, pch=22, col=&quot;black&quot;, lty=5)</code></pre>
+<p><img src="../../../project/exponential_distribution/stats_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre class="r"><code># compare the distribution of averages of 40 exponentials to a normal distribution
+qqnorm(means_exponentials)
+qqline(means_exponentials, col = 2)</code></pre>
+<p><img src="../../../project/exponential_distribution/stats_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>Due to Due to the central limit theorem (CLT), the distribution of averages of 40 exponentials is very close to a normal distribution.</p>
+<div id="basic-inferential-data-analysis." class="section level4">
+<h4>2. Basic inferential data analysis.</h4>
+<p>Now in the second portion of this analysis, we’re going to analyze the ToothGrowth data in the R datasets package.</p>
+<ul>
+<li>Load the ToothGrowth data and perform some basic exploratory data analyses</li>
+<li>Provide a basic summary of the data.</li>
+<li>Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there’s other approaches worth considering)</li>
+<li>State your conclusions and the assumptions needed for your conclusions.</li>
+</ul>
+</div>
+</div>
+<div id="load-the-toothgrowth-data-and-perform-some-basic-exploratory-data-analyses" class="section level3">
+<h3>Load the ToothGrowth data and perform some basic exploratory data analyses</h3>
+<pre class="r"><code># load the data ToothGrowth
+data(ToothGrowth)
+
+# preview the structure of the data
+str(ToothGrowth)</code></pre>
+<pre><code>&#39;data.frame&#39;:   60 obs. of  3 variables:
+ $ len : num  4.2 11.5 7.3 5.8 6.4 10 11.2 11.2 5.2 7 ...
+ $ supp: Factor w/ 2 levels &quot;OJ&quot;,&quot;VC&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+ $ dose: num  0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 ...</code></pre>
+<pre class="r"><code># preview first 5 rows of the data
+head(ToothGrowth, 5)</code></pre>
+<pre><code>   len supp dose
+1  4.2   VC  0.5
+2 11.5   VC  0.5
+3  7.3   VC  0.5
+4  5.8   VC  0.5
+5  6.4   VC  0.5</code></pre>
+</div>
+<div id="provide-a-basic-summary-of-the-data." class="section level3">
+<h3>Provide a basic summary of the data.</h3>
+<pre class="r"><code># data summary
+summary(ToothGrowth)</code></pre>
+<pre><code>      len        supp         dose      
+ Min.   : 4.20   OJ:30   Min.   :0.500  
+ 1st Qu.:13.07   VC:30   1st Qu.:0.500  
+ Median :19.25           Median :1.000  
+ Mean   :18.81           Mean   :1.167  
+ 3rd Qu.:25.27           3rd Qu.:2.000  
+ Max.   :33.90           Max.   :2.000  </code></pre>
+<pre class="r"><code># compare means of the different delivery methods
+tapply(ToothGrowth$len,ToothGrowth$supp, mean)</code></pre>
+<pre><code>      OJ       VC 
+20.66333 16.96333 </code></pre>
+<pre class="r"><code># plot data graphically
+ggplot(ToothGrowth, aes(factor(dose), len, fill = factor(dose))) +
+      geom_boxplot() +
+      # facet_grid(.~supp)+
+      facet_grid(.~supp, labeller = as_labeller(
+            c(&quot;OJ&quot; = &quot;Orange juice&quot;, 
+              &quot;VC&quot; = &quot;Ascorbic Acid&quot;))) +
+      labs(title = &quot;Tooth growth of 60 guinea pigs by dosage and\nby delivery method of vitamin C&quot;,
+           x = &quot;Dose in milligrams/day&quot;, 
+           y = &quot;Tooth Lengh&quot;) +
+      scale_fill_discrete(name = &quot;Dosage of\nvitamin C\nin mg/day&quot;) +
+  theme_classic()</code></pre>
+<p><img src="../../../project/exponential_distribution/stats_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+</div>
+<div id="use-confidence-intervals-andor-hypothesis-tests-to-compare-tooth-growth-by-supp-and-dose." class="section level3">
+<h3>Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose.</h3>
+<pre class="r"><code># comparison by delivery method for the same dosage
+t05 &lt;- t.test(len ~ supp, 
+       data = rbind(ToothGrowth[(ToothGrowth$dose == 0.5) &amp; 
+                                      (ToothGrowth$supp == &quot;OJ&quot;),],
+                    ToothGrowth[(ToothGrowth$dose == 0.5) &amp; 
+                                      (ToothGrowth$supp == &quot;VC&quot;),]), 
+       var.equal = FALSE)
+
+t1 &lt;- t.test(len ~ supp, 
+       data = rbind(ToothGrowth[(ToothGrowth$dose == 1) &amp; 
+                                      (ToothGrowth$supp == &quot;OJ&quot;),],
+                    ToothGrowth[(ToothGrowth$dose == 1) &amp; 
+                                      (ToothGrowth$supp == &quot;VC&quot;),]), 
+       var.equal = FALSE)
+
+t2 &lt;- t.test(len ~ supp, 
+       data = rbind(ToothGrowth[(ToothGrowth$dose == 2) &amp; 
+                                      (ToothGrowth$supp == &quot;OJ&quot;),],
+                    ToothGrowth[(ToothGrowth$dose == 2) &amp; 
+                                      (ToothGrowth$supp == &quot;VC&quot;),]), 
+       var.equal = FALSE)
+
+# summary of the conducted t.tests, which compare the delivery methods by dosage,
+# take p-values and CI
+summaryBYsupp &lt;- data.frame(
+      &quot;p-value&quot; = c(t05$p.value, t1$p.value, t2$p.value),
+      &quot;Conf.Low&quot; = c(t05$conf.int[1],t1$conf.int[1], t2$conf.int[1]),
+      &quot;Conf.High&quot; = c(t05$conf.int[2],t1$conf.int[2], t2$conf.int[2]),
+      row.names = c(&quot;Dosage .05&quot;,&quot;Dosage 1&quot;,&quot;Dosage 2&quot;))
+
+# show data table 
+summaryBYsupp</code></pre>
+<pre><code>               p.value  Conf.Low Conf.High
+Dosage .05 0.006358607  1.719057  8.780943
+Dosage 1   0.001038376  2.802148  9.057852
+Dosage 2   0.963851589 -3.798070  3.638070</code></pre>
+</div>
+<div id="conclusion" class="section level3">
+<h3>Conclusion</h3>
+<p>With 95% confidence we reject the null hypothesis, stating that there is no difference in the tooth growth by the delivery method for .5 and 1 milligrams/day. We observe p-values less than the treshold of .05 and the confidence levels don’t include 0. So, for dosage of .5 milligrams/day and 1 milligrams/day does matter the delivery method. With 95% confidence we fail to reject the null hypothesis, stating that there is no difference in the tooth growth by the delivery method for 2 milligrams/day. We observe p-values more than the treshold of .05 and the confidence levels include 0. So, for dosage of 2 milligrams/day the delivery method doesn’t matter.</p>
+</div>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="../../../tags/r/">R</a>
+  
+  <a class="badge badge-light" href="">Data Analytics</a>
+  
+</div>
+
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<div class="media author-card" itemscope itemtype="http://schema.org/Person">
+  
+
+  <div class="media-body">
+    <h5 class="card-title" itemprop="name"><a href="../../../authors/admin">Rihad Variawa</a></h5>
+    <h6 class="card-subtitle">Data Scientist</h6>
+    <p class="card-text" itemprop="description">Super Inquisitive &amp; Welcomes A Challenge.</p>
+    <ul class="network-icon" aria-hidden="true">
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="../../../#contact" >
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://twitter.com/2series_rv" target="_blank" rel="noopener">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://www.linkedin.com/in/rihad-variawa-7422017b" target="_blank" rel="noopener">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://github.com/2series" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+    
+
+  </div>
+</article>
+
+
+
+<div class="container">
+  <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="../../../privacy/">Privacy Policy</a>
+  </p>
+  
+
+  <p class="powered-by">
+    &copy; 2019 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="../../../js/academic.min.eeda67bb2d1f96265d85659d1edc7a5e.js"></script>
+
+  </body>
+</html>
+

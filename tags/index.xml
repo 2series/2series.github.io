@@ -13,11 +13,29 @@
     
     
     <item>
+      <title>Data Analysis</title>
+      <link>/tags/data-analysis/</link>
+      <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/data-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Data Analytics</title>
       <link>/tags/data-analytics/</link>
       <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/data-analytics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>/tags/python/</link>
+      <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/python/</guid>
       <description></description>
     </item>
     
@@ -49,15 +67,6 @@
     </item>
     
     <item>
-      <title>Python</title>
-      <link>/tags/python/</link>
-      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>plot</title>
       <link>/tags/plot/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
@@ -72,15 +81,6 @@
       <pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/time-series-forecasting/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Data Analysis</title>
-      <link>/tags/data-analysis/</link>
-      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/data-analysis/</guid>
       <description></description>
     </item>
     

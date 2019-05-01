@@ -19,7 +19,7 @@
   </url>
   
   <url>
-    <loc>/publication_types/1/</loc>
+    <loc>/publication_types/0/</loc>
     <lastmod>2019-04-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -220,6 +220,12 @@
   <url>
     <loc>/post/sales_analysis/sales-analysis/</loc>
     <lastmod>2019-03-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication_types/1/</loc>
+    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>

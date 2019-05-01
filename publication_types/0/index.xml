@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>0 on Rihad Variawa</title>
+    <link>/publication_types/0/</link>
+    <description>Recent content in 0 on Rihad Variawa</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2019</copyright>
+    <lastBuildDate>Tue, 30 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/publication_types/0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Renewable Energy</title>
+      <link>/publication/renewable_e/</link>
+      <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/renewable_e/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Credit Card Fraud Detection</title>
+      <link>/publication/fraudulent_credit_card_transaction/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/fraudulent_credit_card_transaction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Predicting Customer Transactions</title>
+      <link>/publication/santander_customer_transaction/</link>
+      <pubDate>Tue, 26 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/santander_customer_transaction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Earthquake Prediction Challenge</title>
+      <link>/publication/earthquake/</link>
+      <pubDate>Sun, 10 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/earthquake/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Home Loan Default Prediction</title>
+      <link>/publication/home_credit_default/</link>
+      <pubDate>Sun, 10 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/home_credit_default/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bitcoin Price Prediction</title>
+      <link>/publication/bitcoin_price_prediction/</link>
+      <pubDate>Wed, 14 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/bitcoin_price_prediction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Crytocurrency Pricing Analysis</title>
+      <link>/publication/cryptocurrency_pricing_analysis/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/cryptocurrency_pricing_analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Air Travel Forecasting</title>
+      <link>/publication/air_passengers/</link>
+      <pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/air_passengers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>US Police Stop Analysis </title>
+      <link>/publication/police_analysis/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/police_analysis/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

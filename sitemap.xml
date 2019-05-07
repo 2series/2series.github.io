@@ -19,6 +19,46 @@
   </url>
   
   <url>
+    <loc>/project/naive_bayes/naive_bayes/</loc>
+    <lastmod>2019-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/machine-learning/</loc>
+    <lastmod>2019-05-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/project/linear_regression/linear_regression/</loc>
+    <lastmod>2019-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/</loc>
+    <lastmod>2019-05-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/r/</loc>
+    <lastmod>2019-05-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2019-05-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/regression/</loc>
+    <lastmod>2019-05-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/publication_types/0/</loc>
     <lastmod>2019-04-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -48,12 +88,6 @@
   </url>
   
   <url>
-    <loc>/project/</loc>
-    <lastmod>2019-04-30T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/publication_types/</loc>
     <lastmod>2019-04-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -71,24 +105,12 @@
   </url>
   
   <url>
-    <loc>/tags/r/</loc>
-    <lastmod>2019-04-30T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/publication/renewable_e/</loc>
     <lastmod>2019-04-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/authors/rihad-variawa/</loc>
-    <lastmod>2019-04-30T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2019-04-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -101,12 +123,6 @@
   <url>
     <loc>/project/interest_forecast/interest_forecast/</loc>
     <lastmod>2019-04-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/machine-learning/</loc>
-    <lastmod>2019-04-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -177,12 +193,6 @@
   <url>
     <loc>/project/music/music/</loc>
     <lastmod>2019-04-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/regression/</loc>
-    <lastmod>2019-04-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -298,11 +308,6 @@
   <url>
     <loc>/publication/bitcoin_price_prediction/</loc>
     <lastmod>2018-11-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publication/cryptocurrency_pricing_analysis/</loc>
-    <lastmod>2018-10-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>

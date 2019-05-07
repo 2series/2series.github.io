@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2019</copyright>
-    <lastBuildDate>Tue, 30 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Diabetes</title>
+      <link>/project/naive_bayes/naive_bayes/</link>
+      <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/naive_bayes/naive_bayes/</guid>
+      <description>The assumption is that some attributes like age and likelihood of diabetes are dependent on each other and this assumption helps in determining the probability of new data</description>
+    </item>
+    
+    <item>
+      <title>NYC Subway</title>
+      <link>/project/linear_regression/linear_regression/</link>
+      <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/project/linear_regression/linear_regression/</guid>
+      <description>Predict Entriesn_hourly i.e. number of hourly entries at the NYC Subway based on other predictor variables.</description>
+    </item>
     
     <item>
       <title>Investigating The Exponential Distribution &amp; Compare It With The Central Limit Theorem</title>

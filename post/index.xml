@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2020</copyright>
-    <lastBuildDate>Thu, 28 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 06 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Should AI Intimidate Us?</title>
+      <link>/post/ai-should-it-intimidate-us/</link>
+      <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ai-should-it-intimidate-us/</guid>
+      <description>Recently major plays in the technology industry have been talking about why the potential applications of artificial intelligence could be something we should be worried about. Their argument comes from two different places. On the one hand, they see Ai as one of the most fundamental transformative technologies that we have ever seen in the history of mankind, and on the other hand, that transformative power is something we should be scared of and be wary about.</description>
+    </item>
     
     <item>
       <title>Sales Analysis</title>
@@ -22,7 +31,7 @@
     </item>
     
     <item>
-      <title>Bank ATM Cash Machine Forecast w/ Time Series</title>
+      <title>Bank ATM Cash Machine Forecast with Time Series</title>
       <link>/post/atm/bank/</link>
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
       

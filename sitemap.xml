@@ -19,6 +19,16 @@
   </url>
   
   <url>
+    <loc>/post/</loc>
+    <lastmod>2019-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/ai-should-it-intimidate-us/</loc>
+    <lastmod>2019-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/project/naive_bayes/naive_bayes/</loc>
     <lastmod>2019-05-01T00:00:00+00:00</lastmod>
   </url>
@@ -214,11 +224,6 @@
     <loc>/categories/</loc>
     <lastmod>2019-03-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2019-03-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>

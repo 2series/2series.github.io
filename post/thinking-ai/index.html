@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.2.5">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Rihad Variawa">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Science and Sci-fi can’t seem to agree on the way we should think about artificial intelligence. Sci-fi wants to portray artificial intelligence agents as thinking machines, while organizations today use Ai for more mundane tasks like filling out forms with robotic process automation or driving your car. When interacting with these Ai interfaces at our current level of Ai technology, our human inclination is to treat them like vending machines, rather than to treat them like a human.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="../../post/thinking-ai/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#3f51b5">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Playfair+Display:400,700|Fauna+One">
+  
+
+  <link rel="stylesheet" href="../../styles.css">
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-132898309-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="icon" type="image/png" href="../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../img/icon-192.png">
+
+  <link rel="canonical" href="../../post/thinking-ai/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@2series_rv">
+  <meta property="twitter:creator" content="@2series_rv">
+  
+  <meta property="og:site_name" content="Rihad Variawa">
+  <meta property="og:url" content="/post/thinking-ai/">
+  <meta property="og:title" content="Thinking AI? | Rihad Variawa">
+  <meta property="og:description" content="Science and Sci-fi can’t seem to agree on the way we should think about artificial intelligence. Sci-fi wants to portray artificial intelligence agents as thinking machines, while organizations today use Ai for more mundane tasks like filling out forms with robotic process automation or driving your car. When interacting with these Ai interfaces at our current level of Ai technology, our human inclination is to treat them like vending machines, rather than to treat them like a human."><meta property="og:image" content="/img/think%20machines">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-10-06T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2019-10-06T00:00:00&#43;00:00">
+  
+
+  
+
+  
+
+  <title>Thinking AI? | Rihad Variawa</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="../../">Rihad Variawa</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#posts">
+            
+            <span>Blog Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#publications">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+<div class="article-header">
+  
+  
+  <img src="../../img/think%20machines" class="article-banner" itemprop="image" alt="">
+  
+
+  <span class="article-header-caption">Artificial Intelligence</span>
+</div>
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">Thinking AI?</h1>
+
+  
+
+  
+    
+
+
+
+<meta content="2019-10-06 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-10-06 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Oct 6, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    11 min read
+  </span>
+  
+
+  
+  
+
+  
+
+  
+    
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      <p>Science and Sci-fi can’t seem to agree on the way we should think about artificial intelligence. Sci-fi wants to portray artificial intelligence agents as thinking machines, while organizations today use Ai for more mundane tasks like filling out forms with robotic process automation or driving your car. When interacting with these Ai interfaces at our current level of Ai technology, our human inclination is to treat them like vending machines, rather than to treat them like a human. Why? Because thinking of Ai like a human (anthropomorphizing) leads to immediate disappointment. Today’s Ai is very narrow, and so straying across the invisible line between what these systems can and can’t do leads to generic responses like “I don’t understand that” or “I can’t do that yet”. Although the technology is <a href="https://arxiv.org/abs/1909.03186" target="_blank">extremely cool,</a> it just doesn’t think in the way that you or I think of as thinking.</p>
+
+<p>Let’s look at how that “thinking” process works, and examine how there are different kinds of thinking going on inside Ai systems.</p>
+
+<p>First, let me convince you that thinking is a real thing. Putting aside the whole <a href="https://www.youtube.com/watch?v=H6u0VBqNBQ8" target="_blank">conversation about consciousness,</a> there is a pretty interesting philosophical argument that thinking is just computing inside your head. As it turns out, this has been investigated, and we can make some conclusions beyond just imagining what thinking might really be. In the book <a href="https://www.amazon.com/Thinking-Fast-Slow-Daniel-Kahneman/dp/0374533555" target="_blank">“Thinking Fast and Slow”,</a> Nobel laureate Daniel Kahneman talks about the two systems in our brains that do thinking: A fast automated thinking system (System 1), and a slow more deliberative thinking system (System 2). Just like <a href="https://www.youtube.com/watch?v=wfYbgdo8e-8&amp;feature=youtu.be" target="_blank">we have a left and right brain stuck in our one head,</a> we also have these two types of thinking systems baked into our heads, talking to each other and shaping the way we see the world. And so thinking is not as much about being right, as it is a couple of ways for making decisions. Today&rsquo;s Ai systems learn to think fast and automatically (like System 1), but artificial intelligence as a science doesn’t yet have a good handle on how to do the thinking slow approach we get from System 2. Also, today’s Ai systems make the same sorts of mistakes as System 1, where <strong>biases, shortcuts, and generalizations</strong> get baked into the “thinking” machine during learning. With today’s Ai, there is no deliberative step by step thinking process going on. For example, How can Ai “think”, when a major component of what thinking is all about isn’t ready for primetime?</p>
+
+<p>Now that we have a bit more definition about what thinking is, how can we make more human-like artificial intelligence? Maybe representing feedback loops will get us to a sort of <strong>thinking machine</strong> like System 2. Well, as it turns out, we have not cracked that yet. Ai syatems don’t contain common knowledge about the world. For example, I recall Yann Lecun, a “founding father” of modern Ai,  gave an example sentence “He walked through the door” and pointed out that today’s Ai models can’t decide what this means. There is a silly interpretation where we can conclude that a person crashed through a door like a superhero, smashing it to pieces. There is another interpretation where either the door was open or the person opens the door to walk through the doorway. Unfortunately, without common knowledge, you don’t really know which situation is more likely. This shows us that even “thinking fast” situations can go poorly using the tools we have available today.</p>
+
+<p>We live in a world where <strong>fast thinking Ai</strong> is the norm, and the algorithms are slowly trained on huge amounts of data. The reason you can’t make a better search engine than Google is not the secrecy of their search algorithms. Rather, it is the fact that they have data you don’t have, from excellent web crawlers to cameras on cars driving around your neighborhood. Presently, the value in Ai is the data, and the algorithms are mostly free and open source. Gathering masses of data is not necessarily enough to ensure a feature works. Massive efforts at human labor are often required. In the future, thinking algorithms that teach themselves may themselves represent most of the value in an Ai system, but for now, you still need data to make an Ai system, and the data is the most valuable part of the project.</p>
+
+<p>Thinking is not easily separated from the human condition, but we humans are also far from perfect. We may be smart on average, but as individuals, we are not built to do statistics. There&rsquo;s some evidence for the wisdom of crowds, but a crowd holding pitchforks and torches may change your mind. As it turns out, we are adapted through the generations to avoid being eaten by lions, rather than being adapted to be the best at calculus. We humans also have many biases and shortcuts built into our hardware. It’s well documented. For example, <strong>correlation is not causation,</strong> but we often get them mixed up. A colleague of mine has a funny story from her undergraduate math degree at a respected university, where the students would play a game called “stats chicken”, where they delay taking their statistics course until the fourth year, hoping every year that the requirement to take the course will be dropped from the program.</p>
+
+<p>Given these many limitations on our human thinking, we are often puzzled by the conclusions reached but our machine counterparts. We “think” so differently from each other. When we see a really relevant movie or product recommendation, we feel impressed by this amazing recommendation magic trick, but don’t get to see the way the magic trick is performed. And one is tempted to conclude that machine-based thinking is better or cleaner than our messy biological process, because it is build on so much truth and mathematics. In many situations that’s true, but that truth hides a dark underlying secret. In many cases, it is not so clear why artificial intelligence works so well. The engineering got a bit ahead of the science, and we are playing with tools we don’t fully understand. We know they work, and we can test them, but we don’t have a good system for proving why things work. In fact, there are <a href="https://www.sciencemag.org/news/2018/05/ai-researchers-allege-machine-learning-alchemy" target="_blank">some accusations</a> even in respected academic circles <a href="https://crypto.iacr.org/2018/slides/goldwasser_iacr_distinguished_lecture.pdf" target="_blank">slide 24, here</a> that the basic theory of artificial intelligence as a field of science is not yet rigerously defined. It is not just name-calling or jealousy being hurled by the mathematicians at the engineers. Ai is a bunch of fields stuck together, and there really is a lack of connection in the field between how to make things work and proving why they work. And so the question about thinking and Ai is also a question about knowledge. You can drive a car if you don’t know exactly how it works inside, and so maybe you can think, even if you don’t know why your thinking works.</p>
+
+<p>Assuming we don’t have a concrete theory underlying the field of artificial intelligence, how can engineers get anything done? Well, there are very good ways to test and train Ai systems, which is good enough for today’s economy. There are many types of Ai, including supervised learning, unsupervised learning, reinforcement learning, and more. Engineers don’t tend to ask questions like “is it thinking?”, and instead ask questions like “is it broken?” and “what is the test score?”</p>
+
+<p>Supervised learning is a very popular type of machine learning that makes fast predictions in some narrow domain. The state-of-the-art machinery for doing supervised learning on large datasets is feed-forward deep neural networks. This type of system does not really think. Instead, it learns to pick a label (for classification) or a number (for regression) based upon a set of observations. The way decisions are baked into neural networks during “learning” is not obvious without a strong validation step. More transparent models have been around for a long time, for example, in areas such as game theory for military planning. Explicit models like decision trees are a common approach to developing an interpretable Ai system, where a set of rules is learned that defines your path from observation to prediction, like a <a href="https://www.teachervision.com/creative-writing/choose-your-own-adventure-stories" target="_blank">choose your own adventure story</a> where each piece of data follows a path from the beginning of the book to the conclusion.</p>
+
+<p>Another type of machine learning called reinforcement learning involves learning the transition from one decision to the next based on what’s going on in the environment and what happened in the past. We know that without much better “environment” models of the world, <a href="https://www.youtube.com/watch?v=zikdDOzOpxY" target="_blank">these methods are going to learn super slowly,</a> to do even the most basic tasks. Systems that learn to solve problems this way rely heavily on accurate models of how the world works. When dealing with a problem related to humans, they need lots of data on what those humans do, or like, or think. For example, you can’t learn to generate amazing music without data on what humans like to listen to. In a game playing simulator an Ai model can play against itself very quickly to get smart, but in human-related applications the slow pace of data collection gums up the speed of the project. And so in a broad sense, the Ai field is still under construction at the same time as we are plugging lots of things into it.</p>
+
+<p>Regardless of the underlying technical machinery, when you interact with a trained machine learning model in the vast majority of real-life applications today, the model is pre-trained and is not learning on the fly. This is done to improve the stability of your experience, but also hides the messiness of the underlying technology. The learning tends to happen in a safe space where things can be tested, and you experience only the predictions (also called inference) as a customer of the Ai system.</p>
+
+<p>Despite the <a href="https://www.cnbc.com/2019/08/28/elon-musk-computers-will-surpass-us-in-every-single-way.html" target="_blank">hype,</a> Ai models that think like we do are not coming around the corner to exceed humanity in every way. Truly thinking machines are definitely worthy of research, but they are not here just yet. Today, Ai models and human analysts work side-by-side, where the practitioner gives their opinion and is assisted by an Ai model. It is useful to think about more general mathematical models like rainfall estimation and sovereign credit risk modeling to think about how mathematical models are carefully designed by humans, encoding huge amounts of careful and deliberative human thinking. The practice of building Ai systems involves a lot of reading and creativity. It&rsquo;s not just coding away at the keyboard.</p>
+
+<p>I feel that Ai software developers gradually build a sense for how to think about what an Ai model is doing, and it ins’t “thinking”. I wanted to get some input from someone unrelated to me in the artificial intelligence field, to see if they feel the same way. Through the CEO of DTA, I set up a talk with Kurt Manninen about his work on an AI product called AstraLaunch. I asked Kurt a lot of technology questions, leading up to the question “Does the system think like people do?”</p>
+
+<p>AstraLaunch is a pretty advanced product involving both supervised and unsupervised learning for matching technologies with company needs on a very technical basis. A complicated technology like this is a good area to be thinking about “thinking”. The system has an intake process that leads into a document collection stage, and then outputs a chart of sorted relevant documents and technologies. What I wanted to understand from Kurt is the way he thinks about what the matching technology. Is the system thinking when it maps the needs of NASA to the technology capabilities of companies? When diagnosing an incorrect prediction, does he think about the model as making a mistake, or is the origin of the mistake with the model maker and/or the data?</p>
+
+<p>Kurt’s answer was really close to what I expected from my own experience. Technology like AstraLaunch involves humans and Ai models working together to leverage the strength information processing approach. But, Kurt felt strongly, as I do, that bugs in Ai models are the fault of people, not the model. An Ai developer can see where the training wasn’t set up properly to understand language, or vocabulary, or where the dataset collection went wrong, etc.</p>
+
+<p>Returning to the original question about artificial intelligence and thinking, I think we can solidly conclude that these systems don’t do thinking at all. If we only have fast and automatic (System 1) artificial intelligence to work with, can we think of an Ai model as a gifted employee that thinks differently about the world? Well, no. Ai will probably cheat if the training is unmanaged, and so it is a lazy, deceptive employee. It will use the easy way out to get the highest score on every test, even if the approach is silly or wrong. As we try and build a “System 2” that thinks more like us, we need to remember that thinking is not about passing a test.</p>
+
+<p>Disclosure: I have no financial interest in any of these companies or products.</p>
+
+<p><em>Thank you for reading my post.</em></p>
+
+    </div>
+
+    
+
+
+    
+      
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<div class="media author-card" itemscope itemtype="http://schema.org/Person">
+  
+  <img class="portrait mr-3" src="https://s.gravatar.com/avatar/4cc3711ee1bf14eef1b48a6703e86be8?s=200')" itemprop="image" alt="Avatar">
+  
+
+  <div class="media-body">
+    <h5 class="card-title" itemprop="name"><a href="../../authors/admin">Rihad Variawa</a></h5>
+    <h6 class="card-subtitle">Data Scientist</h6>
+    <p class="card-text" itemprop="description">Super Inquisitive &amp; Challenge Seeker; looking at everything through a lens of numbers. A story-teller by nature and a problem-solver at the core.</p>
+    <ul class="network-icon" aria-hidden="true">
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="../../#contact" >
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://twitter.com/2series_rv" target="_blank" rel="noopener">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://www.linkedin.com/in/rihad-variawa-7422017b" target="_blank" rel="noopener">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://github.com/2series" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+      
+      
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+<div class="container">
+  <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="../../privacy/">Privacy Policy</a>
+  </p>
+  
+
+  <p class="powered-by">
+    &copy; 2020 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="../../js/academic.min.eeda67bb2d1f96265d85659d1edc7a5e.js"></script>
+
+  </body>
+</html>
+

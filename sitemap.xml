@@ -29,6 +29,31 @@
   </url>
   
   <url>
+    <loc>/post/ai-bias-added/</loc>
+    <lastmod>2019-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/thinking-ai/</loc>
+    <lastmod>2019-10-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/paper-to-digital-intelligence/</loc>
+    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/blockchain-ai/</loc>
+    <lastmod>2019-09-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/ai-essential/</loc>
+    <lastmod>2019-08-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/project/naive_bayes/naive_bayes/</loc>
     <lastmod>2019-05-01T00:00:00+00:00</lastmod>
   </url>
@@ -221,23 +246,6 @@
   </url>
   
   <url>
-    <loc>/categories/</loc>
-    <lastmod>2019-03-28T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2019-03-28T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/post/sales_analysis/sales-analysis/</loc>
-    <lastmod>2019-03-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/publication_types/1/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -266,48 +274,6 @@
   <url>
     <loc>/publication/home_credit_default/</loc>
     <lastmod>2019-02-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/atm/bank/</loc>
-    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/residential_energy/residential-energy-usage/</loc>
-    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/machine-learning/</loc>
-    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/post/energye/energye/</loc>
-    <lastmod>2019-02-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/energyd/energy-demand-analysis-w-time-series-forecasting/</loc>
-    <lastmod>2019-02-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/time_series_ap/time-series-analysis/</loc>
-    <lastmod>2019-01-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/mtcars/2019-01-03-r-rmarkdown/</loc>
-    <lastmod>2019-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/plot/</loc>
-    <lastmod>2019-01-03T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -352,6 +318,11 @@
   
   <url>
     <loc>/author/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
     <priority>0</priority>
   </url>
   

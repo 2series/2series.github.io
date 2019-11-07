@@ -30,14 +30,5 @@
       <description>Predict whether a song will reach a spot in the Top 10, of the Billboard Hot 100 Chart</description>
     </item>
     
-    <item>
-      <title>mtcars Data Analysis</title>
-      <link>/post/mtcars/2019-01-03-r-rmarkdown/</link>
-      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/mtcars/2019-01-03-r-rmarkdown/</guid>
-      <description>Which type of vehicle transmission is more fuel efficient?</description>
-    </item>
-    
   </channel>
 </rss>

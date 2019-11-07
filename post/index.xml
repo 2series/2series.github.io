@@ -13,7 +13,7 @@
     
     
     <item>
-      <title>Should AI Intimidate Us?</title>
+      <title>Should Ai Intimidate Us?</title>
       <link>/post/ai-should-it-intimidate-us/</link>
       <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
       
@@ -22,66 +22,48 @@
     </item>
     
     <item>
-      <title>Sales Analysis</title>
-      <link>/post/sales_analysis/sales-analysis/</link>
-      <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
+      <title>Ai Common Sense</title>
+      <link>/post/ai-bias-added/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/sales_analysis/sales-analysis/</guid>
-      <description>Sample Sales Data, Order Info, Sales, Customer, Shipping, etc., Used for Segmentation, Customer Analytics, Clustering and More. Inspired for retail analytics. This was originally used for Pentaho DI Kettle, But I found the set could be useful for Sales Simulation training.  Originally Written by María Carina Roldán, Pentaho Community Member, BI consultant (Assert Solutions), Argentina. This work is licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License. Modified by Gus Segura June 2014.</description>
+      <guid>/post/ai-bias-added/</guid>
+      <description>One of the biggest challenges with artificial intelligence and data science is the integrity of our data. Even if we did all the right things in our models, and our testing, data might conform to some technical standard of “cleanliness,” there might still be biases in our data as well as “common sense” challenges. With Big Data, it is difficult to get to a certain granularity of data validity without proper real-world testing.</description>
     </item>
     
     <item>
-      <title>Bank ATM Cash Machine Forecast with Time Series</title>
-      <link>/post/atm/bank/</link>
-      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      <title>Thinking AI?</title>
+      <link>/post/thinking-ai/</link>
+      <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/atm/bank/</guid>
-      <description>Forcast monthly residential energy usage</description>
+      <guid>/post/thinking-ai/</guid>
+      <description>Science and Sci-fi can’t seem to agree on the way we should think about artificial intelligence. Sci-fi wants to portray artificial intelligence agents as thinking machines, while organizations today use Ai for more mundane tasks like filling out forms with robotic process automation or driving your car. When interacting with these Ai interfaces at our current level of Ai technology, our human inclination is to treat them like vending machines, rather than to treat them like a human.</description>
     </item>
     
     <item>
-      <title>Energy Forecasting With Time Series Analysis</title>
-      <link>/post/residential_energy/residential-energy-usage/</link>
-      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      <title>Paper To Digital Intelligence</title>
+      <link>/post/paper-to-digital-intelligence/</link>
+      <pubDate>Wed, 02 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/residential_energy/residential-energy-usage/</guid>
-      <description>Forcast monthly residential energy usage</description>
+      <guid>/post/paper-to-digital-intelligence/</guid>
+      <description>Organizations use paper. Businesses in every vertical have always relied upon a certain quantity of paper since the dawn of time and, despite the rise of digital, that basic truth isn’t going to change. Although invoices are now largely digital, boarding passes live on smartphones and there’s even an app (or two) for To-Do lists and notepads, a certain amount of paper will always feature as part of any firm’s operational tasks.</description>
     </item>
     
     <item>
-      <title>Energy Efficiency on Buildings</title>
-      <link>/post/energye/energye/</link>
-      <pubDate>Sun, 03 Feb 2019 00:00:00 +0000</pubDate>
+      <title>Blockchain &amp; Ai</title>
+      <link>/post/blockchain-ai/</link>
+      <pubDate>Sun, 29 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/energye/energye/</guid>
-      <description>Energy Efficiency On Buildings</description>
+      <guid>/post/blockchain-ai/</guid>
+      <description>Artificial Intelligence (Ai) as a market is full of hype, with vendors, customers, and press all speaking breathlessly about the capabilities for Ai in general and their offerings specifically. Likewise, blockchain is also a widely hyped market, with technology providers and customers claiming all sorts of capabilities that may or may not be possible. Combining Ai and blockchain then must be double the hype? On the other hand, Ai is providing real, tangible value in many myriad ways we talk about every day.</description>
     </item>
     
     <item>
-      <title>Energy Demand Analysis w/ Time Series Forecasting</title>
-      <link>/post/energyd/energy-demand-analysis-w-time-series-forecasting/</link>
-      <pubDate>Sat, 02 Feb 2019 00:00:00 +0000</pubDate>
+      <title>Ai Essential</title>
+      <link>/post/ai-essential/</link>
+      <pubDate>Tue, 20 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/energyd/energy-demand-analysis-w-time-series-forecasting/</guid>
-      <description>Energy Demand Forecasting</description>
-    </item>
-    
-    <item>
-      <title>Time Series Analysis</title>
-      <link>/post/time_series_ap/time-series-analysis/</link>
-      <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/time_series_ap/time-series-analysis/</guid>
-      <description>Time Series Forecast of airline passengers</description>
-    </item>
-    
-    <item>
-      <title>mtcars Data Analysis</title>
-      <link>/post/mtcars/2019-01-03-r-rmarkdown/</link>
-      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/mtcars/2019-01-03-r-rmarkdown/</guid>
-      <description>Which type of vehicle transmission is more fuel efficient?</description>
+      <guid>/post/ai-essential/</guid>
+      <description>Companies widely recognize the potential power of artificial intelligence (Ai). They instinctively understand that it feels like we’re on the cusp of something that will change our lives and our businesses in a profound way. Yet, many struggle with where to apply it. Executives can’t shake the feeling that they should have use cases for Ai and use it productively today, even recognizing that Ai is not mature yet and will be far more powerful tomorrow and in the future.</description>
     </item>
     
   </channel>

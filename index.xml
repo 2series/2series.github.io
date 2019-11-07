@@ -328,6 +328,46 @@
     </item>
     
     <item>
+      <title>Known Unknowns</title>
+      <link>/post/known-unkowns/</link>
+      <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/known-unkowns/</guid>
+      <description>&lt;p&gt;Data Scientists have a strange predicament in an age of Ai: They are meant to solve problems for companies by marshaling the relevant data on customers and transactions, but the data itself is going to raise new, unexpected questions.&lt;/p&gt;
+
+&lt;p&gt;Increasingly, the data that is relevant for companies’ Ai system efforts will be not just some data, but all of it; anything less risks missing what could conceivably be the critical insight down the road, the answer to questions as yet unasked.&lt;/p&gt;
+
+&lt;p&gt;Until recently, the era of “big data,” has been about providing only the requisite information to answer some straightforward question, where the “known unknowns” are all that matters.&lt;/p&gt;
+
+&lt;p&gt;For instance, if you’re a retailer, you might want to know how many of your customers would be likely to return items they’ve bought based on patterns of purchases. In fact, a group from Indian online apparel retailer &lt;a href=&#34;https://www.zdnet.com/article/a-i-s-minority-report-for-retail-they-know-youll-return-it-even-before-you-buy-it/&#34; target=&#34;_blank&#34;&gt;Myntra&lt;/a&gt; this summer showed off a machine learning model for just such an application. The scientists at the firm were able to show with a high degree of confidence that they could predict which customers would return items before they’d even checked out of the store.&lt;/p&gt;
+
+&lt;p&gt;That kind of research is still framed within the structure of conventional statistics. Given an independent variable, such as past patterns of purchases, and a dependent variable of interest, such as return rates, find the relationship between the two. But that presumes the question of returns is the most relevant one to be asking.&lt;/p&gt;
+
+&lt;p&gt;The piling up of data implies another kind of question-asking, one where neither the independent variables nor the dependent variables may be known. Big data is ushering in a period of “known unknowns.”&lt;/p&gt;
+
+&lt;p&gt;If you’re a retailer, calculating the known unknown of product returns in order to reduce the rate of returns could be a very meaningful immediate contributor to financial performance. It may suggest practical steps you can take to reduce returns, which saves money.&lt;/p&gt;
+
+&lt;p&gt;But the known unknown traps you in the question you’ve formulated, whereas there might be better questions to ask, and better models to construct. What if the presence of returns is one behavior your shoppers exhibit within a broader trend of sub-optimal consumption? They’re returning half their purchases because the total assortment, say, is poor. Is the best thing to predict individual patterns, or to better asses aggregate demand? Trying to avert returns, in other words, might be a less-useful strategy than trying to boost overall demand.&lt;/p&gt;
+
+&lt;p&gt;The age of known unknowns has been anticipated by scholars of Ai. Among the best examples of such deep thinkers is Vladimir Vapnik, a Russian emigre best known for developing over the course of forty years something called “statistical learning theory.” Vapnik’s work would lead in the 1990s to one of the most popular forms of Ai technology prior to today’s deep learning, known as “support vector machines.” Today, &lt;a href=&#34;https://venturebeat.com/2014/11/25/facebooks-ai-team-hires-vladimir-vapnik-father-of-the-popular-support-vector-machine-algorithm/&#34; target=&#34;_blank&#34;&gt;Vapnik is a member of Facebook’s Ai research group.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Even with fairly simple problems such as supervised linear regression, Vapnik has shown in numerous written works over the years that there might not be full information about some of the variables. For instance, in a study of cancer patients, just comparing prevalence of cancer among a population group might leave out other variables about patients that are “hidden” but that are crucial to making medical predictions.&lt;/p&gt;
+
+&lt;p&gt;Of course, designing a good experiment is something statisticians have always struggled with, how to pick the right variables and such. But Vapnik has gone farther than assessing study design, he has offered a much broader philosophy of science.&lt;/p&gt;
+
+&lt;p&gt;In an interview in 2014 with the staff of the Association for Computer Learning, Vapnik observed that most of science classically operated on the principle that there’s a “simple rule” underlying natural phenomena. Quoting Einstein, Vapnik says, “when the solution is simple, God is answering,” meaning, “if a law is simple we can find it.” But, says Vapnik, most of the world is not so simple, and it doesn’t yield to simple rules that take the form of fitting curves to points on a graph.&lt;/p&gt;
+
+&lt;p&gt;“So the question is what is the real-world? Is it simple or complex?” asks Vapnik, rhetorically. His conclusion is that “machine learning shows that there are examples of complex worlds,” and that “we should approach complex worlds from a completely different position than simple worlds.”&lt;/p&gt;
+
+&lt;p&gt;What does that mean? For industries, it means that assuming one knows the question is probably a premature conclusion. The mass of data inside corporations is going to yield entirely new kinds of questions that have nothing to do with the questions currently being asked by either conventional statistics or current machine learning models.&lt;/p&gt;
+
+&lt;p&gt;Prepare for the unknown, you can count on it!&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thank you for reading my post.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Diabetes</title>
       <link>/project/naive_bayes/naive_bayes/</link>
       <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>

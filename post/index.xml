@@ -66,5 +66,15 @@
       <description>Companies widely recognize the potential power of artificial intelligence (Ai). They instinctively understand that it feels like we’re on the cusp of something that will change our lives and our businesses in a profound way. Yet, many struggle with where to apply it. Executives can’t shake the feeling that they should have use cases for Ai and use it productively today, even recognizing that Ai is not mature yet and will be far more powerful tomorrow and in the future.</description>
     </item>
     
+    <item>
+      <title>Known Unknowns</title>
+      <link>/post/known-unkowns/</link>
+      <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/known-unkowns/</guid>
+      <description>Data Scientists have a strange predicament in an age of Ai: They are meant to solve problems for companies by marshaling the relevant data on customers and transactions, but the data itself is going to raise new, unexpected questions.
+Increasingly, the data that is relevant for companies’ Ai system efforts will be not just some data, but all of it; anything less risks missing what could conceivably be the critical insight down the road, the answer to questions as yet unasked.</description>
+    </item>
+    
   </channel>
 </rss>

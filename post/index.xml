@@ -14,66 +14,135 @@
     
     <item>
       <title>Should Ai Intimidate Us?</title>
-      <link>/post/ai-should-it-intimidate-us/</link>
+      <link>/post/shoulditintimidateus/</link>
       <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/ai-should-it-intimidate-us/</guid>
+      <guid>/post/shoulditintimidateus/</guid>
       <description>Recently major plays in the technology industry have been talking about why the potential applications of artificial intelligence could be something we should be worried about. Their argument comes from two different places. On the one hand, they see Ai as one of the most fundamental transformative technologies that we have ever seen in the history of mankind, and on the other hand, that transformative power is something we should be scared of and be wary about.</description>
     </item>
     
     <item>
       <title>Ai Common Sense</title>
-      <link>/post/ai-bias-added/</link>
+      <link>/post/biasadded/</link>
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/ai-bias-added/</guid>
+      <guid>/post/biasadded/</guid>
       <description>One of the biggest challenges with artificial intelligence and data science is the integrity of our data. Even if we did all the right things in our models, and our testing, data might conform to some technical standard of “cleanliness,” there might still be biases in our data as well as “common sense” challenges. With Big Data, it is difficult to get to a certain granularity of data validity without proper real-world testing.</description>
     </item>
     
     <item>
       <title>Thinking AI?</title>
-      <link>/post/thinking-ai/</link>
+      <link>/post/thinkingai/</link>
       <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/thinking-ai/</guid>
+      <guid>/post/thinkingai/</guid>
       <description>Science and Sci-fi can’t seem to agree on the way we should think about artificial intelligence. Sci-fi wants to portray artificial intelligence agents as thinking machines, while organizations today use Ai for more mundane tasks like filling out forms with robotic process automation or driving your car. When interacting with these Ai interfaces at our current level of Ai technology, our human inclination is to treat them like vending machines, rather than to treat them like a human.</description>
     </item>
     
     <item>
       <title>Paper To Digital Intelligence</title>
-      <link>/post/paper-to-digital-intelligence/</link>
+      <link>/post/papertodigital/</link>
       <pubDate>Wed, 02 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/paper-to-digital-intelligence/</guid>
+      <guid>/post/papertodigital/</guid>
       <description>Organizations use paper. Businesses in every vertical have always relied upon a certain quantity of paper since the dawn of time and, despite the rise of digital, that basic truth isn’t going to change. Although invoices are now largely digital, boarding passes live on smartphones and there’s even an app (or two) for To-Do lists and notepads, a certain amount of paper will always feature as part of any firm’s operational tasks.</description>
     </item>
     
     <item>
       <title>Blockchain &amp; Ai</title>
-      <link>/post/blockchain-ai/</link>
+      <link>/post/blockchainai/</link>
       <pubDate>Sun, 29 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/blockchain-ai/</guid>
+      <guid>/post/blockchainai/</guid>
       <description>Artificial Intelligence (Ai) as a market is full of hype, with vendors, customers, and press all speaking breathlessly about the capabilities for Ai in general and their offerings specifically. Likewise, blockchain is also a widely hyped market, with technology providers and customers claiming all sorts of capabilities that may or may not be possible. Combining Ai and blockchain then must be double the hype? On the other hand, Ai is providing real, tangible value in many myriad ways we talk about every day.</description>
     </item>
     
     <item>
+      <title>Ai Deployment In FinTech</title>
+      <link>/post/insurance/</link>
+      <pubDate>Sun, 25 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/insurance/</guid>
+      <description>It’s no secret the insurance industry is primed for disruption. All you need to do is type terms like “ai for insurance” or “latest insurtech” into Google search, and a veritable cornucopia of articles will pop up preaching the advantages of adopting new, intelligent technologies. With so much information available, it’s no wonder many insurers are struggling to figure out how to embark on their Ai journey in a way that ensures projects yield the desired results.</description>
+    </item>
+    
+    <item>
       <title>Ai Essential</title>
-      <link>/post/ai-essential/</link>
+      <link>/post/aiessential/</link>
       <pubDate>Tue, 20 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/ai-essential/</guid>
+      <guid>/post/aiessential/</guid>
       <description>Companies widely recognize the potential power of artificial intelligence (Ai). They instinctively understand that it feels like we’re on the cusp of something that will change our lives and our businesses in a profound way. Yet, many struggle with where to apply it. Executives can’t shake the feeling that they should have use cases for Ai and use it productively today, even recognizing that Ai is not mature yet and will be far more powerful tomorrow and in the future.</description>
     </item>
     
     <item>
       <title>Known Unknowns</title>
-      <link>/post/known-unkowns/</link>
+      <link>/post/knownunkowns/</link>
       <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/known-unkowns/</guid>
+      <guid>/post/knownunkowns/</guid>
       <description>Data Scientists have a strange predicament in an age of Ai: They are meant to solve problems for companies by marshaling the relevant data on customers and transactions, but the data itself is going to raise new, unexpected questions.
 Increasingly, the data that is relevant for companies’ Ai system efforts will be not just some data, but all of it; anything less risks missing what could conceivably be the critical insight down the road, the answer to questions as yet unasked.</description>
+    </item>
+    
+    <item>
+      <title>My Poker Face is Better Than You Think</title>
+      <link>/post/illusionoftransparency/</link>
+      <pubDate>Mon, 05 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/illusionoftransparency/</guid>
+      <description>We tend to think that people can easily tell what we’re feeling and thinking. They can’t. Understanding the illusion of transparency bias can improve relationships, career performance, and more.
+“A wonderful fact to reflect upon, that every human creature is constituted to be that profound secret and mystery to every other.” ― Charles Dickens, A Tale of Two Cities
+When we experience strong emotions, we tend to think it’s obvious to other humans, especially those who know us well.</description>
+    </item>
+    
+    <item>
+      <title>The Great Conspiracy Against Us</title>
+      <link>/post/hanlonrazor/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/hanlonrazor/</guid>
+      <description>If you ever feel that the world is against you, you are not alone.
+We all have a tendency to assume that when anything goes wrong, the fault lies within some great conspiracy against us. A co-worker fails to give you a report in time? They must be trying to derail your career and beat you to a promotion. Your child drops and breaks an expensive plate? They must be trying to annoy you and waste your time.</description>
+    </item>
+    
+    <item>
+      <title>How Do I Know If My Model Is Good?</title>
+      <link>/post/modeltest/</link>
+      <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/modeltest/</guid>
+      <description>One of the most common lines of questioning from data scientists today goes something like this: “How do I know if my model is good? Should I just take R^2 score? Should I take AUC? What does it mean for a given model to know if it’s good or not?”
+The best way to decide whether or not a model is good is to have the business interests directly plugged into that decision.</description>
+    </item>
+    
+    <item>
+      <title>Why Humans Can Never Do One Thing</title>
+      <link>/post/externalities/</link>
+      <pubDate>Fri, 28 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/externalities/</guid>
+      <description>No action exists in a vacuum. There are ripples that have consequences that we can and can’t see. Here are the three types of externalities that can help us guide our actions so they don’t come back to bite us.
+An externality affects someone without them agreeing to it. As with unintended consequences, externalities can be positive or negative. Understanding the types of externalities and the impact they have in our lives can help us improve our decision making, and how we interact with the world.</description>
+    </item>
+    
+    <item>
+      <title>The Power of Anchoring</title>
+      <link>/post/anchoring/</link>
+      <pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/anchoring/</guid>
+      <description>We often pay attention to irrelevant information. This happens as we develop estimates by starting with an initial anchor that is based on whatever information is provided and adjust from the anchor (sometimes our adjustments are not sufficient). This is called anchoring.
+More problematic perhaps is that the existence of an anchor leads humans to think of information consistent with that anchor (commitment and consistency) rather than access information that is inconsistent with that anchor.</description>
+    </item>
+    
+    <item>
+      <title>Probabilistic Value</title>
+      <link>/post/probabilisticvalues/</link>
+      <pubDate>Wed, 08 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/probabilisticvalues/</guid>
+      <description>Probabilistic thinking is essentially trying to estimate, using some tools of math and logic, the likelihood of any specific outcome coming to pass. It is one of the best tools we have to improve the accuracy of our models. In a world where each moment is determined by an infinitely complex set of factors, probabilistic thinking helps us identify the most likely outcomes. When we know these our decisions can be more precise and effective.</description>
     </item>
     
   </channel>

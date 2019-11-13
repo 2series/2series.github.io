@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2020</copyright>
-    <lastBuildDate>Wed, 06 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>A Movies Recommender System</title>
+      <link>/post/moviesrecommender/</link>
+      <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/moviesrecommender/</guid>
+      <description>As the Internet gets more and more popular, information overload poses an important challenge for a lot of online services. With all of the information pouring out from the web, users can be overwhelmed and confused as to what, exactly, they should be paying attention. A recommendation system provides a solution when a lot of useful content becomes too much of a good thing. A recommendation engine can help users discover information of interest by analyzing historical behaviors.</description>
+    </item>
     
     <item>
       <title>Should Ai Intimidate Us?</title>
@@ -86,12 +95,12 @@ Increasingly, the data that is relevant for companies’ Ai system efforts will 
     </item>
     
     <item>
-      <title>My Poker Face is Better Than You Think</title>
+      <title>My Poker Face Is Better Than You Think</title>
       <link>/post/illusionoftransparency/</link>
       <pubDate>Mon, 05 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/illusionoftransparency/</guid>
-      <description>We tend to think that people can easily tell what we’re feeling and thinking. They can’t. Understanding the illusion of transparency bias can improve relationships, career performance, and more.
+      <description>We tend to think that people can easily tell what we’re thinking and feeling. They can’t. Understanding the illusion of transparency bias can improve relationships, career performance, and more.
 “A wonderful fact to reflect upon, that every human creature is constituted to be that profound secret and mystery to every other.” ― Charles Dickens, A Tale of Two Cities
 When we experience strong emotions, we tend to think it’s obvious to other humans, especially those who know us well.</description>
     </item>

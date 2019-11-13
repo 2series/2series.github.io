@@ -37,6 +37,172 @@
     </item>
     
     <item>
+      <title>A Movies Recommender System</title>
+      <link>/post/moviesrecommender/</link>
+      <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/moviesrecommender/</guid>
+      <description>
+
+&lt;p&gt;As the Internet gets more and more popular, information overload poses an important challenge for a lot of online services. With all of the information pouring out from the web, users can be overwhelmed and confused as to what, exactly, they should be paying attention. A &lt;em&gt;recommendation system&lt;/em&gt; provides a solution when a lot of useful content becomes too much of a good thing. A recommendation engine can help users discover information of interest by analyzing historical behaviors. More and more online companies — including Netflix, Google, Facebook, and many others — are integrating a &lt;em&gt;recommendation system&lt;/em&gt; into their services to help users discover and select information that may be of particular interest to them.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;With literally tens of thousands of hours of premium video content, users are also prone to content overload. Given the wide variety of content available on the service at any one time, it may be difficult for users to discover new video that best matches their historic interests. So the first goal of a &lt;strong&gt;Recommendation System&lt;/strong&gt; is to help users find content which will be of interest to them.&lt;/p&gt;
+
+&lt;p&gt;In addition to users, &lt;em&gt;recommendation system&lt;/em&gt; should also help content owners promote their video. Part of the mission is to deliver a service that users, advertisers, and content owners all unabashedly love. Having many different content partners, and understanding the content, these partners want users to watch their videos — especially when new videos are released. By using personal recommendation instead of more traditional &lt;em&gt;recommendation systems,&lt;/em&gt; one promotes video content more effectively to users who are likely to enjoy the content being recommended.&lt;/p&gt;
+
+&lt;h2 id=&#34;data-characteristics&#34;&gt;Data Characteristics&lt;/h2&gt;
+
+&lt;p&gt;Before explaining the design of a &lt;em&gt;recommendation system,&lt;/em&gt; its crucial to explain some characteristics of the data.&lt;/p&gt;
+
+&lt;p&gt;Since a lot of content is comprised of episodes or clips within a show, by deciding to recommend shows to users instead of individual videos. Shows are a good method of organization, and videos in the same show are usually very closely related.&lt;/p&gt;
+
+&lt;p&gt;Content can be mainly divided into two parts: &lt;strong&gt;on-air shows and library shows.&lt;/strong&gt; On-air shows are highly important since more than half of streaming comes from them.&lt;/p&gt;
+
+&lt;p&gt;Although on-air shows occupy a large part of the content, they are touched by a seasonal effect. During summer months, most of on-air shows do not air, causing on-air show streaming to decrease. Furthermore, there are fewer shows aired during weekends, thus the streaming of library shows will increase. Keeping this information in mind we can design a &lt;em&gt;recommendation system&lt;/em&gt; to recommend more library shows to users during the weekend or summer months, as an example.&lt;/p&gt;
+
+&lt;p&gt;The key data that drives most &lt;em&gt;recommendation systems&lt;/em&gt; is user behavior data. There are two main types of user behavior data: &lt;strong&gt;implicit user feedback data and explicit user feedback data.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Explicit user feedback data primarily includes user voting data. Explicit feedback data can show a user&amp;rsquo;s preference on a show explicitly,&lt;/p&gt;
+
+&lt;p&gt;Implicit feedback data includes information on users watching, browsing, searching, etc. Implicit feedback data does not show users preference of a show explicitly. For example, if a user gives a 5-star rating to a show, we know that this user likes the show very much. But if a user only watches a video from a show page or searches for a show, we don&amp;rsquo;t know whether this user likes the show.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;As the quantity of implicit data at far outweighs the amount of explicit feedback, the system should be designed primarily to work with implicit feedback data.&lt;/p&gt;
+
+&lt;h2 id=&#34;architecture&#34;&gt;Architecture&lt;/h2&gt;
+
+&lt;p&gt;There are many different types of recommendation algorithms, and perhaps the most famous algorithm is collaborative filtering (CF). CF relies on &lt;strong&gt;user behavior data,&lt;/strong&gt; and its main idea is to predict user preferences by analyzing their behaviors. There are two types of CF methods: user-based CF (UserCF) and item-based CF (ItemCF).&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;UserCF assumes that a user will prefer items which are liked by other users who have similar preferences to that user.&lt;/p&gt;
+
+&lt;p&gt;ItemCF assumes that a user will prefer items similar to the assets (s)he preferred previously. ItemCF is widely used by many others (for example, Amazon and Netflix), as it has two main advantages. Firstly, it is suitable for sites where there are a lot more users than items. Secondly, ItemCF could easily explain recommendations given users’ historical behaviors. For example, if you have watched “Family Guy” it will recommend “American Dad” to you and tell you that it recommend this because you have watched “Family Guy”. Hence, ItemCF as our basic recommendation algorithm for our Movies Recommender System Application.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;online-architecture&#34;&gt;Online Architecture&lt;/h2&gt;
+
+&lt;p&gt;Fig 1 shows an on-line architecture of the recommendation system. This system contains 5 main modules:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;User profile builder:&lt;/strong&gt; When a user first comes into the recommendation system, it will first build a profile of them. The profile includes the user&amp;rsquo;s historical behaviors and topics, and these are generated from their old behaviors. Users can have many different types of behaviors. For example, they can watch videos, add shows to favorites, search for videos and vote on videos and shows. All these behaviors are all considered by the system and, after extracting all these behaviors, it uses a topic model which is trained offline to generate users&amp;rsquo; preference on topics.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Recommendation Core:&lt;/strong&gt; After generating the list of user&amp;rsquo;s historical preferences on shows and topics, it put all of those similar shows into raw recommendations.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Filtering:&lt;/strong&gt; For some pretty obvious reasons, raw recommendation results cannot be presented to users directly. The need to filter out shows the user has already seen or engaged with, thus increases the recommendations shows a little more precise.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ranking:&lt;/strong&gt; The ranking module will re-rank raw recommendations to make them better fit users preferences. First, it will make recommendation more diverse. Then increase novelty of recommendations so that users will find shows they like, but have never seen before.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Explanation:&lt;/strong&gt; Explanation is one of the most crucial components of every &lt;em&gt;recommendation system.&lt;/em&gt; The explanation module generates some reasoning for every recommendation result using the user&amp;rsquo;s historical behaviors. For example, it will recommend &amp;ldquo;American Dad&amp;rdquo; to a user who had previously watched &amp;ldquo;Family Guy.&amp;rdquo; The explanation will say, &amp;ldquo;We recommend &amp;lsquo;American Dad&amp;rsquo; to you because you have watched &amp;lsquo;Family Guy&amp;rsquo;&amp;rdquo;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://web.archive.org/web/20170425050711/http://tech.hulu.com/assets/2011/09/graphic-1.jpg&#34; alt=&#34;online architecture&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;offline-architecture&#34;&gt;Offline Architecture&lt;/h2&gt;
+
+&lt;p&gt;In the above on-line architecture, some components rely on offline resources, such as the topic model, related model, feedback model, etc. The offline system is also an important part of the &lt;strong&gt;recommendation system.&lt;/strong&gt; The offline system has these main components:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Data Center:&lt;/strong&gt; The data center contains all user behavior data. Some of them are stored in Hadoop clusters and some of them are stored in a relational database.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Related Table Generator:&lt;/strong&gt; The related table is an important resource for online recommendation. Using two main types of related table: one that&amp;rsquo;s based on collaborative filtering (which we&amp;rsquo;ll call CF), and another based on content.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;In CF, show A and show B will have high similarity if users who like show A also like show B.&lt;/p&gt;
+
+&lt;p&gt;With content filtering, we use content information including title, description, channel, company, actor/actress, and tags.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Topic Model:&lt;/strong&gt; A topic is represented by a group of shows that have similar content. Topics are thus larger in scope than shows, but they&amp;rsquo;re still smaller than channels. The topics are learned by LDA&amp;ndash;&lt;em&gt;part of the dimension reduction family of algorithms,&lt;/em&gt; which is a popular topic model in machine learning.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Feedback Analyzer:&lt;/strong&gt; Feedback specifically means users&amp;rsquo; reactions to recommendation results. Using user feedback can improve recommendation quality. For example, say a show is recommended to many users, but most of them do not click this show. In that case, it will decrease the rank of this show. Users will also have different types of behavior, thus using all these behaviors in developing the recommendations. However, some users may prefer recommendations to come from their prior watch history, and some users may prefer their recommendations to come from their voting behavior. All these effects can be modeled offline by analyzing users&amp;rsquo; feedback on their recommendations.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Report Generator:&lt;/strong&gt; Evaluation is the most important part of the &lt;em&gt;recommendation system.&lt;/em&gt; The report generator will generate a report including multiple metrics each day to show the quality of recommendations.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://web.archive.org/web/20170425072614/http://tech.hulu.com/assets/2011/09/graphic-2.jpg&#34; alt=&#34;offline architecture&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;algorithms&#34;&gt;Algorithms&lt;/h2&gt;
+
+&lt;p&gt;So far, we&amp;rsquo;ve given a brief overview of the recommendation architecture. From previous discussion, we can see that a recommendation system is primarily based on ItemCF. By added many improvements on top of the ItemCF algorithm, too, in order to make it generate better recommendations. To test these improvements, we&amp;rsquo;ve performed many A/B tests on different algorithms. In following sections, we&amp;rsquo;ll introduce some of these algorithms and the experiment results.&lt;/p&gt;
+
+&lt;h3 id=&#34;item-based-collaborative-filtering&#34;&gt;Item-based Collaborative Filtering&lt;/h3&gt;
+
+&lt;p&gt;Item-based Collaborative Filtering (ItemCF) is the basis of all our algorithms. In ItemCF, let N(u) be a set of items user u has preferred previously. User u&amp;rsquo;s preference on item i (i is not in N(u)) can then be measured by:&lt;/p&gt;
+
+&lt;p&gt;$$p(u,i)=\sum\limits_{j\in N(u)}^{} r(u,j)s(i,j)$$&lt;/p&gt;
+
+&lt;p&gt;Here, r(u,j) is the preference weight of user u on show j, and s(i,j) is the similarity between show i and show j. In CF, the similarity between two shows is calculated by user behavior data on these two shows. Let N(i) be a set of users who watched show i and N(j) be a set of users who watched show j. Then, the similarity s(i,j) between show i and show j is calculated by following formula:&lt;/p&gt;
+
+&lt;p&gt;$$s(i,j)=\frac{\left | N(i)\cap N(j) \right |}{\sqrt{\left | N(i) \parallel N(j) \right |}}$$&lt;/p&gt;
+
+&lt;p&gt;In this definition, show i will be highly relevant to show j if most users who watch show i will also watch show j. However, this definition will have the &amp;ldquo;Harry Potter problem,&amp;rdquo; which means that every show will have high relevance with popular shows.&lt;/p&gt;
+
+&lt;h3 id=&#34;recent-behavior&#34;&gt;Recent Behavior&lt;/h3&gt;
+
+&lt;p&gt;The first lesson we learned from A/B testing is that recommendations should fit users&amp;rsquo; recent preference and that users&amp;rsquo; recent behavior is more important than their older, historical behaviors. So, in our engine, we will put more weight on users&amp;rsquo; recent behaviors. In our system, CTR of recommendations that originate from users&amp;rsquo; recent watch behavior is 1.8 times higher than CTR of recommendations originating from users&amp;rsquo; old watch behavior.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://web.archive.org/web/20170425075037/http://tech.hulu.com/assets/2011/09/graphic-5.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;novelty&#34;&gt;Novelty&lt;/h3&gt;
+
+&lt;p&gt;Just because a recommendation system can accurately predict user behavior does not mean it produces a show that you want to recommend to an active user. For example, &amp;ldquo;Family Guy&amp;rdquo; is a very popular show, and thus most users have watched at least some episodes from this show. These  users do not need us to recommend this show to them — the show is popular enough that users will decide whether or not to watch it by themselves.&lt;/p&gt;
+
+&lt;p&gt;Thus, &lt;em&gt;novelty&lt;/em&gt; is also an important metric to evaluate recommendations. The first way we think can increase novelty is by revising ItemCF algorithm:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;First, we will decrease weight of popular shows that users have watched before.&lt;/li&gt;
+&lt;li&gt;Then, we&amp;rsquo;ll put more weight on shows that are not only similar to shows the active user watched before, but also less popular than shows the active user watched before.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;explanation-based-diversity&#34;&gt;Explanation-Based Diversity&lt;/h3&gt;
+
+&lt;p&gt;Most users have diverse preferences, so the recommendation should also meet their diverse interests. In our system, we use explanations to diversify our recommendations. We think a diverse recommendation means most of the recommendation shows have different explanations.&lt;/p&gt;
+
+&lt;p&gt;By performing an A/B test to show the usefulness of diversification (shown in the above fig). The results of the experiment show that, for active users who had previously watched 10 or more shows, diversification can increase recommendation CTR significantly.&lt;/p&gt;
+
+&lt;h3 id=&#34;temporal-diversity&#34;&gt;Temporal Diversity&lt;/h3&gt;
+
+&lt;p&gt;A good recommendation system should not generate static recommendations. Users want to see new suggestions every time they visit the &lt;strong&gt;recommendation system.&lt;/strong&gt; If a user has new behaviors, (s)he will find the recommendations have changed because due to more weight on the user&amp;rsquo;s recent behaviors. But if a user has no new behaviors, we also need to change our recommendations. We use three methods to keep temporal diversity of our system:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Firstly, we&amp;rsquo;ll recommend recently-added shows to users. Many new shows are added each day, and it will suggest these shows to users who will like them. Thus, users will see fresh ideas for shows to watch when new ones are added.&lt;/li&gt;
+&lt;li&gt;Secondly, we&amp;rsquo;ll randomize our recommendations. Randomization is the simplest way to keep recommendations fresh.&lt;/li&gt;
+&lt;li&gt;Finally, we&amp;rsquo;ll decrease rank of recommendations which users have seen many times. This is called implicit feedback, and data show that CTR is increased by 10% after using this method.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;performance-of-recommendation-hub&#34;&gt;Performance Of Recommendation Hub&lt;/h2&gt;
+
+&lt;p&gt;The recommendation hub is a personal recommendation page for each user. On this page users will see 6 carousels. The top carousel is &amp;ldquo;top recommendations&amp;rdquo;, which includes shows that we think users will prefer very much. After top recommendations, there are three carousels for three genres. These three genres are selected by analyzing users&amp;rsquo; historical preferences. The next carousel is bookmarks, which include shows that users have indicated they&amp;rsquo;d like to watch later. The last carousel is filled with shows that the user has already rated. This carousel is designed to collect more explicit feedback from users.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://web.archive.org/web/20170425043118/http://tech.hulu.com/assets/2011/09/graphic-6.jpg&#34; alt=&#34;recommendation hub&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;By performing an A/B test to compare our recommendation algorithms with two simple recommendation algorithms: Most Popular (which recommends the most popular shows to every user) and Highest Rated (which recommends highly-rated shows to each user). As shown in the above figure, experiment results show that the CTR of the algorithm is much higher than both simple methods.&lt;/p&gt;
+
+&lt;h2 id=&#34;lessons&#34;&gt;Lessons&lt;/h2&gt;
+
+&lt;p&gt;Each user behavior can reflect user preferences. In our system, we use a slew of user behaviors to come up with our recommendations. We&amp;rsquo;ve computed the CTR of recommendations originating from different types of behaviors. As shown in Fig 3, we can see that recommendations from every type of behavior can generate recommendations that will be clicked by users.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://web.archive.org/web/20170425014739/http://tech.hulu.com/assets/2011/09/graphic-7.jpg&#34; alt=&#34;recommendations coming from different types of behaviors&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Explicit Feedback data is more important than implicit feedback data.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;As shown in Fig 3, CTR of recommendations that originate from users&amp;rsquo; historically loved (voted 5 stars on shows) and liked (voted 4 stars on shows) behaviors is higher than CTR of recommendations that come from users&amp;rsquo; historical subscribe/watch/search behavior. So although the size our explicit feedback data is much smaller than implicit feedback data, they&amp;rsquo;re much more important.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Recent behaviors are much more important than old behaviors.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Novelty, Diversity, and offline accuracy are all important factors.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Most researchers focus on improving offline accuracy, such as RMSE, precision/recall. However, &lt;strong&gt;recommendation systems&lt;/strong&gt; that can accurately predict user behavior alone may not be a good enough for practical use. A good &lt;strong&gt;recommendation system&lt;/strong&gt; should consider multiple factors together. In our system, after considering novelty and diversity, the CTR has improved by more than 10%.&lt;/p&gt;
+
+&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+
+&lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Should Ai Intimidate Us?</title>
       <link>/post/shoulditintimidateus/</link>
       <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
@@ -78,7 +244,7 @@
 
 &lt;p&gt;All of these fears boil down to the fact that we just don’t know where Ai is going and how soon it will take us to get there. Technology makes surprising and unusual leaps and bounds in ways we never think it will and things we think will take a while don’t. On the other hand things we thought would be here sooner aren’t there yet. It’s just a situation where we have to wait and see what comes.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Thank you for reading my post.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -141,7 +307,7 @@
 
 &lt;p&gt;Ai bias is difficult to overcome. But it is a joint effort of corporations, researchers, lawmakers, media, and society. When many eyes are on the issues, we may have a lot more data, opinions about the data, and judgments passed, but with “common sense,” we come closer to equality, to human kindness, and to the protection of our constitutional liberties. That to me is an opportunity to exercise our democratic process.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Thank you for reading my post.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -189,7 +355,7 @@
 
 &lt;p&gt;Disclosure: I have no financial interest in any of these companies or products.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Thank you for reading my post.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -241,7 +407,7 @@
 
 &lt;p&gt;Paper isn’t dead, but work has gone digital… and you can make a note of that!&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Thank you for reading my post.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -279,7 +445,7 @@
 
 &lt;p&gt;While it’s quite possible that the worlds of Ai and blockchain are full of hype, there are actual, tangible, realistic ways in which the two emerging technologies can be used in ways that benefit each other and provide real outcomes for those looking to implement the technologies today in their environments.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Thank you for reading my post.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -405,7 +571,7 @@
 &lt;li&gt;&lt;p&gt;Communicate, communicate, communicate. It can’t be said enough! Companies should not only share the vision and roadmap for how Ai will be developed in the future but also how employees will be affected and the support systems that will be available to them to ensure a smooth transition for all&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;em&gt;Thank you for reading my post.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -461,7 +627,7 @@
 
 &lt;p&gt;If you’re looking for how and where your company should adopt artificial intelligence, look at your platforms. Look at the user experiences. Look at the point at which you’re trying to anticipate the stakeholder’s needs. This is the point where you should use Ai.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Thank you for reading my post.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -505,21 +671,21 @@
 
 &lt;p&gt;Prepare for the unknown, you can count on it!&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Thank you for reading my post.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
     </item>
     
     <item>
-      <title>My Poker Face is Better Than You Think</title>
+      <title>My Poker Face Is Better Than You Think</title>
       <link>/post/illusionoftransparency/</link>
       <pubDate>Mon, 05 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/illusionoftransparency/</guid>
       <description>
 
-&lt;p&gt;We tend to think that people can easily tell what we’re feeling and thinking. They can’t. Understanding the illusion of transparency bias can improve relationships, career performance, and more.&lt;/p&gt;
+&lt;p&gt;We tend to think that people can easily tell what we’re thinking and feeling. They can’t. Understanding the illusion of transparency bias can improve relationships, career performance, and more.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -593,7 +759,7 @@
 
 &lt;p&gt;The illusion of transparency explains why, even once you’re no longer a teenager, it still seems like few people understand you. It’s not that other people are ambivalent or confused. Your feelings just aren’t as clear as you think. Often you can’t see beyond the confines of your own head and neither can anyone else. It’s best to make allowances for that.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Thank you for reading my post.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -697,7 +863,7 @@
 
 &lt;p&gt;To make the best use of Hanlon’s razor, we must be sure to put it in context, taking into account logic, experience, and empirical evidence. Make it a part of your latticework of mental models, but do not be blind to behavior which is intended to be harmful.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Thank you for reading my post.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -743,7 +909,7 @@
 
 &lt;p&gt;The bottom line is making sure to work within a framework when building models instead of building in isolation and then figuring out monitoring - or even pushing to production - after the fact.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Thank you for reading my post.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -831,7 +997,7 @@
 
 &lt;p&gt;Externalities are everywhere. It’s easy to ignore the impact of our decisions—to recline an airplane seat, to stay late at the office, or drop litter. Eventually though, someone always ends up paying. Like the villagers in Hardin’s Tragedy of the Commons, who end up with no grass for their animals, we run the risk of ruining a good thing if we don’t take care of it. Keeping the three types of externalities in mind is a useful way to make decisions that won’t come back to bite us. Whenever we interact with a system, we should remember to ask Hardin’s question: and then what?&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Thank you for reading my post.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -909,7 +1075,7 @@
 &lt;p&gt;Psychologists have documented that when humans make quantitative estimates, their estimates may be heavily influenced by previous values of the item. For example, it is not an accident that a used car salesman always starts negotiating with a high price and then works down. The salesman is trying to get the consumer anchored on the high price so that when he offers a lower price, the consumer will estimate that the lower price represents a good value. Anchoring can cause investors to under-react to new information.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;em&gt;Thank you for reading my post.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -972,7 +1138,7 @@
 
 &lt;p&gt;&lt;a href=&#34;https://www.amazon.com/gp/product/0316510823/ref=as_li_qf_asin_il_tl?imprToken=B5.ZXPU0fgHxTMk1-h.OzQ&amp;amp;slotNum=1&amp;amp;ie=UTF8&amp;amp;tag=farnamstreet-20&amp;amp;creative=9325&amp;amp;linkCode=w61&amp;amp;creativeASIN=0316510823&amp;amp;linkId=16f546d7782f05334c10a6c44fd6de59&#34; target=&#34;_blank&#34;&gt;Truth: How the Many Sides to Every Story Shape Our Reality,&lt;/a&gt; goes on to explore partial truths, subjective truths, artificial truths, and unknown truths. It’s a terrific read for checking your own perspective on truth, and understanding how truth can be used to both inform and mislead you.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Thank you for reading my post.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -1002,6 +1168,8 @@
 
 &lt;p&gt;For this, we need to consciously add in a needed layer of probability awareness. What is it and how can I use it to my advantage?&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Fpv1.png&#34; alt=&#34;probabilistic thinking&#34; /&gt;&lt;/p&gt;
+
 &lt;p&gt;There are three important aspects of probability that we need to explain so we can integrate them into our thinking to get into the ballpark and improve our chances of catching the ball:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -1023,6 +1191,10 @@
 &lt;p&gt;It is important to remember that priors themselves are probability estimates. For each bit of prior knowledge, you are not putting it in a binary structure, saying it is true or not. You’re assigning it a probability of being true. Therefore, you can’t let your priors get in the way of processing new knowledge. In Bayesian terms, this is called the likelihood ratio or the Bayes factor. Any new information you encounter that challenges a prior simply means that the probability of that prior being true may be reduced. Eventually, some priors are replaced completely. This is an ongoing cycle of challenging and validating what you believe you know. When making uncertain decisions, it’s nearly always a mistake not to ask: What are the relevant priors? What might I already know that I can use to better understand the reality of the situation?&lt;/p&gt;
 
 &lt;p&gt;Now we need to look at &lt;strong&gt;fat-tailed curves:&lt;/strong&gt; Many of us are familiar with the bell curve, that nice, symmetrical wave that captures the relative frequency of so many things from height to exam scores. The bell curve is great because it’s easy to understand and easy to use. Its technical name is “normal distribution.” If we know we are in a bell curve situation, we can quickly identify our parameters and plan for the most likely outcomes.&lt;/p&gt;
+
+&lt;p&gt;Fat-tailed curves are different. Take a look:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Fpv2.png&#34; alt=&#34;probabilistic thinking&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;At first glance they seem similar enough. Common outcomes cluster together, creating a wave. The difference is in the tails. In a bell curve the extremes are predictable. There can only be so much deviation from the mean. In a fat-tailed curve there is no real cap on extreme events.&lt;/p&gt;
 
@@ -1070,7 +1242,7 @@
 
 &lt;p&gt;Successfully thinking in shades of probability means roughly identifying what matters, coming up with a sense of the odds, doing a check on our assumptions, and then making a decision. We can act with a higher level of certainty in complex, unpredictable situations. We can never know the future with exact precision. Probabilistic thinking is an extremely useful tool to evaluate how the world will most likely look so that we can effectively strategize&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Thank you for reading my post.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -1942,7 +2114,7 @@ Dosage 2   0.963851589 -3.798070  3.638070&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Quantifying the subjective and using Bayes’s theorem can help us clear out some of the relationship negativity in our lives.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Thank you for reading my post.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>

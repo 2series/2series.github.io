@@ -44,6 +44,10 @@
       <guid>/post/moviesrecommender/</guid>
       <description>
 
+&lt;p&gt;&lt;a href=&#34;https://movies-recommender-system.herokuapp.com/&#34; target=&#34;_blank&#34;&gt;Here&amp;rsquo;s the app accompanying this blog&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/malastare-ai/movies-app&#34; target=&#34;_blank&#34;&gt;The code&lt;/a&gt;&lt;/p&gt;
+
 &lt;p&gt;As the Internet gets more and more popular, information overload poses an important challenge for a lot of online services. With all of the information pouring out from the web, users can be overwhelmed and confused as to what, exactly, they should be paying attention. A &lt;em&gt;recommendation system&lt;/em&gt; provides a solution when a lot of useful content becomes too much of a good thing. A recommendation engine can help users discover information of interest by analyzing historical behaviors. More and more online companies — including Netflix, Google, Facebook, and many others — are integrating a &lt;em&gt;recommendation system&lt;/em&gt; into their services to help users discover and select information that may be of particular interest to them.&lt;/p&gt;
 
 &lt;hr /&gt;

@@ -400,10 +400,10 @@ prop_collections &amp;lt;- round(prop.table(collections, 2) * 100, 2)
     
     <item>
       <title>AI Augmenting Compliance - reference to nlp</title>
-      <link>/post/augmentingcompliance-1st-p/</link>
+      <link>/post/augmentingcompliance/</link>
       <pubDate>Sat, 30 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/augmentingcompliance-1st-p/</guid>
+      <guid>/post/augmentingcompliance/</guid>
       <description>
 
 &lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/3o72FevwKzP9DEhiog/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
@@ -442,7 +442,7 @@ prop_collections &amp;lt;- round(prop.table(collections, 2) * 100, 2)
 
 &lt;p&gt;Compliance never stands still. Businesses have to contend with a constantly evolving landscape, potentially across several regions. Ai can help to optimise the processing of these regulations and the actions they require, helping companies keep up to date. Companies that need to effectively comply with several differing regulations require a wide range of understanding across all parts of the business. The size, complexity and legacy systems of the business can be significant obstacles.&lt;/p&gt;
 
-&lt;p&gt;To mitigate this risk, companies can use &lt;a href=&#34;????????????????????????&#34; target=&#34;_blank&#34;&gt;NLP&lt;/a&gt; (natural language processing) to automate aspects of regulatory review, identifying appropriate changes contained in the regulation and then relaying potential impacts to the appropriate departments. For example, Ai could help geographically diverse companies determine whether changes in the US have an impact on their Singapore office.&lt;/p&gt;
+&lt;p&gt;To mitigate this risk, companies can use &lt;a href=&#34;https://2series.github.io/post/nlp-2nd-p/&#34; target=&#34;_blank&#34;&gt;NLP&lt;/a&gt; (natural language processing) to automate aspects of regulatory review, identifying appropriate changes contained in the regulation and then relaying potential impacts to the appropriate departments. For example, Ai could help geographically diverse companies determine whether changes in the US have an impact on their Singapore office.&lt;/p&gt;
 
 &lt;h3 id=&#34;humans-still-needed&#34;&gt;Humans still needed&lt;/h3&gt;
 
@@ -569,10 +569,10 @@ Behavioral harms, on the other hand, relate to manipulating the behavior of the 
     
     <item>
       <title>NLP applied in Deep Learning</title>
-      <link>/post/nlp-2nd-p/</link>
+      <link>/post/nlp-/</link>
       <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/nlp-2nd-p/</guid>
+      <guid>/post/nlp-/</guid>
       <description>
 
 &lt;h2 id=&#34;deep-learning-applied-to-natural-language-processing&#34;&gt;Deep Learning applied to natural language processing&lt;/h2&gt;

@@ -18,18 +18,15 @@
       <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/lendingclub/</guid>
-      <description>The code
-Lending Club is the world&amp;rsquo;s largest peer-to-peer lending company, offering a platform for borrowers and lenders to work directly with one another, eliminating the need for a financial intermediary like a bank.
-Removing the middle-man generally allows both borrowers and lenders to benefit from better interest rates than they otherwise would, which makes peer-to-peer lending an attractive proposition.
-This post will be the first in a series of posts analyzing the probability of default and expected return of Lending Club notes.</description>
+      <description></description>
     </item>
     
     <item>
       <title>AI Augmenting Compliance - reference to nlp</title>
-      <link>/post/augmentingcompliance-1st-p/</link>
+      <link>/post/augmentingcompliance/</link>
       <pubDate>Sat, 30 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/augmentingcompliance-1st-p/</guid>
+      <guid>/post/augmentingcompliance/</guid>
       <description>Forming a significant theme in several organisational technology strategies, AI can augment a gamut of business practices, including compliance Compliance is a must-do activity, not a nice-to-have. It is essential that companies extract maximum value from compliance processes, reducing the possibility of it being considered a cost centre.
 Technological innovation can help to lift some of the compliance burden. The level of technology you can realistically implement depends on how advanced the organisation is to start with.</description>
     </item>
@@ -46,10 +43,10 @@ While traditional software systems already have standard best practices such as 
     
     <item>
       <title>NLP applied in Deep Learning</title>
-      <link>/post/nlp-2nd-p/</link>
+      <link>/post/nlp-/</link>
       <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/nlp-2nd-p/</guid>
+      <guid>/post/nlp-/</guid>
       <description>Deep Learning applied to natural language processing  Language is the medium that humans use for conversing. Giving machines the ability to learn human language with natural language processing has given rise to several new products and possibilities that were not previously imaginable.
  NLP (Natural language processing) is one of the most important technologies present in the information age. Understanding complex language utterances is a crucial part of Ai.</description>
     </item>

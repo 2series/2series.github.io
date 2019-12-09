@@ -442,7 +442,7 @@ prop_collections &amp;lt;- round(prop.table(collections, 2) * 100, 2)
 
 &lt;p&gt;Compliance never stands still. Businesses have to contend with a constantly evolving landscape, potentially across several regions. Ai can help to optimise the processing of these regulations and the actions they require, helping companies keep up to date. Companies that need to effectively comply with several differing regulations require a wide range of understanding across all parts of the business. The size, complexity and legacy systems of the business can be significant obstacles.&lt;/p&gt;
 
-&lt;p&gt;To mitigate this risk, companies can use &lt;a href=&#34;https://2series.github.io/post/nlp-2nd-p/&#34; target=&#34;_blank&#34;&gt;NLP&lt;/a&gt; (natural language processing) to automate aspects of regulatory review, identifying appropriate changes contained in the regulation and then relaying potential impacts to the appropriate departments. For example, Ai could help geographically diverse companies determine whether changes in the US have an impact on their Singapore office.&lt;/p&gt;
+&lt;p&gt;To mitigate this risk, companies can use &lt;a href=&#34;https://2series.github.io/post/nlp/&#34; target=&#34;_blank&#34;&gt;NLP&lt;/a&gt; (natural language processing) to automate aspects of regulatory review, identifying appropriate changes contained in the regulation and then relaying potential impacts to the appropriate departments. For example, Ai could help geographically diverse companies determine whether changes in the US have an impact on their Singapore office.&lt;/p&gt;
 
 &lt;h3 id=&#34;humans-still-needed&#34;&gt;Humans still needed&lt;/h3&gt;
 

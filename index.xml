@@ -37,6 +37,583 @@
     </item>
     
     <item>
+      <title>Analyzing Historical Default Rates of Lending Club Notes</title>
+      <link>/post/lendingclub/</link>
+      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/lendingclub/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l4q87BzdPfCSEOvKM/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/2series/lending-club&#34; target=&#34;_blank&#34;&gt;The code&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Lending Club is the world&amp;rsquo;s largest peer-to-peer lending company, offering a platform for borrowers and lenders to work directly with one another, eliminating the need for a financial intermediary like a bank.&lt;/p&gt;
+
+&lt;p&gt;Removing the middle-man generally allows both borrowers and lenders to benefit from better interest rates than they otherwise would, which makes peer-to-peer lending an attractive proposition.&lt;/p&gt;
+
+&lt;p&gt;This post will be the first in a series of posts analyzing the probability of default and expected return of Lending Club notes. In this first post, I&amp;rsquo;ll cover some of the background on Lending Club, talk about getting and cleaning the loan data, and perform some exploratory analysis on the available variables and outcomes. In subsequent posts, I&amp;rsquo;ll work on developing a predictive model for determining the loan default probabilities. &lt;em&gt;Before investing, it is always important to fully understand the risks, and this post does not constitute investment advice in either Lending Club or in Lending Club notes.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;background-and-gathering-data&#34;&gt;Background and Gathering Data&lt;/h3&gt;
+
+&lt;p&gt;Lending Club makes all past borrower data freely available &lt;a href=&#34;https://www.lendingclub.com/info/download-data.action&#34; target=&#34;_blank&#34;&gt;on their website&lt;/a&gt; for review, and I will be referencing the 2012-2013 data throughout this post.&lt;/p&gt;
+
+&lt;p&gt;To download the 2012-2013 data from Lending Club:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-R&#34;&gt;# Download and extract data from Lending Club
+if (!file.exists(&amp;quot;LoanStats3b.csv&amp;quot;)) {
+    fileUrl &amp;lt;- &amp;quot;https://resources.lendingclub.com/LoanStats3b.csv.zip&amp;quot;
+    download.file(fileUrl, destfile = &amp;quot;LoanStats3b.csv.zip&amp;quot;, method=&amp;quot;curl&amp;quot;)
+    dateDownloaded &amp;lt;- date()
+    unzip(&amp;quot;LoanStats3b.csv.zip&amp;quot;)
+}
+
+# Read in Lending Club Data
+if (!exists(&amp;quot;full_dataset&amp;quot;)) {
+  full_dataset &amp;lt;- read.csv(file=&amp;quot;LoanStats3b.csv&amp;quot;, header=TRUE, skip = 1)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For each loan in the file, Lending Club provides an indication of the current loan status. Because many of the loan statuses represent similar outcomes, I&amp;rsquo;ve mapped them from Lending Club&amp;rsquo;s 7 down to only 2, simplifying the problem of classifying loan outcomes without much loss of information useful for investment decisions. My two outcomes &amp;laquo;Performing&amp;raquo; and &amp;laquo;NonPerforming&amp;raquo; seek to separate those loans likely to pay in full from those likely to default. Below I include a table summarizing the mappings:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Floanstatuses.png&#34; alt=&#34;Loan Statuses&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now that we&amp;rsquo;ve loaded the data, let&amp;rsquo;s extract the fields we need and do some cleaning. We can eliminate any fields that would not have been known at the time of issuance, as we&amp;rsquo;ll be trying to make decisions on loan investments using available pre-issuance data. We can also eliminate a few indicative data fields that are repetitive or too granular to be analyzed, and make some formatting changes to get the data ready for analysis. Finally, we&amp;rsquo;ll map the loan statuses to the binary &amp;laquo;Performing&amp;raquo; and &amp;laquo;NonPerforming&amp;raquo; classifiers as discussed above.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-R&#34;&gt;# Select variables to keep and subset the data
+variables &amp;lt;- c(&amp;quot;id&amp;quot;, &amp;quot;loan_amnt&amp;quot;, &amp;quot;term&amp;quot;, &amp;quot;int_rate&amp;quot;, &amp;quot;installment&amp;quot;, &amp;quot;grade&amp;quot;, 
+               &amp;quot;sub_grade&amp;quot;, &amp;quot;emp_length&amp;quot;, &amp;quot;home_ownership&amp;quot;, &amp;quot;annual_inc&amp;quot;, 
+               &amp;quot;is_inc_v&amp;quot;, &amp;quot;loan_status&amp;quot;, &amp;quot;purpose&amp;quot;, &amp;quot;addr_state&amp;quot;, &amp;quot;dti&amp;quot;, 
+               &amp;quot;delinq_2yrs&amp;quot;, &amp;quot;earliest_cr_line&amp;quot;, &amp;quot;inq_last_6mths&amp;quot;, 
+               &amp;quot;mths_since_last_delinq&amp;quot;, &amp;quot;mths_since_last_record&amp;quot;, &amp;quot;open_acc&amp;quot;, 
+               &amp;quot;pub_rec&amp;quot;, &amp;quot;revol_bal&amp;quot;, &amp;quot;revol_util&amp;quot;, &amp;quot;total_acc&amp;quot;, 
+               &amp;quot;initial_list_status&amp;quot;, &amp;quot;collections_12_mths_ex_med&amp;quot;, 
+               &amp;quot;mths_since_last_major_derog&amp;quot;)
+train &amp;lt;- full_dataset[variables]
+
+
+# Reduce loan status to binary &amp;quot;Performing&amp;quot; and &amp;quot;NonPerforming&amp;quot; Measures:
+train$new_status &amp;lt;- factor(ifelse(train$loan_status %in% c(&amp;quot;Current&amp;quot;, &amp;quot;Fully Paid&amp;quot;), 
+                                  &amp;quot;Performing&amp;quot;, &amp;quot;NonPerforming&amp;quot;))
+
+# Convert a subset of the numeric variables to factors
+train$delinq_2yrs &amp;lt;- factor(train$delinq_2yrs)
+train$inq_last_6mths &amp;lt;- factor(train$inq_last_6mths)
+train$open_acc &amp;lt;- factor(train$open_acc)
+train$pub_rec &amp;lt;- factor(train$pub_rec)
+train$total_acc &amp;lt;- factor(train$total_acc)
+
+# Convert interest rate numbers to numeric (strip percent signs)
+train$int_rate &amp;lt;- as.numeric(sub(&amp;quot;%&amp;quot;, &amp;quot;&amp;quot;, train$int_rate))
+train$revol_util &amp;lt;- as.numeric(sub(&amp;quot;%&amp;quot;, &amp;quot;&amp;quot;, train$revol_util))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;analyzing-predictive-power-of-variables&#34;&gt;Analyzing Predictive Power of Variables&lt;/h3&gt;
+
+&lt;h4 id=&#34;lending-club-grades-and-subgrades&#34;&gt;Lending Club Grades and Subgrades&lt;/h4&gt;
+
+&lt;p&gt;All types of borrowers are using peer-to-peer lending for a variety of purposes. This raises the question of how to determine appropriate interest rates given the varying levels of risk across borrowers. Luckily for us, Lending Club handles this for us. They use an algorithm to determine a borrower&amp;rsquo;s level of risk, and then set the interest rates according to the level of risk. Specifically, Lending Club maps borrowers to a series of grades [A-F] and subgrades [A-F][1-5] based on their risk profile.  Loans in each subgrade are then given appropriate interest rates. The specific rates will change over time according to market conditions, but generally they will fall within a tight range for each subgrade.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s take a look at the proportions of performing and non-performing loans by Lending Club&amp;rsquo;s provided grades:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-R&#34;&gt;by_grade &amp;lt;- table(train$new_status, train$grade, exclude=&amp;quot;&amp;quot;)
+prop_grade &amp;lt;- prop.table(by_grade,2)
+barplot(prop_grade, main = &amp;quot;Loan Performance by Grade&amp;quot;, xlab = &amp;quot;Grade&amp;quot;, 
+        col=c(&amp;quot;darkblue&amp;quot;,&amp;quot;red&amp;quot;), legend = rownames(prop_grade))
+
+by_subgrade &amp;lt;- table(train$new_status, train$sub_grade, exclude=&amp;quot;&amp;quot;)
+prop_subgrade &amp;lt;- prop.table(by_subgrade,2)
+barplot(prop_subgrade, main = &amp;quot;Loan Performance by Sub Grade&amp;quot;, xlab = &amp;quot;SubGrade&amp;quot;,
+        col=c(&amp;quot;darkblue&amp;quot;,&amp;quot;red&amp;quot;),legend = rownames(prop_subgrade))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can see from the chart below that rates of default steadily increase as the loan grades worsen from A to G, as expected.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Fbygrade.png&#34; alt=&#34;Performance by Grade&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We see a similar pattern for the subgrades, although the trend begins to weaken across the G1-G5 subgrades. On further investigation, I found that there are only a few hundred data points for each of these subgrades, in contrast to thousands of data points for the A-F subgrades, and these differences are not large enough to be significant.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Fbysubgrade.png&#34; alt=&#34;Performance by Subgrade&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Overall, it looks like the Lending Club grading system does a pretty great job of predicting ultimate loan performance, but let&amp;rsquo;s check out some of the other available data to see what other trends we might be able to find in the data.&lt;/p&gt;
+
+&lt;h4 id=&#34;home-ownership&#34;&gt;Home Ownership&lt;/h4&gt;
+
+&lt;p&gt;The Lending Club data has 3 main classifications for home ownership: mortgage (outstanding mortgage payment), own (home is owned outright), and rent. I would expect those with mortgages to default less frequently than those who rent, both because there are credit requirements to get a mortgage and because those with mortgages might tend to be more established. Let&amp;rsquo;s see whether this is actually the case:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-R&#34;&gt;ownership_status &amp;lt;- table(train$new_status,train$home_ownership,
+                     exclude=c(&amp;quot;OTHER&amp;quot;,&amp;quot;NONE&amp;quot;,&amp;quot;&amp;quot;))
+
+prop_ownership &amp;lt;- round(prop.table(ownership_status, 2) * 100, 2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Fownershipstatus.png&#34; alt=&#34;Ownership Status&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So those with mortgages default the least, followed by those who own their homes outright and finally those who rent.  The differences here are much smaller than when comparing different grades, but they are still notable. Let&amp;rsquo;s verify whether these are statistically significant:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-R&#34;&gt;# Calculate the counts of mortgage, owners, and renters:
+count_m &amp;lt;- sum(train$home_ownership == &amp;quot;MORTGAGE&amp;quot;)
+count_o &amp;lt;- sum(train$home_ownership == &amp;quot;OWN&amp;quot;)
+count_r &amp;lt;- sum(train$home_ownership == &amp;quot;RENT&amp;quot;)
+
+# Calculate the counts of default for mortgages, owners, and renters:
+dflt_m &amp;lt;- sum(train$home_ownership == &amp;quot;MORTGAGE&amp;quot; &amp;amp; train$new_status == &amp;quot;NonPerforming&amp;quot;)
+dflt_o &amp;lt;- sum(train$home_ownership == &amp;quot;OWN&amp;quot; &amp;amp; train$new_status == &amp;quot;NonPerforming&amp;quot;)
+dflt_r &amp;lt;- sum(train$home_ownership == &amp;quot;RENT&amp;quot; &amp;amp; train$new_status == &amp;quot;NonPerforming&amp;quot;)
+
+# 1-sided proportion test for mortgage vs owners
+prop.test(c(dflt_m,dflt_o), c(count_m,count_o), alternative = &amp;quot;less&amp;quot;)
+
+# 1-sided proportion test for owners vs renters
+prop.test(c(dflt_o,dflt_r), c(count_o,count_r), alternative = &amp;quot;less&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The p-value of the first test was $$6.377*10^-12$$ and the p-value for the second test was $$3.787*10^-8$$, indicating that the differences in both of these proportions are very statistically significant. Although the differences in the default probabilities are somewhat small, on the order of 1.5%, the number of data points is in the high tens of thousands, which contributes to the significance. Given this result, we can conclude that similar differences in default probabilities for other factors should also be significant, so long as a similar quantity of data points is available.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; for the remaining analysis, the code for each variable becomes a bit repetitive, so in the interest of minimizing the length of this post I will present only the results. If you are interested to see the actual code, you will find it in the appendix at the bottom of this post. You can also read the &lt;a href=&#34;https://github.com/2series/lending-club&#34; target=&#34;_blank&#34;&gt;complete code on Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;debt-to-income-ratio&#34;&gt;Debt to Income Ratio&lt;/h4&gt;
+
+&lt;p&gt;Debt to income ratio indicates the ratio between a borrowers monthly debt payment and monthly income. This was originally formatted as a continuous numerical variable, but I bucketed it into 5% increments to better visualize the effect on loan performance. As we might expect, there is a steady increase in the percentage of non-performing loans as DTI increases, reflecting the constraints that increased debt put onto borrower ability to repay:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Fdti.png&#34; alt=&#34;Debt to Income Ratio&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;revolving-utilization-percent&#34;&gt;Revolving Utilization Percent&lt;/h4&gt;
+
+&lt;p&gt;Revolving utilization percent is the portion of a borrower&amp;rsquo;s revolving credit limit (i.e. credit card limit) that they actually are using at any given point. For example, if a borrower&amp;rsquo;s total credit limit is UDS15,000 and their outstanding balance is USD1,500 their utilization rate would be 10%. We can see below that the percentage of non-performing loans steadily increases with utilization rate.&lt;/p&gt;
+
+&lt;p&gt;Borrowers with high utilization rates are more likely to have high fixed credit card payments which might affect their ability to repay their loans. Also, a high utilization rate often reflects a lack of other financing options, with borrowers turning to peer-to-peer lending as a last resort. This is in contrast to those borrowers with low utilization rates, who may be using peer-to-peer lending opportunistically to pursue lower interest payments.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Futlization.png&#34; alt=&#34;Revolving Utilization&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;loan-purpose&#34;&gt;Loan Purpose&lt;/h4&gt;
+
+&lt;p&gt;Loan purpose refers to the borrower&amp;rsquo;s stated reason for taking out the loan.  We see below that credit card and debt consolidation tend to have better performance, along with home improvement, cars, and other major purchases. Luxury spending on vacations and weddings and unexpected medical and moving expenses generally have worse performance. Small business loans perform very poorly, perhaps reflecting the fact that those borrowers unable to get bank financing for their small business may have poor credit or business plans that aren&amp;rsquo;t fully developed.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Floanpurpose.png&#34; alt=&#34;Loan Purpose&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;inquiries-in-the-past-6-months&#34;&gt;Inquiries in the Past 6 Months&lt;/h4&gt;
+
+&lt;p&gt;Number of inquiries refers to the number of times a borrower&amp;rsquo;s credit report is accessed by financial institutions, which generally happens when the borrower is seeking a loan or credit line. More inquiries leads to higher rates of nonperformance, perhaps indicating that increased borrower desperation to access credit might highlight poor financial health. Interestingly, we see an increase in loan performance in the 4+ inquiries bucket. These high levels of inquiries may reflect financially savvy borrowers shopping around for mortgage loans or credit cards.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Finquiries.png&#34; alt=&#34;Inquiries&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;number-of-total-accounts&#34;&gt;Number of Total Accounts&lt;/h4&gt;
+
+&lt;p&gt;A larger number of total accounts indicates a longer credit history and a high level of trust between the borrower and financial institutions, both of which point to financial health and lower rates of default. We see steady increases in the rates of performing loans as the number of accounts increases from 7 to around 20, but diminishing effects after that.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Ftotalaccounts.png&#34; alt=&#34;Total Accounts&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;annual-income&#34;&gt;Annual Income&lt;/h4&gt;
+
+&lt;p&gt;As we might expect, the higher a borrower&amp;rsquo;s annual income the more likely they are to be able to repay their loans.  Below I&amp;rsquo;ve broken the income data into quintiles, and we can see that those in the top 20% of annual incomes (USD95000 +) are approximately 6% more likely to be performing borrowers than those in the bottom 20% (less than USD42000).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Fannualincome.png&#34; alt=&#34;Annual Income&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;loan-amount&#34;&gt;Loan Amount&lt;/h4&gt;
+
+&lt;p&gt;As the amount borrowed increases, we see increasing rates of nonperforming loans. The difference between the first two buckets is only around 1% (and the intra-bucket differences are very small), but we see a larger decrease in loan quality in the USD30,000 - USD35,000 bucket. Noting that the Lending Club maximum loan is USD35,000, this may indicate particularly desperate borrowers who are maximizing their possible borrowing.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Floanamount.png&#34; alt=&#34;Loan Amount&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;employment-length&#34;&gt;Employment Length&lt;/h4&gt;
+
+&lt;p&gt;We&amp;rsquo;d expect those who have been employed longer to be more stable, and thus less likely to default. Looking into the data, 3 key groups emerged: the unemployed, those employed less than 10 years, and those employed for 10+ years:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Femploymentlength.png&#34; alt=&#34;Employment Length&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;delinquencies-in-the-past-2-years&#34;&gt;Delinquencies in the Past 2 Years&lt;/h4&gt;
+
+&lt;p&gt;The number of delinquencies in the past 2 years indicates the number of times a borrower has been behind on payments. I combined all values 3 or larger into a single bucket for analysis, as this was a long right-tailed distribution. Interestingly, those with a single delinquency seem to perform more often than those with none. In general however, the differences between 0, 1, and 2 delinquencies are relatively small, while those with greater than 3 show a significant decrease in performance.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Fdelinquencies.png&#34; alt=&#34;Delinquencies&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;number-of-open-accounts&#34;&gt;Number of Open Accounts&lt;/h4&gt;
+
+&lt;p&gt;Unlike the number of total accounts above, which we saw to be quite significant, the number of open accounts variable was not a particularly strong indicator:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Fopenaccounts.png&#34; alt=&#34;Open Accounts&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;verified-income-status&#34;&gt;Verified Income Status&lt;/h4&gt;
+
+&lt;p&gt;Lending Club categorizes income verification into three statuses: not verified, source verified, and verified. Verified income means that Lending Club independently verified both the source and size of reported income, source verified means that they verified only the source of the income, and not verified means there was no independent verification of the reported values. Interestingly, we see that as income verification increases, the loan performance actually worsens. During the mortgage crisis, non-verified &amp;laquo;no-doc&amp;raquo; loans were among the worst performing, so the reversal here is interesting. This likely reflects the fact that Lending Club only verifies those borrowers who seem to be of worse credit quality, so there may be &lt;a href=&#34;http://en.wikipedia.org/wiki/Confounding&#34; target=&#34;_blank&#34;&gt;confounding variables&lt;/a&gt; present here.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Fverifiedincome.png&#34; alt=&#34;Verified Income&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;number-of-public-records&#34;&gt;Number of Public Records&lt;/h4&gt;
+
+&lt;p&gt;Public records generally refer to bankruptcies, so we would expect those with more public records to show worse performance. Actually, performance increases as we move from 0 to 1 to 2 public records. This possibly indicates stricter lending standards from Lending Club on those borrowers with public records:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Fpublicrecords.png&#34; alt=&#34;Public Records&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;variables-that-were-not-significant&#34;&gt;Variables that were not significant:&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Months since last delinquency&lt;/li&gt;
+&lt;li&gt;Months since last major derogatory note&lt;/li&gt;
+&lt;li&gt;Collections previous 12 months (too few data points on which to make any conclusions or form predictions)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;summary&#34;&gt;Summary&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Lending club grade and subgrade variables provide the most predictive power for determining expected loan performance.&lt;/li&gt;
+&lt;li&gt;A large number of the other variables also provide strong indications of expected performance.  Among the most telling are debt-to-income ratio, credit utilization rate, home ownership status, loan purpose, annual income, inquiries in the past 6 months, and number of total accounts.&lt;/li&gt;
+&lt;li&gt;Verified income status and number of public records show results opposite from what we would expect. This is likely due to increased standards on borrowers with poorer credit history, so all else equal we see outperformance in these loans.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We&amp;rsquo;ve gotten a good understanding of the available borrower data, and we&amp;rsquo;ve seen which variables give the best indiciations of future loan performance. In the next post, We&amp;rsquo;ll work on developing a predictive model for projecting the probability of default for newly issued loans.&lt;/p&gt;
+
+&lt;h2 id=&#34;appendix&#34;&gt;Appendix&lt;/h2&gt;
+
+&lt;p&gt;Below I&amp;rsquo;ve included the code used to generate the numbers in the tables above. You can also find the &lt;a href=&#34;https://github.com/2series/lending-club&#34; target=&#34;_blank&#34;&gt;complete code available on Github&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-R&#34;&gt;### Explore the relationships between default rates and factor levels
+### I take a few different approaches, but the key idea is the same
+
+
+# Home Ownership (exclude status &amp;quot;OTHER&amp;quot; and &amp;quot;NONE&amp;quot; because of few data points)
+home_ownership &amp;lt;- table(train$new_status,train$home_ownership,
+                     exclude=c(&amp;quot;OTHER&amp;quot;,&amp;quot;NONE&amp;quot;,&amp;quot;&amp;quot;))
+prop_home_ownership &amp;lt;- round(prop.table(home_ownership, 2) * 100, 2)
+
+# Test for significance of the difference in proportions for home ownership factors
+# Calculate the counts of mortgage, owners, and renters:
+count_m &amp;lt;- sum(train$home_ownership == &amp;quot;MORTGAGE&amp;quot;)
+count_o &amp;lt;- sum(train$home_ownership == &amp;quot;OWN&amp;quot;)
+count_r &amp;lt;- sum(train$home_ownership == &amp;quot;RENT&amp;quot;)
+
+# Calculate the counts of default for mortgages, owners, and renters:
+dflt_m &amp;lt;- sum(train$home_ownership == &amp;quot;MORTGAGE&amp;quot; &amp;amp; train$new_status == &amp;quot;NonPerforming&amp;quot;)
+dflt_o &amp;lt;- sum(train$home_ownership == &amp;quot;OWN&amp;quot; &amp;amp; train$new_status == &amp;quot;NonPerforming&amp;quot;)
+dflt_r &amp;lt;- sum(train$home_ownership == &amp;quot;RENT&amp;quot; &amp;amp; train$new_status == &amp;quot;NonPerforming&amp;quot;)
+
+# 1-sided proportion test for mortgage vs owners
+prop.test(c(dflt_m,dflt_o), c(count_m,count_o), alternative = &amp;quot;less&amp;quot;)
+# 1-sided proportion test for owners vs renters
+prop.test(c(dflt_o,dflt_r), c(count_o,count_r), alternative = &amp;quot;less&amp;quot;)
+
+
+# Debt to Income Ratio (break into factors at 5% levels)
+train$new_dti &amp;lt;- cut(train$dti, breaks = c(0, 5, 10, 15, 20, 25, 30, 35))
+dti &amp;lt;- table(train$new_status, train$new_dti)
+prop_dti &amp;lt;- round(prop.table(dti, 2) * 100, 2)
+
+
+# Revolving Utilization (break into 0 - 20, then factors of 10, then 80+)
+train$new_revol_util &amp;lt;- cut(train$revol_util, breaks = c(0, 20, 30, 40, 50, 60, 70, 80, 141))
+revol_util &amp;lt;- table(train$new_status, train$new_revol_util)
+prop_revol_util &amp;lt;- round(prop.table(revol_util, 2) * 100, 2)
+
+
+# Loan Purpose (exclude renewable energy because so few data points)
+purpose &amp;lt;- table(train$new_status,train$purpose, exclude = c(&amp;quot;renewable_energy&amp;quot;,&amp;quot;&amp;quot;))
+prop_purpose &amp;lt;- round(prop.table(purpose, 2) * 100, 2)
+
+
+# Inquiries in the last 6 months (combine factor levels for any &amp;gt; 4)
+levels(train$inq_last_6mths) &amp;lt;- c(&amp;quot;0&amp;quot;, &amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;, rep(&amp;quot;4+&amp;quot;, 5))
+inq_last_6mths &amp;lt;- table(train$new_status, train$inq_last_6mths)
+prop_inq_last_6mths &amp;lt;- round(prop.table(inq_last_6mths, 2) * 100, 2)
+
+
+# Number of total accounts (combine factor levels into groups of 5, then 23+)
+levels(train$total_acc) &amp;lt;- c(rep(&amp;quot;&amp;lt;= 7&amp;quot;, 5), rep(&amp;quot;8 - 12&amp;quot;, 5), 
+                             rep(&amp;quot;13 - 17&amp;quot;, 5), rep(&amp;quot;18 - 22&amp;quot;, 5), 
+                             rep(&amp;quot;23+&amp;quot;, 68))
+total_acc &amp;lt;- table(train$new_status, train$total_acc)
+prop_total_acc &amp;lt;- round(prop.table(total_acc, 2) * 100, 2)
+
+
+# Annual Income (factor into quantiles of 20%)
+train$new_annual_inc &amp;lt;- cut(train$annual_inc,
+                            quantile(train$annual_inc, na.rm = TRUE,
+                                     probs = c(0, 0.2, 0.4, 0.6, 0.8, 1)))
+annual_inc &amp;lt;- table(train$new_status, train$new_annual_inc)
+prop_annual_inc &amp;lt;- round(prop.table(annual_inc, 2) * 100, 2)
+
+
+# Loan Amount (break into &amp;lt; 15k, 15k - 30k, 30k - 35k)
+train$new_loan_amnt &amp;lt;- cut(train$loan_amnt,c(0, 15000, 30000, 35000))
+loan_amnt &amp;lt;- table(train$new_status, train$new_loan_amnt)
+prop_loan_amnt &amp;lt;- round(prop.table(loan_amnt, 2) * 100, 2)
+
+
+# Employment Length (combine factor levels for better comparison)
+levels(train$emp_length) &amp;lt;- c(&amp;quot;None&amp;quot;, &amp;quot;&amp;lt; 10 years&amp;quot;, &amp;quot;&amp;lt; 10 years&amp;quot;, &amp;quot;10+ years&amp;quot;,
+                              rep(&amp;quot;&amp;lt; 10 years&amp;quot;, 8), &amp;quot;None&amp;quot;)
+emp_length &amp;lt;- table(train$new_status, train$emp_length)
+prop_emp_length &amp;lt;- round(prop.table(emp_length, 2) * 100, 2)
+
+
+# Delinquencies in the past 2 Years (combine factors levels for any &amp;gt; 3)
+levels(train$delinq_2yrs) &amp;lt;- c(&amp;quot;0&amp;quot;, &amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, rep(&amp;quot;3+&amp;quot;, 17))
+delinq_2yrs &amp;lt;- table(train$new_status, train$delinq_2yrs)
+prop_delinq_2yrs &amp;lt;- round(prop.table(delinq_2yrs, 2) * 100, 2)
+
+
+# Number of Open Accounts (combine factor levels into groups of 5)
+levels(train$open_acc) &amp;lt;- c(rep(&amp;quot;&amp;lt;= 5&amp;quot;, 6), rep(&amp;quot;6 - 10&amp;quot;, 5), 
+                            rep(&amp;quot;11 - 15&amp;quot;, 5), rep(&amp;quot;16+&amp;quot;, 38))
+open_acc &amp;lt;- table(train$new_status, train$open_acc)
+prop_open_acc &amp;lt;- round(prop.table(open_acc, 2) * 100, 2)
+
+
+# Verified income status
+is_inc_v &amp;lt;- table(train$new_status, train$is_inc_v, exclude = &amp;quot;&amp;quot;)
+prop_is_inc_v &amp;lt;- round(prop.table(is_inc_v, 2) * 100, 2)
+
+
+# Number of Public Records (break factor levels into 0, 1, 2+)
+levels(train$pub_rec) &amp;lt;- c(&amp;quot;0&amp;quot;, &amp;quot;1&amp;quot;, rep(&amp;quot;2+&amp;quot;, 12))
+pub_rec &amp;lt;- table(train$new_status, train$pub_rec)
+prop_pub_rec &amp;lt;- round(prop.table(pub_rec, 2) * 100, 2)
+
+
+# Months Since Last Record (compare blank vs. non-blank)
+na_last_record &amp;lt;- sum(is.na(train$mths_since_last_record))
+not_na_last_record &amp;lt;- sum(!is.na(train$mths_since_last_record))
+na_last_rec_dflt &amp;lt;- sum(is.na(train$mths_since_last_record) &amp;amp; train$new_status == &amp;quot;NonPerforming&amp;quot;)
+not_na_last_rec_dflt &amp;lt;- sum(!is.na(train$mths_since_last_record) &amp;amp; train$new_status == &amp;quot;NonPerforming&amp;quot;)
+
+not_na_last_rec_pct_dflt &amp;lt;- not_na_last_rec_dflt / not_na_last_record
+na_last_rec_pct_dflt &amp;lt;- na_last_rec_dflt/na_last_record
+
+
+# Months since last delinquency (break factor levels in increments of 10)
+train$mths_since_last_delinq &amp;lt;- cut(train$mths_since_last_delinq, 
+                                   breaks = c(0, 10, 20, 30, 40, 50, 60, 156))
+mths_since_last_delinq &amp;lt;- table(train$new_status, train$mths_since_last_delinq)
+prop_mths_since_last_delinq &amp;lt;- round(prop.table(mths_since_last_delinq, 2) * 100, 2)
+
+
+# Collections last 12 months
+collections &amp;lt;- table(train$new_status, train$collections_12_mths_ex_med)
+prop_collections &amp;lt;- round(prop.table(collections, 2) * 100, 2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>AI Augmenting Compliance - reference to nlp</title>
+      <link>/post/augmentingcompliance-1st-p/</link>
+      <pubDate>Sat, 30 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/augmentingcompliance-1st-p/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/3o72FevwKzP9DEhiog/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;forming-a-significant-theme-in-several-organisational-technology-strategies-ai-can-augment-a-gamut-of-business-practices-including-compliance&#34;&gt;Forming a significant theme in several organisational technology strategies, AI can augment a gamut of business practices, including compliance&lt;/h2&gt;
+
+&lt;p&gt;Compliance is a must-do activity, not a nice-to-have. It is essential that companies extract maximum value from compliance processes, reducing the possibility of it being considered a cost centre.&lt;/p&gt;
+
+&lt;p&gt;Technological innovation can help to lift some of the compliance burden. The level of technology you can realistically implement depends on how advanced the organisation is to start with. One company’s moonshot could be another’s business as usual. Assessing the starting point is just as important as considering the benefits and end goal.&lt;/p&gt;
+
+&lt;h3 id=&#34;regtech-ai-and-the-future-of-compliance&#34;&gt;RegTech, AI and the future of compliance&lt;/h3&gt;
+
+&lt;p&gt;This is the question that the burgeoning RegTech (regulatory technology) industry is seeking to answer. Ai is typically at the forefront. RegTech partly focuses on improving the efficiency and effectiveness of existing processes. As part of that improvement, organizations are using Ai, machine learning and RPA (robotic process automation) to smooth the integration and processes between new RegTech solutions, existing legacy compliance solutions and legacy platforms.&lt;/p&gt;
+
+&lt;p&gt;Why look to Ai for help? Recent regulations, such as GDPR or PSD2, are handed down in the form of large and extremely dense documentation (the UK government’s guidance document for GDPR alone is 201 pages). Identifying the appropriate actions mandated by these lengthy documents requires a great deal of cross-referencing, prior knowledge of historical organisational actions, and knowledge of the relevant organisational systems and processes. What’s more, several regulations attract fines or corrective actions if not applied properly (like the infamous “4% of company turnover” penalty attached to GDPR).&lt;/p&gt;
+
+&lt;p&gt;In short, the practical application of regulations currently relies on human interpretation and subsequent deployment of a solution, with heavy penalties for noncompliance. This is where Ai can help, reducing the workload involved and improving accuracy. Here are three key examples of how Ai can help companies turn compliance into a value-added activity.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1.Reducing the risk of nonconformity&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Following the deployment of compliance processes, there is often residual risk. This can be as a result of unforseen gaps in compliance processes, or unexpected occurrences that become apparent when operating at scale.&lt;/p&gt;
+
+&lt;p&gt;That’s partly because there are usually a lot of steps and processes to be carried out during the data collation stage of compliance programmes. RPA can help reduce administrative load associated with these processes that include a high degree of repetition – for example, copying data from one system to another. Ai can then help process cross-organisational documentation, combining internal and external sources and appropriately matching where necessary.&lt;/p&gt;
+
+&lt;p&gt;Ai can also help to reduce companies’ risk of noncompliance with, for example, privacy regulations. Furthermore, using Ai techniques, organisations can automate &lt;a href=&#34;https://support.sas.com/content/dam/SAS/support/en/books/free-books/artificial-intelligence-with-sas.pdf&#34; target=&#34;_blank&#34;&gt;transforming and enhancing&lt;/a&gt; data. Intelligent automation allows companies to carry out processes with a higher degree of accuracy.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2.Improving process efficiency&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Inefficient processes can also hinder compliance. For example, automated systems that detect suspicious transactions for AML (anti-money laundering) processes are sometimes not always as accurate as they could be. A &lt;a href=&#34;https://www.reuters.com/article/bc-finreg-laundering-detecting/anti-money-laundering-controls-failing-to-detect-terrorists-cartels-and-sanctioned-states-idUSKCN1GP2NV&#34; target=&#34;_blank&#34;&gt;report&lt;/a&gt; highlighted that 95% of flagged transactions are closed in the first stage of review. Effectively, investigators spend most of their day looking at poor quality cases.&lt;/p&gt;
+
+&lt;p&gt;Use of an Ai hybrid approach to detection ensures there are fewer, higher quality alerts produced. Furthermore, it is possible to risk-rank cases which are flagged for investigation, speeding up the interaction and relegating lower-risk transactions. Although Ai forms an underlying principle across most modern detection systems, maintenance is key to managing effective performance.&lt;/p&gt;
+
+&lt;p&gt;AI can also be used to bolster AML and fraud measures more widely. For example, applying AI to techniques such as text mining, anomaly detection and advanced analytics can &lt;a href=&#34;https://www.sas.com/content/dam/SAS/en_gb/doc/other1/pointofview/trade-finance-fraud.pdf&#34; target=&#34;_blank&#34;&gt;improve trade finance monitoring.&lt;/a&gt; This, in turn, can improve the regularity for document review and consignment checking, improving the validation rates of materials as they cross borders.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3.Keeping up with regulatory changes&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Compliance never stands still. Businesses have to contend with a constantly evolving landscape, potentially across several regions. Ai can help to optimise the processing of these regulations and the actions they require, helping companies keep up to date. Companies that need to effectively comply with several differing regulations require a wide range of understanding across all parts of the business. The size, complexity and legacy systems of the business can be significant obstacles.&lt;/p&gt;
+
+&lt;p&gt;To mitigate this risk, companies can use &lt;a href=&#34;????????????????????????&#34; target=&#34;_blank&#34;&gt;NLP&lt;/a&gt; (natural language processing) to automate aspects of regulatory review, identifying appropriate changes contained in the regulation and then relaying potential impacts to the appropriate departments. For example, Ai could help geographically diverse companies determine whether changes in the US have an impact on their Singapore office.&lt;/p&gt;
+
+&lt;h3 id=&#34;humans-still-needed&#34;&gt;Humans still needed&lt;/h3&gt;
+
+&lt;p&gt;It’s important to note at this point that Ai and RegTech are not expected to widely replace humans. We are seeing early Ai entries in the RegTech space, but they’re primarily helping with lower-hanging fruit and repetitive tasks. Ai is primarily enhancing the work humans do, making them more effective in their roles.&lt;/p&gt;
+
+&lt;p&gt;Ai does not come without some considerations, however. There is a great deal of focus and scrutiny on associated possible bias in Ai deployments. Other discussions are exploring the transparency and governance of applications and questions around who owns generated IP. As a result, it’s essential that Ai works closely with humans, enhancing activities and balancing an appropriate level of manual oversight.&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;Ai is augmenting compliance practices by providing faster document review, deeper fraud prevention measures and greater contextual insight. It is also reducing noise in high-transaction environments and lightening the documentary burden on staff. From the start of the regulatory review to the end of the compliance process, Ai holds part of the overall solution to a more efficient and valuable compliance function.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Privacy &amp; Security in the Age of Machine Learning</title>
+      <link>/post/privacysecurity/</link>
+      <pubDate>Fri, 29 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/privacysecurity/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/3ohc11UiN3MV4SmwNO/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;can-we-adequately-protect-the-privacy-and-security-of-data-used-in-machine-learning&#34;&gt;Can we adequately protect the privacy and security of data used in machine learning?&lt;/h3&gt;
+
+&lt;p&gt;As the adoption of machine learning (ML) increases, it is becoming clear that ML poses new privacy and security challenges that are difficult to prevent in practice. This leaves the data involved in ML exposed to risks in ways that are frequently misunderstood.&lt;/p&gt;
+
+&lt;p&gt;While traditional software systems already have standard best practices such as the FIPPs (Fair Information Practice Principles) to guide privacy efforts, or the Confidentiality, Integrity and Availability triad to guide security activities, there exists no widely accepted best practices for the data involved in ML.&lt;/p&gt;
+
+&lt;p&gt;Adapting existing standards or creating new ones is critical to the successful, widespread adoption of ML. Without such standards, neither privacy professionals, security practitioners, nor data scientists will be able to deploy ML with confidence that the data they steward is adequately protected. And without such protection, ML will face significant barriers to adoption.&lt;/p&gt;
+
+&lt;p&gt;This post aims to create the beginnings of a framework for such standards by focusing on specific privacy and security vulnerabilities within ML systems. At present, viewing these vulnerabilities as warning signs, either of a future in which the benefits of ML are not fully embraced, or a future in which ML&amp;rsquo;s liabilities are insufficiently protected.&lt;/p&gt;
+
+&lt;p&gt;The ultimate goal is to raise awareness of new privacy and security issues confronting ML based systems for everyone from the most technically proficient data scientists to the most legally knowledgeable privacy personnel, along with the many in between. Ultimately, aiming to suggest practical methods to mitigate these potential harms, thereby contributing to the privacy-protective and secure use of ML.&lt;/p&gt;
+
+&lt;h2 id=&#34;why-machine-learning-is-exposed-to-new-privacy-and-security-risks&#34;&gt;Why machine learning is exposed to New Privacy and Security Risks&lt;/h2&gt;
+
+&lt;p&gt;Experience has already proven that security and privacy as applied to ML differ from the data protection frameworks applied to traditional software systems. The scale of the volume of data collected, the range of uses for existing models (beyond simply those envisioned by their creators), and the power of the inferences such models generate are unlike those seen in traditional use cases.&lt;/p&gt;
+
+&lt;p&gt;Past frameworks for data protection, for example, were largely premised on harms derived from the point of access, either to the collected data or to software systems themselves. In information security, harms began with unauthorized access to datasets or to networks. In privacy, overly broad or insufficiently enforced access to data again served as the starting point for all subsequent harms, such as unauthorized use, sharing, or sale. Preventing or managing access was, as a result, a relatively intuitive task that privacy and security teams could prioritize as the basis of their efforts.&lt;/p&gt;
+
+&lt;p&gt;Harms from ML, however, do not always require the same type of direct access to underlying data to infringe upon that data’s confidentiality or to create privacy violations. This exposes ML systems to privacy and security risks in novel ways, as we will see below.&lt;/p&gt;
+
+&lt;p&gt;Both privacy and security harms can occur, for example, absent direct access to underlying training data because ML models themselves may subtly represent that data long after training. Similarly, the behavior of models can be manipulated without needing direct access to their &lt;em&gt;source code.&lt;/em&gt; The types of activities that once required &lt;em&gt;hacking&lt;/em&gt; under a traditional computing paradigm can now be carried out through other methods.&lt;/p&gt;
+
+&lt;h4 id=&#34;informational-vs-behavioral-two-types-of-harms-in-machine-learning&#34;&gt;Informational vs. Behavioral: Two types of harms in Machine Learning&lt;/h4&gt;
+
+&lt;p&gt;The types of security and privacy harms enabled by ML fall into roughly two categories: &lt;em&gt;informational&lt;/em&gt; and &lt;em&gt;behavioral.&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Informational harms relate to the unintended or unanticipated leakage of information.
+Behavioral harms, on the other hand, relate to manipulating the behavior of the model itself, impacting the predictions or outcomes of the model.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;By describing the specific “attacks” that constitute these types of harms below, viewing each such attack as a warning sign of future, more widely known and exploited vulnerabilities associated with ML.&lt;/p&gt;
+
+&lt;h5 id=&#34;informational-harms&#34;&gt;INFORMATIONAL HARMS&lt;/h5&gt;
+
+&lt;p&gt;&lt;strong&gt;Membership Inference:&lt;/strong&gt; This attack involves inferring whether or not an individual’s data was contained in the data used to train the model, based on a sample of the model’s output. While seemingly complex, this analysis requires much less technical sophistication than is frequently assumed. A group of researchers from Cornell University, for example, recently released an auditing technique meant to help the general public learn if their data was used to train ML models, hoping to enable compliance with privacy regulations such as the EU’s GDPR. If used by malicious third parties, such analysis could compromise the confidentiality of the model and violate the privacy of affected individuals by revealing whether they are members of sensitive classes.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Model Inversion:&lt;/strong&gt; Model inversion uses ML outputs to recreate the actual data the model was originally trained upon. In one well-known example of model inversion, researchers were able to reconstruct an image of an individual’s face that was used to train a facial recognition model. Another study, focused on ML systems that used genetic information to recommend dosing of specific medications, was able to directly predict individual patients&amp;rsquo; genetic markers.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Model Extraction:&lt;/strong&gt; This type of attack uses model outputs to recreate the model itself. Such attacks have been piblicly demonstrated against ML as a service providers like BigML and Amazon Machine Learning, and can have implications for privacy and security as well as the intellectual property or proprietary business logic of the underlying model. While there exist myriad types of harms that can arise from this type of attack, the very fact that models retain representations of their training data, as described above, makes the threat of extraction an inherent vulnerability from the privacy perspective.&lt;/p&gt;
+
+&lt;h2 id=&#34;collective-harms-posed-by-ml-enabled-inferences&#34;&gt;Collective harms posed by ML-Enabled inferences&lt;/h2&gt;
+
+&lt;p&gt;ML exacerbates one particularly thorny informational harm in the world of data analytics: creating dangers for individuals with no relation to the underlying training data or the model itself. That is, if ML models are able to make increasingly powerful predictions, the ability to apply those predictions to new individuals raises serious privacy concerns on its own. In that sense, a narrow focus on protecting the privacy and security of only the individuals whose data is used to train models is mistaken; all individuals may be affected by significantly powerful ML.&lt;/p&gt;
+
+&lt;p&gt;One such example is the recent creation of a model that can detect anxiety and depression in children simply based on statistical patterns in each child’s voice. The model can take ordinary input data (voice recordings) and make decisions that constitute sensitive diagnostic data (the presence of anxiety or depression in a specific child). As a result, the very act of any child speaking—beyond the children involved in this study—now contains new privacy implications.&lt;/p&gt;
+
+&lt;h4 id=&#34;behavioral-harms&#34;&gt;BEHAVIORAL HARMS&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Poisoning:&lt;/strong&gt; Model poisoning occurs when an adversary is able to insert malicious data into training data in order to alter the behavior of the model at a later point in time. This technique may be used in practice for a variety of malicious activities, such as creating an artificially low insurance premium for particular individuals, or otherwise training a model to intentionally discriminate against a group of people. Altering the behavior of models can have both security and privacy implications, and does not necessarily require that the malicious actor have direct access to a model once deployed.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Evasion:&lt;/strong&gt; Evasion occurs when input data is fed into an ML system that intentionally causes the system to misclassify that data. Such attacks may occur in a range of scenarios, and the input data may not be noticeable by humans. In one such example, researchers were able to cause a road sign classifier to misidentify road signs by placing small black and white stickers on each sign. This type of attack could cause traffic violations in systems such as those in autonomous vehicles. Similar evasion attacks have been demonstrated in a variety of other sensitive contexts as well.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2FroadSign.png&#34; alt=&#34;ROAD SIGN&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;a-layered-approach-to-data-protection-in-ml&#34;&gt;A layered approach to data protection in ML&lt;/h3&gt;
+
+&lt;h4 id=&#34;what-can-we-do-to-guard-against-these-harms-in-practice-while-there-are-no-easy-answers-there-are-a-series-of-actions-that-can-make-such-harms-less-likely-to-occure-or-minimize-their-impact-below-are-a-handful-of-approaches&#34;&gt;What can we do to guard against these harms in practice? While there are no easy answers, there are a series of actions that can make such harms less likely to occure or minimize their impact. Below are a handful of approaches.&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Noise Injection:&lt;/strong&gt; From a technical perspective, one of the most promising techniques involves adding tailored amounts of noise into the data used to train the model. Rather than training directly on the raw data, models can train on data with slight perturbations, which increases the difficulty of gaining insight into the original data or manipulating the model itself. One such method, known as differential privacy, is among the most widely accepted (and promising) methods of randomized noise injection.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Intermediaries:&lt;/strong&gt; Another approach relies on inserting intermediaries or additional layers between the raw training data and the model, which can be implemented in a variety of ways. &lt;em&gt;Federated learning,&lt;/em&gt; for example, trains models against data that is separated in silos, which can make the attacks discussed above more difficult to implement. Another method involves what is known as a &lt;em&gt;student teacher&lt;/em&gt; approach, in which a variety of &lt;em&gt;student&lt;/em&gt; models are trained on different aspects of the underlying data, which are then used to train the &lt;em&gt;parent&lt;/em&gt; model or models that are actually deployed.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Transparent ML Mechanisms:&lt;/strong&gt; A motivated attacker may be able to learn more about a black-box ML model than is known by its original creators, creating the possibility for privacy and security harms that they might not have envisioned. While traditionally dominated by black-box modeling routines, the field of ML has experienced a renaissance of research and techniques for training transparent models, which can help to address such concerns. Examples of such techniques, with accompanying open source code, include explainable boosting machines and scalable Bayesian rule lists.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/interpretml/interpret&#34; target=&#34;_blank&#34;&gt;explainable boosting machines&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://users.cs.duke.edu/~cynthia/papers.html&#34; target=&#34;_blank&#34;&gt;scalable Bayesian rule lists&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Access Controls:&lt;/strong&gt; While it is broadly true that attacks against ML do not require the type of direct access needed to cause harms in traditional software systems, access to the model output is still required in many cases. For this reason, attempts to limit access to model output, along with methods to detect when such access is being abused, are among the most simple and effective ways to protect against the attacks described above.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Model Monitoring:&lt;/strong&gt; It can be difficult to predict how ML systems will respond to new inputs, making their behavior difficult to manage over time. Detecting when such models are misbehaving is therefore critical to managing security and privacy risks. Key components of monitoring include outlining major risks and failure modes, devising a plan for how to detect complications or anomalies that occur, along with mechanisms for responding quickly if problems are detected.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Model Documentation:&lt;/strong&gt; A long-standing best practice in the high-stakes world of credit scoring, model documentation formally records information about modeling systems, including but not limited to: business justifications; business and IT stakeholders; data scientists involved in model training; names, locations, and properties of training data; assumptions and details of ML methodologies; test and out-of-time sample performance; and model monitoring plans. A good model report should allow future model owners or validators to determine whether a model is behaving as intended.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;White Hat or Red Team Hacking:&lt;/strong&gt; As many ML attacks are described in technical detail in peer-reviewed publications, organizations can use these details to test public-facing or mission-critical ML end points against known attacks. White hat or red teams, either internally or provided by third parties, may therefore be able to identify and potentially remediate discovered vulnerabilities.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Open Source Software Privacy &amp;amp; Security Resources:&lt;/strong&gt; Nascent open source tools for private learning, accurate and transparent models, and debugging of potential security vulnerabilities are currently being released and are often associated with credible research or software organizations.&lt;/p&gt;
+
+&lt;h3 id=&#34;no-team-is-an-island-the-importance-of-cross-functional-expertise&#34;&gt;No team is an Island: The importance of cross-functional expertise&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0ExhTwuR8jBcFXqM/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ongoing, cross-functional communication is required to help ensure the privacy and security of ML systems. Data scientists and software developers need access to legal expertise to identify privacy risks at the beginning of the ML lifecycle. Similarly, lawyers and privacy personnel need access to those with design responsibilities and security proficiencies to understand technical limitations and to identify potential security harms. Processes for ongoing communication, for risk identification and management, and for clear setting of objectives should be established early and followed scrupulously to ensure that no team operates in isolation.&lt;/p&gt;
+
+&lt;p&gt;There is no point in time in the process of creating, testing, deploying, and auditing production ML where a model can be ‘certified’ as being free from risk. There are, however, a host of methods to thoroughly document and monitor ML throughout its lifecycle to keep risk manageable, and to enable organizations to respond to fluctuations in the factors that affect this risk. Identifying, preventing, minimizing and responding to such risks must be an ongoing and thorough process.&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;This blog aimed to outline a framework for understanding and addressing privacy and security risks in ML, and welcomes suggestions or comments to improve our analysis. Please reach out with feedback.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>NLP applied in Deep Learning</title>
+      <link>/post/nlp-2nd-p/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/nlp-2nd-p/</guid>
+      <description>
+
+&lt;h2 id=&#34;deep-learning-applied-to-natural-language-processing&#34;&gt;Deep Learning applied to natural language processing&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Language is the medium that humans use for conversing. Giving machines the ability to learn human language with natural language processing has given rise to several new products and possibilities that were not previously imaginable.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/GfQJZAF4PKqJO/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;NLP (Natural language processing) is one of the most important technologies present in the information age. Understanding complex language utterances is a crucial part of Ai. &lt;a href=&#34;https://www.lifewire.com/applications-of-natural-language-processing-technology-2495544&#34; target=&#34;_blank&#34;&gt;Applications of NLP&lt;/a&gt; can be found across several industry domains such as web search, advertisement, emails, customer service, language translation, radiology reports, etc.&lt;/p&gt;
+
+&lt;p&gt;NLP techniques are designed in the same manner that the human brain learns language processing. One can understand language at varying granularities. When a person learns a new language, they start with words: understanding their meaning, identifying similar and dissimilar words, and then developing a sense of contextual appropriateness of a word. In the beginning, a person usually starts with a small dictionary of words, later (s)he builds up her dictionary over time; mentally mapping each newly learned word close to similar words in her dictionary. After this, a person eventually combines sentences in a sensible way, to write paragraphs and pages. Once a person is at this stage, (s)he is comfortable expressing complicated thoughts in a given language.&lt;/p&gt;
+
+&lt;h3 id=&#34;deep-learning-in-nlp&#34;&gt;Deep Learning in NLP&lt;/h3&gt;
+
+&lt;p&gt;An ANN (artificial neural network) has several stacked layers of neurons, usually accelerated in computation using GPUs. They are used in speech recognition and natural language processing, beating the previous domains such as language modelling, translation, speech recognition.&lt;/p&gt;
+
+&lt;p&gt;Within the broad domain of neural networks, there are certain kinds of neural networks that are more popular and well suited than others to address a variety of problems in NLP. While applying Deep Learning in NLP, each word in the sentence is translated into a set of numbers before being fed into the neural network. These numbers can change over a period of time while the neural net trains itself, encoding unique properties such as semantics and contextual information for each word. Thus, Deep Learning methodologies provide a better understanding of emotions of all demographics and text analytics.&lt;/p&gt;
+
+&lt;h3 id=&#34;use-cases-in-nlp&#34;&gt;Use cases in NLP&lt;/h3&gt;
+
+&lt;p&gt;Deep Learning approaches have generated high-level performance results across many different NLP tasks. Take the example of search engines that have the ability of putting the world&amp;rsquo;s information at our fingertips. But, these search engines are still quite primitive when it comes to actually answering specific questions that are posted by people. Google has focused its efforts on implementing Deep Learning techniques in NLP systems. This has boosted the ability of NLP systems to easily recognize natural language questions, extract their meaning, and thereby provide correct answers. Even spam filters are using statistical Deep Learning techniques that help NLP systems in measuring occurrence of typical words that are repeated in a corpus of spam and non-spam emails.&lt;/p&gt;
+
+&lt;h3 id=&#34;benefits-of-this-approach&#34;&gt;Benefits of this approach&lt;/h3&gt;
+
+&lt;p&gt;As Deep Learning models can be easily trained with a single end-to-end mode, they do not require traditional, task-specific feature engineering, thereby providing businesses with a number of advantages. Take a look at the three broad benefits of Deep Learning in NLP.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Fnlp1.png&#34; alt=&#34;deep learning benefits&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Deep Learning can enhance several features of NLP, such as sentiment analysis that can help the company gain insight about the feelings of customers when they are interacting with the company. These insights, when included with those gained from behavior prediction, can help enterprises in providing enhanced services to their customers.&lt;/p&gt;
+
+&lt;p&gt;Thus, implementation of Deep Learning techniques in NLP can definitely increase customer loyalty for the company, automatically increasing the value of the business.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
       <title>A Movies Recommender System</title>
       <link>/post/moviesrecommender/</link>
       <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
@@ -97,7 +674,7 @@
 &lt;li&gt;&lt;strong&gt;Recommendation Core:&lt;/strong&gt; After generating the list of user&amp;rsquo;s historical preferences on shows and topics, it put all of those similar shows into raw recommendations.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Filtering:&lt;/strong&gt; For some pretty obvious reasons, raw recommendation results cannot be presented to users directly. The need to filter out shows the user has already seen or engaged with, thus increases the recommendations shows a little more precise.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Ranking:&lt;/strong&gt; The ranking module will re-rank raw recommendations to make them better fit users preferences. First, it will make recommendation more diverse. Then increase novelty of recommendations so that users will find shows they like, but have never seen before.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Explanation:&lt;/strong&gt; Explanation is one of the most crucial components of every &lt;em&gt;recommendation system.&lt;/em&gt; The explanation module generates some reasoning for every recommendation result using the user&amp;rsquo;s historical behaviors. For example, it will recommend &amp;ldquo;American Dad&amp;rdquo; to a user who had previously watched &amp;ldquo;Family Guy.&amp;rdquo; The explanation will say, &amp;ldquo;We recommend &amp;lsquo;American Dad&amp;rsquo; to you because you have watched &amp;lsquo;Family Guy&amp;rsquo;&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Explanation:&lt;/strong&gt; Explanation is one of the most crucial components of every &lt;em&gt;recommendation system.&lt;/em&gt; The explanation module generates some reasoning for every recommendation result using the user&amp;rsquo;s historical behaviors. For example, it will recommend &amp;laquo;American Dad&amp;raquo; to a user who had previously watched &amp;laquo;Family Guy.&amp;raquo; The explanation will say, &amp;laquo;We recommend &amp;lsquo;American Dad&amp;rsquo; to you because you have watched &amp;lsquo;Family Guy&amp;rsquo;&amp;raquo;.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://web.archive.org/web/20170425050711/http://tech.hulu.com/assets/2011/09/graphic-1.jpg&#34; alt=&#34;online architecture&#34; /&gt;&lt;/p&gt;
@@ -139,7 +716,7 @@
 
 &lt;p&gt;$$s(i,j)=\frac{\left | N(i)\cap N(j) \right |}{\sqrt{\left | N(i) \parallel N(j) \right |}}$$&lt;/p&gt;
 
-&lt;p&gt;In this definition, show i will be highly relevant to show j if most users who watch show i will also watch show j. However, this definition will have the &amp;ldquo;Harry Potter problem,&amp;rdquo; which means that every show will have high relevance with popular shows.&lt;/p&gt;
+&lt;p&gt;In this definition, show i will be highly relevant to show j if most users who watch show i will also watch show j. However, this definition will have the &amp;laquo;Harry Potter problem,&amp;raquo; which means that every show will have high relevance with popular shows.&lt;/p&gt;
 
 &lt;h3 id=&#34;recent-behavior&#34;&gt;Recent Behavior&lt;/h3&gt;
 
@@ -149,7 +726,7 @@
 
 &lt;h3 id=&#34;novelty&#34;&gt;Novelty&lt;/h3&gt;
 
-&lt;p&gt;Just because a recommendation system can accurately predict user behavior does not mean it produces a show that you want to recommend to an active user. For example, &amp;ldquo;Family Guy&amp;rdquo; is a very popular show, and thus most users have watched at least some episodes from this show. These  users do not need us to recommend this show to them — the show is popular enough that users will decide whether or not to watch it by themselves.&lt;/p&gt;
+&lt;p&gt;Just because a recommendation system can accurately predict user behavior does not mean it produces a show that you want to recommend to an active user. For example, &amp;laquo;Family Guy&amp;raquo; is a very popular show, and thus most users have watched at least some episodes from this show. These  users do not need us to recommend this show to them — the show is popular enough that users will decide whether or not to watch it by themselves.&lt;/p&gt;
 
 &lt;p&gt;Thus, &lt;em&gt;novelty&lt;/em&gt; is also an important metric to evaluate recommendations. The first way we think can increase novelty is by revising ItemCF algorithm:&lt;/p&gt;
 
@@ -176,7 +753,7 @@
 
 &lt;h2 id=&#34;performance-of-recommendation-hub&#34;&gt;Performance Of Recommendation Hub&lt;/h2&gt;
 
-&lt;p&gt;The recommendation hub is a personal recommendation page for each user. On this page users will see 6 carousels. The top carousel is &amp;ldquo;top recommendations&amp;rdquo;, which includes shows that we think users will prefer very much. After top recommendations, there are three carousels for three genres. These three genres are selected by analyzing users&amp;rsquo; historical preferences. The next carousel is bookmarks, which include shows that users have indicated they&amp;rsquo;d like to watch later. The last carousel is filled with shows that the user has already rated. This carousel is designed to collect more explicit feedback from users.&lt;/p&gt;
+&lt;p&gt;The recommendation hub is a personal recommendation page for each user. On this page users will see 6 carousels. The top carousel is &amp;laquo;top recommendations&amp;raquo;, which includes shows that we think users will prefer very much. After top recommendations, there are three carousels for three genres. These three genres are selected by analyzing users&amp;rsquo; historical preferences. The next carousel is bookmarks, which include shows that users have indicated they&amp;rsquo;d like to watch later. The last carousel is filled with shows that the user has already rated. This carousel is designed to collect more explicit feedback from users.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://web.archive.org/web/20170425043118/http://tech.hulu.com/assets/2011/09/graphic-6.jpg&#34; alt=&#34;recommendation hub&#34; /&gt;&lt;/p&gt;
 
@@ -202,7 +779,7 @@
 
 &lt;p&gt;Most researchers focus on improving offline accuracy, such as RMSE, precision/recall. However, &lt;strong&gt;recommendation systems&lt;/strong&gt; that can accurately predict user behavior alone may not be a good enough for practical use. A good &lt;strong&gt;recommendation system&lt;/strong&gt; should consider multiple factors together. In our system, after considering novelty and diversity, the CTR has improved by more than 10%.&lt;/p&gt;
 
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -252,7 +829,7 @@
 
 &lt;p&gt;All of these fears boil down to the fact that we just don’t know where Ai is going and how soon it will take us to get there. Technology makes surprising and unusual leaps and bounds in ways we never think it will and things we think will take a while don’t. On the other hand things we thought would be here sooner aren’t there yet. It’s just a situation where we have to wait and see what comes.&lt;/p&gt;
 
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -272,11 +849,11 @@
 
 &lt;p&gt;Attending a recent outing with family and friends at a Yankees playoff game, I ordered a round of food and drinks and paid for it using cash back from my &lt;em&gt;Apple credit card.&lt;/em&gt; It felt like we all got free hot dogs and beverages.&lt;/p&gt;
 
-&lt;p&gt;Love of credit card rewards is as American as baseball, and in no other market do rewards hold as much sway as in the U.S., where consumers have been trained to believe that paying by plastic entitles them to a bonus &lt;em&gt;either in cash or in points.&lt;/em&gt; The result has been that rewards spending by the top five credit card issuers grew to $31 billion in 2018, up from $11 billion just three years earlier, according to &lt;a href=&#34;https://www.accenture.com/us-en/insights/banking/five-big-bets-retail-payments-north-america&#34; target=&#34;_blank&#34;&gt;new research&lt;/a&gt; from Accenture.&lt;/p&gt;
+&lt;p&gt;Love of credit card rewards is as American as baseball, and in no other market do rewards hold as much sway as in the U.S., where consumers have been trained to believe that paying by plastic entitles them to a bonus &lt;em&gt;either in cash or in points.&lt;/em&gt; The result has been that rewards spending by the top five credit card issuers grew to 31 billion in 2018, up from 11 billion dollars just three years earlier, according to &lt;a href=&#34;https://www.accenture.com/us-en/insights/banking/five-big-bets-retail-payments-north-america&#34; target=&#34;_blank&#34;&gt;new research&lt;/a&gt; from Accenture.&lt;/p&gt;
 
 &lt;p&gt;But the introduction of the cash-back Apple card may signal the peak of card rewards in the U.S. as the industry begins to deal with a less attractive volume-value trade-off.&lt;/p&gt;
 
-&lt;p&gt;For the moment, that trade-off is still working in favor of the payments industry, with North American bank payments revenue growing by $50 billion in the last three years to $300 billion. That growth trend is expected to continue, with projected growth of 4% through 2025, creating a $405 billion industry in North America.&lt;/p&gt;
+&lt;p&gt;For the moment, that trade-off is still working in favor of the payments industry, with North American bank payments revenue growing by 50 billion in the last three years to 300 billion dollars. That growth trend is expected to continue, with projected growth of 4% through 2025, creating a 405 billion dollars industry in North America.&lt;/p&gt;
 
 &lt;p&gt;If we look below the surface, North America is increasingly out of step with the rest of the global consumer payments industry, which is moving to high-volume, low-margin payments, and many of those are moving over account-to-account payment rails rather than over the card networks. This has been stimulated by the move toward real-time payments in many countries, but also by the rise of QR-based digital payments systems in Asia. Recent estimates indicate that it costs a merchant only 0.5% on average to accept an &lt;em&gt;Alipay payment,&lt;/em&gt; while credit card payments in the U.S. can still be over 2% for many merchants.&lt;/p&gt;
 
@@ -298,7 +875,55 @@
 
 &lt;p&gt;At least in the short run, the serotonin hit that comes from getting “free food” at a Yankees game will continue to support the North American rewards-rich cards ecosystem. But over time, the link between payment initiation method, line of credit and rewards will be severed as merchants find ways to channel consumer purchases to payment methods that benefit the merchants more than the banks. In that world, traditional card issuers are going to need to get creative about how they maintain their fair share of the payments revenue pool.&lt;/p&gt;
 
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Machine Learning relationship with AI</title>
+      <link>/post/mlai/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/mlai/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/URpHvLF4KFfmFKM3CA/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Of the many downsides to the recent revival and popularity of Ai (Artificial Intelligence) one is that we see a lot of vendors, professional services firms, and end users jumping on the Ai bandwagon branding their technologies, products, service offerings, and projects as Ai products, projects, or offerings without it necessarily being the case. On the one side, there isn’t a well-accepted delineation between what is definitely Ai and what is definitely not Ai. This is because there isn’t a well-accepted and standard definition of what is artificial intelligence. Indeed, there isn’t a standard definition of intelligence, period.&lt;/p&gt;
+
+&lt;p&gt;Perhaps it is best to start with the overall goals of what we’re trying to achieve with Ai, rather than definitions of what Ai is or isn’t. Since the origin of Ai in the 1950s, the goals of intelligent systems are those that mimic human cognitive abilities. This means the ability to perceive and understand its surroundings, learn from training and its own experiences, make decisions based on reasoning and thought processes, and the development of &lt;em&gt;intuition&lt;/em&gt; in situations that are vague and imprecise; basically the world in which we live in. From a delineation perspective, it’s easy to classify the movements towards AGI (Artificial General Intelligence) as Ai initiatives. After all, AGI systems are attempting to create systems that have all the cognitive capabilities of humans, and then some. Therefore certainly all AGI initiatives as Ai initiatives.&lt;/p&gt;
+
+&lt;p&gt;On the flip side, simply automating things doesn’t make them intelligent. It may take time and effort to train a machine to understand the difference between an image of a cat and an image of a dog or even between different species of dogs, but that doesn’t mean that the system can understand what it is looking at, learn from its own experiences, and make decisions based on that understanding. Similarly, a voice assistant can process your speech when you ask it “What weighs more: a ton of carrots or a ton of peas?”, but that doesn’t mean that the assistant understands what you are actually talking about or the meaning of your words. So, can we really argue that these systems are intelligent?&lt;/p&gt;
+
+&lt;p&gt;In a recent &lt;a href=&#34;https://www.cognilytica.com/2018/03/28/ai-today-podcast-30-interview-with-mit-professor-luis-perez-breva-contrary-perspectives-on-ai-and-ml/&#34; target=&#34;_blank&#34;&gt;interview&lt;/a&gt; with MIT Professor Luis Perez-Breva, he argues that while these various complicated training and data-intensive learning systems are most definitely Machine Learning capabilities, that does not make them Ai capabilities. In fact, he argues, most of what is currently being branded as Ai in the market and media is not Ai at all, but rather just different versions of machine learning where the systems are being trained to do a specific, narrow task, using different approaches, of which Deep Learning is currently the most popular. He argues that if you’re trying to get a computer to recognize an image just feed it enough data and with the magic of math, statistics and neural nets that weigh different connections more or less over time, you’ll get the results you would expect. But what you’re really doing is using the human’s intelligence of what the image is to create a large dataset that can then be mathematically matched against inputs to verify what the human understands.&lt;/p&gt;
+
+&lt;h3 id=&#34;how-machine-learning-relate-to-ai&#34;&gt;How Machine Learning relate to AI?&lt;/h3&gt;
+
+&lt;p&gt;The view espoused by Professor Perez-Breva is not isolated or outlandish. In fact, when you dig deeper into these arguments, it’s hard to argue that the narrower the ML task, the less Ai it in fact is. However, does that mean that ML doesn’t play a role at all in Ai?  Or, at what point can you say that a particular machine learning project is an Ai effort in the way we discussed above? If you read the &lt;a href=&#34;https://en.wikipedia.org/wiki/Artificial_intelligence&#34; target=&#34;_blank&#34;&gt;Wikipedia description of Ai&lt;/a&gt;, it will tell you that, as of 2017, the industry generally accepts that “successfully understanding human speech, competing at the highest level in strategic game systems, autonomous cars, intelligent routing in content delivery network and military simulations” can be classified as Ai systems.&lt;/p&gt;
+
+&lt;p&gt;The line between intelligence and just math or automation is a tricky one. If you decompose any intelligent system, even the eventual end goal of AGI, it will look just like bits and bytes, neural networks, decision-trees, lots of data, and mathematical algorithms.  Similarly, if you decompose the human brain, it’s just a bunch of neurons firing electrochemical pathways. Are humans intelligent? Are zebras intelligent? Is bacteria intelligent? Where’s the delineation between intelligence in living organisms? Perhaps intelligence is not truly a well-defined thing, but rather an observation of the characteristics of a system that exhibit certain behaviors. In this light, one of those behaviors is understanding and perceiving its surroundings, and another of those is learning from experiences and making decisions based on those experiences. In this light, ML definitely forms a part of what is necessary to make Ai work.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Fvendia.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Over the past 60+ years there have been many approaches and attempts to get systems to learn to understand its surroundings and learn from its experiences. These approaches have included decision trees, association rules, artificial neural networks of which Deep Learning is one such approach, inductive logic, support vector machines, clustering, similarity and metric learning including nearest-neighbor approaches, Bayesian networks, reinforcement learning, genetic algorithms and related evolutionary computing approaches, rules-based machine learning, learning classifier systems, sparse dictionary approaches, and more. For the layperson, we want to stress that Ai is not interchangeable for ML and certainly ML is not interchangeable with Deep Learning.  But ML supports the goals of Ai, and Deep Learning is one way to do certain aspects of ML. Or to put it another way, doing machine learning is necessary, but not sufficient, to achieve the goals of Ai, and Deep Learning is an approach to doing ML that may not be sufficient for all ML needs.&lt;/p&gt;
+
+&lt;h3 id=&#34;what-parts-of-ai-are-not-machine-learning&#34;&gt;What Parts of AI are not Machine Learning?&lt;/h3&gt;
+
+&lt;p&gt;It’s an interesting exercise to think about how we, as humans, have gained the intelligence that we have now. In some instances, we learned from simply being part of our environment such as learning how gravity works, how to speak to others and understand what they are saying, and cultural norms. In other instances, we learn in a teaching environment from instructors who knew a particular abstract subject area such as math or physics. In yet other instances we learn from repeating a particular task over and over again to get better at that task, such as music or sports. &lt;em&gt;From an Ai perspective, these are just different kinds of learning, and therefore, different machine learning strategies.&lt;/em&gt; &lt;strong&gt;Supervised learning&lt;/strong&gt; for being taught how to do things. &lt;strong&gt;Unsupervised learning&lt;/strong&gt; when you’re learning from observing the world. &lt;strong&gt;Reinforcement learning&lt;/strong&gt; when you’re learning by trial and error. Therefore, doesn’t it make sense that all forms of machine learning should be considered Ai? What else could there be?&lt;/p&gt;
+
+&lt;p&gt;Some say machine learning is a form of &lt;em&gt;pattern recognition,&lt;/em&gt; understanding when a particular pattern occurs in nature or experience or through senses, and then acting on that pattern recognition. &lt;em&gt;When you look at it from that perspective, it becomes clear that the learning part must be paired with an action part.&lt;/em&gt; Decisions and reasoning is not just applying the same response to the same patterns over and over again. If that was the case, then all we’re doing is using ML to simply automate better. Given the same inputs and feedback, the robot will perform the same action. But do humans really work that way? We experiment with different outcomes. We weigh alternatives. We respond differently when we’re stressed than when we’re relaxed. We prioritize. We think ahead and think about the potential outcomes of a decision. We play politics and we don’t always say what we want to say. And the big one: we have emotions. We have self-consciousness. We have &lt;em&gt;awareness.&lt;/em&gt; All of these things move us beyond the task of learning into the world of perceiving, acting, and behaving. These are the frontiers of Ai.&lt;/p&gt;
+
+&lt;h3 id=&#34;moving-threshold-of-intelligence&#34;&gt;Moving Threshold of Intelligence&lt;/h3&gt;
+
+&lt;p&gt;In reading this piece, you’re actually yourself thinking and learning about ML and Ai, the relationships to each other, and whether or not specific ML activities are accomplishing the goals of what we aim to achieve in Ai. Likewise, even for those at the extremes of the Ai spectrum considering only AGI to be truly Ai or on the other polar opposite that consider any application of ML to be Ai, the truth lies somewhere in the middle. Some machine learning initiatives are more like automation and application of formulas that can’t continuously evolve or respond to change, while other machine learning efforts are closer to intelligence, which can change and adapt over time with experience, improving at their task or desired outcome.&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;The tech industry continues to iterate on ML and address problems previously considered to be more complicated and difficult. As the collection of ML activities mature, while some are definitely not Ai-like at all or particularly intelligent, others are progressing the industry down the path of Ai. Eventually we’ll start to see the sort of technology evolution that has long been the goal of Ai.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -446,6 +1071,10 @@ If you’re a statistician, you know dirty data, and you know about bias and ove
 &lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
 
 &lt;p&gt;Data science still carries the aura of a new field. Most of its components — statistics, software development, evidence-based problem solving, and so on — descend directly from well-established, even old fields, but data science seems to be a fresh assemblage of these pieces into something that is new. The core of data science doesn’t concern itself with specific database implementations or programming languages, even if these are indispensable to practitioners. The core is the interplay between data content, the goals of a given project, and the data-analytic methods used to achieve those goals.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
     </item>
     
@@ -508,7 +1137,61 @@ If you’re a statistician, you know dirty data, and you know about bias and ove
 
 &lt;p&gt;Ai bias is difficult to overcome. But it is a joint effort of corporations, researchers, lawmakers, media, and society. When many eyes are on the issues, we may have a lot more data, opinions about the data, and judgments passed, but with “common sense,” we come closer to equality, to human kindness, and to the protection of our constitutional liberties. That to me is an opportunity to exercise our democratic process.&lt;/p&gt;
 
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>AI Hype. Don&#39;t Be Fooled</title>
+      <link>/post/aihype.-dont-be-fooled/</link>
+      <pubDate>Wed, 09 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/aihype.-dont-be-fooled/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;https://media2.giphy.com/media/PjJ1cLHqLEveXysGDB/giphy-downsized-medium.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;the-ai-hype-train-has-left-the-station&#34;&gt;The Ai Hype Train Has Left the Station&lt;/h3&gt;
+
+&lt;p&gt;We know we’re in the middle of a hype cycle when every industry has products that use some buzzword, regardless of whether or not they have the technical merit or legitimacy to actually use that buzzword. This is where we currently are with regards to the market for Ai (Artificial Intelligence) products and services.&lt;/p&gt;
+
+&lt;p&gt;We hear briefings from vendors pitching technology across a wide range of solution areas, as well as from professional services and government contracting firms with new solution offerings and end users looking for guidance and advice. On the whole, we’ve seen a lot of great, new innovation that’s pushing the industry forward towards more &lt;strong&gt;intelligent, autonomous systems&lt;/strong&gt; capable of addressing more of the challenge areas that have previously not been able to be solved due to extreme complexity or the need for human labor.&lt;/p&gt;
+
+&lt;p&gt;However, we’ve also seen more than our fair share of vendors, so-called &lt;em&gt;Ai Demo Days, customer engagements, and service pitches that claim to be Ai-enabled&lt;/em&gt; when all they have done is put some thin capability (usually a third-party library or API) that somehow miraculously transforms their automation or analytics or cybesecurity product of yesterday into some new-fangled Ai miracle. We scratch our heads and wonder if this new offering is making anything truly intelligent or is this just the same old product with primarily the same old features sold to the same old customers providing the same old benefits with some new thing added on. Recently, we spent time examining an entire category of product solution that has been known to call itself plainly an automation offering, &lt;strong&gt;robotic&lt;/strong&gt; in fact. This whole category is also currently attempting to rebrand itself as intelligent and Ai-enabled because they’ve added OCR or some other add-on. Baloney. &lt;strong&gt;Automation is not intelligence.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;what-is-automation&#34;&gt;What is Automation?&lt;/h3&gt;
+
+&lt;p&gt;Let’s be clear – automation is not a bad word. In fact, the whole movement of the industrial revolution was to take much of what humanity was doing at the time and automate it so that we could achieve&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;significantly greater productivity&lt;/li&gt;
+&lt;li&gt;quality of life, and&lt;/li&gt;
+&lt;li&gt;transformation of society through technology&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The &lt;em&gt;steam engine, train, factory line, and then computers and the internet&lt;/em&gt; have truly revolutionized the way we work, live, and exist. However, these are not &lt;strong&gt;intelligent technologies.&lt;/strong&gt; We can’t walk up to a steam engine and ask it to recognize who we are or answer a random question or even learn from its experiences. A web server is just a web server no matter how many times it’s served the same content to the same sort of people.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Automation is the process of applying technology to some repeatable task or process so that the task or process can be accomplished with predictable repeatability, lower total cost of operation, increase safety, and provide better efficiency.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is what we demand of most of our technology, and technology has delivered that value. In fact, technology continues to deliver increasingly greater value to enterprises and individuals, squeezing more efficiency and capabilities and increasing productivity on a daily basis. So, automation is good. There’s nothing bad about it.&lt;/p&gt;
+
+&lt;h3 id=&#34;what-is-intelligence&#34;&gt;What is Intelligence?&lt;/h3&gt;
+
+&lt;p&gt;However, we &lt;em&gt;demand more from intelligence than simply automation.&lt;/em&gt; From the beginnings of what researchers have been attempting to do with Ai, we’ve been striving for systems that can understand and comprehend their surroundings, learn from their experiences, make judgements and decisions that are based on rational thinking, handle new situations and apply their learning from previous experience, and perhaps even address bigger questions of self-awareness, consciousness, and more. These are not easy problems Ai researchers are trying to solve, and are fundamental questions of what does it mean to perceive, understand, rationalize, and be aware.&lt;/p&gt;
+
+&lt;p&gt;The talk about the difference between narrow applications of Ai to single problem areas versus the strong / broad application of Ai which attempts to create a generally intelligent system. Clearly we’re nowhere near the goal of an AGI (Artificial General Intelligence), and so it would follow that all of the innovations in the market currently are narrow (some say weak, but we don’t) applications of Ai. Yet, that doesn’t mean that these narrow applications are any less Ai solutions. &lt;strong&gt;Image recognition, applications that reason with self-learning,&lt;/strong&gt; and more are building the techniques we need to achieve general intelligence by creating solutions that apply theories of intelligence and learning to solve those problems. While they may be narrow, they are still intelligent and thus qualify as Ai solutions. But no one would argue that &lt;strong&gt;Facial Recognition is automation. Because intelligence is not automation.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;ask-more-questions&#34;&gt;Ask More Questions&lt;/h3&gt;
+
+&lt;p&gt;Adding OCR or voice recognition of NLP (natural language processing) doesn’t make a system intelligent. Sure, the NLP library might be intelligent, but the system or solution could be just as dumb as ever, with a nice shiny new NLP system on it. Our old-hat integration or automation solution is still just an old-hat automation integration solution even if it has OCR (Optical Character Recognition). I could put an Alexa interface on top of my steam engine, but that doesn’t mean I can call my steam engine Ai-enabled. It’s still just expanding pistons and pushing rods. &lt;em&gt;It’s automation, not intelligence.&lt;/em&gt; Talking to your car doesn’t mean your car is intelligent or Ai-enabled. Unless it’s autonomous, you’re still the one pressing the pedals and moving the steering wheel. You may be fooling some of your customers, your investors, your partners, and your employees, but you’re not fooling us.&lt;/p&gt;
+
+&lt;p&gt;Yet it’s worse than that. Vendors who push automation solutions as intelligence are hurting the industry. If customers are lead to believe that the automation solutions are what they can expect out of Ai systems are these weak automation systems that use the narrowest definition of Ai to call their systems intelligent, then the industry is heading for a rapid roadblock. If we want the desired outcome of Ai that we’re hoping for and expecting, in which we’re solving increasingly harder problems that have not before been able to be done with systems that can learn and adapt, then we have to ask more of the systems that call themselves artificially intelligent. When vendors say their products have Ai capabilities, don’t take them at face value. &lt;strong&gt;Ask how their offering is going to learn and adapt and perceive the environment.&lt;/strong&gt; More than half of the time the response will be that they’re just doing automation with the thinnest possible veneer of Ai. The ones that are truly building Ai-enabled products in the way that will help the industry mature are the ones that are worth following. Let’s leave the hype train behind at the station. Where we’re going, there aren’t any tracks. &lt;strong&gt;(Apologies to Back to the Future for the misquote).&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -558,7 +1241,7 @@ If you’re a statistician, you know dirty data, and you know about bias and ove
 
 &lt;p&gt;Disclosure: I have no financial interest in any of these companies or products.&lt;/p&gt;
 
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -596,7 +1279,7 @@ If you’re a statistician, you know dirty data, and you know about bias and ove
 
 &lt;p&gt;Over and above data ingestion and the chance to produce nice on-screen images and tools to explore that data with, Abbyy also focuses on the validation of the business data and the classification of the data. The company says that these stages need to be executed before the onward management and analysis of operational information. Company CEO Ulf Persson explains that all companies know that they have all these processes and they know that they have desired outcomes from those processes but that (most companies) fail to understand how complex they are in terms of how many steps, stages, people, products and things that are involved.&lt;/p&gt;
 
-&lt;p&gt;&amp;ldquo;Whether you look at your data using enterprise reporting, business intelligence dashboards or even cool tools like geospatial visualizations you are still limited to only looking at a single step of a business process at a time. With the advent of first-generation process mining software this improved as it allowed you to visualize all steps of a business process end-to-end – as long as the process was very well defined and consistently executed,&amp;rdquo; said Scott Opitz, president of Abbyy Timeline. &amp;ldquo;The problem is, when you are dealing with more convoluted or complex business scenarios where the steps of the process are performed in a more ad hoc manner such as a hospital emergency room or a wide-ranging customer service situation, where you can&amp;rsquo;t always resolve the process to a nice neat diagram. In these situations you need a new approach to analyze the process which is based on the complete process timeline – not some mythical pretty process diagram.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&amp;laquo;Whether you look at your data using enterprise reporting, business intelligence dashboards or even cool tools like geospatial visualizations you are still limited to only looking at a single step of a business process at a time. With the advent of first-generation process mining software this improved as it allowed you to visualize all steps of a business process end-to-end – as long as the process was very well defined and consistently executed,&amp;raquo; said Scott Opitz, president of Abbyy Timeline. &amp;laquo;The problem is, when you are dealing with more convoluted or complex business scenarios where the steps of the process are performed in a more ad hoc manner such as a hospital emergency room or a wide-ranging customer service situation, where you can&amp;rsquo;t always resolve the process to a nice neat diagram. In these situations you need a new approach to analyze the process which is based on the complete process timeline – not some mythical pretty process diagram.&amp;raquo;&lt;/p&gt;
 
 &lt;p&gt;Opitz uses this proposition to attempt to validate and justify the need for the types of process tools that his company specializes in. Going further, Opitz says that Abbyy Timeline has also implemented machine learning techniques to predict process outcomes and prescribe actions based upon user-defined priorities. So in the real world, this means that the system &amp;lsquo;maps&amp;rsquo; the way processes are carried out and accommodates for the fact that different employees or contractors will execute any given process performing steps in different orders and combinations, at different speeds, at different costs, at different levels of competency — and the software &amp;lsquo;learns&amp;rsquo; each time a process is digitally mapped to be able to make the system cumulatively smarter over time.&lt;/p&gt;
 
@@ -612,7 +1295,7 @@ If you’re a statistician, you know dirty data, and you know about bias and ove
 
 &lt;p&gt;Paper isn’t dead, but work has gone digital… and you can make a note of that!&lt;/p&gt;
 
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -652,7 +1335,7 @@ If you’re a statistician, you know dirty data, and you know about bias and ove
 
 &lt;p&gt;While it’s quite possible that the worlds of Ai and blockchain are full of hype, there are actual, tangible, realistic ways in which the two emerging technologies can be used in ways that benefit each other and provide real outcomes for those looking to implement the technologies today in their environments.&lt;/p&gt;
 
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -706,7 +1389,7 @@ If you’re a statistician, you know dirty data, and you know about bias and ove
 
 &lt;p&gt;Even with all these existing use cases, we&amp;rsquo;re still at an early stage in this industry. As blockchain technology becomes more mainstream, I expect further investment in blockchain education and R&amp;amp;D. I believe that this will, in turn, create unprecedented opportunities for growth.&lt;/p&gt;
 
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -834,7 +1517,7 @@ If you’re a statistician, you know dirty data, and you know about bias and ove
 &lt;li&gt;&lt;p&gt;Communicate, communicate, communicate. It can’t be said enough! Companies should not only share the vision and roadmap for how Ai will be developed in the future but also how employees will be affected and the support systems that will be available to them to ensure a smooth transition for all&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -892,7 +1575,7 @@ If you’re a statistician, you know dirty data, and you know about bias and ove
 
 &lt;p&gt;If you’re looking for how and where your company should adopt artificial intelligence, look at your platforms. Look at the user experiences. Look at the point at which you’re trying to anticipate the stakeholder’s needs. This is the point where you should use Ai.&lt;/p&gt;
 
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -938,7 +1621,7 @@ If you’re a statistician, you know dirty data, and you know about bias and ove
 
 &lt;p&gt;Prepare for the unknown, you can count on it!&lt;/p&gt;
 
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -1028,7 +1711,7 @@ If you’re a statistician, you know dirty data, and you know about bias and ove
 
 &lt;p&gt;The illusion of transparency explains why, even once you’re no longer a teenager, it still seems like few people understand you. It’s not that other people are ambivalent or confused. Your feelings just aren’t as clear as you think. Often you can’t see beyond the confines of your own head and neither can anyone else. It’s best to make allowances for that.&lt;/p&gt;
 
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -1072,7 +1755,7 @@ If you’re a statistician, you know dirty data, and you know about bias and ove
 
 &lt;p&gt;Banks paying attention to China and Walmart know that the payments business is changing at an accelerating rate towards being instant, invisible, and free. It won’t happen tomorrow, but the trajectory is secular and inexorable. Thinking through these issues – and working back from instant, invisible, and free – will make banks better prepared to protect the economics of their payments business that will otherwise shed revenue at an alarming rate in the coming years.&lt;/p&gt;
 
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -1178,7 +1861,7 @@ If you’re a statistician, you know dirty data, and you know about bias and ove
 
 &lt;p&gt;To make the best use of Hanlon’s razor, we must be sure to put it in context, taking into account logic, experience, and empirical evidence. Make it a part of your latticework of mental models, but do not be blind to behavior which is intended to be harmful.&lt;/p&gt;
 
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -1226,7 +1909,7 @@ If you’re a statistician, you know dirty data, and you know about bias and ove
 
 &lt;p&gt;The bottom line is making sure to work within a framework when building models instead of building in isolation and then figuring out monitoring - or even pushing to production - after the fact.&lt;/p&gt;
 
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -1316,87 +1999,7 @@ If you’re a statistician, you know dirty data, and you know about bias and ove
 
 &lt;p&gt;Externalities are everywhere. It’s easy to ignore the impact of our decisions—to recline an airplane seat, to stay late at the office, or drop litter. Eventually though, someone always ends up paying. Like the villagers in Hardin’s Tragedy of the Commons, who end up with no grass for their animals, we run the risk of ruining a good thing if we don’t take care of it. Keeping the three types of externalities in mind is a useful way to make decisions that won’t come back to bite us. Whenever we interact with a system, we should remember to ask Hardin’s question: and then what?&lt;/p&gt;
 
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
-
-&lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>The Power of Anchoring</title>
-      <link>/post/anchoring/</link>
-      <pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/anchoring/</guid>
-      <description>
-
-&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l44Q91BN2kyIg7dVS/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We often pay attention to irrelevant information. This happens as we develop estimates by starting with an initial anchor that is based on whatever information is provided and adjust from the anchor (sometimes our adjustments are not sufficient). This is called anchoring.&lt;/p&gt;
-
-&lt;p&gt;More problematic perhaps is that the existence of an anchor leads humans to think of information consistent with that anchor (commitment and consistency) rather than access information that is inconsistent with that anchor.&lt;/p&gt;
-
-&lt;p&gt;Anchoring is commonly observed in real estate and the stock market. Many BUYERS tend to negotiate based on the listed price of a house — and many SELLERS tend to determine the list priced based on adjusting their purchase price.&lt;/p&gt;
-
-&lt;p&gt;Some interesting points on anchoring: (1) Experts and non-experts are affected similarly by an anchor; (2) Anchoring-adjustment may occur in any task requiring a numerical response, provided an initial estimate is available; and (3) One study of particular importance for investors, by Joyce and Biddle (1981), found support for the presence of the anchoring effect among practicing auditors of major accounting firms.&lt;/p&gt;
-
-&lt;p&gt;Anchoring and adjustment was first theorized by Tversky and Kahneman. The pair demonstrated that when asked to guess the percentage of African nations which are members of the UN, humans who were first asked “was it more or less than 35%” guessed lower values than those who had been asked if it was more or less than 65%. Subjects were biased by the number 45 or 65 and this had a meaningful influence on their judgment. Over time this bias has been shown in numerous experiments. Interestingly, paying participants based on their accuracy did not reduce the magnitude of the anchoring effect.&lt;/p&gt;
-
-&lt;p&gt;The power of anchoring can be explained by the confirmation heuristic and by the limitations of our own mind. We selectively access hypothesis-consistent information without realizing it. Availability may also play a role in anchoring.&lt;/p&gt;
-
-&lt;p&gt;There are numerous examples of anchoring in everyday life:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Children are tracked by schools that categorize them by ability at an early age and based on this initial “anchor” teachers derive expectations. Teachers tend to expect children assigned to the lower group to achieve little and have much higher expectations of children in the top group (for more info see Darley and Gross, 1983). Malcolm Gladwell talks more about anchoring in his book outliers.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;First impressions are a form of anchoring.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Minimum payments on credit card bills.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Posted interest rates at Banks.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Prices on a menu in restaurants.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Race can also be an anchor with respect to our expectations (Duncan, 1976)&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Heuristic and Biases: The Psychology of Intuitive Judgment offers:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;“To examine this heuristic, Tversky and Kahneman (1974) developed a paradigm in which participants are given an irrelevant number and asked if the answer to the question is greater or less than that value. After this comparative assessment, participants provide an absolute answer. Countless experiments have shown that people’s absolute answers are influenced by initial comparison with the irrelevant anchor. People estimate that Gandhi lived to be roughly 67 years old, for example, if they first decided whether he died before or after the age of 140, but only 50 years old if they first decided whether he died before or after the age of 9.&lt;/p&gt;
-
-&lt;p&gt;Anchoring effects have traditionally been interpreted as a result of insufficient adjustment from an irrelevant value, but recent evidence casts doubt on this account. Instead, anchoring effects observed in the standard paradigm appear to be produced by the increased accessibility of anchor consistent information.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;In Judgment and Decision Making, David Hardman says:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Anchoring effects have been observed in a variety of domains including pricing, negotiation, legal judgment, lotteries and gambles, probability estimates, and general knowledge. In one of these studies, Northcraft and Neale (1987) demonstrated anchoring effects in the pricing estimates of estate agents…&lt;/p&gt;
-
-&lt;p&gt;Despite the robustness of the anchoring effect, there has been little agreement as to the true nature of the underlying processes. One theory that has been proposed is that of selective anchoring (Mussweilier and Strack, 1997). According to this account, the comparative question task activates information into memory that is subsequently more accessible when making an absolute judgment….&lt;/p&gt;
-
-&lt;p&gt;Epley (2004) listed four findings that are consistent with the selective memory account: (1) People attend to shared features between the anchor and target more than to unique features; (2) Completion of a standard anchoring task speeds identification of words consistent with implications of an anchor value rather than words inconsistent with it; (3) The size of anchoring effects can be influenced by altering the hypothesis tested in the comparative assessment (for example, asking whether the anchor is less than a target value has a different effect to asking whether it is more than a target value); (4) Humans with greater domain knowledge are less susceptible to the effects of irrelevant anchors.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;In Fooled by Randomness, Nicholas Taleb writes:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Anchoring to a number is the reason humans do not react to their total wealth, but rather to differences of wealth from whatever number they are currently anchored to. This is in major conflict with economic theory, as according to economists, someone with $1 million in the bank would be more satisfied than if he had $500k but this is not necessarily the case.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Tversky and Kahneman (1974)&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;In many situations, people make estimates by starting from an initial value that is adjusted to yield the final answer. The initial value, or starting point, may be suggested by the formulation of the problem, or it may be the result of a partial computation. In either case, adjustments are typically insufficient (Slovic &amp;amp; Lichtenstein, 1971). That is, different starting points yield different estimates, which are biased toward the initial values. We call this phenomenon anchoring.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Russell Fuller writes:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Psychologists have documented that when humans make quantitative estimates, their estimates may be heavily influenced by previous values of the item. For example, it is not an accident that a used car salesman always starts negotiating with a high price and then works down. The salesman is trying to get the consumer anchored on the high price so that when he offers a lower price, the consumer will estimate that the lower price represents a good value. Anchoring can cause investors to under-react to new information.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -1461,7 +2064,7 @@ If you’re a statistician, you know dirty data, and you know about bias and ove
 
 &lt;p&gt;&lt;a href=&#34;https://www.amazon.com/gp/product/0316510823/ref=as_li_qf_asin_il_tl?imprToken=B5.ZXPU0fgHxTMk1-h.OzQ&amp;amp;slotNum=1&amp;amp;ie=UTF8&amp;amp;tag=farnamstreet-20&amp;amp;creative=9325&amp;amp;linkCode=w61&amp;amp;creativeASIN=0316510823&amp;amp;linkId=16f546d7782f05334c10a6c44fd6de59&#34; target=&#34;_blank&#34;&gt;Truth: How the Many Sides to Every Story Shape Our Reality,&lt;/a&gt; goes on to explore partial truths, subjective truths, artificial truths, and unknown truths. It’s a terrific read for checking your own perspective on truth, and understanding how truth can be used to both inform and mislead you.&lt;/p&gt;
 
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -1567,7 +2170,7 @@ If you’re a statistician, you know dirty data, and you know about bias and ove
 
 &lt;p&gt;Successfully thinking in shades of probability means roughly identifying what matters, coming up with a sense of the odds, doing a check on our assumptions, and then making a decision. We can act with a higher level of certainty in complex, unpredictable situations. We can never know the future with exact precision. Probabilistic thinking is an extremely useful tool to evaluate how the world will most likely look so that we can effectively strategize&lt;/p&gt;
 
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>
@@ -2441,7 +3044,7 @@ Dosage 2   0.963851589 -3.798070  3.638070&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Quantifying the subjective and using Bayes’s theorem can help us clear out some of the relationship negativity in our lives.&lt;/p&gt;
 
-&lt;h3 id=&#34;thank-you-for-reading-my-post&#34;&gt;Thank you for reading my post.&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;you-rock&#34;&gt;You Rock!&lt;/h2&gt;
 </description>

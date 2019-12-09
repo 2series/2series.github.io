@@ -1,16 +1,58 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Rihad Variawa</title>
+    <title>Rihad Variawa</title>
     <link>/post/</link>
-    <description>Recent content in Posts on Rihad Variawa</description>
+    <description>Recent content on Rihad Variawa</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2020</copyright>
-    <lastBuildDate>Mon, 11 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Analyzing Historical Default Rates of Lending Club Notes</title>
+      <link>/post/lendingclub/</link>
+      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/lendingclub/</guid>
+      <description>The code
+Lending Club is the world&amp;rsquo;s largest peer-to-peer lending company, offering a platform for borrowers and lenders to work directly with one another, eliminating the need for a financial intermediary like a bank.
+Removing the middle-man generally allows both borrowers and lenders to benefit from better interest rates than they otherwise would, which makes peer-to-peer lending an attractive proposition.
+This post will be the first in a series of posts analyzing the probability of default and expected return of Lending Club notes.</description>
+    </item>
+    
+    <item>
+      <title>AI Augmenting Compliance - reference to nlp</title>
+      <link>/post/augmentingcompliance-1st-p/</link>
+      <pubDate>Sat, 30 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/augmentingcompliance-1st-p/</guid>
+      <description>Forming a significant theme in several organisational technology strategies, AI can augment a gamut of business practices, including compliance Compliance is a must-do activity, not a nice-to-have. It is essential that companies extract maximum value from compliance processes, reducing the possibility of it being considered a cost centre.
+Technological innovation can help to lift some of the compliance burden. The level of technology you can realistically implement depends on how advanced the organisation is to start with.</description>
+    </item>
+    
+    <item>
+      <title>Privacy &amp; Security in the Age of Machine Learning</title>
+      <link>/post/privacysecurity/</link>
+      <pubDate>Fri, 29 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/privacysecurity/</guid>
+      <description>Can we adequately protect the privacy and security of data used in machine learning? As the adoption of machine learning (ML) increases, it is becoming clear that ML poses new privacy and security challenges that are difficult to prevent in practice. This leaves the data involved in ML exposed to risks in ways that are frequently misunderstood.
+While traditional software systems already have standard best practices such as the FIPPs (Fair Information Practice Principles) to guide privacy efforts, or the Confidentiality, Integrity and Availability triad to guide security activities, there exists no widely accepted best practices for the data involved in ML.</description>
+    </item>
+    
+    <item>
+      <title>NLP applied in Deep Learning</title>
+      <link>/post/nlp-2nd-p/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/nlp-2nd-p/</guid>
+      <description>Deep Learning applied to natural language processing  Language is the medium that humans use for conversing. Giving machines the ability to learn human language with natural language processing has given rise to several new products and possibilities that were not previously imaginable.
+ NLP (Natural language processing) is one of the most important technologies present in the information age. Understanding complex language utterances is a crucial part of Ai.</description>
+    </item>
     
     <item>
       <title>A Movies Recommender System</title>
@@ -44,6 +86,15 @@ Love of credit card rewards is as American as baseball, and in no other market d
     </item>
     
     <item>
+      <title>Machine Learning relationship with AI</title>
+      <link>/post/mlai/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/mlai/</guid>
+      <description>Of the many downsides to the recent revival and popularity of Ai (Artificial Intelligence) one is that we see a lot of vendors, professional services firms, and end users jumping on the Ai bandwagon branding their technologies, products, service offerings, and projects as Ai products, projects, or offerings without it necessarily being the case. On the one side, there isn’t a well-accepted delineation between what is definitely Ai and what is definitely not Ai.</description>
+    </item>
+    
+    <item>
       <title>Data Science Life Cycle</title>
       <link>/post/ds/</link>
       <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
@@ -60,6 +111,16 @@ With the influx of buzzwords in the field of data science and relevant fields, a
       
       <guid>/post/biasadded/</guid>
       <description>One of the biggest challenges with artificial intelligence and data science is the integrity of our data. Even if we did all the right things in our models, and our testing, data might conform to some technical standard of “cleanliness,” there might still be biases in our data as well as “common sense” challenges. With Big Data, it is difficult to get to a certain granularity of data validity without proper real-world testing.</description>
+    </item>
+    
+    <item>
+      <title>AI Hype. Don&#39;t Be Fooled</title>
+      <link>/post/aihype.-dont-be-fooled/</link>
+      <pubDate>Wed, 09 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/aihype.-dont-be-fooled/</guid>
+      <description>The Ai Hype Train Has Left the Station We know we’re in the middle of a hype cycle when every industry has products that use some buzzword, regardless of whether or not they have the technical merit or legitimacy to actually use that buzzword. This is where we currently are with regards to the market for Ai (Artificial Intelligence) products and services.
+We hear briefings from vendors pitching technology across a wide range of solution areas, as well as from professional services and government contracting firms with new solution offerings and end users looking for guidance and advice.</description>
     </item>
     
     <item>
@@ -175,16 +236,6 @@ The best way to decide whether or not a model is good is to have the business in
       <guid>/post/externalities/</guid>
       <description>No action exists in a vacuum. There are ripples that have consequences that we can and can’t see. Here are the three types of externalities that can help us guide our actions so they don’t come back to bite us.
 An externality affects someone without them agreeing to it. As with unintended consequences, externalities can be positive or negative. Understanding the types of externalities and the impact they have in our lives can help us improve our decision making, and how we interact with the world.</description>
-    </item>
-    
-    <item>
-      <title>The Power of Anchoring</title>
-      <link>/post/anchoring/</link>
-      <pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/anchoring/</guid>
-      <description>We often pay attention to irrelevant information. This happens as we develop estimates by starting with an initial anchor that is based on whatever information is provided and adjust from the anchor (sometimes our adjustments are not sufficient). This is called anchoring.
-More problematic perhaps is that the existence of an anchor leads humans to think of information consistent with that anchor (commitment and consistency) rather than access information that is inconsistent with that anchor.</description>
     </item>
     
     <item>

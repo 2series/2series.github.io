@@ -19,12 +19,32 @@
   </url>
   
   <url>
-    <loc>/post/moviesrecommender/</loc>
-    <lastmod>2019-11-11T00:00:00+00:00</lastmod>
+    <loc>/post/</loc>
+    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/</loc>
+    <loc>/post/lendingclub/</loc>
+    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/augmentingcompliance-1st-p/</loc>
+    <lastmod>2019-11-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/privacysecurity/</loc>
+    <lastmod>2019-11-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/nlp-2nd-p/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/moviesrecommender/</loc>
     <lastmod>2019-11-11T00:00:00+00:00</lastmod>
   </url>
   
@@ -39,6 +59,11 @@
   </url>
   
   <url>
+    <loc>/post/mlai/</loc>
+    <lastmod>2019-10-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/ds/</loc>
     <lastmod>2019-10-11T00:00:00+00:00</lastmod>
   </url>
@@ -46,6 +71,11 @@
   <url>
     <loc>/post/biasadded/</loc>
     <lastmod>2019-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/aihype.-dont-be-fooled/</loc>
+    <lastmod>2019-10-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -106,11 +136,6 @@
   <url>
     <loc>/post/externalities/</loc>
     <lastmod>2019-06-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/anchoring/</loc>
-    <lastmod>2019-06-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>

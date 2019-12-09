@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.2.5">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Rihad Variawa">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Can we adequately protect the privacy and security of data used in machine learning? As the adoption of machine learning (ML) increases, it is becoming clear that ML poses new privacy and security challenges that are difficult to prevent in practice. This leaves the data involved in ML exposed to risks in ways that are frequently misunderstood.
+While traditional software systems already have standard best practices such as the FIPPs (Fair Information Practice Principles) to guide privacy efforts, or the Confidentiality, Integrity and Availability triad to guide security activities, there exists no widely accepted best practices for the data involved in ML.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="../../post/privacysecurity/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#3f51b5">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Playfair+Display:400,700|Fauna+One">
+  
+
+  <link rel="stylesheet" href="../../styles.css">
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-132898309-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="icon" type="image/png" href="../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../img/icon-192.png">
+
+  <link rel="canonical" href="../../post/privacysecurity/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@2series_rv">
+  <meta property="twitter:creator" content="@2series_rv">
+  
+  <meta property="og:site_name" content="Rihad Variawa">
+  <meta property="og:url" content="/post/privacysecurity/">
+  <meta property="og:title" content="Privacy &amp; Security in the Age of Machine Learning | Rihad Variawa">
+  <meta property="og:description" content="Can we adequately protect the privacy and security of data used in machine learning? As the adoption of machine learning (ML) increases, it is becoming clear that ML poses new privacy and security challenges that are difficult to prevent in practice. This leaves the data involved in ML exposed to risks in ways that are frequently misunderstood.
+While traditional software systems already have standard best practices such as the FIPPs (Fair Information Practice Principles) to guide privacy efforts, or the Confidentiality, Integrity and Availability triad to guide security activities, there exists no widely accepted best practices for the data involved in ML."><meta property="og:image" content="/img/ship.jpg">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-11-29T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2019-11-29T00:00:00&#43;00:00">
+  
+
+  
+
+  
+
+  <title>Privacy &amp; Security in the Age of Machine Learning | Rihad Variawa</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="../../">Rihad Variawa</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#posts">
+            
+            <span>Blog Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#publications">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">Privacy &amp; Security in the Age of Machine Learning</h1>
+
+  
+
+  
+    
+
+
+
+<meta content="2019-11-29 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-11-29 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Nov 29, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    11 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="../../post/privacysecurity/#disqus_thread"></a>
+  
+
+  
+
+  
+    
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p><img src="https://media.giphy.com/media/3ohc11UiN3MV4SmwNO/giphy.gif" alt="" /></p>
+
+<h3 id="can-we-adequately-protect-the-privacy-and-security-of-data-used-in-machine-learning">Can we adequately protect the privacy and security of data used in machine learning?</h3>
+
+<p>As the adoption of machine learning (ML) increases, it is becoming clear that ML poses new privacy and security challenges that are difficult to prevent in practice. This leaves the data involved in ML exposed to risks in ways that are frequently misunderstood.</p>
+
+<p>While traditional software systems already have standard best practices such as the FIPPs (Fair Information Practice Principles) to guide privacy efforts, or the Confidentiality, Integrity and Availability triad to guide security activities, there exists no widely accepted best practices for the data involved in ML.</p>
+
+<p>Adapting existing standards or creating new ones is critical to the successful, widespread adoption of ML. Without such standards, neither privacy professionals, security practitioners, nor data scientists will be able to deploy ML with confidence that the data they steward is adequately protected. And without such protection, ML will face significant barriers to adoption.</p>
+
+<p>This post aims to create the beginnings of a framework for such standards by focusing on specific privacy and security vulnerabilities within ML systems. At present, viewing these vulnerabilities as warning signs, either of a future in which the benefits of ML are not fully embraced, or a future in which ML&rsquo;s liabilities are insufficiently protected.</p>
+
+<p>The ultimate goal is to raise awareness of new privacy and security issues confronting ML based systems for everyone from the most technically proficient data scientists to the most legally knowledgeable privacy personnel, along with the many in between. Ultimately, aiming to suggest practical methods to mitigate these potential harms, thereby contributing to the privacy-protective and secure use of ML.</p>
+
+<h2 id="why-machine-learning-is-exposed-to-new-privacy-and-security-risks">Why machine learning is exposed to New Privacy and Security Risks</h2>
+
+<p>Experience has already proven that security and privacy as applied to ML differ from the data protection frameworks applied to traditional software systems. The scale of the volume of data collected, the range of uses for existing models (beyond simply those envisioned by their creators), and the power of the inferences such models generate are unlike those seen in traditional use cases.</p>
+
+<p>Past frameworks for data protection, for example, were largely premised on harms derived from the point of access, either to the collected data or to software systems themselves. In information security, harms began with unauthorized access to datasets or to networks. In privacy, overly broad or insufficiently enforced access to data again served as the starting point for all subsequent harms, such as unauthorized use, sharing, or sale. Preventing or managing access was, as a result, a relatively intuitive task that privacy and security teams could prioritize as the basis of their efforts.</p>
+
+<p>Harms from ML, however, do not always require the same type of direct access to underlying data to infringe upon that data’s confidentiality or to create privacy violations. This exposes ML systems to privacy and security risks in novel ways, as we will see below.</p>
+
+<p>Both privacy and security harms can occur, for example, absent direct access to underlying training data because ML models themselves may subtly represent that data long after training. Similarly, the behavior of models can be manipulated without needing direct access to their <em>source code.</em> The types of activities that once required <em>hacking</em> under a traditional computing paradigm can now be carried out through other methods.</p>
+
+<h4 id="informational-vs-behavioral-two-types-of-harms-in-machine-learning">Informational vs. Behavioral: Two types of harms in Machine Learning</h4>
+
+<p>The types of security and privacy harms enabled by ML fall into roughly two categories: <em>informational</em> and <em>behavioral.</em></p>
+
+<blockquote>
+<p>Informational harms relate to the unintended or unanticipated leakage of information.
+Behavioral harms, on the other hand, relate to manipulating the behavior of the model itself, impacting the predictions or outcomes of the model.</p>
+</blockquote>
+
+<p>By describing the specific “attacks” that constitute these types of harms below, viewing each such attack as a warning sign of future, more widely known and exploited vulnerabilities associated with ML.</p>
+
+<h5 id="informational-harms">INFORMATIONAL HARMS</h5>
+
+<p><strong>Membership Inference:</strong> This attack involves inferring whether or not an individual’s data was contained in the data used to train the model, based on a sample of the model’s output. While seemingly complex, this analysis requires much less technical sophistication than is frequently assumed. A group of researchers from Cornell University, for example, recently released an auditing technique meant to help the general public learn if their data was used to train ML models, hoping to enable compliance with privacy regulations such as the EU’s GDPR. If used by malicious third parties, such analysis could compromise the confidentiality of the model and violate the privacy of affected individuals by revealing whether they are members of sensitive classes.</p>
+
+<p><strong>Model Inversion:</strong> Model inversion uses ML outputs to recreate the actual data the model was originally trained upon. In one well-known example of model inversion, researchers were able to reconstruct an image of an individual’s face that was used to train a facial recognition model. Another study, focused on ML systems that used genetic information to recommend dosing of specific medications, was able to directly predict individual patients&rsquo; genetic markers.</p>
+
+<p><strong>Model Extraction:</strong> This type of attack uses model outputs to recreate the model itself. Such attacks have been piblicly demonstrated against ML as a service providers like BigML and Amazon Machine Learning, and can have implications for privacy and security as well as the intellectual property or proprietary business logic of the underlying model. While there exist myriad types of harms that can arise from this type of attack, the very fact that models retain representations of their training data, as described above, makes the threat of extraction an inherent vulnerability from the privacy perspective.</p>
+
+<h2 id="collective-harms-posed-by-ml-enabled-inferences">Collective harms posed by ML-Enabled inferences</h2>
+
+<p>ML exacerbates one particularly thorny informational harm in the world of data analytics: creating dangers for individuals with no relation to the underlying training data or the model itself. That is, if ML models are able to make increasingly powerful predictions, the ability to apply those predictions to new individuals raises serious privacy concerns on its own. In that sense, a narrow focus on protecting the privacy and security of only the individuals whose data is used to train models is mistaken; all individuals may be affected by significantly powerful ML.</p>
+
+<p>One such example is the recent creation of a model that can detect anxiety and depression in children simply based on statistical patterns in each child’s voice. The model can take ordinary input data (voice recordings) and make decisions that constitute sensitive diagnostic data (the presence of anxiety or depression in a specific child). As a result, the very act of any child speaking—beyond the children involved in this study—now contains new privacy implications.</p>
+
+<h4 id="behavioral-harms">BEHAVIORAL HARMS</h4>
+
+<p><strong>Poisoning:</strong> Model poisoning occurs when an adversary is able to insert malicious data into training data in order to alter the behavior of the model at a later point in time. This technique may be used in practice for a variety of malicious activities, such as creating an artificially low insurance premium for particular individuals, or otherwise training a model to intentionally discriminate against a group of people. Altering the behavior of models can have both security and privacy implications, and does not necessarily require that the malicious actor have direct access to a model once deployed.</p>
+
+<p><strong>Evasion:</strong> Evasion occurs when input data is fed into an ML system that intentionally causes the system to misclassify that data. Such attacks may occur in a range of scenarios, and the input data may not be noticeable by humans. In one such example, researchers were able to cause a road sign classifier to misidentify road signs by placing small black and white stickers on each sign. This type of attack could cause traffic violations in systems such as those in autonomous vehicles. Similar evasion attacks have been demonstrated in a variety of other sensitive contexts as well.</p>
+
+<p><img src="https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2FroadSign.png" alt="ROAD SIGN" /></p>
+
+<h3 id="a-layered-approach-to-data-protection-in-ml">A layered approach to data protection in ML</h3>
+
+<h4 id="what-can-we-do-to-guard-against-these-harms-in-practice-while-there-are-no-easy-answers-there-are-a-series-of-actions-that-can-make-such-harms-less-likely-to-occure-or-minimize-their-impact-below-are-a-handful-of-approaches">What can we do to guard against these harms in practice? While there are no easy answers, there are a series of actions that can make such harms less likely to occure or minimize their impact. Below are a handful of approaches.</h4>
+
+<p><strong>Noise Injection:</strong> From a technical perspective, one of the most promising techniques involves adding tailored amounts of noise into the data used to train the model. Rather than training directly on the raw data, models can train on data with slight perturbations, which increases the difficulty of gaining insight into the original data or manipulating the model itself. One such method, known as differential privacy, is among the most widely accepted (and promising) methods of randomized noise injection.</p>
+
+<p><strong>Intermediaries:</strong> Another approach relies on inserting intermediaries or additional layers between the raw training data and the model, which can be implemented in a variety of ways. <em>Federated learning,</em> for example, trains models against data that is separated in silos, which can make the attacks discussed above more difficult to implement. Another method involves what is known as a <em>student teacher</em> approach, in which a variety of <em>student</em> models are trained on different aspects of the underlying data, which are then used to train the <em>parent</em> model or models that are actually deployed.</p>
+
+<p><strong>Transparent ML Mechanisms:</strong> A motivated attacker may be able to learn more about a black-box ML model than is known by its original creators, creating the possibility for privacy and security harms that they might not have envisioned. While traditionally dominated by black-box modeling routines, the field of ML has experienced a renaissance of research and techniques for training transparent models, which can help to address such concerns. Examples of such techniques, with accompanying open source code, include explainable boosting machines and scalable Bayesian rule lists.</p>
+
+<p><a href="https://github.com/interpretml/interpret" target="_blank">explainable boosting machines</a></p>
+
+<p><a href="https://users.cs.duke.edu/~cynthia/papers.html" target="_blank">scalable Bayesian rule lists</a></p>
+
+<p><strong>Access Controls:</strong> While it is broadly true that attacks against ML do not require the type of direct access needed to cause harms in traditional software systems, access to the model output is still required in many cases. For this reason, attempts to limit access to model output, along with methods to detect when such access is being abused, are among the most simple and effective ways to protect against the attacks described above.</p>
+
+<p><strong>Model Monitoring:</strong> It can be difficult to predict how ML systems will respond to new inputs, making their behavior difficult to manage over time. Detecting when such models are misbehaving is therefore critical to managing security and privacy risks. Key components of monitoring include outlining major risks and failure modes, devising a plan for how to detect complications or anomalies that occur, along with mechanisms for responding quickly if problems are detected.</p>
+
+<p><strong>Model Documentation:</strong> A long-standing best practice in the high-stakes world of credit scoring, model documentation formally records information about modeling systems, including but not limited to: business justifications; business and IT stakeholders; data scientists involved in model training; names, locations, and properties of training data; assumptions and details of ML methodologies; test and out-of-time sample performance; and model monitoring plans. A good model report should allow future model owners or validators to determine whether a model is behaving as intended.</p>
+
+<p><strong>White Hat or Red Team Hacking:</strong> As many ML attacks are described in technical detail in peer-reviewed publications, organizations can use these details to test public-facing or mission-critical ML end points against known attacks. White hat or red teams, either internally or provided by third parties, may therefore be able to identify and potentially remediate discovered vulnerabilities.</p>
+
+<p><strong>Open Source Software Privacy &amp; Security Resources:</strong> Nascent open source tools for private learning, accurate and transparent models, and debugging of potential security vulnerabilities are currently being released and are often associated with credible research or software organizations.</p>
+
+<h3 id="no-team-is-an-island-the-importance-of-cross-functional-expertise">No team is an Island: The importance of cross-functional expertise</h3>
+
+<p><img src="https://media.giphy.com/media/l0ExhTwuR8jBcFXqM/giphy.gif" alt="" /></p>
+
+<p>Ongoing, cross-functional communication is required to help ensure the privacy and security of ML systems. Data scientists and software developers need access to legal expertise to identify privacy risks at the beginning of the ML lifecycle. Similarly, lawyers and privacy personnel need access to those with design responsibilities and security proficiencies to understand technical limitations and to identify potential security harms. Processes for ongoing communication, for risk identification and management, and for clear setting of objectives should be established early and followed scrupulously to ensure that no team operates in isolation.</p>
+
+<p>There is no point in time in the process of creating, testing, deploying, and auditing production ML where a model can be ‘certified’ as being free from risk. There are, however, a host of methods to thoroughly document and monitor ML throughout its lifecycle to keep risk manageable, and to enable organizations to respond to fluctuations in the factors that affect this risk. Identifying, preventing, minimizing and responding to such risks must be an ongoing and thorough process.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>This blog aimed to outline a framework for understanding and addressing privacy and security risks in ML, and welcomes suggestions or comments to improve our analysis. Please reach out with feedback.</p>
+
+<p><img src="https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif" alt="" /></p>
+
+<h2 id="you-rock">You Rock!</h2>
+
+    </div>
+
+    
+
+
+    
+      
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<div class="media author-card" itemscope itemtype="http://schema.org/Person">
+  
+  <img class="portrait mr-3" src="https://s.gravatar.com/avatar/4cc3711ee1bf14eef1b48a6703e86be8?s=200')" itemprop="image" alt="Avatar">
+  
+
+  <div class="media-body">
+    <h5 class="card-title" itemprop="name"><a href="../../authors/admin">Rihad Variawa</a></h5>
+    <h6 class="card-subtitle">Data Scientist</h6>
+    <p class="card-text" itemprop="description">I am a Senior Data Scientist at Malastare AI and head of global Fintech Research, responsible for overall vision and strategy, investment priorities and offering development. Working in the financial services industry, helping clients adopt new technologies that can transform the way they transact and engage with their customers. I am passionate about data science, super inquisitive and challenge seeker; looking at everything through a lens of numbers and problem-solver at the core.</p>
+    <ul class="network-icon" aria-hidden="true">
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="../../#contact" >
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://twitter.com/2series_rv" target="_blank" rel="noopener">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://www.linkedin.com/in/rihad-variawa-7422017b" target="_blank" rel="noopener">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://github.com/2series" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://medium.com/@rihadvariawa/" target="_blank" rel="noopener">
+          <i class="fab fa-medium"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://rihadvariawa.blogspot.com/" target="_blank" rel="noopener">
+          <i class="fab fa-blogger"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://www.patreon.com/2series" target="_blank" rel="noopener">
+          <i class="fab fa-patreon"></i>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+      
+      
+    
+
+    
+    <div class="article-widget">
+      <div class="post-nav">
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="../../post/augmentingcompliance-1st-p/" rel="next">AI Augmenting Compliance - reference to nlp</a>
+  </div>
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="../../post/nlp-2nd-p/" rel="prev">NLP applied in Deep Learning</a>
+  </div>
+  
+</div>
+
+    </div>
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "2series" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+<div class="container">
+  <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="../../privacy/">Privacy Policy</a>
+  </p>
+  
+
+  <p class="powered-by">
+    &copy; 2020 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    
+    <script src="../../js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    <script id="dsq-count-scr" src="//2series.disqus.com/count.js" async></script>
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="../../js/academic.min.eeda67bb2d1f96265d85659d1edc7a5e.js"></script>
+
+  </body>
+</html>
+

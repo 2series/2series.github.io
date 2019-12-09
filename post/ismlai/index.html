@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.2.5">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Rihad Variawa">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Of the many downsides to the recent revival and popularity of Ai (Artificial Intelligence) one is that we see a lot of vendors, professional services firms, and end users jumping on the Ai bandwagon branding their technologies, products, service offerings, and projects as Ai products, projects, or offerings without it necessarily being the case. On the one side, there isn’t a well-accepted delineation between what is definitely Ai and what is definitely not Ai.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="../../post/ismlai/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#3f51b5">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Playfair+Display:400,700|Fauna+One">
+  
+
+  <link rel="stylesheet" href="../../styles.css">
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-132898309-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="icon" type="image/png" href="../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../img/icon-192.png">
+
+  <link rel="canonical" href="../../post/ismlai/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@2series_rv">
+  <meta property="twitter:creator" content="@2series_rv">
+  
+  <meta property="og:site_name" content="Rihad Variawa">
+  <meta property="og:url" content="/post/ismlai/">
+  <meta property="og:title" content="Confusion of Thinking AI Is ML | Rihad Variawa">
+  <meta property="og:description" content="Of the many downsides to the recent revival and popularity of Ai (Artificial Intelligence) one is that we see a lot of vendors, professional services firms, and end users jumping on the Ai bandwagon branding their technologies, products, service offerings, and projects as Ai products, projects, or offerings without it necessarily being the case. On the one side, there isn’t a well-accepted delineation between what is definitely Ai and what is definitely not Ai."><meta property="og:image" content="/img/ship.jpg">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-10-14T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2019-10-14T00:00:00&#43;00:00">
+  
+
+  
+
+  
+
+  <title>Confusion of Thinking AI Is ML | Rihad Variawa</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="../../">Rihad Variawa</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#posts">
+            
+            <span>Blog Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#publications">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">Confusion of Thinking AI Is ML</h1>
+
+  
+
+  
+    
+
+
+
+<meta content="2019-10-14 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-10-14 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Oct 14, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    8 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="../../post/ismlai/#disqus_thread"></a>
+  
+
+  
+
+  
+    
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p><img src="https://media.giphy.com/media/URpHvLF4KFfmFKM3CA/giphy.gif" alt="" /></p>
+
+<p>Of the many downsides to the recent revival and popularity of Ai (Artificial Intelligence) one is that we see a lot of vendors, professional services firms, and end users jumping on the Ai bandwagon branding their technologies, products, service offerings, and projects as Ai products, projects, or offerings without it necessarily being the case. On the one side, there isn’t a well-accepted delineation between what is definitely Ai and what is definitely not Ai. This is because there isn’t a well-accepted and standard definition of what is artificial intelligence. Indeed, there isn’t a standard definition of intelligence, period.</p>
+
+<p>Perhaps it is best to start with the overall goals of what we’re trying to achieve with Ai, rather than definitions of what Ai is or isn’t. Since the origin of Ai in the 1950s, the goals of intelligent systems are those that mimic human cognitive abilities. This means the ability to perceive and understand its surroundings, learn from training and its own experiences, make decisions based on reasoning and thought processes, and the development of <em>intuition</em> in situations that are vague and imprecise; basically the world in which we live in. From a delineation perspective, it’s easy to classify the movements towards AGI (Artificial General Intelligence) as Ai initiatives. After all, AGI systems are attempting to create systems that have all the cognitive capabilities of humans, and then some. Therefore certainly all AGI initiatives as Ai initiatives.</p>
+
+<p>On the flip side, <a href="https://www.cognilytica.com/2018/03/08/automation-is-not-intelligence/" target="_blank">simply automating things</a> doesn’t make them intelligent. It may take time and effort to train a machine to understand the difference between an image of a cat and an image of a dog or even between different species of dogs, but that doesn’t mean that the system can understand what it is looking at, learn from its own experiences, and make decisions based on that understanding. Similarly, a voice assistant can process your speech when you ask it “What weighs more: a ton of carrots or a ton of peas?”, but that doesn’t mean that the assistant understands what you are actually talking about or the meaning of your words. So, can we really argue that these systems are intelligent?</p>
+
+<p>In a recent <a href="https://www.cognilytica.com/2018/03/28/ai-today-podcast-30-interview-with-mit-professor-luis-perez-breva-contrary-perspectives-on-ai-and-ml/" target="_blank">interview</a> with MIT Professor Luis Perez-Breva, he argues that while these various complicated training and data-intensive learning systems are most definitely Machine Learning capabilities, that does not make them Ai capabilities. In fact, he argues, most of what is currently being branded as Ai in the market and media is not Ai at all, but rather just different versions of machine learning where the systems are being trained to do a specific, narrow task, using different approaches, of which Deep Learning is currently the most popular. He argues that if you’re trying to get a computer to recognize an image just feed it enough data and with the magic of math, statistics and neural nets that weigh different connections more or less over time, you’ll get the results you would expect. But what you’re really doing is using the human’s intelligence of what the image is to create a large dataset that can then be mathematically matched against inputs to verify what the human understands.</p>
+
+<h3 id="how-machine-learning-relate-to-ai">How Machine Learning relate to AI?</h3>
+
+<p>The view espoused by Professor Perez-Breva is not isolated or outlandish. In fact, when you dig deeper into these arguments, it’s hard to argue that the narrower the ML task, the less Ai it in fact is. However, does that mean that ML doesn’t play a role at all in Ai?  Or, at what point can you say that a particular machine learning project is an Ai effort in the way we discussed above? If you read the <a href="https://en.wikipedia.org/wiki/Artificial_intelligence" target="_blank">Wikipedia description of Ai</a>, it will tell you that, as of 2017, the industry generally accepts that “successfully understanding human speech, competing at the highest level in strategic game systems, autonomous cars, intelligent routing in content delivery network and military simulations” can be classified as Ai systems.</p>
+
+<p>The line between intelligence and just math or automation is a tricky one. If you decompose any intelligent system, even the eventual end goal of AGI, it will look just like bits and bytes, neural networks, decision-trees, lots of data, and mathematical algorithms.  Similarly, if you decompose the human brain, it’s just a bunch of neurons firing electrochemical pathways. Are humans intelligent? Are zebras intelligent? Is bacteria intelligent? Where’s the delineation between intelligence in living organisms? Perhaps intelligence is not truly a well-defined thing, but rather an observation of the characteristics of a system that exhibit certain behaviors. In this light, one of those behaviors is understanding and perceiving its surroundings, and another of those is learning from experiences and making decisions based on those experiences. In this light, ML definitely forms a part of what is necessary to make Ai work.</p>
+
+<p><img src="https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Fvendia.png" alt="" /></p>
+
+<p>Over the past 60+ years there have been many approaches and attempts to get systems to learn to understand its surroundings and learn from its experiences. These approaches have included decision trees, association rules, artificial neural networks of which Deep Learning is one such approach, inductive logic, support vector machines, clustering, similarity and metric learning including nearest-neighbor approaches, Bayesian networks, reinforcement learning, genetic algorithms and related evolutionary computing approaches, rules-based machine learning, learning classifier systems, sparse dictionary approaches, and more. For the layperson, we want to stress that Ai is not interchangeable for ML and certainly ML is not interchangeable with Deep Learning.  But ML supports the goals of Ai, and Deep Learning is one way to do certain aspects of ML. Or to put it another way, doing machine learning is necessary, but not sufficient, to achieve the goals of Ai, and Deep Learning is an approach to doing ML that may not be sufficient for all ML needs.</p>
+
+<h3 id="what-parts-of-ai-are-not-machine-learning">What Parts of AI are not Machine Learning?</h3>
+
+<p>It’s an interesting exercise to think about how you, as an adult human, have gained the intelligence that you have now. In some instances, you learned from simply being part of your environment such as learning how gravity works, how to speak to others and understand what they are saying, and cultural norms. In other instances, you learned in a teaching environment from instructors who knew a particular abstract subject area such as math or physics. In yet other instances you learned from repeating a particular task over and over again to get better at that task, such as music or sports. From an Ai perspective, these are just different kinds of learning, and therefore, different machine learning strategies. <strong>Supervised learning</strong> for being taught how to do things. <strong>Unsupervised learning</strong> when you’re learning from observing the world. <strong>Reinforcement learning</strong> when you’re learning by trial and error. Therefore, doesn’t it make sense that all forms of machine learning should be considered Ai? What else could there be?</p>
+
+<p>Some say that machine learning is a form of <em>pattern recognition,</em> understanding when a particular pattern occurs in nature or experience or through senses, and then acting on that pattern recognition. <em>When you look at it from that perspective, it becomes clear that the learning part must be paired with an action part.</em> Decisions and reasoning is not just applying the same response to the same patterns over and over again. If that was the case, then all we’re doing is using ML to simply automate better. Given the same inputs and feedback, the robot will perform the same action. But do humans really work that way? We experiment with different outcomes. We weigh alternatives. We respond differently when we’re stressed than when we’re relaxed. We prioritize. We think ahead and think about the potential outcomes of a decision. We play politics and we don’t always say what we want to say. And the big one: we have emotions. We have self-consciousness. We have <em>awareness.</em> All of these things move us beyond the task of learning into the world of perceiving, acting, and behaving. These are the frontiers of Ai.</p>
+
+<h3 id="moving-threshold-of-intelligence">Moving Threshold of Intelligence</h3>
+
+<p><img src="https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2FbranchOfAi.png" alt="" /></p>
+
+<p>In reading this piece, you’re actually yourself thinking and learning about ML and Ai, the relationships to each other, and whether or not specific ML activities are accomplishing the goals of what we aim to achieve in Ai. Likewise, even for those at the extremes of the Ai spectrum considering only AGI to be truly Ai or on the other polar opposite that consider any application of ML to be Ai, the truth lies somewhere in the middle. Some machine learning initiatives are more like automation and application of formulas that can’t continuously evolve or respond to change, while other machine learning efforts are closer to intelligence, which can change and adapt over time with experience, improving at their task or desired outcome.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>The tech industry continues to iterate on ML and address problems previously considered to be more complicated and difficult. As the collection of ML activities mature, while some are definitely not Ai-like at all or particularly intelligent, others are progressing the industry down the path of Ai. Eventually we’ll start to see the sort of technology evolution that has long been the goal of Ai.</p>
+
+<h3 id="thank-you-for-reading-my-post">Thank you for reading my post.</h3>
+
+<h2 id="you-rock">You Rock!</h2>
+
+    </div>
+
+    
+
+
+    
+      
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<div class="media author-card" itemscope itemtype="http://schema.org/Person">
+  
+  <img class="portrait mr-3" src="https://s.gravatar.com/avatar/4cc3711ee1bf14eef1b48a6703e86be8?s=200')" itemprop="image" alt="Avatar">
+  
+
+  <div class="media-body">
+    <h5 class="card-title" itemprop="name"><a href="../../authors/admin">Rihad Variawa</a></h5>
+    <h6 class="card-subtitle">Data Scientist</h6>
+    <p class="card-text" itemprop="description">I am a Senior Data Scientist at Malastare AI and head of global Fintech Research, responsible for overall vision and strategy, investment priorities and offering development. Working in the financial services industry, helping clients adopt new technologies that can transform the way they transact and engage with their customers. I am passionate about data science, super inquisitive and challenge seeker; looking at everything through a lens of numbers and problem-solver at the core.</p>
+    <ul class="network-icon" aria-hidden="true">
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="../../#contact" >
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://twitter.com/2series_rv" target="_blank" rel="noopener">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://www.linkedin.com/in/rihad-variawa-7422017b" target="_blank" rel="noopener">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://github.com/2series" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+      
+      
+    
+
+    
+    <div class="article-widget">
+      <div class="post-nav">
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="../../post/cardrewardpayments/" rel="next">Cash Reward Payments</a>
+  </div>
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="../../post/ds/" rel="prev">Data Science Life Cycle</a>
+  </div>
+  
+</div>
+
+    </div>
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "2series" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+<div class="container">
+  <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="../../privacy/">Privacy Policy</a>
+  </p>
+  
+
+  <p class="powered-by">
+    &copy; 2020 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    
+    <script src="../../js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    <script id="dsq-count-scr" src="//2series.disqus.com/count.js" async></script>
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="../../js/academic.min.eeda67bb2d1f96265d85659d1edc7a5e.js"></script>
+
+  </body>
+</html>
+

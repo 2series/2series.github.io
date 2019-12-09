@@ -73,10 +73,8 @@ As the Internet gets more and more popular, information overload poses an import
     
       
       
-        
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
-        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous" title="hl-dark" disabled>
       
     
 
@@ -476,7 +474,7 @@ As the Internet gets more and more popular, information overload poses an import
 <li><strong>Recommendation Core:</strong> After generating the list of user&rsquo;s historical preferences on shows and topics, it put all of those similar shows into raw recommendations.</li>
 <li><strong>Filtering:</strong> For some pretty obvious reasons, raw recommendation results cannot be presented to users directly. The need to filter out shows the user has already seen or engaged with, thus increases the recommendations shows a little more precise.</li>
 <li><strong>Ranking:</strong> The ranking module will re-rank raw recommendations to make them better fit users preferences. First, it will make recommendation more diverse. Then increase novelty of recommendations so that users will find shows they like, but have never seen before.</li>
-<li><strong>Explanation:</strong> Explanation is one of the most crucial components of every <em>recommendation system.</em> The explanation module generates some reasoning for every recommendation result using the user&rsquo;s historical behaviors. For example, it will recommend &ldquo;American Dad&rdquo; to a user who had previously watched &ldquo;Family Guy.&rdquo; The explanation will say, &ldquo;We recommend &lsquo;American Dad&rsquo; to you because you have watched &lsquo;Family Guy&rsquo;&rdquo;.</li>
+<li><strong>Explanation:</strong> Explanation is one of the most crucial components of every <em>recommendation system.</em> The explanation module generates some reasoning for every recommendation result using the user&rsquo;s historical behaviors. For example, it will recommend &laquo;American Dad&raquo; to a user who had previously watched &laquo;Family Guy.&raquo; The explanation will say, &laquo;We recommend &lsquo;American Dad&rsquo; to you because you have watched &lsquo;Family Guy&rsquo;&raquo;.</li>
 </ol>
 
 <p><img src="https://web.archive.org/web/20170425050711/http://tech.hulu.com/assets/2011/09/graphic-1.jpg" alt="online architecture" /></p>
@@ -518,7 +516,7 @@ As the Internet gets more and more popular, information overload poses an import
 
 <p>$$s(i,j)=\frac{\left | N(i)\cap N(j) \right |}{\sqrt{\left | N(i) \parallel N(j) \right |}}$$</p>
 
-<p>In this definition, show i will be highly relevant to show j if most users who watch show i will also watch show j. However, this definition will have the &ldquo;Harry Potter problem,&rdquo; which means that every show will have high relevance with popular shows.</p>
+<p>In this definition, show i will be highly relevant to show j if most users who watch show i will also watch show j. However, this definition will have the &laquo;Harry Potter problem,&raquo; which means that every show will have high relevance with popular shows.</p>
 
 <h3 id="recent-behavior">Recent Behavior</h3>
 
@@ -528,7 +526,7 @@ As the Internet gets more and more popular, information overload poses an import
 
 <h3 id="novelty">Novelty</h3>
 
-<p>Just because a recommendation system can accurately predict user behavior does not mean it produces a show that you want to recommend to an active user. For example, &ldquo;Family Guy&rdquo; is a very popular show, and thus most users have watched at least some episodes from this show. These  users do not need us to recommend this show to them — the show is popular enough that users will decide whether or not to watch it by themselves.</p>
+<p>Just because a recommendation system can accurately predict user behavior does not mean it produces a show that you want to recommend to an active user. For example, &laquo;Family Guy&raquo; is a very popular show, and thus most users have watched at least some episodes from this show. These  users do not need us to recommend this show to them — the show is popular enough that users will decide whether or not to watch it by themselves.</p>
 
 <p>Thus, <em>novelty</em> is also an important metric to evaluate recommendations. The first way we think can increase novelty is by revising ItemCF algorithm:</p>
 
@@ -555,7 +553,7 @@ As the Internet gets more and more popular, information overload poses an import
 
 <h2 id="performance-of-recommendation-hub">Performance Of Recommendation Hub</h2>
 
-<p>The recommendation hub is a personal recommendation page for each user. On this page users will see 6 carousels. The top carousel is &ldquo;top recommendations&rdquo;, which includes shows that we think users will prefer very much. After top recommendations, there are three carousels for three genres. These three genres are selected by analyzing users&rsquo; historical preferences. The next carousel is bookmarks, which include shows that users have indicated they&rsquo;d like to watch later. The last carousel is filled with shows that the user has already rated. This carousel is designed to collect more explicit feedback from users.</p>
+<p>The recommendation hub is a personal recommendation page for each user. On this page users will see 6 carousels. The top carousel is &laquo;top recommendations&raquo;, which includes shows that we think users will prefer very much. After top recommendations, there are three carousels for three genres. These three genres are selected by analyzing users&rsquo; historical preferences. The next carousel is bookmarks, which include shows that users have indicated they&rsquo;d like to watch later. The last carousel is filled with shows that the user has already rated. This carousel is designed to collect more explicit feedback from users.</p>
 
 <p><img src="https://web.archive.org/web/20170425043118/http://tech.hulu.com/assets/2011/09/graphic-6.jpg" alt="recommendation hub" /></p>
 
@@ -581,7 +579,7 @@ As the Internet gets more and more popular, information overload poses an import
 
 <p>Most researchers focus on improving offline accuracy, such as RMSE, precision/recall. However, <strong>recommendation systems</strong> that can accurately predict user behavior alone may not be a good enough for practical use. A good <strong>recommendation system</strong> should consider multiple factors together. In our system, after considering novelty and diversity, the CTR has improved by more than 10%.</p>
 
-<h3 id="thank-you-for-reading-my-post">Thank you for reading my post.</h3>
+<p><img src="https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif" alt="" /></p>
 
 <h2 id="you-rock">You Rock!</h2>
 
@@ -685,6 +683,57 @@ As the Internet gets more and more popular, information overload poses an import
         </a>
       </li>
       
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://medium.com/@rihadvariawa/" target="_blank" rel="noopener">
+          <i class="fab fa-medium"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://rihadvariawa.blogspot.com/" target="_blank" rel="noopener">
+          <i class="fab fa-blogger"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://www.patreon.com/2series" target="_blank" rel="noopener">
+          <i class="fab fa-patreon"></i>
+        </a>
+      </li>
+      
     </ul>
   </div>
 </div>
@@ -698,6 +747,11 @@ As the Internet gets more and more popular, information overload poses an import
     
     <div class="article-widget">
       <div class="post-nav">
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="../../post/nlp-2nd-p/" rel="next">NLP applied in Deep Learning</a>
+  </div>
   
   
   <div class="post-nav-item">
@@ -814,6 +868,8 @@ As the Internet gets more and more popular, information overload poses an import
       
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
         
       
 

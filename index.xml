@@ -399,7 +399,7 @@ prop_collections &amp;lt;- round(prop.table(collections, 2) * 100, 2)
     </item>
     
     <item>
-      <title>AI Augmenting Compliance - reference to nlp</title>
+      <title>AI Augmenting Compliance</title>
       <link>/post/augmentingcompliance/</link>
       <pubDate>Sat, 30 Nov 2019 00:00:00 +0000</pubDate>
       
@@ -569,10 +569,10 @@ Behavioral harms, on the other hand, relate to manipulating the behavior of the 
     
     <item>
       <title>NLP applied in Deep Learning</title>
-      <link>/post/nlp-/</link>
+      <link>/post/nlp/</link>
       <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/nlp-/</guid>
+      <guid>/post/nlp/</guid>
       <description>
 
 &lt;h2 id=&#34;deep-learning-applied-to-natural-language-processing&#34;&gt;Deep Learning applied to natural language processing&lt;/h2&gt;

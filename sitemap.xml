@@ -20,7 +20,22 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
+    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/dataanalytics/</loc>
+    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/explainability/</loc>
+    <lastmod>2020-02-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/optimisingorg/</loc>
+    <lastmod>2020-01-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -414,6 +429,11 @@
   
   <url>
     <loc>/author/admin/</loc>
+  </url>
+  
+  <url>
+    <loc>/post/explainability/</loc>
+    <priority>0</priority>
   </url>
   
   <url>

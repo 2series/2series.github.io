@@ -20,7 +20,27 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
+    <lastmod>2020-03-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/blockchain/</loc>
+    <lastmod>2020-03-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/oilandgas/</loc>
+    <lastmod>2020-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/iot/</loc>
+    <lastmod>2020-02-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/pythonetltools/</loc>
+    <lastmod>2020-02-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -30,7 +50,7 @@
   
   <url>
     <loc>/post/explainability/</loc>
-    <lastmod>2020-02-02T00:00:00+00:00</lastmod>
+    <lastmod>2020-02-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -429,11 +449,6 @@
   
   <url>
     <loc>/author/admin/</loc>
-  </url>
-  
-  <url>
-    <loc>/post/explainability/</loc>
-    <priority>0</priority>
   </url>
   
   <url>

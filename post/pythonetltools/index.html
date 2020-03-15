@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.2.5">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Rihad Variawa">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="ETL with Python ETL is the process of fetching data from one or many systems and loading it into a target data warehouse after doing some intermediate transformations. There are various ETL tools that can carry out this process.
+Some tools offer a complete end-to-end ETL implementation out-the-box and some tools aid you to create a custom ETL process from scratch while there are a few options that fall somewhere in between.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="../../post/pythonetltools/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#3f51b5">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Playfair+Display:400,700|Fauna+One">
+  
+
+  <link rel="stylesheet" href="../../styles.css">
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-132898309-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="icon" type="image/png" href="../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../img/icon-192.png">
+
+  <link rel="canonical" href="../../post/pythonetltools/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@2series_rv">
+  <meta property="twitter:creator" content="@2series_rv">
+  
+  <meta property="og:site_name" content="Rihad Variawa">
+  <meta property="og:url" content="/post/pythonetltools/">
+  <meta property="og:title" content="Python Libraries For ETL | Rihad Variawa">
+  <meta property="og:description" content="ETL with Python ETL is the process of fetching data from one or many systems and loading it into a target data warehouse after doing some intermediate transformations. There are various ETL tools that can carry out this process.
+Some tools offer a complete end-to-end ETL implementation out-the-box and some tools aid you to create a custom ETL process from scratch while there are a few options that fall somewhere in between."><meta property="og:image" content="/img/ship.jpg">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2020-02-15T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2020-02-15T00:00:00&#43;00:00">
+  
+
+  
+
+  
+
+  <title>Python Libraries For ETL | Rihad Variawa</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="../../">Rihad Variawa</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#posts">
+            
+            <span>Blog Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#publications">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="../../#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">Python Libraries For ETL</h1>
+
+  
+
+  
+    
+
+
+
+<meta content="2020-02-15 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2020-02-15 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Feb 15, 2020</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    7 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="../../post/pythonetltools/#disqus_thread"></a>
+  
+
+  
+
+  
+    
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p><img src="https://media.giphy.com/media/26xoplW0VhLLByrAY/giphy.gif" alt="" /></p>
+
+<h2 id="etl-with-python">ETL with Python</h2>
+
+<p>ETL is the process of fetching data from one or many systems and loading it into a target data warehouse after doing some intermediate transformations.  There are various ETL tools that can carry out this process.</p>
+
+<p>Some tools offer a complete end-to-end ETL implementation out-the-box and some tools aid you to create a custom ETL process from scratch while there are a few options that fall somewhere in between. In this post, we&rsquo;ll see some commonly used Python ETL tools and understand in which situations they may be a good fit for your project.</p>
+
+<p>Before going through the list of Python ETL tools, let’s first understand some essential features that any ETL tool should have.</p>
+
+<h2 id="features-of-etl-tools">Features of ETL Tools</h2>
+
+<p>ETL stands for <em>Extract, Transform, and Load</em> and so any ETL tool should at least have the following features:</p>
+
+<h3 id="extract">Extract</h3>
+
+<blockquote>
+<p>This is the process of extracting data from various sources. A good ETL tool supports various types of data sources. This should include most databases (both NoSQL and SQL-based) and file formats such as: csv, xls, XML, and json.</p>
+</blockquote>
+
+<h3 id="transform">Transform</h3>
+
+<blockquote>
+<p>The extracted data is usually kept in a staging area where raw data is cleansed and transformed into a meaningful form for storing it in a data warehouse. A standard ETL tool supports all the basic data transformation features like row operations, joins, sorting, aggregations, etc.</p>
+</blockquote>
+
+<h3 id="load">Load</h3>
+
+<blockquote>
+<p>In the load process, the transformed data is loaded into the target warehouse database. The standard ETL tools support connectors for various databases such as: Snowflake, MSSQL, and Oracle.</p>
+</blockquote>
+
+<h3 id="other-add-on-features">Other Add-On Features</h3>
+
+<blockquote>
+<p>Apart from basic ETL functionality, some tools support additional features like dashboards for visualizing and tracking various ETL pipelines. In fact, besides ETL, some tools also provide the ability to carry out parallel or distributed processing, and in some cases even basic analytics, that can be good add-ons depending on ones project needs.</p>
+</blockquote>
+
+<h2 id="python-etl-tools">Python ETL Tools</h2>
+
+<p>Python as a programming language is relatively easy to learn and use. Python has an impressively active open-source community on <em>GitHub</em> that is churning out new Python libraries and enhancement frequently. Due to this active community and Python’s low difficulty/functionality ratio, Python now sports an impressive presence in many diverse fields such as:</p>
+
+<ul>
+<li>Gaming developments</li>
+<li>Web developments</li>
+<li>Application developments</li>
+<li>NLP</li>
+<li>Computer vision</li>
+</ul>
+
+<p>just to name a few.</p>
+
+<p>In recent times, Python has become a popular programming language choice for <em>data processing, data analytics, and data science</em> (especially with the powerful Pandas library).  So it should not come as a surprise that there are plenty of Python ETL tools out there to choose from.</p>
+
+<p>Let’s take a look at the most common ones.</p>
+
+<h3 id="petl">Petl</h3>
+
+<blockquote>
+<p><a href="https://petl.readthedocs.io/en/stable/" target="_blank">Petl</a> (stands for Python ETL), a basic tool that offers the standard ETL functionality of importing data from different sources (csv, XML, json, text, xls) into your database.  It is trivial in terms of features and does not offer data analytics capabilities like some other tools in our list. However, it does support all the standard transformations like row <em>operation, sorting, joining, and aggregation</em>.
+<br/><br/>
+<em>Petl</em> isn’t bad for a simple tool, but it can suffer from performance issues; especially compared to some of the other options out there. So, if you just need to build a simple ETL pipeline and performance is not a big factor, then this lightweight tool should do the job. But for anything more complex or if you expect the project to grow in scope, you may want to keep looking.</p>
+</blockquote>
+
+<h3 id="pandas">Pandas</h3>
+
+<p><img src="https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Fpandas.png" alt="pandas" /></p>
+
+<blockquote>
+<p><a href="https://pandas.pydata.org/" target="_blank">Pandas</a> is one of the most popular Python libraries nowadays and is a personal favorite of mine. I’ve used it to process hydrology data, astrophysics data, and drone data. Its rise in popularity is largely due to its use in data science, which is a fast-growing field in itself, and is how I first encountered it.
+<br/><br/>
+<em>Pandas</em> use dataframes as the data structure to hold the data in memory (similar to how data is handled in the R programming language) Apart from regular ETL functionalities, <em>Pandas</em> supports loads of data analytics and visualization features.
+<br/><br/>
+<em>Pandas</em> is relatively easy to use and has many rich features, which is why it is a commonly used tool for simple ETL and EDA by data scientists. If you are already using <em>Pandas</em> it may be a good solution for deploying a proof-of-concept ETL pipeline.</p>
+</blockquote>
+
+<h3 id="mara">Mara</h3>
+
+<blockquote>
+<p><a href="https://github.com/mara" target="_blank">Mara</a> is a Python ETL tool that is lightweight but still offers the standard features for creating an ETL pipeline. It also offers other built-in features like web-based UI and command line integration. Web UI helps to visualize the ETL pipeline execution, which can also be integrated into a <strong>Flask</strong> based app. It uses PostgreSQL as the data processing engine.
+<br/><br/>
+If you are looking for an ETL tool that is simple but still has a touch of sophisticated features then <em>Mara</em> can be a good choice.</p>
+</blockquote>
+
+<h3 id="airflow">Airflow</h3>
+
+<p><img src="https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Fairflow.png" alt="airflow" /></p>
+
+<blockquote>
+<p><a href="https://airflow.apache.org/" target="_blank">Apache Airflow</a> was created by <strong>Airbnb</strong> and is an open-source workflow management tool. It can be used to create data ETL pipelines. Strictly speaking, it is not an ETL tool itself, instead, it is more of an orchestration tool that can be used to create, schedule, and monitor workflows. This means you can use <em>Airflow</em> to create a pipeline by consolidating various independently written modules of your ETL process.
+<br/><br/>
+<em>Airflow</em> workflow follows the concept of  DAG (Directed Acyclic Graph). <em>Airflow</em>, like other tools in our list, also has a browser-based dashboard to visualize workflow and track execution of multiple workflows. <em>Airflow</em> is a good choice if you want to create a complex ETL workflow by chaining independent and existing modules together</p>
+</blockquote>
+
+<h3 id="pyspark">Pyspark</h3>
+
+<p><img src="https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Fpyspark.png" alt="pyspark" /></p>
+
+<blockquote>
+<p><a href="https://spark.apache.org/docs/latest/api/python/index.html" target="_blank">Pyspark</a> is the version of <strong>Spark</strong> which runs on Python and hence the name. As per their website, “Spark is a unified analytics engine for large-scale data processing.”
+<br/><br/>
+<em>Spark</em> core not only provides robust features for creating ETL pipelines but also has support for data streaming (Spark Streaming), SQL (Spark SQL), machine learning (MLib) and graph processing (Graph X).
+<br/><br/>
+The main advantage of using <em>Pyspark</em> is the fast processing of huge amounts data. So if you are looking to create an ETL pipeline to process big data very fast or process streams of data, then you should definitely consider <em>Pyspark</em>. That said, it’s not an ETL solution out-of-the-box, but rather would be one part of your ETL pipeline deployment.</p>
+</blockquote>
+
+<h3 id="bonobo">Bonobo</h3>
+
+<p><img src="https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Fbonobo.png" alt="bonobo" /></p>
+
+<blockquote>
+<p><a href="https://www.bonobo-project.org/" target="_blank">Bonobo</a> is a lightweight ETL tool built using Python. It is simple and relatively easy to learn. It uses the graph concept to create pipelines and also supports the parallel processing of multiple elements in the pipeline. It also has a visual UI where the user can track the progress of the ETL pipeline.
+<br/><br/>
+All in all, it is just another easy-to-use ETL Python tool, that may be a good option for simple use-cases, but doesn’t have a lot of stand out features that separate it from the pack.</p>
+</blockquote>
+
+<h3 id="luigi">Luigi</h3>
+
+<p><img src="https://r-variawa.rstudio.cloud/d51019dc107e470cb38611324883b9a0/file_show?path=%2Fcloud%2Fproject%2Fstatic%2Fimg%2Fluigi.png" alt="luigi" /></p>
+
+<blockquote>
+<p><a href="https://github.com/spotify/luigi" target="_blank">Luigi</a> is a Python-based ETL tool that was created by <strong>Spotify</strong> but now is available as an open-source tool. It is a more sophisticated tool than many on this list and has powerful features for creating complex ETL pipelines. As per their Github page, “It handles dependency resolution, workflow management, visualization, handling failures, command line integration, and much more”.
+<br/><br/>
+It also comes with a web dashboard to track all the ETL jobs. If you are looking to build an enterprise solution then Luigi may be a good choice.</p>
+</blockquote>
+
+<h3 id="odo">Odo</h3>
+
+<blockquote>
+<p><a href="https://pypi.org/project/odo/" target="_blank">Odo</a> is a Python tool that can convert data from one format to another. But its main noteworthy feature is the performance it gives when loading huge csv datasets into various databases.
+<br/><br/>
+As they describe it on their website:  “Odo uses the native csv loading capabilities of the databases it supports. These loaders are extremely fast. <em>Odo</em> will beat any other pure Python approach when loading large datasets.”
+<br/><br/>
+We haven’t done a performance test to verify these claims, but if anyone has, please share in the comments. But regardless, it’s use-case seems clear: if you are looking to create a simple pipeline where the focus is just to load huge csv datasets into your data warehouse, then you should give <em>Odo</em> a try.</p>
+</blockquote>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>As seem in this post, there are plenty of Python ETL tools to choose from and each brings its own set of features and drawbacks. Whether you are looking for just standard ETL functionality or if you are looking for more add-on features and sophistication, Python may be a good choice.</p>
+
+<p><img src="https://media.giphy.com/media/l0EoBRrHj3ClWLzRm/giphy.gif" alt="" /></p>
+
+<h2 id="you-rock">You Rock!</h2>
+
+    </div>
+
+    
+
+
+    
+      
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<div class="media author-card" itemscope itemtype="http://schema.org/Person">
+  
+  <img class="portrait mr-3" src="https://s.gravatar.com/avatar/4cc3711ee1bf14eef1b48a6703e86be8?s=200')" itemprop="image" alt="Avatar">
+  
+
+  <div class="media-body">
+    <h5 class="card-title" itemprop="name"><a href="../../authors/admin">Rihad Variawa</a></h5>
+    <h6 class="card-subtitle">Data Scientist</h6>
+    <p class="card-text" itemprop="description">I am the Sr. Data Scientist at Malastare AI and head of global Fintech Research, responsible for overall vision and strategy, investment priorities and offering development. Working in the financial services industry, helping clients adopt new technologies that can transform the way they transact and engage with their customers. I am passionate about data science, super inquisitive and challenge seeker; looking at everything through a lens of numbers and problem-solver at the core. From understanding a business problem to collecting and visualizing data, until the stage of prototyping, fine-tuning and deploying models to real-world applications, I find the fulfillment of tackling challenges to solve complex problems using data.</p>
+    <ul class="network-icon" aria-hidden="true">
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="../../#contact" >
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://twitter.com/2series_rv" target="_blank" rel="noopener">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://www.freecodecamp.org/2series" target="_blank" rel="noopener">
+          <i class="fab fa-free-code-camp"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://www.linkedin.com/in/rihad-variawa-7422017b" target="_blank" rel="noopener">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://malastare-ai.github.io/Malastare-Artificial-Intelligence/" target="_blank" rel="noopener">
+          <i class="fab fa-grav"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://www.kaggle.com/" target="_blank" rel="noopener">
+          <i class="fab fa-kaggle"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://github.com/2series" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://medium.com/@rihadvariawa/" target="_blank" rel="noopener">
+          <i class="fab fa-medium-m"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://www.patreon.com/2series" target="_blank" rel="noopener">
+          <i class="fab fa-patreon"></i>
+        </a>
+      </li>
+      
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a itemprop="sameAs" href="https://rihadvariawa.blogspot.com/" target="_blank" rel="noopener">
+          <i class="fab fa-blogger"></i>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+      
+      
+    
+
+    
+    <div class="article-widget">
+      <div class="post-nav">
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="../../post/iot/" rel="next">AI and IoT</a>
+  </div>
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="../../post/dataanalytics/" rel="prev">Prescriptive Analytics Is The Future</a>
+  </div>
+  
+</div>
+
+    </div>
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "2series" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+<div class="container">
+  <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="../../privacy/">Privacy Policy</a>
+  </p>
+  
+
+  <p class="powered-by">
+    &copy; 2020 Rihad Variawa &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    
+    <script src="../../js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    <script id="dsq-count-scr" src="//2series.disqus.com/count.js" async></script>
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="../../js/academic.min.eeda67bb2d1f96265d85659d1edc7a5e.js"></script>
+
+  </body>
+</html>
+

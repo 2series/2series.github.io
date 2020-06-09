@@ -454,7 +454,6 @@
   
   <url>
     <loc>/author/admin/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -474,6 +473,11 @@
   
   <url>
     <loc>/slides/example/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/admin/</loc>
+    <priority>0</priority>
   </url>
   
 </urlset>

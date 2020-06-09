@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2020 Rihad Variawa</copyright>
-    <lastBuildDate>Mon, 16 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Data Literacy. THE SKILL ALL SHOULD HAVE</title>
+      <link>/post/dataliteracy/</link>
+      <pubDate>Thu, 26 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/dataliteracy/</guid>
+      <description>Look out of your window today and, while you might not realise it, the world is in the midst of a revolution.
+Things might appear totally normal. Humans are still commuting to and from work, shops remain open for business, and communication lines are functioning as they should. But we are actually living through the early stages of the 4IR (Fourth Industrial Revolution) which is sometimes also known as Industry 4.</description>
+    </item>
     
     <item>
       <title>Blockchain In Action</title>
